@@ -35,23 +35,41 @@ export default class Login extends Component<{}> {
     Navigation.startTabBasedApp({
       tabs: [
         {
-          label: 'Buy Voucher',
-          screen: 'Screen1',
-          icon: require('../images/icon1.png'),
-          selectedIcon: require('../images/icon1_selected.png'),
-          title: 'Buy Voucher'
+          label: 'Voucher',
+          screen: 'Voucher',
+          icon: require('../images/voucher.png'),
+          selectedIcon: require('../images/voucher-active.png'),
+          title: 'Buy Voucher',
         },
         {
-          label: 'Voucher',
-          screen: 'Screen2',
-          icon: require('../images/icon2.png'),
-          selectedIcon: require('../images/icon2_selected.png'),
+          label: 'Buy Voucher',
+          screen: 'BuyVoucher',
+          icon: require('../images/buy-voucher.png'),
+          selectedIcon: require('../images/buy-voucher-active.png'),
           title: 'Voucher'
+        },
+        {
+          label: 'Receive',
+          screen: 'Receive',
+          icon: require('../images/receive.png'),
+          selectedIcon: require('../images/receive-active.png'),
+          title: 'Receive',
+        },
+        {
+          label: 'More',
+          screen: 'More',
+          icon: require('../images/more.png'),
+          selectedIcon: require('../images/more-active.png'),
+          title: 'More',
         },
       ],
       appStyle: {
-        forceTitlesDisplay: false
-      }      
+        forceTitlesDisplay: false, 
+        navBarBackgroundColor: 'black',
+      }, 
+      tabsStyle: {
+        tabBarBackgroundColor: 'black',        
+      }     
     });
   }
   

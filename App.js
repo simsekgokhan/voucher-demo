@@ -1,11 +1,15 @@
 import { Navigation } from 'react-native-navigation';
 
-import Screen1 from './src/screens/Screen1';
-import Screen2 from './src/screens/Screen2';
+import Voucher from './src/screens/Voucher';
+import BuyVoucher from './src/screens/BuyVoucher';
+import Receive from './src/screens/Receive';
+import More from './src/screens/More';
 import Login from './src/screens/Login';
 
-  Navigation.registerComponent('Screen1', () => Screen1);
-  Navigation.registerComponent('Screen2', () => Screen2);
+  Navigation.registerComponent('Voucher', () => Voucher);
+  Navigation.registerComponent('BuyVoucher', () => BuyVoucher);
+  Navigation.registerComponent('Receive', () => Receive);
+  Navigation.registerComponent('More', () => More);
   Navigation.registerComponent('Login', () => Login);
   
   Navigation.startSingleScreenApp({
@@ -17,7 +21,9 @@ import Login from './src/screens/Login';
       }
     }, 
     appStyle: {
-      forceTitlesDisplay: false
+      forceTitlesDisplay: false,
+      navBarBackgroundColor: 'black',
+      tabBarBackgroundColor: 'black',
     }      
   });
 

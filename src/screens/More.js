@@ -3,11 +3,11 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View 
 } from 'react-native';
 
-export default class Screen1 extends Component<{}> {
+export default class More extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Screen1 </Text>
+        <Text> More </Text>
       </View>
     );
   }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       flexGrow: 1,
       justifyContent: 'center',
-      backgroundColor: 'red',
+      backgroundColor: 'yellow',
   }
 });
 
