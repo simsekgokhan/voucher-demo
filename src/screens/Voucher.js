@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions
+  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
+  ScrollView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import VoucherItem from '../components/VoucherItem';
 
 export default class Voucher extends Component<{}> {
+
   render() {
 
     const hasVoucher = true;     
@@ -14,13 +16,26 @@ export default class Voucher extends Component<{}> {
       <View style={styles.container}>
         <View style={styles.topView}>
           <Text style={{color: 'rgba(255,255,255,0.7)'}}> Total Balance </Text>        
-          <Text style={{color: 'white', fontSize: 18, marginTop: 5}}> $ 0 </Text>        
+          <Text style={{color: 'white', fontSize: 20, marginTop: 5}}> $ 500,689.08 </Text>        
         </View>
-        <View style={styles.centerView}>
+        <ScrollView vertical style={styles.centerView}>
           {
             hasVoucher ? 
-            <VoucherItem/>
-            :
+            <View>
+              <VoucherItem typeStr={VoucherItem.REDEEM}/>
+              <VoucherItem typeStr={VoucherItem.SENT}/>
+              <VoucherItem typeStr={VoucherItem.RECEIVED}/>
+              <VoucherItem typeStr={VoucherItem.PURCHASED}/>
+              <VoucherItem typeStr={VoucherItem.REDEEM}/>
+              <VoucherItem typeStr={VoucherItem.SENT}/>
+              <VoucherItem typeStr={VoucherItem.RECEIVED}/>
+              <VoucherItem typeStr={VoucherItem.PURCHASED}/>
+              <VoucherItem typeStr={VoucherItem.REDEEM}/>
+              <VoucherItem typeStr={VoucherItem.SENT}/>
+              <VoucherItem typeStr={VoucherItem.RECEIVED}/>
+              <VoucherItem typeStr={VoucherItem.PURCHASED}/>              
+            </View>
+            :            
             <View>
               <Image
                 style={{}}
@@ -29,7 +44,7 @@ export default class Voucher extends Component<{}> {
               <Text style={{color: 'white', marginTop: 10}}> Buy Your First Voucher </Text>        
             </View>
           }
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -53,8 +68,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   centerView: {
-    justifyContent: 'center', 
-    alignItems: 'center',
+    marginTop: 130,
+    padding: 10,
+    // justifyContent: 'center', 
+    // alignItems: 'center',
   },
 });
 
