@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
+import { StackNavigator } from 'react-navigation';
 
 const DARK_BLUE = '#006699';
 const DARK_RED = '#4d0000';
@@ -21,7 +22,7 @@ export default class VoucherItem extends Component<{}> {
   static PURCHASED = 'Purchased';
 
   constructor(props) {
-    super(props);
+    super(props);    
   }
 
   static propTypes = {
@@ -44,7 +45,9 @@ export default class VoucherItem extends Component<{}> {
     let textColor = BLUE;
     let amountSign = '+';
 
-    switch(this.props.typeStr) {
+    const typeStr = this.props.typeStr;
+
+    switch(typeStr) {
       case VoucherItem.REDEEM:
         voucherColor = DARK_BLUE;
         textColor = BLUE;
@@ -88,7 +91,7 @@ export default class VoucherItem extends Component<{}> {
           <View style={styles.voucherRow}>
             <Text style={styles.voucherText}> Today, 2:40 PM </Text>
             <Text style={[styles.voucherText, {color: textColor}]}> 
-              {this.props.typeStr} 
+              {typeStr} 
             </Text>            
           </View>  
           {
@@ -115,8 +118,15 @@ export default class VoucherItem extends Component<{}> {
               <View style={styles.voucherRow}>
                 <Image
                   source={require('../images/visa-logo.png')}
-                />
-                <Text style={{color: '#33ccff'}}> Details > </Text>                               
+                />                  
+                <TouchableOpacity 
+                  onPress={() => { this.props.onDetailsPress() }}
+                >
+                <Text 
+                  style={[styles.voucherText, {color: '#33ccff'}]}> 
+                    Details > 
+                </Text>           
+                </TouchableOpacity>                    
               </View>    
               </View>
             :
@@ -153,8 +163,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
 });
-
-
 
 
 

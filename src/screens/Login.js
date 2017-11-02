@@ -35,18 +35,21 @@ export default class Login extends Component<{}> {
     Navigation.startTabBasedApp({
       tabs: [
         {
-          label: 'Voucher',
-          screen: 'Voucher',
+          label: 'Vouchers',
+          screen: 'Vouchers',
           icon: require('../images/voucher.png'),
           selectedIcon: require('../images/voucher-active.png'),
-          title: 'Buy Voucher',
+          title: 'Vouchers',
+          navigatorStyle: {
+            navBarHidden: true
+          },
         },
         {
           label: 'Buy Voucher',
           screen: 'BuyVoucher',
           icon: require('../images/buy-voucher.png'),
           selectedIcon: require('../images/buy-voucher-active.png'),
-          title: 'Voucher'
+          title: 'Buy Voucher'
         },
         {
           label: 'Receive',
@@ -54,6 +57,9 @@ export default class Login extends Component<{}> {
           icon: require('../images/receive.png'),
           selectedIcon: require('../images/receive-active.png'),
           title: 'Receive',
+          navigatorStyle: {
+            navBarHidden: true
+          },
         },
         {
           label: 'More',

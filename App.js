@@ -1,12 +1,12 @@
 import { Navigation } from 'react-native-navigation';
 
-import Voucher from './src/screens/Voucher';
+import Vouchers from './src/screens/Vouchers';
 import BuyVoucher from './src/screens/BuyVoucher';
 import Receive from './src/screens/Receive';
 import More from './src/screens/More';
 import Login from './src/screens/Login';
 
-  Navigation.registerComponent('Voucher', () => Voucher);
+  Navigation.registerComponent('Vouchers', () => Vouchers);
   Navigation.registerComponent('BuyVoucher', () => BuyVoucher);
   Navigation.registerComponent('Receive', () => Receive);
   Navigation.registerComponent('More', () => More);
