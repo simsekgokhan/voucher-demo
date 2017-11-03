@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import VoucherItem from '../components/VoucherItem';
 import { StackNavigator } from 'react-navigation';
 import color from '../common/colors';
+import VoucherDetails from '../screens/VoucherDetails';
 
 class VouchersScreen extends React.Component {
   
@@ -15,12 +16,24 @@ class VouchersScreen extends React.Component {
     title: 'Back',
   };
 
+  navigateToDetails = (voucherType) => { 
+    const { navigate } = this.props.navigation;
+    navigate('DetailsScreen', {voucherType: voucherType});
+  }
+
+  componentDidMount () {
+    //this.navigateToDetails(VoucherItem.PURCHASED);
+  }
+
   render() {
     const hasVoucher = true;     
     const balance = hasVoucher ? '$ 500,689.08' : '$ 0';
 
     const { navigate } = this.props.navigation;
-    const navigateToDetails = () => navigate('DetailsScreen', {user: ''});
+    const navigateToDetails = (voucherType) => {  // todo: remove
+      navigate('DetailsScreen', {voucherType: voucherType});
+    }
+
 
     return (
       <View style={styles.container}>
@@ -34,29 +47,17 @@ class VouchersScreen extends React.Component {
             hasVoucher ? 
             <ScrollView vertical style={styles.scrollView}>
               <VoucherItem 
-                onDetailsPress={navigateToDetails} 
-                typeStr={VoucherItem.REDEEM}/>
-              <VoucherItem 
-                onDetailsPress={navigateToDetails} 
+                onDetailsPress={() => this.navigateToDetails(VoucherItem.SENT)} 
                 typeStr={VoucherItem.SENT}/>
               <VoucherItem 
-                onDetailsPress={navigateToDetails} 
-                typeStr={VoucherItem.PURCHASED}/>
-              <VoucherItem 
-                onDetailsPress={navigateToDetails} 
+                onDetailsPress={() => this.navigateToDetails(VoucherItem.RECEIVED)} 
                 typeStr={VoucherItem.RECEIVED}/>
               <VoucherItem 
-                onDetailsPress={navigateToDetails} 
-                typeStr={VoucherItem.REDEEM}/>
+                onDetailsPress={() => this.navigateToDetails(VoucherItem.REDEEMED)} 
+                typeStr={VoucherItem.REDEEMED}/>                        
               <VoucherItem 
-                onDetailsPress={navigateToDetails} 
-                typeStr={VoucherItem.SENT}/>
-              <VoucherItem 
-                onDetailsPress={navigateToDetails} 
+                onDetailsPress={() => this.navigateToDetails(VoucherItem.PURCHASED)} 
                 typeStr={VoucherItem.PURCHASED}/>
-              <VoucherItem 
-                onDetailsPress={navigateToDetails} 
-                typeStr={VoucherItem.RECEIVED}/>
             </ScrollView>
             :            
             <View style={styles.logoView}>
@@ -101,24 +102,6 @@ const styles = StyleSheet.create({
   }
 });
 
-class DetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation })  => ({
-    title: `Voucher ${navigation.state.params.user}`,
-    headerTintColor: color.BLUE,    
-  });
-
-  render() {
-    const { params } = this.props.navigation.state;
-    return (
-      <View style={{backgroundColor: 'black', flex: 1}}>
-        <Text style={{color: 'white'}}>
-          Voucher No: {params.user}
-        </Text>
-      </View>
-    );
-  }
-}
-
 const Vouchers = StackNavigator({
   HomeScr: { 
     screen: VouchersScreen, 
@@ -127,7 +110,7 @@ const Vouchers = StackNavigator({
     }
   },
   DetailsScreen: { 
-    screen: DetailsScreen ,
+    screen: VoucherDetails,
     navigationOptions: {
       headerStyle: {
         backgroundColor: 'black',  

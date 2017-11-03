@@ -16,7 +16,7 @@ const GREEN = '#00e600';
 
 export default class VoucherItem extends Component<{}> {
   
-  static REDEEM = 'Redeemed';
+  static REDEEMED = 'Redeemed';
   static SENT = 'Sent';
   static RECEIVED = 'Received';
   static PURCHASED = 'Purchased';
@@ -48,7 +48,7 @@ export default class VoucherItem extends Component<{}> {
     const typeStr = this.props.typeStr;
 
     switch(typeStr) {
-      case VoucherItem.REDEEM:
+      case VoucherItem.REDEEMED:
         voucherColor = DARK_BLUE;
         textColor = BLUE;
         amountSign = '';
