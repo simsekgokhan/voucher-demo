@@ -11,6 +11,8 @@ const color = {
     DARK_GREEN: '#003300',
 
     GREY_BACKGROUND: '#1a1a1a',
+
+    GREY_TEXT: 'rgba(255,255,255,0.7)',
 }
 
 export default color;

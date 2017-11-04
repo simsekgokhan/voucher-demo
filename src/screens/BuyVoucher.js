@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image
+  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Navigation } from 'react-native-navigation';
@@ -17,8 +17,12 @@ class BuyVoucher extends Component<{}> {
   }
 
   state = {
-    selectedButton: 10,
+    selectedValue: 5,
   };
+
+  updateSelectedValue = (selectedValue) => {
+    this.setState({ selectedValue: selectedValue });
+  }
 
   onNavigatorEvent(event) {
     //console.warn('aaa');
@@ -29,7 +33,9 @@ class BuyVoucher extends Component<{}> {
   }
 
   onButtonPress = (amount) => {
-    this.setState({selectedButton: amount});
+    this.setState({
+      selectedValue: amount,
+    });
   }
 
   render() {
@@ -37,7 +43,7 @@ class BuyVoucher extends Component<{}> {
     const buttonDir = require('../images/button.png');
     const buttonSelectedDir = require('../images/button-selected.png');
 
-    const selectedButton = this.state.selectedButton;
+    const selectedButton = this.state.selectedValue;
     let button5style = styles.buttonText;    
     let button10style = styles.buttonText;    
     let button20style = styles.buttonText;    
@@ -63,7 +69,7 @@ class BuyVoucher extends Component<{}> {
         button50style = styles.buttonTextSelected;
         button50 = buttonSelectedDir;        
         break;        
-      default:
+      default:     
         break;
     }
 
@@ -111,6 +117,24 @@ class BuyVoucher extends Component<{}> {
             </TouchableOpacity>   
           </View>                    
         </View>
+        <View style={styles.pickerView}>
+          <Text style={styles.pickerLabel}> 
+            Value, $
+          </Text>            
+          <Picker 
+            style={styles.picker} 
+            itemStyle={{color: 'white', fontSize: 26}}
+            selectedValue = {this.state.selectedValue} 
+            onValueChange = {this.updateSelectedValue}>
+            <Picker.Item label = "0.00" value = {0} />
+            <Picker.Item label = "5.00" value = {5} />
+            <Picker.Item label = "10.00" value = {10} />
+            <Picker.Item label = "20.00" value = {20} />
+            <Picker.Item label = "50.00" value = {50} />
+            <Picker.Item label = "100.00" value = {100} />
+          </Picker>              
+        </View>
+
       </View>
     );
 
@@ -130,7 +154,7 @@ const styles = StyleSheet.create({
   buttonsRowOne: {
     alignItems: 'center',
     flexDirection:'row',
-    marginLeft: 58,
+    marginLeft: 56,
     marginTop: 18,
   },
   buttonsRowTwo: {
@@ -138,7 +162,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     position: 'absolute', 
     top: 160, 
-    left: 120, 
+    left: 117, 
     right: 0, 
     bottom: 0, 
   },
@@ -198,7 +222,21 @@ const styles = StyleSheet.create({
     transform: [
 		  {rotate: '-45deg'}
 		]   
-  }
+  },
+  pickerView: {
+    flexDirection: 'row', 
+    marginTop: 100, 
+    alignItems: 'center'
+  },
+  picker: {
+    flex: 1,
+    marginRight: 100,
+  },
+  pickerLabel: {
+    color: color.GREY_TEXT, 
+    fontSize: 16, 
+    paddingLeft: 60,
+  },
 });
 
 // const BuyVoucher = StackNavigator({

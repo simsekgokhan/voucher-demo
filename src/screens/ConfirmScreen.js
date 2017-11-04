@@ -3,7 +3,7 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View 
 } from 'react-native';
 
-export default class ConfrmScreen extends Component<{}> {
+export default class ConfirmScreen extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
