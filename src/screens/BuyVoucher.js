@@ -9,6 +9,9 @@ import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 
+const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
+const DOUBLE_PRESS_DELAY = 300;
+
 class BuyVoucherScreen extends Component<{}> {
 
   state = {
@@ -43,11 +46,24 @@ class BuyVoucherScreen extends Component<{}> {
   }
 
   onButtonPress = (amount) => {
-    this.setState({
-      selectedValue: amount,
-    });
+    this.setState({ selectedValue: amount });
+
+    // Button Double Press Feature  
+    if(!ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE)
+      return;
+
+    const now = new Date().getTime();
+    if (this.lastButtonPress && (now - this.lastButtonPress) < DOUBLE_PRESS_DELAY) 
+      this.handleButtonDoublePress();    
+    else 
+      this.lastButtonPress = now;    
   }
 
+  handleButtonDoublePress() {
+    this.navigateToConfirm(Voucher.BUY);   
+    this.lastButtonPress = 0;          
+  }
+  
   render() {
 
     const buttonDir = require('../images/button.png');
