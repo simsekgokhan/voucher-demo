@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker
+  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker, Button
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Navigation } from 'react-native-navigation';
@@ -8,28 +8,37 @@ import LinearGradient from 'react-native-linear-gradient';
 import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
 
-class BuyVoucher extends Component<{}> {
-
-  constructor(props) {
-    super(props);
-    //console.warn('xx: ' + JSON.stringify(this.props, null, 4));    
-    //this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-  }
+class BuyVoucherScreen extends Component<{}> {
 
   state = {
     selectedValue: 5,
   };
 
-  updateSelectedValue = (selectedValue) => {
-    this.setState({ selectedValue: selectedValue });
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    const handleBuy = () => params.handleBuy();
+    const btnStyle = styles.buyButtonStyle; // todo
+    return {
+        headerRight: 
+          <Button title="Buy" style={btnStyle} color={color.BLUE} onPress={handleBuy} />
+    };
+  };
+
+  navigateToConfirm = (confirmType) => { 
+    const { navigate } = this.props.navigation;
+    navigate('ConfirmScreen', {confirmType: confirmType});
   }
 
-  onNavigatorEvent(event) {
-    //console.warn('aaa');
+  onBuyPressed = () => {
+    this.navigateToConfirm();
+  }
 
-    if (event.id == 'xxx') {
-      //console.warn('bb');
-    }
+  componentDidMount() {
+    this.props.navigation.setParams({ handleBuy: this.onBuyPressed });
+  }
+
+  updateSelectedValue = (selectedValue) => {
+    this.setState({ selectedValue: selectedValue });
   }
 
   onButtonPress = (amount) => {
@@ -237,30 +246,45 @@ const styles = StyleSheet.create({
     fontSize: 16, 
     paddingLeft: 60,
   },
+  buyButtonStyle: {
+    marginRight: 20,
+    backgroundColor: 'red',
+  }
 });
 
-// const BuyVoucher = StackNavigator({
-//   HomeScr: { 
-//     screen: BuyVoucherScreen, 
-//     navigationOptions: {
-//       header: null,      
-//     }
-//   },
-//   ConfirmScr: { 
-//     screen: ConfirmScreen,
-//     navigationOptions: {
-//       headerStyle: {
-//         backgroundColor: 'black',  
-//       },
-//       headerTitleStyle: {
-//         color: 'white',
-//       },
-//       headerBackTitleStyle: {
-//         color: color.BLUE,        
-//       }
-//     }
-//   },
-// });
+const BuyVoucher = StackNavigator({
+  HomeScr: { 
+    screen: BuyVoucherScreen, 
+    navigationOptions: {
+      title: 'Buy Voucher',
+      headerBackTitle: 'Cancel',
+      headerStyle: {
+        backgroundColor: 'black',  
+      },
+      headerTitleStyle: {
+        color: 'white',
+      },
+      headerBackTitleStyle: {
+        color: color.BLUE,        
+      }  
+    }
+  },
+  ConfirmScreen: { 
+    screen: ConfirmScreen,
+    navigationOptions: {
+      title: 'Buy Voucher',
+      headerStyle: {
+        backgroundColor: 'black',  
+      },
+      headerTitleStyle: {
+        color: 'white',
+      },
+      headerBackTitleStyle: {
+        color: color.BLUE,        
+      }
+    }
+  },
+});
 
 export default BuyVoucher;
 
