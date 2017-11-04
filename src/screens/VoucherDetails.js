@@ -7,16 +7,33 @@ import LinearGradient from 'react-native-linear-gradient';
 import { StackNavigator } from 'react-navigation';
 import color from '../common/colors';
 import VoucherItem from '../components/VoucherItem';
+import Voucher from '../common/voucher.constants';
 
 export default class VoucherDetails extends React.Component {
 
-    static navigationOptions = ({ navigation })  => ({
-      title: 'Voucher',
-      headerTintColor: color.BLUE,    
-    });
+  constructor(props) {
+    super(props);    
+  }
 
-    render() {
+  static navigationOptions = ({ navigation })  => ({
+    title: 'Voucher', // active only if parent does not pass title
+    headerTintColor: color.BLUE,    
+  });
+
+  navigateToConfirm = (confirmType) => { 
+    const { navigate } = this.props.navigation;    
+    navigate('ConfirmScreen', {confirmType: confirmType, amount: 50});
+  }
+
+  onSendPress = () => {
+    this.navigateToConfirm(Voucher.SEND);
+  }
   
+  onRefundPress = () => {
+    this.navigateToConfirm(Voucher.REFUND);
+  }
+
+  render() {  
       let voucherLogo = require('../images/redeemed-logo.png');
       let voucherColor = color.DARK_BLUE;
       let textColor = color.BLUE;
@@ -49,6 +66,11 @@ export default class VoucherDetails extends React.Component {
           textColor = color.GREEN;
           showButtons = true;
           break;
+        case Voucher.REFUNDED:
+          voucherColor = color.DARK_PURPLE;
+          voucherLogo = require('../images/refunded-logo.png');
+          textColor = color.PURPLE;
+          break;          
         default:
           voucherColor = color.DARK_BLUE;
           textColor = color.BLUE;
@@ -83,7 +105,7 @@ export default class VoucherDetails extends React.Component {
           </View>
           <View style={[styles.voucherRow, {marginTop: 20}]}>
               <Text style={[styles.voucherText, {color: 'white'}]}> of 
-                <Text style={{color: color.BLUE, fontSize: 28}}> $ 20.00 </Text>
+                <Text style={{color: textColor, fontSize: 28}}> $ 20.00 </Text>
               </Text>
           </View>
           {
@@ -91,7 +113,7 @@ export default class VoucherDetails extends React.Component {
             <View style={[styles.voucherRow, {marginTop: 30}]}>
                 <TouchableOpacity
                     style={styles.buttonSend}
-                    onPress={() => { this.props.onDetailsPress() }} >
+                    onPress={ this.onSendPress } >
                 <Image source={require('../images/send-logo.png')} />
                 <Text
                     style={[styles.buttonText, { color: color.RED, paddingHorizontal: 10 }]}>
@@ -100,7 +122,7 @@ export default class VoucherDetails extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.buttonRefund}
-                    onPress={() => { this.props.onDetailsPress() }} >
+                    onPress={ this.onRefundPress } >
                 <Image source={require('../images/refund-logo.png')} />
                 <Text
                     style={[styles.buttonText, { color: color.PURPLE, paddingHorizontal: 10 }]}>

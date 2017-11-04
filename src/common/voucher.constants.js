@@ -11,6 +11,7 @@ const Voucher = {
     SENT: 'Sent',
     RECEIVED: 'Received',
     PURCHASED: 'Purchased',
+    REFUNDED: 'Refunded',
 }
 
 export default Voucher;

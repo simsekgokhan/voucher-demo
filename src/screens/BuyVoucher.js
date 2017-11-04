@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
+import VoucherDetails from '../screens/VoucherDetails';
 
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
@@ -23,6 +24,7 @@ class BuyVoucherScreen extends Component<{}> {
     const handleBuy = () => params.handleBuy();
     const btnStyle = styles.buyButtonStyle; // todo
     return {
+        //title: 'Buy Voucher',
         headerRight: 
           <Button title="Buy" style={btnStyle} color={color.BLUE} onPress={handleBuy} />
     };
@@ -290,6 +292,21 @@ const BuyVoucher = StackNavigator({
     screen: ConfirmScreen,
     navigationOptions: {
       title: 'Buy Voucher',
+      headerStyle: {
+        backgroundColor: 'black',  
+      },
+      headerTitleStyle: {
+        color: 'white',
+      },
+      headerBackTitleStyle: {
+        color: color.BLUE,        
+      }
+    }
+  },
+  VoucherDetails: { 
+    screen: VoucherDetails,
+    navigationOptions: {
+      headerLeft: null,      
       headerStyle: {
         backgroundColor: 'black',  
       },

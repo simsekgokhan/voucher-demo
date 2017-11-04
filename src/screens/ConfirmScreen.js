@@ -4,6 +4,9 @@ import {
 } from 'react-native';
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
+import VoucherDetails from '../screens/VoucherDetails';
+
+let voucherType = '';
 
 export default class ConfirmScreen extends Component<{}> {
 
@@ -12,8 +15,14 @@ export default class ConfirmScreen extends Component<{}> {
   }
 
   static navigationOptions = ({ navigation })  => ({
+    title: navigation.state.params.confirmType, // this is passed to child or comes from parent
     headerTintColor: color.BLUE,
   });
+
+  onTouchIdPressed = () => {            
+    const { navigate } = this.props.navigation;    
+    navigate('VoucherDetails', {voucherType: voucherType});    
+  }
 
   render() {
     const leftQuoMark = '\u00AB';
@@ -26,22 +35,25 @@ export default class ConfirmScreen extends Component<{}> {
     let textColor = color.BLUE;
     switch(confirmType) {
       case Voucher.BUY:
-        textColor = color.BLUE;
+        voucherType = Voucher.PURCHASED;
+        textColor = color.BLUE;                
         break;      
       case Voucher.REDEEM:
         textColor = color.BLUE;
         break;
       case Voucher.SEND:
         textColor = color.RED;
+        voucherType = Voucher.SENT;
         break;
       case Voucher.REFUND:
         textColor = color.PURPLE;
+        voucherType = Voucher.REFUNDED;
         break;
       default:
         textColor = color.BLUE;
         break;
     }      
-    
+        
     return (
       <View style={styles.container}>
         <View style={styles.block}>
@@ -50,11 +62,14 @@ export default class ConfirmScreen extends Component<{}> {
           </Text>
           <Text style={{color: textColor, fontSize: 24, marginTop: 4}}> 
             ${amount} 
-          </Text>           
+          </Text>
+          
+          <TouchableOpacity onPress={this.onTouchIdPressed}>
           <Image                      
             style={{marginTop: 70}}
-            source={require('../images/touchId-button.png')}            
-          />
+            source={require('../images/touchId-button.png')}/>
+          </TouchableOpacity>
+
           <Text style={{color: 'white', fontSize: 18, marginTop: 30}}> 
             Touch ID for 
           </Text>          
@@ -64,7 +79,7 @@ export default class ConfirmScreen extends Component<{}> {
           <Text style={{color: 'white', fontSize: 14, marginTop: 14}}> 
             Please, confirm your fingerprint
           </Text>                    
-        </View>
+        </View>        
       </View>
     );
   }
