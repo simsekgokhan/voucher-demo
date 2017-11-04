@@ -40,6 +40,7 @@ export default class ConfirmScreen extends Component<{}> {
         break;      
       case Voucher.REDEEM:
         textColor = color.BLUE;
+        voucherType = Voucher.REDEEMED;
         break;
       case Voucher.SEND:
         textColor = color.RED;
