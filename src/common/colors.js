@@ -1,5 +1,4 @@
 
-
 const color = {
     BLUE: '#33ccff',
     RED: '#cc0000',

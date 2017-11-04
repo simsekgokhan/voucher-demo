@@ -7,6 +7,7 @@ import { Navigation } from 'react-native-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
+import Voucher from '../common/voucher.constants';
 
 class BuyVoucherScreen extends Component<{}> {
 
@@ -22,15 +23,15 @@ class BuyVoucherScreen extends Component<{}> {
         headerRight: 
           <Button title="Buy" style={btnStyle} color={color.BLUE} onPress={handleBuy} />
     };
-  };
+  };  
 
   navigateToConfirm = (confirmType) => { 
-    const { navigate } = this.props.navigation;
-    navigate('ConfirmScreen', {confirmType: confirmType});
+    const { navigate } = this.props.navigation;    
+    navigate('ConfirmScreen', {confirmType: confirmType, amount: this.state.selectedValue});
   }
 
   onBuyPressed = () => {
-    this.navigateToConfirm();
+    this.navigateToConfirm(Voucher.BUY);
   }
 
   componentDidMount() {
