@@ -4,6 +4,9 @@ import {
   KeyboardAvoidingView, Image, Alert, Dimensions
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { startTabBasedApp } from '../../App';
+
+const debug = 1;
 
 export default class Login extends Component<{}> {
 
@@ -13,6 +16,10 @@ export default class Login extends Component<{}> {
     createAccountSelected: false,   
   };
 
+  login() {
+      startTabBasedApp();    
+  }
+  
   signIn = () => {
     if(!this.state.loadStartSreen) {
       return this.login();      
@@ -31,54 +38,6 @@ export default class Login extends Component<{}> {
     });
   }
 
-  login() {
-    Navigation.startTabBasedApp({
-      tabs: [
-        {
-          label: 'Vouchers',
-          screen: 'Vouchers',
-          icon: require('../images/voucher.png'),
-          selectedIcon: require('../images/voucher-active.png'),
-          title: 'Vouchers',
-          navigatorStyle: {
-            navBarHidden: true
-          },
-        },
-        {
-          label: 'Buy Voucher',
-          screen: 'BuyVoucher',
-          icon: require('../images/buy-voucher.png'),
-          selectedIcon: require('../images/buy-voucher-active.png'),
-          title: 'Buy Voucher'
-        },
-        {
-          label: 'Receive',
-          screen: 'Receive',
-          icon: require('../images/receive.png'),
-          selectedIcon: require('../images/receive-active.png'),
-          title: 'Receive',
-          navigatorStyle: {
-            navBarHidden: true
-          },
-        },
-        {
-          label: 'More',
-          screen: 'More',
-          icon: require('../images/more.png'),
-          selectedIcon: require('../images/more-active.png'),
-          title: 'More',
-        },
-      ],
-      appStyle: {
-        forceTitlesDisplay: false, 
-        navBarBackgroundColor: 'black',
-      }, 
-      tabsStyle: {
-        tabBarBackgroundColor: 'black',        
-      }     
-    });
-  }
-  
   render() {
 
     let xx = false;

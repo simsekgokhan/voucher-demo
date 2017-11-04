@@ -9,6 +9,8 @@ const color = {
     DARK_BLUE: '#006699',
     DARK_RED: '#4d0000',
     DARK_GREEN: '#003300',
+
+    GREY_BACKGROUND: '#1a1a1a',
 }
 
 export default color;

@@ -11,7 +11,7 @@ import VoucherItem from '../components/VoucherItem';
 export default class VoucherDetails extends React.Component {
 
     static navigationOptions = ({ navigation })  => ({
-      title: `Voucher ${navigation.state.params.voucherType}`,
+      title: 'Voucher',
       headerTintColor: color.BLUE,    
     });
 

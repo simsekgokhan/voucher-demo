@@ -29,12 +29,6 @@ class VouchersScreen extends React.Component {
     const hasVoucher = true;     
     const balance = hasVoucher ? '$ 500,689.08' : '$ 0';
 
-    const { navigate } = this.props.navigation;
-    const navigateToDetails = (voucherType) => {  // todo: remove
-      navigate('DetailsScreen', {voucherType: voucherType});
-    }
-
-
     return (
       <View style={styles.container}>
         <View style={styles.topView}>
@@ -91,7 +85,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   logoView: {
-    //bottom: Dimensions.get('window').height/2,     
     marginTop: 40,
     justifyContent: 'center', 
     alignItems: 'center',

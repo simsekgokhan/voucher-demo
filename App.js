@@ -6,6 +6,8 @@ import Receive from './src/screens/Receive';
 import More from './src/screens/More';
 import Login from './src/screens/Login';
 
+import color from './src/common/colors';
+
 Navigation.registerComponent('Vouchers', () => Vouchers);
 Navigation.registerComponent('BuyVoucher', () => BuyVoucher);
 Navigation.registerComponent('Receive', () => Receive);
@@ -26,3 +28,66 @@ Navigation.startSingleScreenApp({
     tabBarBackgroundColor: 'black',
   }
 });
+
+export function startTabBasedApp(initialTabIdx=0) {
+  Navigation.startTabBasedApp({
+    tabs: [
+      {
+        label: 'Vouchers',
+        screen: 'Vouchers',
+        icon: require('./src/images/voucher.png'),
+        selectedIcon: require('./src/images/voucher-active.png'),
+        title: 'Vouchers',
+        navigatorStyle: {
+          navBarHidden: true
+        },
+      },
+      {
+        label: 'Buy Voucher',
+        screen: 'BuyVoucher',
+        icon: require('./src/images/buy-voucher.png'),
+        selectedIcon: require('./src/images/buy-voucher-active.png'),
+        title: 'Buy Voucher',
+        navigatorStyle: {
+          navBarTextColor: 'white',
+          navBarButtonColor: color.BLUE,
+        },
+        navigatorButtons: {
+          rightButtons: [
+            {
+              title: 'Buy',
+              id: 'xxx'
+            }
+          ]
+        }
+      },
+      {
+        label: 'Receive',
+        screen: 'Receive',
+        icon: require('./src/images/receive.png'),
+        selectedIcon: require('./src/images/receive-active.png'),
+        title: 'Receive',
+        navigatorStyle: {
+          navBarHidden: true
+        },
+      },
+      {
+        label: 'More',
+        screen: 'More',
+        icon: require('./src/images/more.png'),
+        selectedIcon: require('./src/images/more-active.png'),
+        title: 'More',
+      },
+    ],
+    appStyle: {
+      forceTitlesDisplay: false, 
+      navBarBackgroundColor: 'black',
+    }, 
+    tabsStyle: {
+      tabBarBackgroundColor: 'black',   
+      initialTabIndex: initialTabIdx,     
+    }     
+  });
+}
+
+
