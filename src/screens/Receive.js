@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import color from '../common/colors';
+import Voucher from '../common/voucher.constants';
 
 let lastActiveTabIndex = 0;
 
@@ -18,11 +19,10 @@ export default class Receive extends Component<{}> {
 
   static navigatorButtons = {
     leftButtons: [{
-      //title: 'Back',
+      //title: 'Back',  // currently overriden by icon
       id: 'back',
       icon: require('../images/back-button.png'),      
-    }
-  ]
+    }]
   }
 
   onNavigatorEvent(event) { 
@@ -33,17 +33,31 @@ export default class Receive extends Component<{}> {
         this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });      
   }
 
+  onButtonPress = () => {
+    this.props.navigator.push({
+      screen: 'VoucherDetails',
+      title: 'Voucher',
+      backButtonTitle: 'Back',
+      passProps: {voucherType: Voucher.RECEIVED}
+    })
+  }
+
   render() {
      return (
       <View style={styles.container}>
-
-      <TouchableOpacity 
-        onPress={() => this.onButtonPress(5)}
-        style={styles.button5}>                    
-        <Image style={styles.imagestyle} source={require('../images/scan-icon.png')}>           
-        </Image>          
-      </TouchableOpacity>    
-
+        <Image 
+          style={{marginTop: 120}} 
+          source={require('../images/white-rectangle-border.png')}>           
+        </Image>     
+        <TouchableOpacity 
+          onPress={this.onButtonPress}
+          style={styles.footerView}>       
+          <Text style={{color: 'white', fontSize: 12}}> 
+            Scan my payment QR-code
+          </Text>             
+          <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
+          </Image>          
+        </TouchableOpacity>    
       </View>
      )
   }
@@ -52,13 +66,14 @@ export default class Receive extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     backgroundColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
+  footerView: {
+    marginTop: 80,
+    justifyContent: 'center',
+    alignItems: 'center',    
   },
   capture: {
     flex: 0,

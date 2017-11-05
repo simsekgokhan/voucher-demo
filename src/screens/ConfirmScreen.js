@@ -14,23 +14,47 @@ export default class ConfirmScreen extends Component<{}> {
     super(props);    
   }
 
+  // For react-navigation
   static navigationOptions = ({ navigation })  => ({
-    title: navigation.state.params.confirmType, // this is passed to child or comes from parent
+    // title is passed to child (or comes from parent)
+    title: navigation.state.params.confirmType, 
     headerTintColor: color.BLUE,
   });
 
   onTouchIdPressed = () => {            
-    const { navigate } = this.props.navigation;    
-    navigate('VoucherDetails', {voucherType: voucherType});    
+    // a) When 'this' created/pushed by react-navigation stack navigation 
+    if(this.props.navigation) {    
+      const { navigate } = this.props.navigation;    
+      navigate('VoucherDetails', {voucherType: voucherType});    
+    }
+    // b) When 'this' created/pushed by react-native-navigation    
+    else if (this.props.navigator) {
+      this.props.navigator.push({
+        screen: 'VoucherDetails',
+        backButtonHidden: true,
+        title: 'Voucher',
+        passProps: {voucherType: voucherType}
+      })
+    }
   }
 
   render() {
     const leftQuoMark = '\u00AB';
     const rightQuoMark = '\u00BB';
     
-    const { params } = this.props.navigation.state;    
-    const confirmType = params.confirmType;
-    const amount = params.amount;
+    let confirmType = '';
+    let amount = 0;
+    // a) When 'this' created/pushed by react-navigation stack navigation 
+    if(this.props.navigation) {    
+      const { params } = this.props.navigation.state;    
+      confirmType = params.confirmType;
+      amount = params.amount;  
+    }
+    // b) When 'this' created/pushed by react-native-navigation    
+    else if (this.props.navigator) {
+      confirmType = this.props.confirmType;
+      amount = this.props.amount;  
+    }
 
     let textColor = color.BLUE;
     switch(confirmType) {

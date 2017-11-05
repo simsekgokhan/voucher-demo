@@ -15,14 +15,39 @@ export default class VoucherDetails extends React.Component {
     super(props);    
   }
 
+  // For react-native-navigation  
+  static navigatorStyle= {
+    tabBarHidden: false,   
+  }  
+
+  // todo: duplicate ?
+  // For react-navigation 
+  static navigationOptions = {
+    title: 'Back',
+  };
+
+  // todo
+  // For react-navigation
   static navigationOptions = ({ navigation })  => ({
     title: 'Voucher', // active only if parent does not pass title
     headerTintColor: color.BLUE,    
   });
 
   navigateToConfirm = (confirmType) => { 
-    const { navigate } = this.props.navigation;    
-    navigate('ConfirmScreen', {confirmType: confirmType, amount: 50});
+    // a) When 'this' created/pushed by react-navigation stack navigation 
+    if(this.props.navigation) {    
+      const { navigate } = this.props.navigation;    
+      navigate('ConfirmScreen', {confirmType: confirmType, amount: 50});
+    }
+    // b) When 'this' created/pushed by react-native-navigation    
+    else if (this.props.navigator) {
+      this.props.navigator.push({
+        screen: 'ConfirmScreen',
+        title: confirmType,
+        backButtonTitle: 'Cancel',
+        passProps: {confirmType: confirmType, amount: 75},
+      })
+    }
   }
 
   onSendPress = () => {
@@ -39,9 +64,16 @@ export default class VoucherDetails extends React.Component {
       let textColor = color.BLUE;
       let showButtons = false;
   
-      // Get params passed by Vouchers.navigateToDetails()
-      const { params } = this.props.navigation.state;        
-      const voucherType = params.voucherType;
+      let voucherType = Voucher.PURCHASED; // todo      
+      // a) When 'this' created/pushed by react-navigation stack navigation 
+      if(this.props.navigation) {
+        const { params } = this.props.navigation.state;        
+        voucherType = params.voucherType;
+      }
+      // b) When 'this' created/pushed by react-native-navigation    
+      else if (this.props.navigator){
+        voucherType = this.props.voucherType;        
+      }
   
       switch(voucherType) {
         case VoucherItem.REDEEMED:
@@ -105,7 +137,9 @@ export default class VoucherDetails extends React.Component {
           </View>
           <View style={[styles.voucherRow, {marginTop: 20}]}>
               <Text style={[styles.voucherText, {color: 'white'}]}> of 
-                <Text style={{color: textColor, fontSize: 28}}> $ 20.00 </Text>
+                <Text style={{color: textColor, fontSize: 28}}> 
+                  $ 20.00 
+                </Text>
               </Text>
           </View>
           {

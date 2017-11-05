@@ -5,14 +5,21 @@ import BuyVoucher from './src/screens/BuyVoucher';
 import Receive from './src/screens/Receive';
 import More from './src/screens/More';
 import Login from './src/screens/Login';
+import VoucherDetails from './src/screens/VoucherDetails';
+import ConfirmScreen from './src/screens/ConfirmScreen';
 
 import color from './src/common/colors';
 
+// Tab root screens
 Navigation.registerComponent('Vouchers', () => Vouchers);
 Navigation.registerComponent('BuyVoucher', () => BuyVoucher);
 Navigation.registerComponent('Receive', () => Receive);
 Navigation.registerComponent('More', () => More);
 Navigation.registerComponent('Login', () => Login);
+
+// Stackable screens
+Navigation.registerComponent('VoucherDetails', () => VoucherDetails);
+Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen);
 
 Navigation.startSingleScreenApp({
   screen: {
