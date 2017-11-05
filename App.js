@@ -84,6 +84,9 @@ export function startTabBasedApp(initialTabIdx=0) {
         icon: require('./src/images/more.png'),
         selectedIcon: require('./src/images/more-active.png'),
         title: 'More',
+        navigatorStyle: {
+          navBarHidden: true
+        },
       },
     ],
     appStyle: {
