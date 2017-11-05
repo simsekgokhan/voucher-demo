@@ -62,8 +62,13 @@ export function startTabBasedApp(initialTabIdx=0) {
         icon: require('./src/images/receive.png'),
         selectedIcon: require('./src/images/receive-active.png'),
         title: 'Receive',
+        drawUnderTabBar: true,
         navigatorStyle: {
-          navBarHidden: true
+          tabBarHidden: true,          
+          navBarTextColor: 'white',
+          navBarButtonColor: color.BLUE,
+          drawUnderTabBar: true,
+          tabBarBackgroundColor: 'black',   
         },
       },
       {

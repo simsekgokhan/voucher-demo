@@ -291,7 +291,6 @@ const BuyVoucher = StackNavigator({
   ConfirmScreen: { 
     screen: ConfirmScreen,
     navigationOptions: {
-      title: 'Buy Voucher',
       headerStyle: {
         backgroundColor: 'black',  
       },
