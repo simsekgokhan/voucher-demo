@@ -10,6 +10,7 @@ import ConfirmScreen from './src/screens/ConfirmScreen';
 import MyWallet from './src/screens/MyWallet';
 import CardRegister from './src/screens/CardRegister';
 import HoldCard from './src/screens/HoldCard';
+import AddCard from './src/screens/AddCard';
 
 import color from './src/common/colors';
 
@@ -26,6 +27,7 @@ Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen);
 Navigation.registerComponent('MyWallet', () => MyWallet);
 Navigation.registerComponent('CardRegister', () => CardRegister);
 Navigation.registerComponent('HoldCard', () => HoldCard);
+Navigation.registerComponent('AddCard', () => AddCard);
 
 Navigation.startSingleScreenApp({
   screen: {

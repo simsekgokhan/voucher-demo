@@ -15,7 +15,17 @@ export default class HoldCard extends React.Component {
   }
 
   onButtonPress = () => {
-
+    this.props.navigator.push({
+      screen: 'AddCard',
+      title: 'Card Registration',
+      backButtonTitle: 'Back',
+      navigatorButtons: {
+        rightButtons: [{
+          id: 'done',
+          icon: require('../images/done-button.png'),      
+        }]
+      }     
+    })
   }
 
   render() {
