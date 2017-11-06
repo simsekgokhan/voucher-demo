@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
-    //backgroundColor: 'red'
   },
   row0View: {
     flexDirection: 'row',
@@ -111,7 +110,6 @@ const styles = StyleSheet.create({
     marginLeft: 18,
   },
   text: {
-    //fontSize: 18,
     backgroundColor: 'transparent',
     color: 'white',
     fontFamily: 'Roboto-Regular'

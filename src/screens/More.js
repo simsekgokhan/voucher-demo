@@ -4,22 +4,33 @@ import {
 } from 'react-native';
 import color from '../common/colors';
 
+const rightButtons = {  
+  rightButtons: [{
+    id: 'right',
+    buttonColor: 'blue',
+    icon: require('../images/skip-button.png'),      
+  }]
+}
 
 export default class More extends Component<{}> {
 
-  navigateTo(screen, title){
+  navigateTo(screen, title, backButtonTitle, rightButtonEnabled){
     this.props.navigator.push({
       screen: screen,
       title: title,
-      backButtonTitle: 'Back',
+      backButtonTitle: backButtonTitle,
+      navigatorButtons: rightButtonEnabled ? rightButtons : null,
     });
   }
 
   onButtonPress = (button) => {
     switch(button) {
       case 1:
-        this.navigateTo('MyWallet', 'My Wallet');
+        this.navigateTo('MyWallet', 'My Wallet', 'Back', false);
         break;
+      case 2:
+        this.navigateTo('CardRegister', 'Card Registration', 'Cancel', true);
+        break;        
       default:
         break;
     }
@@ -63,35 +74,35 @@ export default class More extends Component<{}> {
           </Text>
         </TouchableOpacity>   
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(2) } >
           <Image source={require('../images/pay-card-regis-icon.png')} />
           <Text style={styles.textButton}>
               Payment Card Registration
           </Text>
         </TouchableOpacity>          
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(3) } >
           <Image source={require('../images/send-voucher-icon.png')} />
           <Text style={styles.textButton}>
               Send Voucher
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(4) } >
           <Image source={require('../images/settings-icon.png')} />
           <Text style={styles.textButton}>
               Settings
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(5) } >
           <Image source={require('../images/invite-icon.png')} />
           <Text style={styles.textButton}>
               Invite Contacts
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(6) } >
           <Image source={require('../images/logout-icon-3.png')} />
           <Text style={styles.textButton}>
               Logout
