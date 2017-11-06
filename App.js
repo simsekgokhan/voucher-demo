@@ -7,6 +7,7 @@ import More from './src/screens/More';
 import Login from './src/screens/Login';
 import VoucherDetails from './src/screens/VoucherDetails';
 import ConfirmScreen from './src/screens/ConfirmScreen';
+import MyWallet from './src/screens/MyWallet';
 
 import color from './src/common/colors';
 
@@ -20,6 +21,7 @@ Navigation.registerComponent('Login', () => Login);
 // Stackable screens
 Navigation.registerComponent('VoucherDetails', () => VoucherDetails);
 Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen);
+Navigation.registerComponent('MyWallet', () => MyWallet);
 
 Navigation.startSingleScreenApp({
   screen: {

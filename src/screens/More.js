@@ -4,10 +4,30 @@ import {
 } from 'react-native';
 import color from '../common/colors';
 
+
 export default class More extends Component<{}> {
 
-  onButtonPress = () => {
+  navigateTo(screen, title){
+    this.props.navigator.push({
+      screen: screen,
+      title: title,
+      backButtonTitle: 'Back',
+    });
+  }
 
+  onButtonPress = (button) => {
+    switch(button) {
+      case 1:
+        this.navigateTo('MyWallet', 'My Wallet');
+        break;
+      default:
+        break;
+    }
+    
+  }
+
+  componentWillMount() {
+    this.onButtonPress(1);
   }
 
   render() {
@@ -36,7 +56,7 @@ export default class More extends Component<{}> {
           </View>
         </Image>
         <TouchableOpacity style={styles.rowButton}
-          onPress={ this.onButtonPress } >
+          onPress={ () => this.onButtonPress(1) } >
           <Image source={require('../images/wallet-icon.png')} />
           <Text style={styles.textButton}>
               My Wallet
