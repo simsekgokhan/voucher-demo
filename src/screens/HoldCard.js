@@ -8,18 +8,29 @@ import color from '../common/colors';
 
 export default class HoldCard extends React.Component {
 
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) { 
+    if (event.type === 'NavBarButtonPress' && event.id === 'skip')
+      this.onButtonPress(true);
+  }
+
   static navigatorStyle = {
     navBarTextColor: 'white',
     navBarButtonColor: color.BLUE,
     tabBarHidden: true,     
   }
 
-  onButtonPress = () => {
+  onButtonPress = (showEmptyForm) => {
     this.props.navigator.push({
       screen: 'AddCard',
       title: 'Card Registration',
       backButtonTitle: 'Back',
-      passProps: {showEmptyForm: false},
+      passProps: {showEmptyForm: showEmptyForm},
       navigatorButtons: {
         rightButtons: [{
           id: 'done',
@@ -34,7 +45,7 @@ export default class HoldCard extends React.Component {
       <Image resizeMode='cover' style={styles.container}  
         source={require('../images/hold-card.png')}>                         
         <TouchableOpacity 
-          onPress={this.onButtonPress}
+          onPress={ () => this.onButtonPress(false) }
           style={styles.button}>                    
           <Image style={styles.leftRect} 
             source={require('../images/rect-left.png')}/>
