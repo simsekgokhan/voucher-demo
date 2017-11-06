@@ -8,9 +8,23 @@ import VoucherDetails from '../screens/VoucherDetails';
 
 export default class AddCard extends Component<{}> {
 
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) { 
+    if (event.type === 'NavBarButtonPress' && event.id === 'done'){         
+      this.props.navigator.popToRoot({ animationType: 'fade' });
+      this.props.navigator.switchToTab({ tabIndex: 1 });      
+    }
+  }
+
   Input = (placeholder, maxLength = 4, keyboardType='number-pad') => {
     return(
       <TextInput
+        defaultValue={this.props.showEmptyForm ? null : placeholder}
         style={styles.input}
         selectionColor={color.BLUE} 
         autoCorrect={false}
@@ -22,7 +36,7 @@ export default class AddCard extends Component<{}> {
   }
 
   render() {
-    const showEmptyForm = false;        
+    const showEmptyForm = this.props.showEmptyForm;        
     const card = {
       inputOne: showEmptyForm ? '0000' : '4055',
       inputTwo: showEmptyForm ? '0000' : '1234',
@@ -56,6 +70,7 @@ export default class AddCard extends Component<{}> {
             </Text>            
             <View style={styles.inputRow}>
               <TextInput style={[styles.input, {width: 136}]}
+                defaultValue={this.props.showEmptyForm ? null : card.inputName}
                 selectionColor={color.BLUE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      

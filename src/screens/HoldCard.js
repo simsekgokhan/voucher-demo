@@ -19,6 +19,7 @@ export default class HoldCard extends React.Component {
       screen: 'AddCard',
       title: 'Card Registration',
       backButtonTitle: 'Back',
+      passProps: {showEmptyForm: false},
       navigatorButtons: {
         rightButtons: [{
           id: 'done',
