@@ -6,7 +6,7 @@ import color from '../common/colors';
 
 const rightButtons = {  
   rightButtons: [{
-    id: 'right',
+    id: 'skip',
     buttonColor: 'blue',
     icon: require('../images/skip-button.png'),      
   }]

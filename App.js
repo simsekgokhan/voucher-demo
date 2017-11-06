@@ -9,6 +9,7 @@ import VoucherDetails from './src/screens/VoucherDetails';
 import ConfirmScreen from './src/screens/ConfirmScreen';
 import MyWallet from './src/screens/MyWallet';
 import CardRegister from './src/screens/CardRegister';
+import HoldCard from './src/screens/HoldCard';
 
 import color from './src/common/colors';
 
@@ -24,6 +25,7 @@ Navigation.registerComponent('VoucherDetails', () => VoucherDetails);
 Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen);
 Navigation.registerComponent('MyWallet', () => MyWallet);
 Navigation.registerComponent('CardRegister', () => CardRegister);
+Navigation.registerComponent('HoldCard', () => HoldCard);
 
 Navigation.startSingleScreenApp({
   screen: {
