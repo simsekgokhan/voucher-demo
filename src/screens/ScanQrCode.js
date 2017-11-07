@@ -11,52 +11,33 @@ let lastActiveTabIndex = 0;
 
 export default class Receive extends Component<{}> {
 
-  constructor(props) {
-    super(props);
-    // if you want to listen on navigator events, set this up
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-  }
-
-  static navigatorButtons = {
-    leftButtons: [{
-      id: 'back',
-      icon: require('../images/back-button.png'),      
-    }]
-  }
-
-  onNavigatorEvent(event) { 
-    if(event.unselectedTabIndex >= 0)
-      lastActiveTabIndex = event.unselectedTabIndex;
-
-    if (event.type === 'NavBarButtonPress' && event.id ==='back')     
-        this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });      
-  }
-
   onButtonPress = () => {
     this.props.navigator.push({
-      screen: 'ScanQrCode',
-      title: 'Receive',
+      screen: 'VoucherDetails',
+      title: 'Voucher',
       backButtonTitle: 'Back',
+      passProps: {voucherType: Voucher.RECEIVED}
     })
   }
 
   render() {
      return (
-      <View style={styles.container}>
+      <Image resizeMode='cover' style={styles.container}
+        source={require('../images/background-receive.png')}>   
         <Image 
-          style={{marginTop: 120}} 
+          style={{marginTop: 140}} 
           source={require('../images/white-rectangle-border.png')}>           
         </Image>     
         <TouchableOpacity 
           onPress={this.onButtonPress}
           style={styles.footerView}>       
-          <Text style={{color: 'white', fontSize: 12}}> 
+          <Text style={{color: 'white', backgroundColor:'transparent', fontSize: 12}}> 
             Scan my payment QR-code
           </Text>             
           <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
           </Image>          
         </TouchableOpacity>    
-      </View>
+      </Image>
      )
   }
 }
