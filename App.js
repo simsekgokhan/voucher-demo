@@ -11,6 +11,7 @@ import MyWallet from './src/screens/MyWallet';
 import CardRegister from './src/screens/CardRegister';
 import HoldCard from './src/screens/HoldCard';
 import AddCard from './src/screens/AddCard';
+import SendVoucher from './src/screens/SendVoucher';
 
 import color from './src/common/colors';
 
@@ -28,6 +29,7 @@ Navigation.registerComponent('MyWallet', () => MyWallet);
 Navigation.registerComponent('CardRegister', () => CardRegister);
 Navigation.registerComponent('HoldCard', () => HoldCard);
 Navigation.registerComponent('AddCard', () => AddCard);
+Navigation.registerComponent('SendVoucher', () => SendVoucher);
 
 Navigation.startSingleScreenApp({
   screen: {
@@ -93,7 +95,9 @@ export function startTabBasedApp(initialTabIdx=0) {
         selectedIcon: require('./src/images/more-active.png'),
         title: 'More',
         navigatorStyle: {
-          navBarHidden: true
+          navBarHidden: true,
+          navBarTextColor: 'white',
+          navBarButtonColor: color.BLUE,
         },
       },
     ],

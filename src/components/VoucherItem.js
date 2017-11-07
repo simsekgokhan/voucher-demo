@@ -20,6 +20,7 @@ export default class VoucherItem extends Component<{}> {
   static SENT = 'Sent';
   static RECEIVED = 'Received';
   static PURCHASED = 'Purchased';
+  static REFUNDED = 'Refunded';
 
   constructor(props) {
     super(props);    

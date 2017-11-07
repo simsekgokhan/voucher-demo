@@ -14,12 +14,13 @@ const rightButtons = {
 
 export default class More extends Component<{}> {
 
-  navigateTo(screen, title, backButtonTitle, rightButtonEnabled){
+  navigateTo(screen, title, backButtonTitle, rightButtonEnabled, passProps=''){
     this.props.navigator.push({
       screen: screen,
       title: title,
       backButtonTitle: backButtonTitle,
       navigatorButtons: rightButtonEnabled ? rightButtons : null,
+      passProps: passProps,
     });
   }
 
@@ -30,7 +31,10 @@ export default class More extends Component<{}> {
         break;
       case 2:
         this.navigateTo('CardRegister', 'Card Registration', 'Cancel', true);
-        break;        
+        break;
+      case 3:
+        this.navigateTo('SendVoucher', '', '', false, {sendVoucher: true});
+        break;                
       default:
         break;
     }
@@ -38,7 +42,7 @@ export default class More extends Component<{}> {
   }
 
   componentWillMount() {
-    this.onButtonPress(1);
+    this.onButtonPress(3);
   }
 
   render() {

@@ -19,7 +19,6 @@ export default class Receive extends Component<{}> {
 
   static navigatorButtons = {
     leftButtons: [{
-      //title: 'Back',  // currently overriden by icon
       id: 'back',
       icon: require('../images/back-button.png'),      
     }]
