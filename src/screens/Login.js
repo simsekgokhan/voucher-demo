@@ -72,22 +72,8 @@ export default class Login extends Component<{}> {
             </TouchableOpacity>    
             : null
         }
-        <View style={styles.logoView}>
-          <Image
-            style={styles.logo}
-            source={require('../images/page1-logo.png')}
-          />
-          <View style={styles.logoText}>
-            <Text 
-              style={styles.logoTextUp}> 
-              blockchain
-            </Text>
-            <Text 
-              style={styles.logoTextDown}> 
-              VOUCHER
-            </Text>            
-          </View>
-        </View>
+        <Image style={styles.logoView} 
+          source={require('../images/blockchain-logo.png')}/>   
         <View style={styles.centerView}>
           {
             this.state.loadStartSreen ? 
@@ -195,6 +181,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
+    alignItems: 'center',
   },
   backButton: {
     width: 80,
@@ -210,25 +197,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 100,
     justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  logo: {
-    width: 56,
-    height: 56,
-  },
-  logoText: {
-    marginLeft: 20,
-    //alignItems: 'flex-end', // todo
-  },
-  logoTextUp: {
-    fontSize: 30,
-    textAlign: 'left',
-    color: 'white', 
-  },
-  logoTextDown: {
-    fontSize: 20,
-    textAlign: 'left',
-    color: 'white', 
   },
   inputsView: {
     alignItems: 'center',
