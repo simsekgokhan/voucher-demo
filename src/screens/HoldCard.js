@@ -37,7 +37,7 @@ export default class HoldCard extends React.Component {
           icon: require('../images/done-button.png'),      
         }]
       }     
-    })
+    });
   }
 
   render() {

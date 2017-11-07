@@ -8,6 +8,29 @@ import color from '../common/colors';
 
 export default class CardRegister extends React.Component {
 
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) { 
+    if (event.type === 'NavBarButtonPress' && event.id === 'skip'){
+      this.props.navigator.push({
+        screen: 'AddCard',
+        title: 'Card Registration',
+        backButtonTitle: 'Back',
+        passProps: {showEmptyForm: true},
+        navigatorButtons: {
+          rightButtons: [{
+            id: 'done',
+            icon: require('../images/done-button.png'),      
+          }]
+        }     
+      });
+    }
+  }
+
   static navigatorStyle = {
     navBarTextColor: 'white',
     navBarButtonColor: color.BLUE,
