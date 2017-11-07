@@ -33,20 +33,25 @@ Navigation.registerComponent('AddCard', () => AddCard);
 Navigation.registerComponent('SendVoucher', () => SendVoucher);
 Navigation.registerComponent('Settings', () => Settings);
 
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: 'Login',
-    title: 'Login',
-    navigatorStyle: {
-      navBarHidden: true
+
+startSingleScreenApp();
+
+export function startSingleScreenApp(){
+  Navigation.startSingleScreenApp({
+    screen: {
+      screen: 'Login',
+      title: 'Login',
+      navigatorStyle: {
+        navBarHidden: true
+      }
+    },
+    appStyle: {
+      forceTitlesDisplay: false,
+      navBarBackgroundColor: 'black',
+      tabBarBackgroundColor: 'black',
     }
-  },
-  appStyle: {
-    forceTitlesDisplay: false,
-    navBarBackgroundColor: 'black',
-    tabBarBackgroundColor: 'black',
-  }
-});
+  });
+}
 
 export function startTabBasedApp(initialTabIdx=0) {
   Navigation.startTabBasedApp({

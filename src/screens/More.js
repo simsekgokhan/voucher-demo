@@ -4,6 +4,7 @@ import {
   Share
 } from 'react-native';
 import color from '../common/colors';
+import { startSingleScreenApp } from '../../App';
 
 const rightButtons = {  
   rightButtons: [{
@@ -52,15 +53,13 @@ export default class More extends Component<{}> {
         break;               
       case 5:
         this.share();
-        break;               
+        break;    
+      case 6:
+        startSingleScreenApp();      
+        break;                       
       default:
         break;
-    }
-    
-  }
-
-  componentWillMount() {
-    this.onButtonPress(3);
+    }    
   }
 
   render() {
@@ -126,7 +125,7 @@ export default class More extends Component<{}> {
         <TouchableOpacity style={styles.rowButton}
           onPress={ () => this.onButtonPress(6) } >
           <Image source={require('../images/logout-icon-3.png')} />
-          <Text style={styles.textButton}>
+          <Text style={[styles.textButton, {color: color.BLUE}]}>
               Logout
           </Text>
         </TouchableOpacity>                                        
