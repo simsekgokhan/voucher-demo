@@ -6,23 +6,18 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import VoucherItem from '../components/VoucherItem';
-import { StackNavigator } from 'react-navigation';
 import color from '../common/colors';
 import VoucherDetails from '../screens/VoucherDetails';
 
-class VouchersScreen extends React.Component {
+export default class Vouchers extends React.Component {
   
-  static navigationOptions = {
-    title: 'Back',
-  };
-
   navigateToDetails = (voucherType) => { 
-    const { navigate } = this.props.navigation;
-    navigate('DetailsScreen', {voucherType: voucherType});
-  }
-
-  componentDidMount () {
-    //this.navigateToDetails(VoucherItem.PURCHASED);
+    this.props.navigator.push({
+      screen: 'VoucherDetails',
+      title: 'Voucher',
+      backButtonTitle: 'Back',
+      passProps: {voucherType: voucherType}
+    })
   }
 
   render() {
@@ -94,28 +89,3 @@ const styles = StyleSheet.create({
     marginTop: 210,    
   }
 });
-
-const Vouchers = StackNavigator({
-  HomeScr: { 
-    screen: VouchersScreen, 
-    navigationOptions: {
-      header: null,      
-    }
-  },
-  DetailsScreen: { 
-    screen: VoucherDetails,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'black',  
-      },
-      headerTitleStyle: {
-        color: 'white',
-      },
-      headerBackTitleStyle: {
-        color: color.BLUE,        
-      }
-    }
-  },
-});
-
-export default Vouchers;

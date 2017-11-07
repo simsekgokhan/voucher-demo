@@ -68,7 +68,9 @@ export function startTabBasedApp(initialTabIdx=0) {
         selectedIcon: require('./src/images/voucher-active.png'),
         title: 'Vouchers',
         navigatorStyle: {
-          navBarHidden: true
+          navBarHidden: true, 
+          navBarTextColor: 'white',
+          navBarButtonColor: color.BLUE,
         },
       },
       {

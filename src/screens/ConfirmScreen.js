@@ -34,7 +34,7 @@ export default class ConfirmScreen extends Component<{}> {
         backButtonHidden: true,
         title: 'Voucher',
         passProps: {voucherType: voucherType}
-      })
+      });
     }
   }
 
