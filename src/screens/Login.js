@@ -5,8 +5,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { startTabBasedApp } from '../../App';
-
-const debug = 1;
+import color from '../common/colors';
 
 export default class Login extends Component<{}> {
 
@@ -16,8 +15,17 @@ export default class Login extends Component<{}> {
     createAccountSelected: false,   
   };
 
+  onBackButtonPress = () => {
+    const signInSelected = this.state.signInSelected;
+    this.setState({
+      loadStartSreen: signInSelected ? false : true,
+      signInSelected: signInSelected ? true : false,   
+      createAccountSelected: false,
+    });
+  }
+
   login() {
-      startTabBasedApp();    
+    startTabBasedApp();    
   }
   
   signIn = () => {
@@ -40,8 +48,6 @@ export default class Login extends Component<{}> {
 
   render() {
 
-    let xx = false;
-
     const signInButtonText = this.state.createAccountSelected ? 'Continue' : 'Sign In';
     
     let footerTextPartOne = 'By siging up, I agree to the ';
@@ -56,7 +62,16 @@ export default class Login extends Component<{}> {
     }
 
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.rootView}>
+      <Image resizeMode='cover' style={styles.container}  
+        source={require('../images/background-more.png')}>
+        {
+          this.state.createAccountSelected ?  
+            <TouchableOpacity style={styles.backButton}
+              onPress={this.onBackButtonPress}>
+              <Image source={require('../images/back-button.png')} />
+            </TouchableOpacity>    
+            : null
+        }
         <View style={styles.logoView}>
           <Image
             style={styles.logo}
@@ -88,6 +103,11 @@ export default class Login extends Component<{}> {
                     Email
                   </Text>
                   <TextInput
+                    color='white'
+                    selectionColor={color.BLUE}                     
+                    autoCorrect={false}
+                    keyboardType='email-address'
+                    defaultValue='Brain.Mendoza@hotmail.com'                          
                     placeholder='Brain.Mendoza@hotmail.com'      
                     placeholderTextColor='white'                    
                     style={styles.inputInput}>
@@ -101,8 +121,13 @@ export default class Login extends Component<{}> {
                         Phone
                       </Text>
                       <TextInput
+                        color='white'
+                        selectionColor={color.BLUE}                     
+                        autoCorrect={false}
+                        keyboardType='phone-pad'
+                        defaultValue='605-848-7840'      
                         placeholder='605-848-7840'      
-                        placeholderTextColor='white'                    
+                        placeholderTextColor='grey'                    
                         style={styles.inputInput}>
                       </TextInput>
                     </View>
@@ -115,8 +140,13 @@ export default class Login extends Component<{}> {
                     Password
                   </Text>
                   <TextInput
-                    placeholder='xxxxxxxxxxxxxxx'      
-                    placeholderTextColor='white'  
+                    color='white'
+                    selectionColor={color.BLUE}                     
+                    autoCorrect={false}
+                    keyboardType='default'
+                    defaultValue='605-848-7840'  
+                    placeholder=''      
+                    placeholderTextColor='grey'  
                     secureTextEntry                                
                     style={styles.inputInput}>
                   </TextInput>
@@ -155,16 +185,26 @@ export default class Login extends Component<{}> {
             </Text>
           </Text>
         </View>
-      </KeyboardAvoidingView>
-    );
+      </Image>
+      );
   }
 
 }
 
 const styles = StyleSheet.create({
-  rootView: {
+  container: {
     flex: 1,
     backgroundColor: 'black',
+  },
+  backButton: {
+    width: 80,
+    height: 40,
+    padding: 10,    
+    position: 'absolute', 
+    top: 20, 
+    left: 0, 
+    right: 0, 
+    bottom: 0, 
   },
   logoView: {
     alignItems: 'center',
@@ -196,7 +236,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(255,255,255,0.2)',    
+    backgroundColor: color.GREY_BACKGROUND,    
     margin: 1,
     height: 50,
     width: Dimensions.get('window').width,
@@ -211,7 +251,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',    
     marginLeft: 20,
   },
-  inputInput: {    
+  inputInput: {        
+    width: 248,
     fontSize: 16,    
   },
   centerView: {
@@ -262,31 +303,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-  // <TextInput
-  //   placeholder='username or email'
-  //   placeholderTextColor='rgba(255,255,255,0.7)'
-  //   returnKeyType='next'
-  //   onSubmitEditing={() => this.passInput.focus()}
-  //   keyboardType='email-address'
-  //   autoCapitalize='none'
-  //   autoCorrect={false}
-  //   style={styles.input}
-  // />
-  // <TextInput
-  //   placeholder='password'
-  //   placeholderTextColor='rgba(255,255,255,0.7)'
-  //   secureTextEntry
-  //   returnKeyType='go'
-  //   style={styles.input}
-  //   ref={(dummyVar) => this.passInput = dummyVar}
-  // />
-
-  // input: {
-  //   height: 40,
-  //   backgroundColor: 'rgba(255,255,255,0.2)',
-  //   //marginBottom: 20,
-  //   color: '#FFF',
-  //   paddingHorizontal: 10,
-  //   margin: 10,
-  // },
