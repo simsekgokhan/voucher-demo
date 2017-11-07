@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import VoucherItem from '../components/VoucherItem';
 import color from '../common/colors';
 import VoucherDetails from '../screens/VoucherDetails';
+import Voucher from '../common/voucher.constants';
 
 export default class Vouchers extends React.Component {
   
@@ -37,6 +38,9 @@ export default class Vouchers extends React.Component {
             hasVoucher ? 
             <ScrollView vertical style={styles.scrollView}>
               <VoucherItem 
+                onDetailsPress={() => this.navigateToDetails(VoucherItem.PURCHASED)} 
+                typeStr={VoucherItem.PURCHASED}/>
+              <VoucherItem 
                 onDetailsPress={() => this.navigateToDetails(VoucherItem.SENT)} 
                 typeStr={VoucherItem.SENT}/>
               <VoucherItem 
@@ -46,8 +50,8 @@ export default class Vouchers extends React.Component {
                 onDetailsPress={() => this.navigateToDetails(VoucherItem.REDEEMED)} 
                 typeStr={VoucherItem.REDEEMED}/>                        
               <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(VoucherItem.PURCHASED)} 
-                typeStr={VoucherItem.PURCHASED}/>
+                onDetailsPress={() => this.navigateToDetails(Voucher.REFUNDED)} 
+                typeStr={Voucher.REFUNDED}/>                                
             </ScrollView>
             :            
             <View style={styles.logoView}>
