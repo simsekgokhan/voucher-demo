@@ -13,6 +13,7 @@ import HoldCard from './src/screens/HoldCard';
 import AddCard from './src/screens/AddCard';
 import SendVoucher from './src/screens/SendVoucher';
 import Settings from './src/screens/Settings';
+import ShareOnEmail from './src/screens/ShareOnEmail';
 
 import color from './src/common/colors';
 
@@ -32,8 +33,10 @@ Navigation.registerComponent('HoldCard', () => HoldCard);
 Navigation.registerComponent('AddCard', () => AddCard);
 Navigation.registerComponent('SendVoucher', () => SendVoucher);
 Navigation.registerComponent('Settings', () => Settings);
+Navigation.registerComponent('ShareOnEmail', () => ShareOnEmail);
 
 
+// Main app entrance here
 startSingleScreenApp();
 
 export function startSingleScreenApp(){

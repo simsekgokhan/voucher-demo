@@ -51,7 +51,17 @@ export default class VoucherDetails extends React.Component {
   }
 
   onSendPress = () => {
-    this.navigateToConfirm(Voucher.SEND);
+    this.props.navigator.push({
+      screen: 'ShareOnEmail',
+      title: 'Share On Email',
+      backButtonTitle: 'Back',      
+      navigatorButtons: {
+        rightButtons: [{
+          id: 'send',
+          title: 'Send',    
+        }]
+      }
+    })
   }
   
   onRefundPress = () => {
