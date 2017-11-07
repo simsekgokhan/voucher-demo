@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image , Dimensions
+  StyleSheet, TextInput, Text, TouchableOpacity, View, Image , Dimensions,
+  Share
 } from 'react-native';
 import color from '../common/colors';
 
@@ -24,6 +25,17 @@ export default class More extends Component<{}> {
     });
   }
 
+  share() {
+    Share.share({
+      message: 'Share Blockchain Voucher',
+      url: 'https://google.com',
+      title: 'Share'
+    }, {
+      // Android only:
+      dialogTitle: 'Share Blockchain Voucher',
+    })
+  }
+
   onButtonPress = (button) => {
     switch(button) {
       case 1:
@@ -37,7 +49,10 @@ export default class More extends Component<{}> {
         break;           
       case 4:
         this.navigateTo('Settings', 'Settings', 'Back', false);
-        break;                 
+        break;               
+      case 5:
+        this.share();
+        break;               
       default:
         break;
     }
