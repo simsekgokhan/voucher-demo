@@ -25,7 +25,8 @@ export default class Vouchers extends React.Component {
     const balance = hasVoucher ? '$ 500,689.08' : '$ 0';
 
     return (
-      <View style={styles.container}>
+      <Image resizeMode='cover' style={styles.container}  
+        source={require('../images/background-more.png')}>
         <View style={styles.topView}>
           <Text style={{color: 'rgba(255,255,255,0.7)'}}> 
               Total Balance 
@@ -57,7 +58,7 @@ export default class Vouchers extends React.Component {
               <Text style={{color: 'white', marginTop: 10}}> Buy Your First Voucher </Text>        
             </View>
           }
-      </View>
+      </Image>
     );
   }
 }
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     top: 0, 
     left: 0, 
     right: 0, 
-    bottom: 350, 
+    bottom: 420, 
     justifyContent: 'center', 
     alignItems: 'center',
     paddingVertical: 10,
