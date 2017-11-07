@@ -12,6 +12,7 @@ import CardRegister from './src/screens/CardRegister';
 import HoldCard from './src/screens/HoldCard';
 import AddCard from './src/screens/AddCard';
 import SendVoucher from './src/screens/SendVoucher';
+import Settings from './src/screens/Settings';
 
 import color from './src/common/colors';
 
@@ -30,6 +31,7 @@ Navigation.registerComponent('CardRegister', () => CardRegister);
 Navigation.registerComponent('HoldCard', () => HoldCard);
 Navigation.registerComponent('AddCard', () => AddCard);
 Navigation.registerComponent('SendVoucher', () => SendVoucher);
+Navigation.registerComponent('Settings', () => Settings);
 
 Navigation.startSingleScreenApp({
   screen: {
