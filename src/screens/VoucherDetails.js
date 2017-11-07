@@ -46,7 +46,7 @@ export default class VoucherDetails extends React.Component {
         title: confirmType,
         backButtonTitle: 'Cancel',
         passProps: {confirmType: confirmType, amount: 75},
-      })
+      });
     }
   }
 

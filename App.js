@@ -14,6 +14,7 @@ import AddCard from './src/screens/AddCard';
 import SendVoucher from './src/screens/SendVoucher';
 import Settings from './src/screens/Settings';
 import ShareOnEmail from './src/screens/ShareOnEmail';
+import ShareOnEmailSend from './src/screens/ShareOnEmailSend';
 
 import color from './src/common/colors';
 
@@ -34,6 +35,7 @@ Navigation.registerComponent('AddCard', () => AddCard);
 Navigation.registerComponent('SendVoucher', () => SendVoucher);
 Navigation.registerComponent('Settings', () => Settings);
 Navigation.registerComponent('ShareOnEmail', () => ShareOnEmail);
+Navigation.registerComponent('ShareOnEmailSend', () => ShareOnEmailSend);
 
 
 // Main app entrance here
