@@ -81,9 +81,12 @@ export function startTabBasedApp(initialTabIdx=0) {
           navBarTextColor: 'white',
           navBarButtonColor: color.BLUE,
         },
-        navigatorStyle: {
-          navBarHidden: true
-        },
+        navigatorButtons: {
+          rightButtons: [{
+            id: 'buy',
+            title: 'Buy',    
+          }]
+        }  
       },
       {
         label: 'Receive',

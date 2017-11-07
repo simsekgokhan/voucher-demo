@@ -13,34 +13,30 @@ import VoucherDetails from '../screens/VoucherDetails';
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
 
-class BuyVoucherScreen extends Component<{}> {
+export default class BuyVoucher extends Component<{}> {
 
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+  
   state = {
     selectedValue: 5,
   };
 
-  static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
-    const handleBuy = () => params.handleBuy();
-    const btnStyle = styles.buyButtonStyle; // todo
-    return {
-        //title: 'Buy Voucher',
-        headerRight: 
-          <Button title="Buy" style={btnStyle} color={color.BLUE} onPress={handleBuy} />
-    };
-  };  
-
-  navigateToConfirm = (confirmType) => { 
-    const { navigate } = this.props.navigation;    
-    navigate('ConfirmScreen', {confirmType: confirmType, amount: this.state.selectedValue});
+  onNavigatorEvent(event) { 
+    if (event.type === 'NavBarButtonPress' && event.id === 'buy')
+      this.navigateToConfirm();
   }
 
-  onBuyPressed = () => {
-    this.navigateToConfirm(Voucher.BUY);
-  }
-
-  componentDidMount() {
-    this.props.navigation.setParams({ handleBuy: this.onBuyPressed });
+  navigateToConfirm() {
+    this.props.navigator.push({
+      screen: 'ConfirmScreen',
+      title: Voucher.BUY,
+      backButtonTitle: 'Cancel',
+      passProps: {confirmType: Voucher.BUY, amount: this.state.selectedValue},
+    });
   }
 
   updateSelectedValue = (selectedValue) => {
@@ -62,12 +58,11 @@ class BuyVoucherScreen extends Component<{}> {
   }
 
   handleButtonDoublePress() {
-    this.navigateToConfirm(Voucher.BUY);   
+    this.navigateToConfirm();   
     this.lastButtonPress = 0;          
   }
   
   render() {
-
     const buttonDir = require('../images/button.png');
     const buttonSelectedDir = require('../images/button-selected.png');
 
@@ -171,9 +166,7 @@ class BuyVoucherScreen extends Component<{}> {
 
 const styles = StyleSheet.create({
   container: {
-    //alignItems: 'center',
     flex: 1,
-    //justifyContent: 'center',
     backgroundColor: 'black',
   },
   buttons:{
@@ -270,58 +263,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   }
 });
-
-const BuyVoucher = StackNavigator({
-  HomeScr: { 
-    screen: BuyVoucherScreen, 
-    navigationOptions: {
-      title: 'Buy Voucher',
-      headerBackTitle: 'Cancel',
-      headerStyle: {
-        backgroundColor: 'black',  
-      },
-      headerTitleStyle: {
-        color: 'white',
-      },
-      headerBackTitleStyle: {
-        color: color.BLUE,        
-      }  
-    }
-  },
-  ConfirmScreen: { 
-    screen: ConfirmScreen,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'black',  
-      },
-      headerTitleStyle: {
-        color: 'white',
-      },
-      headerBackTitleStyle: {
-        color: color.BLUE,        
-      }
-    }
-  },
-  VoucherDetails: { 
-    screen: VoucherDetails,
-    navigationOptions: {
-      headerLeft: null,      
-      headerStyle: {
-        backgroundColor: 'black',  
-      },
-      headerTitleStyle: {
-        color: 'white',
-      },
-      headerBackTitleStyle: {
-        color: color.BLUE,        
-      }
-    }
-  },
-});
-
-export default BuyVoucher;
-
-
-
-
-
