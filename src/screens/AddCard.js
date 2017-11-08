@@ -15,8 +15,10 @@ export default class AddCard extends Component<{}> {
   }
 
   onNavigatorEvent(event) { 
-    if (event.type === 'NavBarButtonPress' && event.id === 'done'){         
+    if (event.type === 'NavBarButtonPress' && event.id === 'done'){          
       this.props.navigator.popToRoot({ animationType: 'fade' });
+      // Reset BuyVoucher tab to it's root before switching to it
+      this.props.navigator.handleDeepLink({link: 'BuyVoucher.popToRoot'});      
       this.props.navigator.switchToTab({ tabIndex: 1 });      
     }
   }
