@@ -55,6 +55,7 @@ export function startSingleScreenApp(){
       forceTitlesDisplay: false,
       navBarBackgroundColor: 'black',
       tabBarBackgroundColor: 'black',
+      screenBackgroundColor: 'black',                              
     }
   });
 }
@@ -103,7 +104,7 @@ export function startTabBasedApp(initialTabIdx=0) {
           navBarTextColor: 'white',
           navBarButtonColor: color.BLUE,
           drawUnderTabBar: true,
-          tabBarBackgroundColor: 'black',   
+          tabBarBackgroundColor: 'black',  
         },
       },
       {
@@ -122,6 +123,7 @@ export function startTabBasedApp(initialTabIdx=0) {
     appStyle: {
       forceTitlesDisplay: false, 
       navBarBackgroundColor: 'black',
+      screenBackgroundColor: 'black',                        
     }, 
     tabsStyle: {
       tabBarBackgroundColor: 'black',   
