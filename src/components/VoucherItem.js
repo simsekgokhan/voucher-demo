@@ -92,7 +92,9 @@ export default class VoucherItem extends Component<{}> {
             <Text style={[styles.voucherText, {color: 'white'}]}> Voucher #1 </Text>
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign}
-              <Text style={[styles.voucherText, {color: 'white'}]}> $30 </Text>
+              <Text style={[styles.voucherText, {color: 'white'}]}> 
+                $ {this.props.amount}
+              </Text>
             </Text>
           </View>
           <View style={styles.voucherRow}>

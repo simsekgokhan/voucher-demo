@@ -5,3 +5,10 @@ export function setHasVoucher(status) {
         payload: status
     };
 }
+
+export function addVoucher(amount) {
+    return {
+        type: "ADD_VOUCHER",
+        payload: amount
+    };
+}

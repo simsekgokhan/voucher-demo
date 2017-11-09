@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
+import {connect} from "react-redux";
+
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
+import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
 
 let voucherType = '';
+let confirmType = '';
+let amount = 0;
 
-export default class ConfirmScreen extends Component<{}> {
+class ConfirmScreen extends Component<{}> {
 
   constructor(props) {
     super(props);    
@@ -29,11 +34,15 @@ export default class ConfirmScreen extends Component<{}> {
     }
     // b) When 'this' created/pushed by react-native-navigation    
     else if (this.props.navigator) {
+      this.props.setHasVoucher(true);
+      const voucher = {status: voucherType , amount: this.props.amount};
+      this.props.addVoucher(voucher);  
+
       this.props.navigator.push({
         screen: 'VoucherDetails',
         backButtonHidden: true,
         title: 'Voucher',
-        passProps: {voucherType: voucherType}
+        passProps: {voucherType: voucherType, amount: amount}
       });
     }
   }
@@ -42,8 +51,6 @@ export default class ConfirmScreen extends Component<{}> {
     const leftQuoMark = '\u00AB';
     const rightQuoMark = '\u00BB';
     
-    let confirmType = '';
-    let amount = 0;
     // a) When 'this' created/pushed by react-navigation stack navigation 
     if(this.props.navigation) {    
       const { params } = this.props.navigation.state;    
@@ -109,6 +116,25 @@ export default class ConfirmScreen extends Component<{}> {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    hasVoucher: state.hasVoucher,    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setHasVoucher: (state) => {
+      dispatch(setHasVoucher(state));      
+    },
+    addVoucher: (state) => {
+      dispatch(addVoucher(state));      
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmScreen);
 
 const styles = StyleSheet.create({
   container: {

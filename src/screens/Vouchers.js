@@ -25,35 +25,35 @@ class Vouchers extends React.Component {
 
   render() {
     const hasVoucher = this.props.vouchers.hasVoucher;     
-    const balance = hasVoucher ? '$ 500,689.08' : '$ 0';
+
+    let balance = 0;
+    let voucherItems = [];
+    const allVouchers = this.props.vouchers.allVouchers;    
+    for(const voucher of allVouchers){
+      balance += voucher.amount;
+      voucherItems.push(
+        <VoucherItem 
+        onDetailsPress={() => this.navigateToDetails(voucher.status)} 
+        amount={voucher.amount}
+        typeStr={voucher.status}/>
+      );
+    }
 
     return (
       <Image resizeMode='cover' style={styles.container}  
         source={require('../images/background-more.png')}>
         <View style={styles.topView}>
           <Text style={{color: 'rgba(255,255,255,0.7)'}}> 
-              Total Balance 
+            Total Balance 
           </Text>        
-          <Text style={{color: 'white', fontSize: 20, marginTop: 5}}> {balance} </Text>        
+          <Text style={{color: 'white', fontSize: 20, marginTop: 5}}> 
+            $ {balance} 
+          </Text>        
         </View>
           {
             hasVoucher ? 
             <ScrollView vertical style={styles.scrollView}>
-              <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(VoucherItem.PURCHASED)} 
-                typeStr={VoucherItem.PURCHASED}/>
-              <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(VoucherItem.SENT)} 
-                typeStr={VoucherItem.SENT}/>
-              <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(VoucherItem.RECEIVED)} 
-                typeStr={VoucherItem.RECEIVED}/>
-              <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(VoucherItem.REDEEMED)} 
-                typeStr={VoucherItem.REDEEMED}/>                        
-              <VoucherItem 
-                onDetailsPress={() => this.navigateToDetails(Voucher.REFUNDED)} 
-                typeStr={Voucher.REFUNDED}/>                                
+              {voucherItems}                             
             </ScrollView>
             :            
             <View style={styles.logoView}>
@@ -73,6 +73,7 @@ const mapStateToProps = (state) => {
   return {
     vouchers: state.vouchers,
     hasVoucher: state.hasVoucher,
+    allVouchers: state.allVouchers,    
   }
 }
 

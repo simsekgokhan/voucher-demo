@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View , StatusBar, 
-  KeyboardAvoidingView, Image, Alert, Dimensions
+  KeyboardAvoidingView, Image, Dimensions
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { startTabBasedApp } from '../../App';

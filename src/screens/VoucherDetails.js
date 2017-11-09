@@ -45,7 +45,7 @@ export default class VoucherDetails extends React.Component {
         screen: 'ConfirmScreen',
         title: confirmType,
         backButtonTitle: 'Cancel',
-        passProps: {confirmType: confirmType, amount: 75},
+        passProps: {confirmType: confirmType, amount: this.props.amount},
       });
     }
   }
@@ -146,9 +146,10 @@ export default class VoucherDetails extends React.Component {
             </Text>
           </View>
           <View style={[styles.voucherRow, {marginTop: 20}]}>
-              <Text style={[styles.voucherText, {color: 'white'}]}> of 
-                <Text style={{color: textColor, fontSize: 28}}> 
-                  $ 20.00 
+              <Text style={[styles.voucherText, {color: 'white'}]}>
+                {`of  `} 
+                <Text style={{color: color.BLUE, fontSize: 28, paddingLeft: 20}}> 
+                  $ {this.props.amount} 
                 </Text>
               </Text>
           </View>
