@@ -5,15 +5,18 @@ import {
 import { StackNavigator } from 'react-navigation';
 import { Navigation } from 'react-native-navigation';
 import LinearGradient from 'react-native-linear-gradient';
+import {connect} from "react-redux";
+
 import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
+import { setHasVoucher } from "../actions/vouchersAction";
 
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
 
-export default class BuyVoucher extends Component<{}> {
+class BuyVoucher extends Component<{}> {
 
   constructor(props) {
     super(props);
@@ -26,8 +29,10 @@ export default class BuyVoucher extends Component<{}> {
   };
 
   onNavigatorEvent(event) { 
-    if (event.type === 'NavBarButtonPress' && event.id === 'buy')
-      this.navigateToConfirm();             
+    if (event.type === 'NavBarButtonPress' && event.id === 'buy'){
+      this.props.setHasVoucher(true);  // simulate ConfirmScreen buy confirmation
+      this.navigateToConfirm();  
+    }
     else if (event.type === 'DeepLink' && event.link === 'BuyVoucher.popToRoot') 
       this.props.navigator.popToRoot({ animationType: 'fade' });     
   }
@@ -165,6 +170,22 @@ export default class BuyVoucher extends Component<{}> {
 
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    hasVoucher: state.hasVoucher,    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setHasVoucher: (state) => {
+      dispatch(setHasVoucher(state));      
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyVoucher);
 
 const styles = StyleSheet.create({
   container: {

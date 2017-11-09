@@ -5,12 +5,14 @@ import {
   ScrollView, Button
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {connect} from "react-redux";
+
 import VoucherItem from '../components/VoucherItem';
 import color from '../common/colors';
 import VoucherDetails from '../screens/VoucherDetails';
 import Voucher from '../common/voucher.constants';
 
-export default class Vouchers extends React.Component {
+class Vouchers extends React.Component {
   
   navigateToDetails = (voucherType) => { 
     this.props.navigator.push({
@@ -22,7 +24,7 @@ export default class Vouchers extends React.Component {
   }
 
   render() {
-    const hasVoucher = true;     
+    const hasVoucher = this.props.vouchers.hasVoucher;     
     const balance = hasVoucher ? '$ 500,689.08' : '$ 0';
 
     return (
@@ -66,6 +68,15 @@ export default class Vouchers extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    vouchers: state.vouchers,
+    hasVoucher: state.hasVoucher,
+  }
+}
+
+export default connect(mapStateToProps)(Vouchers);
 
 const styles = StyleSheet.create({
   container: {
