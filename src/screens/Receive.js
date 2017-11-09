@@ -8,6 +8,7 @@ import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 
 let lastActiveTabIndex = 0;
+let barcodeScanned = false;
 
 export default class Receive extends Component<{}> {
 
@@ -29,7 +30,10 @@ export default class Receive extends Component<{}> {
       lastActiveTabIndex = event.unselectedTabIndex;
 
     if (event.type === 'NavBarButtonPress' && event.id ==='back')     
-        this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });      
+        this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });  
+
+    if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')         
+        barcodeScanned = false;
   }
 
   onButtonPress = () => {
@@ -40,22 +44,41 @@ export default class Receive extends Component<{}> {
     })
   }
 
+  onBarCodeRead = (data) => {
+    if(barcodeScanned)
+      return;
+
+    barcodeScanned = true;
+    this.props.navigator.push({
+      screen: 'VoucherDetails',
+      title: 'Voucher',
+      backButtonTitle: 'Back',
+      passProps: { voucherType: Voucher.RECEIVED }
+    });    
+  }
+
   render() {
-     return (
+     return (      
       <View style={styles.container}>
-        <Image 
-          style={{marginTop: 120}} 
-          source={require('../images/white-rectangle-border.png')}>           
-        </Image>     
-        <TouchableOpacity 
-          onPress={this.onButtonPress}
-          style={styles.footerView}>       
-          <Text style={{color: 'white', fontSize: 12}}> 
-            Scan my payment QR-code
-          </Text>             
-          <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
-          </Image>          
-        </TouchableOpacity>    
+        <Camera
+          ref={(cam) => {this.camera = cam;}}
+          style={styles.camera}
+          aspect={Camera.constants.Aspect.fill}
+          onBarCodeRead={(data) => this.onBarCodeRead(data)} >          
+          <Image 
+            style={{marginTop: 120}} 
+            source={require('../images/white-rectangle-border.png')}>           
+          </Image>     
+          <TouchableOpacity 
+            onPress={this.onButtonPress}
+            style={styles.footerView}>       
+            <Text style={{color: 'white', fontSize: 12, backgroundColor:'transparent'}}> 
+              Scan my payment QR-code
+            </Text>             
+            <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
+            </Image>          
+          </TouchableOpacity>    
+        </Camera>
       </View>
      )
   }
@@ -65,13 +88,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
-    alignItems: 'center',
     justifyContent: 'center',
   },
   footerView: {
     marginTop: 80,
     justifyContent: 'center',
     alignItems: 'center',    
+  },
+  camera: {
+    alignItems: 'center'
   },
   capture: {
     flex: 0,
