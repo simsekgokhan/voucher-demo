@@ -31,12 +31,27 @@ class Vouchers extends React.Component {
     const allVouchers = this.props.vouchers.allVouchers;    
     for(const voucher of allVouchers){
       balance += voucher.amount;
-      voucherItems.push(
-        <VoucherItem 
-        onDetailsPress={() => this.navigateToDetails(voucher.status)} 
-        amount={voucher.amount}
-        typeStr={voucher.status}/>
-      );
+
+      // If this is SendVoucher screen, show only purchased and received vouchers,
+      // otherwise show all vouchers
+      if(this.props.sendVoucherScreen) {
+        if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED){
+          voucherItems.push(
+            <VoucherItem 
+              onDetailsPress={() => this.navigateToDetails(voucher.status)} 
+              amount={voucher.amount}
+              typeStr={voucher.status}/>
+          );
+        }
+      }
+      else {
+        voucherItems.push(
+          <VoucherItem 
+            onDetailsPress={() => this.navigateToDetails(voucher.status)} 
+            amount={voucher.amount}
+            typeStr={voucher.status}/>
+        );
+      }
     }
 
     return (

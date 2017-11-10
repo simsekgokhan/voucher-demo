@@ -17,10 +17,14 @@ const rightButtons = {
 
 export default class More extends Component<{}> {
 
-  navigateTo(screen, title, backButtonTitle, rightButtonEnabled, passProps=null){
+  navigateTo(screen, title, backButtonTitle, rightButtonEnabled, 
+             passProps=null, navBarHidden=false){
     this.props.navigator.push({
       screen: screen,
       title: title,
+      navigatorStyle: {
+        navBarHidden: navBarHidden, 
+      },
       backButtonTitle: backButtonTitle,
       navigatorButtons: rightButtonEnabled ? rightButtons : null,
       passProps: passProps,
@@ -47,7 +51,7 @@ export default class More extends Component<{}> {
         this.navigateTo('CardRegister', 'Card Registration', 'Cancel', true);
         break;
       case 3:
-        this.navigateTo('SendVoucher', '', '', false, {sendVoucher: true});
+        this.navigateTo('Vouchers', '', '', false, {sendVoucherScreen: true}, true);
         break;           
       case 4:
         this.navigateTo('Settings', 'Settings', 'Back', false);
