@@ -6,9 +6,17 @@ export function setHasVoucher(status) {
     };
 }
 
-export function addVoucher(amount) {
+export function addVoucher(voucher) {
     return {
         type: "ADD_VOUCHER",
-        payload: amount
+        payload: voucher
+    };
+}
+
+export function updateVoucher(idAndNewStatus) {
+    return {
+        type: "UPDATE_VOUCHER",
+        id: idAndNewStatus.id,
+        payload: idAndNewStatus.newStatus
     };
 }

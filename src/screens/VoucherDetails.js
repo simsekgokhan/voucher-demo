@@ -65,7 +65,11 @@ export default class VoucherDetails extends React.Component {
           title: 'Send',    
         }]
       },
-      passProps: {confirmType: Voucher.SENT, amount: this.props.voucher.amount},      
+      passProps: { 
+        id: this.props.voucher.id, 
+        confirmType: Voucher.SENT, 
+        amount: this.props.voucher.amount
+      },      
     });
   }
   

@@ -27,7 +27,7 @@ export default class ShareOnEmail extends Component<{}> {
             title: 'Send',    
           }]
         },
-        passProps: {confirmType: Voucher.SENT, amount: this.props.amount},        
+        passProps: {id: this.props.id, confirmType: Voucher.SEND, amount: this.props.amount},        
       });
     }
   }

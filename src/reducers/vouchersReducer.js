@@ -15,7 +15,16 @@ const vouchersReducer = (state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload]
             };
-            break;            
+            break;      
+        case "UPDATE_VOUCHER":
+            state = {
+                ...state,
+                allVouchers: state.allVouchers.map(voucher => 
+                    (voucher.id === action.id) ?                    
+                    { ...voucher, status: action.payload } :                     
+                    voucher)
+            };
+            break;                      
         default:
             break;
     }

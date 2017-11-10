@@ -7,8 +7,8 @@ import {connect} from "react-redux";
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
-import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
-import { createVoucher } from '../model/voucher.model';
+import { addVoucher, updateVoucher } from "../actions/vouchersAction";
+import { createVoucher, createVoucherWithId } from '../model/voucher.model';
 
 let voucherType = '';
 let confirmType = '';
@@ -35,9 +35,17 @@ class ConfirmScreen extends Component<{}> {
     }
     // b) When 'this' created/pushed by react-native-navigation    
     else if (this.props.navigator) {      
-      const voucher = createVoucher(voucherType, this.props.amount);
-      this.props.addVoucher(voucher);  
-
+      
+      let voucher;      
+      if(confirmType === Voucher.BUY){
+        voucher = createVoucher(voucherType, amount);
+        this.props.addVoucher(voucher); 
+      } 
+      else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND){
+        voucher = createVoucherWithId(this.props.id, voucherType, amount);       
+        this.props.updateVoucher({id: this.props.id, newStatus: voucherType})
+      }
+      
       this.props.navigator.push({
         screen: 'VoucherDetails',
         backButtonHidden: true,
@@ -125,8 +133,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setHasVoucher: (state) => {
-      dispatch(setHasVoucher(state));      
+    updateVoucher: (state) => {
+      dispatch(updateVoucher(state));      
     },
     addVoucher: (state) => {
       dispatch(addVoucher(state));      

@@ -11,3 +11,11 @@ export function createVoucher(status, amount) {
       amount: amount
     };    
 }
+
+export function createVoucherWithId(id, status, amount) {
+  return { 
+      id: id, 
+      status: status, 
+      amount: amount
+    };    
+}
