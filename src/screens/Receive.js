@@ -4,13 +4,16 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import Camera from 'react-native-camera';
+import {connect} from "react-redux";
+
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
+import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
 
 let lastActiveTabIndex = 0;
 let barcodeScanned = false;
 
-export default class Receive extends Component<{}> {
+class Receive extends Component<{}> {
 
   constructor(props) {
     super(props);
@@ -49,11 +52,17 @@ export default class Receive extends Component<{}> {
       return;
 
     barcodeScanned = true;
+
+    const fakeAmount = 100;
+    this.props.setHasVoucher(true);
+    const voucher = {status: Voucher.RECEIVED , amount: fakeAmount };
+    this.props.addVoucher(voucher);  
+
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: { voucherType: Voucher.RECEIVED }
+      passProps: { voucherType: Voucher.RECEIVED, amount: fakeAmount }
     });    
   }
 
@@ -83,6 +92,25 @@ export default class Receive extends Component<{}> {
      )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    hasVoucher: state.hasVoucher,    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setHasVoucher: (state) => {
+      dispatch(setHasVoucher(state));      
+    },
+    addVoucher: (state) => {
+      dispatch(addVoucher(state));      
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Receive);
 
 const styles = StyleSheet.create({
   container: {

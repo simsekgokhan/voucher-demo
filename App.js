@@ -24,7 +24,7 @@ import color from './src/common/colors';
 // Tab root screens
 Navigation.registerComponent('Vouchers', () => Vouchers, store, Provider);
 Navigation.registerComponent('BuyVoucher', () => BuyVoucher, store, Provider);
-Navigation.registerComponent('Receive', () => Receive);
+Navigation.registerComponent('Receive', () => Receive, store, Provider);
 Navigation.registerComponent('More', () => More);
 Navigation.registerComponent('Login', () => Login);
 
