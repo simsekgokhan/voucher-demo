@@ -3,6 +3,7 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import color from '../common/colors';
+import Voucher from '../common/voucher.constants';
 
 export default class ShareOnEmail extends Component<{}> {
 
@@ -25,7 +26,8 @@ export default class ShareOnEmail extends Component<{}> {
             id: 'send',
             title: 'Send',    
           }]
-        }  
+        },
+        passProps: {confirmType: Voucher.SENT, amount: this.props.amount},        
       });
     }
   }

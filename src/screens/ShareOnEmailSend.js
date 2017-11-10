@@ -19,7 +19,7 @@ export default class ShareOnEmailSend extends Component<{}> {
         screen: 'ConfirmScreen',
         title: Voucher.SEND,
         backButtonTitle: 'Cancel',
-        passProps: {confirmType: Voucher.SEND, amount: 125},
+        passProps: {confirmType: Voucher.SEND, amount: this.props.amount},
       });
     }
   }

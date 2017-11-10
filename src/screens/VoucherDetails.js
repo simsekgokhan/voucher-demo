@@ -60,8 +60,9 @@ export default class VoucherDetails extends React.Component {
           id: 'send',
           title: 'Send',    
         }]
-      }
-    })
+      },
+      passProps: {confirmType: Voucher.SENT, amount: this.props.amount},      
+    });
   }
   
   onRefundPress = () => {

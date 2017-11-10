@@ -61,7 +61,7 @@ class Vouchers extends React.Component {
           <Text style={{color: 'rgba(255,255,255,0.7)'}}> 
             Total Balance 
           </Text>        
-          <Text style={{color: 'white', fontSize: 20, marginTop: 5}}> 
+          <Text style={{color: 'white', fontSize: 26, marginTop: 5}}> 
             $ {balance} 
           </Text>        
         </View>
