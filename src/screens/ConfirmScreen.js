@@ -8,6 +8,7 @@ import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
+import { createVoucher } from '../model/voucher.model';
 
 let voucherType = '';
 let confirmType = '';
@@ -33,16 +34,15 @@ class ConfirmScreen extends Component<{}> {
       navigate('VoucherDetails', {voucherType: voucherType});    
     }
     // b) When 'this' created/pushed by react-native-navigation    
-    else if (this.props.navigator) {
-      this.props.setHasVoucher(true);
-      const voucher = {status: voucherType , amount: this.props.amount};
+    else if (this.props.navigator) {      
+      const voucher = createVoucher(voucherType, this.props.amount);
       this.props.addVoucher(voucher);  
 
       this.props.navigator.push({
         screen: 'VoucherDetails',
         backButtonHidden: true,
         title: 'Voucher',
-        passProps: {voucherType: voucherType, amount: amount}
+        passProps: {voucher}
       });
     }
   }

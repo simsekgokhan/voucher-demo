@@ -89,7 +89,8 @@ export default class VoucherItem extends Component<{}> {
           onPress={ this.toggleExpand }
         >
           <View style={styles.voucherRow}>
-            <Text style={[styles.voucherText, {color: 'white'}]}> Voucher #1 </Text>
+            <Text style={[styles.voucherText, {color: 'white'}]}> 
+              Voucher #{this.props.id} </Text>
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign}
               <Text style={[styles.voucherText, {color: 'white'}]}> 

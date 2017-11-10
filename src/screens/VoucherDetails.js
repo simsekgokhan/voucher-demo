@@ -45,7 +45,11 @@ export default class VoucherDetails extends React.Component {
         screen: 'ConfirmScreen',
         title: confirmType,
         backButtonTitle: 'Cancel',
-        passProps: {confirmType: confirmType, amount: this.props.amount},
+        passProps: {
+          id: this.props.voucher.id,
+          confirmType: confirmType, 
+          amount: this.props.voucher.amount,           
+        },
       });
     }
   }
@@ -61,7 +65,7 @@ export default class VoucherDetails extends React.Component {
           title: 'Send',    
         }]
       },
-      passProps: {confirmType: Voucher.SENT, amount: this.props.amount},      
+      passProps: {confirmType: Voucher.SENT, amount: this.props.voucher.amount},      
     });
   }
   
@@ -83,7 +87,7 @@ export default class VoucherDetails extends React.Component {
       }
       // b) When 'this' created/pushed by react-native-navigation    
       else if (this.props.navigator){
-        voucherType = this.props.voucherType;        
+        voucherType = this.props.voucher.status;        
       }
   
       switch(voucherType) {
@@ -125,7 +129,7 @@ export default class VoucherDetails extends React.Component {
         <LinearGradient colors={[voucherColor, '#0d0d0d']} style={styles.voucherView}>    
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {color: 'white', marginTop:6}]}> 
-              Voucher #1 
+              Voucher #{this.props.voucher.id}
             </Text>
             <Image source={require('../images/visa-logo-voucher-details.png')} />    
           </View>
@@ -150,7 +154,7 @@ export default class VoucherDetails extends React.Component {
               <Text style={[styles.voucherText, {color: 'white'}]}>
                 {`of  `} 
                 <Text style={{color: color.BLUE, fontSize: 28, paddingLeft: 20}}> 
-                  $ {this.props.amount} 
+                  $ {this.props.voucher.amount} 
                 </Text>
               </Text>
           </View>

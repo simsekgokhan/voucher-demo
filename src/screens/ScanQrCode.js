@@ -9,23 +9,22 @@ import {connect} from "react-redux";
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
+import { createVoucher } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
 
 class ScanQrCode extends Component<{}> {
 
   onButtonPress = () => {
-
     const fakeAmount = 500;
-    this.props.setHasVoucher(true);
-    const voucher = {status: Voucher.RECEIVED , amount: fakeAmount };
+    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);    
     this.props.addVoucher(voucher);  
-
+    
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: {voucherType: Voucher.RECEIVED, amount: fakeAmount}
+      passProps: {voucher}
     })
   }
 

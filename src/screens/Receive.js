@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
+import { createVoucher } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
 let barcodeScanned = false;
@@ -52,17 +53,16 @@ class Receive extends Component<{}> {
       return;
 
     barcodeScanned = true;
-
+    
     const fakeAmount = 100;
-    this.props.setHasVoucher(true);
-    const voucher = {status: Voucher.RECEIVED , amount: fakeAmount };
+    const voucher = createVoucher(voucherType, this.props.amount);    
     this.props.addVoucher(voucher);  
 
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: { voucherType: Voucher.RECEIVED, amount: fakeAmount }
+      passProps: { voucher }
     });    
   }
 

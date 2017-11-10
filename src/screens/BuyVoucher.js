@@ -30,7 +30,6 @@ class BuyVoucher extends Component<{}> {
 
   onNavigatorEvent(event) { 
     if (event.type === 'NavBarButtonPress' && event.id === 'buy'){
-      this.props.setHasVoucher(true);  // simulate ConfirmScreen buy confirmation
       this.navigateToConfirm();  
     }
     else if (event.type === 'DeepLink' && event.link === 'BuyVoucher.popToRoot') 

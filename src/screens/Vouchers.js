@@ -14,17 +14,27 @@ import Voucher from '../common/voucher.constants';
 
 class Vouchers extends React.Component {
   
-  navigateToDetails = (voucherType, amount) => { 
+  navigateToDetails = (voucher) => { 
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: {voucherType: voucherType, amount: amount}
+      passProps: {voucher}
     })
   }
 
+  createVouherItem = (voucher) => {
+    return(
+      <VoucherItem 
+      onDetailsPress={() => this.navigateToDetails(voucher)} 
+      id={voucher.id}
+      amount={voucher.amount}
+      typeStr={voucher.status}/>
+    );
+  }
+
   render() {
-    const hasVoucher = this.props.vouchers.hasVoucher;     
+    const hasVoucher = (this.props.vouchers.allVouchers.length > 0);     
 
     let balance = 0;
     let voucherItems = [];
@@ -35,22 +45,11 @@ class Vouchers extends React.Component {
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
-        if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED){
-          voucherItems.push(
-            <VoucherItem 
-              onDetailsPress={() => this.navigateToDetails(voucher.status, voucher.amount)} 
-              amount={voucher.amount}
-              typeStr={voucher.status}/>
-          );
-        }
+        if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED)
+          voucherItems.push(this.createVouherItem(voucher));                
       }
       else {
-        voucherItems.push(
-          <VoucherItem 
-            onDetailsPress={() => this.navigateToDetails(voucher.status, voucher.amount)} 
-            amount={voucher.amount}
-            typeStr={voucher.status}/>
-        );
+        voucherItems.push(this.createVouherItem(voucher));
       }
     }
 
