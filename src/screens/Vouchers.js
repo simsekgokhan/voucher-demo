@@ -14,12 +14,12 @@ import Voucher from '../common/voucher.constants';
 
 class Vouchers extends React.Component {
   
-  navigateToDetails = (voucherType) => { 
+  navigateToDetails = (voucherType, amount) => { 
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: {voucherType: voucherType}
+      passProps: {voucherType: voucherType, amount: amount}
     })
   }
 
@@ -38,7 +38,7 @@ class Vouchers extends React.Component {
         if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED){
           voucherItems.push(
             <VoucherItem 
-              onDetailsPress={() => this.navigateToDetails(voucher.status)} 
+              onDetailsPress={() => this.navigateToDetails(voucher.status, voucher.amount)} 
               amount={voucher.amount}
               typeStr={voucher.status}/>
           );
@@ -47,7 +47,7 @@ class Vouchers extends React.Component {
       else {
         voucherItems.push(
           <VoucherItem 
-            onDetailsPress={() => this.navigateToDetails(voucher.status)} 
+            onDetailsPress={() => this.navigateToDetails(voucher.status, voucher.amount)} 
             amount={voucher.amount}
             typeStr={voucher.status}/>
         );
