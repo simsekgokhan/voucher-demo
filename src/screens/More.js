@@ -3,6 +3,7 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image , Dimensions,
   Share
 } from 'react-native';
+
 import color from '../common/colors';
 import { startSingleScreenApp } from '../../App';
 

@@ -48,7 +48,23 @@ export default class AddCard extends Component<{}> {
       inputDate: showEmptyForm ? 'MM/YY' : '01/20',
       inputCvv: showEmptyForm ? '0000' : '',
     }   
-    
+
+    const scannedCard = this.props.card;
+    if(scannedCard !== undefined && scannedCard.scanned){
+      if(scannedCard.cardNumber !== null){
+        card.inputOne = scannedCard.cardNumber.substring(0,4);
+        card.inputTwo = scannedCard.cardNumber.substring(4,8);
+        card.inputThree = scannedCard.cardNumber.substring(8,12);
+        card.inputFour = scannedCard.cardNumber.substring(12,16);
+      } 
+           
+      if(scannedCard.cardholderName !== null) 
+        card.inputName = scannedCard.cardholderName;
+
+      if(scannedCard.expiryYear !== 0 && scannedCard.expiryMonth !== 0 ) 
+        card.inputDate = (scannedCard.expiryMonth + '/' + scannedCard.expiryYear);
+    }            
+
     return (
       <View style={styles.container}>
         <Text style={styles.topText}>
