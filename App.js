@@ -39,7 +39,7 @@ Navigation.registerComponent('SendVoucher', () => SendVoucher);
 Navigation.registerComponent('Settings', () => Settings);
 Navigation.registerComponent('ShareOnEmail', () => ShareOnEmail);
 Navigation.registerComponent('ShareOnEmailSend', () => ShareOnEmailSend);
-Navigation.registerComponent('ScanQrCode', () => ScanQrCode);
+Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
 
 // Main app entrance here
 startSingleScreenApp();
