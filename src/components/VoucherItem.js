@@ -15,6 +15,8 @@ const BLUE = '#33ccff';
 const RED = '#cc0000';
 const GREEN = '#00e600';
 
+let minute = 10;
+
 export default class VoucherItem extends Component<{}> {
   
   static REDEEMED = 'Redeemed';
@@ -27,10 +29,6 @@ export default class VoucherItem extends Component<{}> {
     super(props);    
   }
 
-  static propTypes = {
-    typeStr: PropTypes.string.isRequired,
-  };
-
   state = {
     expanded: false,
   };
@@ -41,15 +39,39 @@ export default class VoucherItem extends Component<{}> {
     }));
   }
 
+  getMinute(){
+    minute += 4;
+    if(minute > 59)
+      minute = 10;
+
+    return minute;  
+  }
+
   render() {
 
     let voucherColor = DARK_BLUE;
     let textColor = BLUE;
     let amountSign = '+';
 
-    const typeStr = this.props.typeStr;
+    const {id, status, amount, oldStatus } = this.props.voucher;
+    
+    const emailOne = 'Brian.Mendoza@hotmail.com'
+    const emailTwo = 'Murrey.Derek@hotmail.com'
+    let firstLine;
+    if(status === Voucher.PURCHASED || status === Voucher.REFUNDED)
+      firstLine = emailOne;
+    else if(status === Voucher.SENT)
+      firstLine = 'to ' + emailTwo;
+    else if(status === Voucher.RECEIVED)
+      firstLine = 'from ' + emailTwo;
 
-    switch(typeStr) {
+    let secondLine;
+    if(oldStatus === Voucher.PURCHASED)
+      secondLine = emailOne;
+    else if(oldStatus === Voucher.RECEIVED)
+      secondLine = 'from ' + emailTwo;
+
+    switch(status) {
       case VoucherItem.REDEEMED:
         voucherColor = DARK_BLUE;
         textColor = BLUE;
@@ -90,48 +112,57 @@ export default class VoucherItem extends Component<{}> {
         >
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {color: 'white'}]}> 
-              Voucher #{this.props.id} </Text>
+              Voucher #{id} </Text>
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign}
               <Text style={[styles.voucherText, {color: 'white'}]}> 
-                $ {this.props.amount}
+                $ {amount}
               </Text>
             </Text>
           </View>
           <View style={styles.voucherRow}>
-            <Text style={styles.voucherText}> Today, 2:40 PM </Text>
+            <Text style={styles.voucherText}> 
+              Today, 2:{this.getMinute()} PM 
+            </Text>
             <Text style={[styles.voucherText, {color: textColor}]}> 
-              {typeStr} 
+              {status} 
             </Text>            
           </View>  
           {
             this.state.expanded ?
-              <View>
-              <View style={styles.voucherHorLine} />     
-              <View style={styles.voucherRow}>
-                <Text style={styles.voucherText}> 10-17-2017, 12:00 AM </Text>
-                <Text style={styles.voucherText}> Sent </Text>
-              </View>  
+              <View>              
               <View style={styles.voucherRow}>
                 <Text style={styles.voucherText}> </Text>
-                <Text style={styles.voucherText}> to Murrey.Derek@hotmail.com </Text>
-              </View>            
-              <View style={styles.voucherHorLine} />     
-              <View style={styles.voucherRow}>
-                <Text style={styles.voucherText}> 10-16-2017, 11:00 AM </Text>
-                <Text style={styles.voucherText}> Purchased </Text>
-              </View>  
-              <View style={styles.voucherRow}>
-                <Text style={styles.voucherText}> </Text>
-                <Text style={styles.voucherText}> to Murrey.Derek@hotmail.com </Text>
+                <Text style={styles.voucherText}> 
+                  {firstLine}
+                </Text>
               </View>      
+              { 
+                (oldStatus === null) ? 
+                null :      
+                <View>
+                  <View style={styles.voucherHorLine} />     
+                  <View style={styles.voucherRow}>
+                    <Text style={styles.voucherText}> 
+                      10-16-2017, 11:00 AM 
+                    </Text>
+                    <Text style={styles.voucherText}> 
+                      {oldStatus} 
+                    </Text>
+                  </View>  
+                  <View style={styles.voucherRow}>
+                    <Text style={styles.voucherText}> </Text>
+                    <Text style={styles.voucherText}> 
+                      {secondLine}
+                    </Text>
+                  </View>  
+                </View>  
+              }    
               <View style={styles.voucherRow}>
                 <Image
-                  source={require('../images/visa-logo.png')}
-                />                  
+                  source={require('../images/visa-logo.png')}/>                  
                 <TouchableOpacity 
-                  onPress={() => { this.props.onDetailsPress() }}
-                >
+                  onPress={() => { this.props.onDetailsPress() }}>
                 <Text 
                   style={[styles.voucherText, {color: '#33ccff'}]}> 
                     Details > 

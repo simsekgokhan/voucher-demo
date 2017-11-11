@@ -27,9 +27,7 @@ class Vouchers extends React.Component {
     return(
       <VoucherItem 
       onDetailsPress={() => this.navigateToDetails(voucher)} 
-      id={voucher.id}
-      amount={voucher.amount}
-      typeStr={voucher.status}/>
+      voucher={voucher}/>
     );
   }
 
@@ -41,7 +39,7 @@ class Vouchers extends React.Component {
     const allVouchers = this.props.vouchers.allVouchers;    
     for(const voucher of allVouchers){
       balance += voucher.amount;
-
+      
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
