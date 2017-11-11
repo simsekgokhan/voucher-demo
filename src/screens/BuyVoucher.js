@@ -25,7 +25,7 @@ class BuyVoucher extends Component<{}> {
   }
   
   state = {
-    selectedValue: 5,
+    selectedValue: 10,
   };
 
   onNavigatorEvent(event) { 
@@ -155,7 +155,6 @@ class BuyVoucher extends Component<{}> {
             itemStyle={{color: 'white', fontSize: 26}}
             selectedValue = {this.state.selectedValue} 
             onValueChange = {this.updateSelectedValue}>
-            <Picker.Item label = "0.00" value = {0} />
             <Picker.Item label = "5.00" value = {5} />
             <Picker.Item label = "10.00" value = {10} />
             <Picker.Item label = "20.00" value = {20} />
