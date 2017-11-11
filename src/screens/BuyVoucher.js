@@ -11,12 +11,11 @@ import ConfirmScreen from './ConfirmScreen';
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
-import { setHasVoucher } from "../actions/vouchersAction";
 
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
 
-class BuyVoucher extends Component<{}> {
+export default class BuyVoucher extends Component<{}> {
 
   constructor(props) {
     super(props);
@@ -168,22 +167,6 @@ class BuyVoucher extends Component<{}> {
 
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    hasVoucher: state.hasVoucher,    
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setHasVoucher: (state) => {
-      dispatch(setHasVoucher(state));      
-    },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyVoucher);
 
 const styles = StyleSheet.create({
   container: {

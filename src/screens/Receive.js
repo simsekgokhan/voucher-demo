@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 
 import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
-import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
+import { addVoucher } from "../actions/vouchersAction";
 import { createVoucher } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
@@ -94,16 +94,11 @@ class Receive extends Component<{}> {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    hasVoucher: state.hasVoucher,    
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setHasVoucher: (state) => {
-      dispatch(setHasVoucher(state));      
-    },
     addVoucher: (state) => {
       dispatch(addVoucher(state));      
     },

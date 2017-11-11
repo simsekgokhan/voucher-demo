@@ -33,21 +33,19 @@ class Vouchers extends React.Component {
 
   render() {
     const hasVoucher = (this.props.vouchers.allVouchers.length > 0);     
+    const balance = this.props.vouchers.balance;
 
-    let balance = 0;
     let voucherItems = [];
     const allVouchers = this.props.vouchers.allVouchers;    
     for(const voucher of allVouchers){
-      balance += voucher.amount;
-      
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
         if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED)
-          voucherItems.push(this.createVouherItem(voucher));                
+          voucherItems.unshift(this.createVouherItem(voucher));                
       }
       else {
-        voucherItems.push(this.createVouherItem(voucher));
+        voucherItems.unshift(this.createVouherItem(voucher));
       }
     }
 
@@ -84,7 +82,7 @@ class Vouchers extends React.Component {
 const mapStateToProps = (state) => {
   return {
     vouchers: state.vouchers,
-    hasVoucher: state.hasVoucher,
+    balance: state.balance,
     allVouchers: state.allVouchers,    
   }
 }
