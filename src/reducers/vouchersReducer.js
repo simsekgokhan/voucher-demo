@@ -18,8 +18,13 @@ const vouchersReducer = (state = {
                 ...state,
                 allVouchers: state.allVouchers.map(voucher => 
                     (voucher.id === action.id) ?                    
-                    { ...voucher, oldStatus: voucher.status, status: action.newStatus } :                     
-                    voucher),
+                    { 
+                      ...voucher, 
+                      oldStatus: voucher.status, 
+                      status: action.newStatus,
+                      timeStamp: action.newTimeStamp
+                    } 
+                    : voucher),
                 balance: state.balance - action.amount
             };
             break;                      

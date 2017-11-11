@@ -8,7 +8,7 @@ import color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
-import { createVoucher, createVoucherWithId } from '../model/voucher.model';
+import { createVoucher, createVoucherWithId, getTime } from '../model/voucher.model';
 
 let voucherType = '';
 let confirmType = '';
@@ -43,7 +43,12 @@ class ConfirmScreen extends Component<{}> {
       } 
       else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND){
         voucher = createVoucherWithId(this.props.id, voucherType, amount);       
-        this.props.updateVoucher({id: this.props.id, newStatus: voucherType, amount: amount})
+        this.props.updateVoucher({
+          id: this.props.id, 
+          newStatus: voucherType, 
+          newTimeStamp: getTime(),
+          amount: amount
+        });
       }
       
       this.props.navigator.push({

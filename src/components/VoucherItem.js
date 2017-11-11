@@ -39,21 +39,13 @@ export default class VoucherItem extends Component<{}> {
     }));
   }
 
-  getMinute(){
-    minute += 4;
-    if(minute > 59)
-      minute = 10;
-
-    return minute;  
-  }
-
   render() {
 
     let voucherColor = DARK_BLUE;
     let textColor = BLUE;
     let amountSign = '+';
 
-    const {id, status, amount, oldStatus } = this.props.voucher;
+    const {id, status, timeStamp, amount, oldStatus } = this.props.voucher;
     
     const emailOne = 'Brian.Mendoza@hotmail.com'
     const emailTwo = 'Murrey.Derek@hotmail.com'
@@ -122,7 +114,7 @@ export default class VoucherItem extends Component<{}> {
           </View>
           <View style={styles.voucherRow}>
             <Text style={styles.voucherText}> 
-              Today, 2:{this.getMinute()} PM 
+              Today, {timeStamp} PM 
             </Text>
             <Text style={[styles.voucherText, {color: textColor}]}> 
               {status} 
