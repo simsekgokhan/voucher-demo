@@ -54,8 +54,8 @@ class Receive extends Component<{}> {
 
     barcodeScanned = true;
     
-    const fakeAmount = 100;
-    const voucher = createVoucher(voucherType, this.props.amount);    
+    const fakeAmount = 200;
+    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);    
     this.props.addVoucher(voucher);  
 
     this.props.navigator.push({
