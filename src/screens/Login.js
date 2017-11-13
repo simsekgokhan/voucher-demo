@@ -14,7 +14,7 @@ import { createVoucher, createVoucherWithId, getTime } from '../model/voucher.mo
 
 class Login extends Component<{}> {
 
-  addFakeVouchers() {
+  addFakeVouchers() {   
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200));  
 
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50));  
@@ -25,14 +25,28 @@ class Login extends Component<{}> {
       amount: 50
     });
 
-    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100));  
-
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25));      
     this.props.updateVoucher({
-      id: 1203, 
+      id: 1202, 
       newStatus: Voucher.REFUNDED, 
       newTimeStamp: getTime(),
       amount: 25
+    });
+
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100));  
+
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 40));  
+    this.props.updateVoucher({
+      id: 1204, 
+      newStatus: Voucher.SENT, 
+      newTimeStamp: getTime(),
+      amount: 40
+    });
+    this.props.updateVoucher({
+      id: 1204, 
+      newStatus: Voucher.REDEEMED, 
+      newTimeStamp: getTime(),
+      amount: 0
     });
     
   }

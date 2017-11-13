@@ -105,6 +105,8 @@ export default class VoucherDetails extends React.Component {
         voucherColor = Color.DARK_BLUE;
         voucherLogo = require('../images/redeemed-logo.png');
         textColor = Color.BLUE;
+        name = murrey.name;
+        email = murrey.email;
         break;
       case VoucherItem.SENT:
         voucherColor = Color.DARK_RED;

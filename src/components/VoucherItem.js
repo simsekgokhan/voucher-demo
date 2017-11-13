@@ -62,6 +62,8 @@ export default class VoucherItem extends Component<{}> {
       secondLine = emailOne;
     else if(oldStatus === Voucher.RECEIVED)
       secondLine = 'from ' + emailTwo;
+    else if(oldStatus === Voucher.SENT) // temp added to simulate REDEEMED case
+      secondLine = 'to ' + emailTwo;    
 
     switch(status) {
       case VoucherItem.REDEEMED:
@@ -122,13 +124,17 @@ export default class VoucherItem extends Component<{}> {
           </View>  
           {
             this.state.expanded ?
-              <View>              
-              <View style={styles.voucherRow}>
-                <Text style={styles.voucherText}> </Text>
-                <Text style={styles.voucherText}> 
-                  {firstLine}
-                </Text>
-              </View>      
+              <View>                    
+              {        
+                status === Voucher.REDEEMED ?
+                null :
+                <View style={styles.voucherRow}>
+                  <Text style={styles.voucherText}> </Text>
+                  <Text style={styles.voucherText}> 
+                    {firstLine}
+                  </Text>
+                </View>      
+              }
               { 
                 (oldStatus === null) ? 
                 null :      
@@ -148,8 +154,29 @@ export default class VoucherItem extends Component<{}> {
                       {secondLine}
                     </Text>
                   </View>  
-                </View>  
+                </View>                  
               }    
+              {
+                (status === Voucher.REDEEMED) ?
+                <View>                
+                  <View style={styles.voucherHorLine} />     
+                  <View style={styles.voucherRow}>
+                    <Text style={styles.voucherText}> 
+                      9-14-2017, 8:00 AM 
+                    </Text>
+                    <Text style={styles.voucherText}> 
+                      {Voucher.PURCHASED} 
+                    </Text>
+                  </View>  
+                  <View style={styles.voucherRow}>
+                    <Text style={styles.voucherText}> </Text>
+                    <Text style={styles.voucherText}> 
+                      {emailOne}
+                    </Text>
+                  </View>  
+                </View>                
+                : null
+              }
               <View style={[styles.voucherRow, {marginVertical: 0}]}>
                 <Image
                   source={require('../images/visa-logo.png')}/>                  
