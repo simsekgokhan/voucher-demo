@@ -26,7 +26,7 @@ Navigation.registerComponent('Vouchers', () => Vouchers, store, Provider);
 Navigation.registerComponent('BuyVoucher', () => BuyVoucher, store, Provider);
 Navigation.registerComponent('Receive', () => Receive, store, Provider);
 Navigation.registerComponent('More', () => More);
-Navigation.registerComponent('Login', () => Login);
+Navigation.registerComponent('Login', () => Login, store, Provider);
 
 // Stackable screens
 Navigation.registerComponent('VoucherDetails', () => VoucherDetails);

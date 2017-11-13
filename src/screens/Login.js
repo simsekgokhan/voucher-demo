@@ -4,10 +4,42 @@ import {
   KeyboardAvoidingView, Image, Dimensions
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import {connect} from "react-redux";
+
 import { startTabBasedApp } from '../../App';
 import Color from '../common/colors';
+import { addVoucher, updateVoucher } from "../actions/vouchersAction";
+import Voucher from '../common/voucher.constants';
+import { createVoucher, createVoucherWithId, getTime } from '../model/voucher.model';
 
-export default class Login extends Component<{}> {
+class Login extends Component<{}> {
+
+  addFakeVouchers() {
+    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200));  
+
+    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50));  
+    this.props.updateVoucher({
+      id: 1201, 
+      newStatus: Voucher.SENT, 
+      newTimeStamp: getTime(),
+      amount: 50
+    });
+
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100));  
+
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25));      
+    this.props.updateVoucher({
+      id: 1203, 
+      newStatus: Voucher.REFUNDED, 
+      newTimeStamp: getTime(),
+      amount: 25
+    });
+    
+  }
+
+  componentDidMount() {
+    this.addFakeVouchers();
+  }
 
   state = {
     loadStartSreen: true,
@@ -176,6 +208,23 @@ export default class Login extends Component<{}> {
   }
 
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateVoucher: (state) => {
+      dispatch(updateVoucher(state));      
+    },
+    addVoucher: (state) => {
+      dispatch(addVoucher(state));      
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {
