@@ -15,3 +15,10 @@ export function updateVoucher(voucher) {
         amount: voucher.amount
     };
 }
+
+export function deleteAllVouchers() {       
+    return {
+        type: "DELETE_ALL_VOUCHERS",
+        payload: null, 
+    };
+}

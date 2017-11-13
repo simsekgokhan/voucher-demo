@@ -27,7 +27,14 @@ const vouchersReducer = (state = {
                     : voucher),
                 balance: state.balance - action.amount
             };
-            break;                      
+            break;               
+        case "DELETE_ALL_VOUCHERS":
+            state = {
+                ...state,
+                allVouchers: [],
+                balance: 0                          
+            };
+            break;                    
         default:
             break;
     }

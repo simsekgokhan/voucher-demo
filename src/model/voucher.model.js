@@ -1,8 +1,13 @@
 
 let voucherId = 1200;
 
+export function resetVoucherIds() {
+  voucherId = 1200;
+}
+
 let minute = 10;
 let hour = 2;
+
 export function getTime(){
   minute += 4;
 
@@ -15,6 +20,11 @@ export function getTime(){
     hour = 1;
 
   return hour + ':' + minute;  
+}
+
+export function resetTime() {
+  minute = 10;
+  hour = 2;
 }
 
 export function createVoucher(status, amount) {

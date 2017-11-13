@@ -1,6 +1,8 @@
 import { Navigation } from 'react-native-navigation';
 import { Provider } from "react-redux";
 import store from "./src/store";
+import { deleteAllVouchers } from "./src/actions/vouchersAction";
+import { resetVoucherIds, resetTime } from './src/model/voucher.model';
 
 import Vouchers from './src/screens/Vouchers';
 import BuyVoucher from './src/screens/BuyVoucher';
@@ -25,7 +27,7 @@ import Color from './src/common/colors';
 Navigation.registerComponent('Vouchers', () => Vouchers, store, Provider);
 Navigation.registerComponent('BuyVoucher', () => BuyVoucher, store, Provider);
 Navigation.registerComponent('Receive', () => Receive, store, Provider);
-Navigation.registerComponent('More', () => More);
+Navigation.registerComponent('More', () => More, store, Provider);
 Navigation.registerComponent('Login', () => Login, store, Provider);
 
 // Stackable screens
@@ -45,6 +47,9 @@ Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
 startSingleScreenApp();
 
 export function startSingleScreenApp(){
+  resetVoucherIds();
+  resetTime();
+
   Navigation.startSingleScreenApp({
     screen: {
       screen: 'Login',

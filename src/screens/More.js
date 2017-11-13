@@ -3,9 +3,11 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image , Dimensions,
   Share
 } from 'react-native';
+import {connect} from "react-redux";
 
 import Color from '../common/colors';
 import { startSingleScreenApp } from '../../App';
+import { deleteAllVouchers } from "../actions/vouchersAction";
 
 const rightButtons = {  
   rightButtons: [{
@@ -15,7 +17,7 @@ const rightButtons = {
   }]
 }
 
-export default class More extends Component<{}> {
+class More extends Component<{}> {
 
   navigateTo(screen, title, backButtonTitle, rightButtonEnabled, 
              passProps=null, navBarHidden=false){
@@ -60,6 +62,7 @@ export default class More extends Component<{}> {
         this.share();
         break;    
       case 6:
+        this.props.deleteAllVouchers();
         startSingleScreenApp();      
         break;                       
       default:
@@ -138,6 +141,20 @@ export default class More extends Component<{}> {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteAllVouchers: () => {
+      dispatch(deleteAllVouchers());      
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(More);
 
 const styles = StyleSheet.create({
   container: {
