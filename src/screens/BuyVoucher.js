@@ -15,7 +15,7 @@ import VoucherDetails from '../screens/VoucherDetails';
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
 
-export default class BuyVoucher extends Component<{}> {
+class BuyVoucher extends Component<{}> {
 
   constructor(props) {
     super(props);
@@ -28,9 +28,8 @@ export default class BuyVoucher extends Component<{}> {
   };
 
   onNavigatorEvent(event) { 
-    if (event.type === 'NavBarButtonPress' && event.id === 'buy'){
-      this.navigateToConfirm();  
-    }
+    if (event.type === 'NavBarButtonPress' && event.id === 'buy')
+      this.navigateToConfirm();      
     else if (event.type === 'DeepLink' && event.link === 'BuyVoucher.popToRoot') 
       this.props.navigator.popToRoot({ animationType: 'fade' });     
   }
@@ -101,8 +100,10 @@ export default class BuyVoucher extends Component<{}> {
         break;
     }
 
+    const theme = this.props.app.theme;    
+
     return (
-      <View style={styles.container}>        
+      <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>        
         <View style={styles.buttons}>  
           <View style={styles.buttonsRowOne}>   
             <TouchableOpacity 
@@ -168,13 +169,19 @@ export default class BuyVoucher extends Component<{}> {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    app: state.app,   
+  }
+}
+
+export default connect(mapStateToProps)(BuyVoucher);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
   },
   buttons:{
-
   },
   buttonsRowOne: {
     alignItems: 'center',

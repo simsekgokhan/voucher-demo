@@ -1,11 +1,12 @@
 
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import logger from "redux-logger";
+import appReducer from "./reducers/appReducer";
 import vouchersReducer from "./reducers/vouchersReducer";
 
 // 1. Create store
 const store = createStore(
-    combineReducers({ vouchers: vouchersReducer }),
+    combineReducers({ app: appReducer, vouchers: vouchersReducer }),
     {}, // {}: initialState is optional 
     applyMiddleware(logger) 
 );
