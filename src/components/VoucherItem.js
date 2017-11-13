@@ -150,15 +150,15 @@ export default class VoucherItem extends Component<{}> {
                   </View>  
                 </View>  
               }    
-              <View style={styles.voucherRow}>
+              <View style={[styles.voucherRow, {marginVertical: 0}]}>
                 <Image
                   source={require('../images/visa-logo.png')}/>                  
-                <TouchableOpacity 
+                <TouchableOpacity style={styles.detailsButton}
                   onPress={() => { this.props.onDetailsPress() }}>
-                <Text 
-                  style={[styles.voucherText, {color: '#33ccff'}]}> 
-                    Details > 
-                </Text>           
+                  <Text 
+                    style={[styles.voucherText, {color: '#33ccff'}]}> 
+                      Details > 
+                  </Text>           
                 </TouchableOpacity>                    
               </View>    
               </View>
@@ -184,7 +184,8 @@ const styles = StyleSheet.create({
   voucherRow: {
     flexDirection: 'row',    
     padding: 3,
-    justifyContent: 'space-between', 
+    justifyContent: 'space-between',     
+    alignItems: 'center',    
   },
   voucherText: {
     color: 'rgba(255,255,255,0.7)', 
@@ -195,6 +196,12 @@ const styles = StyleSheet.create({
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
   },
+  detailsButton: {
+    justifyContent: 'center',    
+    alignItems: 'flex-end',
+    width: 80,        
+    height: 48,     
+  }
 });
 
 
