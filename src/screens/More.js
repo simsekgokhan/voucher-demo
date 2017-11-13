@@ -72,8 +72,8 @@ export default class More extends Component<{}> {
       <Image resizeMode='cover' style={styles.container}
         source={require('../images/background-more.png')}>                   
         <Image 
-          style={{marginTop: 44}} 
-          source={require('../images/blockchain-logo.png')}>           
+          style={{marginTop: 24}} 
+          source={require('../images/app-logo.png')}>           
         </Image>     
         <Image 
           style={styles.row0} 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   row0: {
-    marginTop: 40,
+    marginTop: 20,
     justifyContent:'center',
   },
   row0View: {

@@ -73,7 +73,7 @@ export default class Login extends Component<{}> {
             : null
         }
         <Image style={styles.logoView} 
-          source={require('../images/blockchain-logo.png')}/>   
+          source={require('../images/app-logo.png')}/>   
         <View style={styles.centerView}>
           {
             this.state.loadStartSreen ? 

@@ -35,7 +35,7 @@ export default class MyWallet extends React.Component {
             </Text>
             <Image 
             style={{marginTop: 6}} 
-            source={require('../images/blockchain-logo-small.png')}/>
+            source={require('../images/app-logo-small.png')}/>
           </View>          
           <View style={styles.row0}>
             <View style={{flexDirection: 'row'}}>
