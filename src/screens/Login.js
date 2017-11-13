@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { startTabBasedApp } from '../../App';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 export default class Login extends Component<{}> {
 
@@ -90,7 +90,7 @@ export default class Login extends Component<{}> {
                   </Text>
                   <TextInput
                     color='white'
-                    selectionColor={color.BLUE}                     
+                    selectionColor={Color.BLUE}                     
                     autoCorrect={false}
                     keyboardType='email-address'
                     defaultValue='Brain.Mendoza@hotmail.com'                          
@@ -108,7 +108,7 @@ export default class Login extends Component<{}> {
                       </Text>
                       <TextInput
                         color='white'
-                        selectionColor={color.BLUE}                     
+                        selectionColor={Color.BLUE}                     
                         autoCorrect={false}
                         keyboardType='phone-pad'
                         defaultValue='605-848-7840'      
@@ -127,7 +127,7 @@ export default class Login extends Component<{}> {
                   </Text>
                   <TextInput
                     color='white'
-                    selectionColor={color.BLUE}                     
+                    selectionColor={Color.BLUE}                     
                     autoCorrect={false}
                     keyboardType='default'
                     defaultValue='605-848-7840'  
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flexDirection: 'row',
-    backgroundColor: color.GREY_BACKGROUND,    
+    backgroundColor: Color.GREY_BACKGROUND,    
     margin: 1,
     height: 50,
     width: Dimensions.get('window').width,

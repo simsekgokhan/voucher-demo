@@ -4,7 +4,7 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
   Button
 } from 'react-native';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 export default class HoldCard extends React.Component {
 
@@ -21,7 +21,7 @@ export default class HoldCard extends React.Component {
 
   static navigatorStyle = {
     navBarTextColor: 'white',
-    navBarButtonColor: color.BLUE,
+    navBarButtonColor: Color.BLUE,
     tabBarHidden: true,     
   }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
-import color from '../common/colors';
+import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 
@@ -28,7 +28,7 @@ export default class AddCard extends Component<{}> {
       <TextInput
         defaultValue={this.props.showEmptyForm ? null : placeholder}
         style={styles.input}
-        selectionColor={color.BLUE} 
+        selectionColor={Color.BLUE} 
         autoCorrect={false}
         keyboardType={keyboardType}
         maxLength={maxLength}
@@ -89,7 +89,7 @@ export default class AddCard extends Component<{}> {
             <View style={styles.inputRow}>
               <TextInput style={[styles.input, {width: 136}]}
                 defaultValue={this.props.showEmptyForm ? null : card.inputName}
-                selectionColor={color.BLUE} 
+                selectionColor={Color.BLUE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      
                 placeholderTextColor='grey'/> 
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20, 
     marginVertical: 20, 
     alignItems: 'center',
-    backgroundColor: color.GREY_BACKGROUND,
+    backgroundColor: Color.GREY_BACKGROUND,
     width: 344,
     height: 228,
   },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
     backgroundColor: 'black',
-    borderColor: color.BLUE,
+    borderColor: Color.BLUE,
     borderWidth: 1,
     borderRadius: 5,    
     width: 64,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     textAlign: 'right',
-    color: color.BLUE, 
+    color: Color.BLUE, 
     fontSize: 15,
     marginRight: 14,
     position: 'absolute',     

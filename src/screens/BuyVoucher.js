@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {connect} from "react-redux";
 
 import ConfirmScreen from './ConfirmScreen';
-import color from '../common/colors';
+import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
   buttonTextSelected: {
     textAlign: 'center',
     backgroundColor: 'transparent',  
-    color: color.BLUE, 
+    color: Color.BLUE, 
     fontWeight: '700' 
   },
   imagestyle: {
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     marginRight: 100,
   },
   pickerLabel: {
-    color: color.GREY_TEXT, 
+    color: Color.GREY_TEXT, 
     fontSize: 16, 
     paddingLeft: 60,
   },

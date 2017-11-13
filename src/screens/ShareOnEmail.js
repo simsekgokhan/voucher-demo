@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
-import color from '../common/colors';
+import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 
 export default class ShareOnEmail extends Component<{}> {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   horLineView: {
     marginHorizontal: 4, 
     height: 1,
-    backgroundColor: color.GREY_BACKGROUND,
+    backgroundColor: Color.GREY_BACKGROUND,
   },
   horLine: {
     marginLeft: 20, 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',     
     height: 56,
     padding: 20,
-    backgroundColor: color.GREY_BACKGROUND,
+    backgroundColor: Color.GREY_BACKGROUND,
   },
   smallText: {
     color: 'grey', 

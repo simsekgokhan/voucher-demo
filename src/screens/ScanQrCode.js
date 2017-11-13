@@ -6,7 +6,7 @@ import {
 import Camera from 'react-native-camera';
 import {connect} from "react-redux";
 
-import color from '../common/colors';
+import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
 import { createVoucher } from '../model/voucher.model';

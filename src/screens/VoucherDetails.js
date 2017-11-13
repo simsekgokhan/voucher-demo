@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import { StackNavigator } from 'react-navigation';
-import color from '../common/colors';
+import Color from '../common/colors';
 import VoucherItem from '../components/VoucherItem';
 import Voucher from '../common/voucher.constants';
 
@@ -30,7 +30,7 @@ export default class VoucherDetails extends React.Component {
   // For react-navigation
   static navigationOptions = ({ navigation })  => ({
     title: 'Voucher', // active only if parent does not pass title
-    headerTintColor: color.BLUE,    
+    headerTintColor: Color.BLUE,    
   });
 
   navigateToConfirm = (confirmType) => { 
@@ -96,45 +96,45 @@ export default class VoucherDetails extends React.Component {
     let name = brian.name;
     let email = brian.email;
     let voucherLogo = require('../images/redeemed-logo.png');
-    let voucherColor = color.DARK_BLUE;
-    let textColor = color.BLUE;
+    let voucherColor = Color.DARK_BLUE;
+    let textColor = Color.BLUE;
     let showButtons = false;
 
     switch(voucherType) {
       case VoucherItem.REDEEMED:
-        voucherColor = color.DARK_BLUE;
+        voucherColor = Color.DARK_BLUE;
         voucherLogo = require('../images/redeemed-logo.png');
-        textColor = color.BLUE;
+        textColor = Color.BLUE;
         break;
       case VoucherItem.SENT:
-        voucherColor = color.DARK_RED;
+        voucherColor = Color.DARK_RED;
         voucherLogo = require('../images/sent-logo.png');
-        textColor = color.RED;
+        textColor = Color.RED;
         name = hans.name;
         email = hans.email;
         break;
         case VoucherItem.PURCHASED:
-        voucherColor = color.DARK_GREEN;
+        voucherColor = Color.DARK_GREEN;
         voucherLogo = require('../images/purchased-logo.png');
-        textColor = color.GREEN;
+        textColor = Color.GREEN;
         showButtons = true;
         break;
       case VoucherItem.RECEIVED:
-        voucherColor = color.DARK_GREEN;
+        voucherColor = Color.DARK_GREEN;
         voucherLogo = require('../images/received-logo.png');
-        textColor = color.GREEN;
+        textColor = Color.GREEN;
         showButtons = true;
         name = murrey.name;
         email = murrey.email;
         break;
       case Voucher.REFUNDED:
-        voucherColor = color.DARK_PURPLE;
+        voucherColor = Color.DARK_PURPLE;
         voucherLogo = require('../images/refunded-logo.png');
-        textColor = color.PURPLE;
+        textColor = Color.PURPLE;
         break;          
       default:
-        voucherColor = color.DARK_BLUE;
-        textColor = color.BLUE;
+        voucherColor = Color.DARK_BLUE;
+        textColor = Color.BLUE;
         break;
     }      
 
@@ -167,7 +167,7 @@ export default class VoucherDetails extends React.Component {
         <View style={[styles.voucherRow, {marginTop: 20}]}>
             <Text style={[styles.voucherText, {color: 'white'}]}>
               {`of  `} 
-              <Text style={{color: color.BLUE, fontSize: 28, paddingLeft: 20}}> 
+              <Text style={{color: Color.BLUE, fontSize: 28, paddingLeft: 20}}> 
                 $ {this.props.voucher.amount} 
               </Text>
             </Text>
@@ -180,7 +180,7 @@ export default class VoucherDetails extends React.Component {
                   onPress={ this.onSendPress } >
               <Image source={require('../images/send-logo.png')} />
               <Text
-                  style={[styles.buttonText, { color: color.RED, paddingHorizontal: 10 }]}>
+                  style={[styles.buttonText, { color: Color.RED, paddingHorizontal: 10 }]}>
                   Send
               </Text>
               </TouchableOpacity>
@@ -189,7 +189,7 @@ export default class VoucherDetails extends React.Component {
                   onPress={ this.onRefundPress } >
               <Image source={require('../images/refund-logo.png')} />
               <Text
-                  style={[styles.buttonText, { color: color.PURPLE, paddingHorizontal: 10 }]}>
+                  style={[styles.buttonText, { color: Color.PURPLE, paddingHorizontal: 10 }]}>
                   Refund
               </Text>
               </TouchableOpacity>            

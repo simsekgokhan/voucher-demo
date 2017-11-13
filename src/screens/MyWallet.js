@@ -4,13 +4,13 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
   Button
 } from 'react-native';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 export default class MyWallet extends React.Component {
 
   static navigatorStyle = {
     navBarTextColor: 'white',
-    navBarButtonColor: color.BLUE,
+    navBarButtonColor: Color.BLUE,
   }
 
   render() {
@@ -20,7 +20,7 @@ export default class MyWallet extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.topView}>
-          <Text style={[styles.validThru, {fontSize: 17, color:color.GREY_TEXT}]}> 
+          <Text style={[styles.validThru, {fontSize: 17, color:Color.GREY_TEXT}]}> 
               Current Balance 
           </Text>        
           <Text style={{color: 'white', fontSize: 26, marginTop: 5}}> 

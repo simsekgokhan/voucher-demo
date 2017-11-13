@@ -7,7 +7,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import VoucherItem from '../components/VoucherItem';
 import { StackNavigator } from 'react-navigation';
-import color from '../common/colors';
+import Color from '../common/colors';
 import VoucherDetails from '../screens/VoucherDetails';
 
 export default class SendVoucher extends React.Component {

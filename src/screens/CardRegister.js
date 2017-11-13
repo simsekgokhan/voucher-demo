@@ -5,7 +5,7 @@ import {
   Button
 } from 'react-native';
 import { CardIOView, CardIOUtilities } from 'react-native-awesome-card-io';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 export default class CardRegister extends React.Component {
 
@@ -34,7 +34,7 @@ export default class CardRegister extends React.Component {
 
   static navigatorStyle = {
     navBarTextColor: 'white',
-    navBarButtonColor: color.BLUE,
+    navBarButtonColor: Color.BLUE,
     tabBarHidden: true,          
   }
 

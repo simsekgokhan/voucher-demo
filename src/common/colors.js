@@ -1,5 +1,5 @@
 
-const color = {
+const Color = {
     BLUE: '#33ccff',
     RED: '#FF2D55',
     GREEN: '#00e600',
@@ -15,4 +15,4 @@ const color = {
     GREY_TEXT: 'rgba(255,255,255,0.7)',
 }
 
-export default color;
+export default Color;

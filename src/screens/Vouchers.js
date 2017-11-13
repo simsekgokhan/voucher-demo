@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {connect} from "react-redux";
 
 import VoucherItem from '../components/VoucherItem';
-import color from '../common/colors';
+import Color from '../common/colors';
 import VoucherDetails from '../screens/VoucherDetails';
 import Voucher from '../common/voucher.constants';
 

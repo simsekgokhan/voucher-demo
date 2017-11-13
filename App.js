@@ -19,7 +19,7 @@ import ShareOnEmail from './src/screens/ShareOnEmail';
 import ShareOnEmailSend from './src/screens/ShareOnEmailSend';
 import ScanQrCode from './src/screens/ScanQrCode';
 
-import color from './src/common/colors';
+import Color from './src/common/colors';
 
 // Tab root screens
 Navigation.registerComponent('Vouchers', () => Vouchers, store, Provider);
@@ -74,7 +74,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         navigatorStyle: {
           navBarHidden: true, 
           navBarTextColor: 'white',
-          navBarButtonColor: color.BLUE,
+          navBarButtonColor: Color.BLUE,
         },
       },
       {
@@ -85,7 +85,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         title: 'Buy Voucher',
         navigatorStyle: {
           navBarTextColor: 'white',
-          navBarButtonColor: color.BLUE,
+          navBarButtonColor: Color.BLUE,
         },
         navigatorButtons: {
           rightButtons: [{
@@ -104,7 +104,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         navigatorStyle: {
           tabBarHidden: true,          
           navBarTextColor: 'white',
-          navBarButtonColor: color.BLUE,
+          navBarButtonColor: Color.BLUE,
           drawUnderTabBar: true,
           tabBarBackgroundColor: 'black',  
         },
@@ -118,7 +118,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         navigatorStyle: {
           navBarHidden: true,
           navBarTextColor: 'white',
-          navBarButtonColor: color.BLUE,
+          navBarButtonColor: Color.BLUE,
         },
       },
     ],

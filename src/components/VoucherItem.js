@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import Voucher from '../common/voucher.constants';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 const DARK_BLUE = '#006699';
 const DARK_RED = '#4d0000';
@@ -85,8 +85,8 @@ export default class VoucherItem extends Component<{}> {
         amountSign = '+';
         break;
       case VoucherItem.REFUNDED:
-        voucherColor = color.DARK_PURPLE;
-        textColor = color.PURPLE;
+        voucherColor = Color.DARK_PURPLE;
+        textColor = Color.PURPLE;
         amountSign = '-';
         break;        
       default:

@@ -4,7 +4,7 @@ import {
   Share
 } from 'react-native';
 
-import color from '../common/colors';
+import Color from '../common/colors';
 import { startSingleScreenApp } from '../../App';
 
 const rightButtons = {  
@@ -130,7 +130,7 @@ export default class More extends Component<{}> {
         <TouchableOpacity style={styles.rowButton}
           onPress={ () => this.onButtonPress(6) } >
           <Image source={require('../images/logout-icon-3.png')} />
-          <Text style={[styles.textButton, {color: color.BLUE}]}>
+          <Text style={[styles.textButton, {color: Color.BLUE}]}>
               Logout
           </Text>
         </TouchableOpacity>                                        
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   textBalance: {
-    color: color.BLUE,
+    color: Color.BLUE,
     fontSize: 26,
     backgroundColor: 'transparent',
   },

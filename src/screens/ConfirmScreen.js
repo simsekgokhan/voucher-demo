@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import {connect} from "react-redux";
 
-import color from '../common/colors';
+import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
@@ -24,7 +24,7 @@ class ConfirmScreen extends Component<{}> {
   static navigationOptions = ({ navigation })  => ({
     // title is passed to child (or comes from parent)
     title: navigation.state.params.confirmType, 
-    headerTintColor: color.BLUE,
+    headerTintColor: Color.BLUE,
   });
 
   onTouchIdPressed = () => {            
@@ -76,26 +76,26 @@ class ConfirmScreen extends Component<{}> {
       amount = this.props.amount;  
     }
 
-    let textColor = color.BLUE;
+    let textColor = Color.BLUE;
     switch(confirmType) {
       case Voucher.BUY:
         voucherType = Voucher.PURCHASED;
-        textColor = color.BLUE;                
+        textColor = Color.BLUE;                
         break;      
       case Voucher.REDEEM:
-        textColor = color.BLUE;
+        textColor = Color.BLUE;
         voucherType = Voucher.REDEEMED;
         break;
       case Voucher.SEND:
-        textColor = color.RED;
+        textColor = Color.RED;
         voucherType = Voucher.SENT;
         break;
       case Voucher.REFUND:
-        textColor = color.PURPLE;
+        textColor = Color.PURPLE;
         voucherType = Voucher.REFUNDED;
         break;
       default:
-        textColor = color.BLUE;
+        textColor = Color.BLUE;
         break;
     }      
         
@@ -157,6 +157,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20, 
     marginVertical: 30, 
     alignItems: 'center',
-    backgroundColor: color.GREY_BACKGROUND,
+    backgroundColor: Color.GREY_BACKGROUND,
   }
 });

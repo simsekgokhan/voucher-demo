@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
-import color from '../common/colors';
+import Color from '../common/colors';
 
 export default class Settings extends Component<{}> {
 
@@ -36,7 +36,7 @@ export default class Settings extends Component<{}> {
           </Text>                 
         </View>         
         <TouchableOpacity style={styles.block}>
-          <Text style={[styles.largeText, {color: color.BLUE}]}> 
+          <Text style={[styles.largeText, {color: Color.BLUE}]}> 
             Change Password
           </Text>                              
         </TouchableOpacity>               
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginVertical: 2,
     height: 68,
     padding: 20,
-    backgroundColor: color.GREY_BACKGROUND,
+    backgroundColor: Color.GREY_BACKGROUND,
   },
   smallText: {
     color: 'grey', 
