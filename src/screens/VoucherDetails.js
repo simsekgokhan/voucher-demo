@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import { StackNavigator } from 'react-navigation';
 import Color from '../common/colors';
-import VoucherItem from '../components/VoucherItem';
 import Voucher from '../common/voucher.constants';
 
 export default class VoucherDetails extends React.Component {
@@ -101,27 +100,27 @@ export default class VoucherDetails extends React.Component {
     let showButtons = false;
 
     switch(voucherType) {
-      case VoucherItem.REDEEMED:
+      case Voucher.REDEEMED:
         voucherColor = Color.DARK_BLUE;
         voucherLogo = require('../images/redeemed-logo.png');
         textColor = Color.BLUE;
         name = murrey.name;
         email = murrey.email;
         break;
-      case VoucherItem.SENT:
+      case Voucher.SENT:
         voucherColor = Color.DARK_RED;
         voucherLogo = require('../images/sent-logo.png');
         textColor = Color.RED;
         name = hans.name;
         email = hans.email;
         break;
-        case VoucherItem.PURCHASED:
+        case Voucher.PURCHASED:
         voucherColor = Color.DARK_GREEN;
         voucherLogo = require('../images/purchased-logo.png');
         textColor = Color.GREEN;
         showButtons = true;
         break;
-      case VoucherItem.RECEIVED:
+      case Voucher.RECEIVED:
         voucherColor = Color.DARK_GREEN;
         voucherLogo = require('../images/received-logo.png');
         textColor = Color.GREEN;
