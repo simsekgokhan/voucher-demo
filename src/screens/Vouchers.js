@@ -26,8 +26,8 @@ class Vouchers extends React.Component {
   createVouherItem = (voucher) => {
     return(
       <VoucherItem 
-      onDetailsPress={() => this.navigateToDetails(voucher)} 
-      voucher={voucher}/>
+        onDetailsPress={() => this.navigateToDetails(voucher)} 
+        voucher={voucher}/>
     );
   }
 
@@ -53,10 +53,10 @@ class Vouchers extends React.Component {
       <Image resizeMode='cover' style={styles.container}  
         source={require('../images/background-more.png')}>
         <View style={styles.topView}>
-          <Text style={{color: 'rgba(255,255,255,0.7)'}}> 
+          <Text style={{color: Color.TEXT_DEFAULT}}> 
             Total Balance 
           </Text>        
-          <Text style={{color: 'white', fontSize: 26, marginTop: 5}}> 
+          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 26, marginTop: 5}}> 
             $ {balance} 
           </Text>        
         </View>
@@ -67,11 +67,10 @@ class Vouchers extends React.Component {
             </ScrollView>
             :            
             <View style={styles.logoView}>
-              <Image
-                style={{}}
-                source={require('../images/voucher-logo.png')}
-              />
-              <Text style={{color: 'white', marginTop: 10}}> Buy Your First Voucher </Text>        
+              <Image source={require('../images/voucher-logo.png')}/>
+              <Text style={{color: Color.TEXT_DEFAULT, marginTop: 10}}> 
+                Buy Your First Voucher 
+              </Text>
             </View>
           }
       </Image>
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   topView: {
     position: 'absolute', 
