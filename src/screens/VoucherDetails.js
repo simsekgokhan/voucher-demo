@@ -2,55 +2,28 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, Text, TouchableOpacity, View, Image, Dimensions
 } from 'react-native';
-import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
-import { StackNavigator } from 'react-navigation';
 import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
 
 export default class VoucherDetails extends React.Component {
-
-  constructor(props) {
-    super(props);    
-  }
-
+ 
   // For react-native-navigation  
   static navigatorStyle= {
-    tabBarHidden: false,   
+    tabBarHidden: false,  // todo: get more common settings here 
   }  
 
-  // todo: duplicate ?
-  // For react-navigation 
-  static navigationOptions = {
-    title: 'Back',
-  };
-
-  // todo
-  // For react-navigation
-  static navigationOptions = ({ navigation })  => ({
-    title: 'Voucher', // active only if parent does not pass title
-    headerTintColor: Color.BLUE,    
-  });
-
   navigateToConfirm = (confirmType) => { 
-    // a) When 'this' created/pushed by react-navigation stack navigation 
-    if(this.props.navigation) {    
-      const { navigate } = this.props.navigation;    
-      navigate('ConfirmScreen', {confirmType: confirmType, amount: 50});
-    }
-    // b) When 'this' created/pushed by react-native-navigation    
-    else if (this.props.navigator) {
-      this.props.navigator.push({
-        screen: 'ConfirmScreen',
-        title: confirmType,
-        backButtonTitle: 'Cancel',
-        passProps: {
-          id: this.props.voucher.id,
-          confirmType: confirmType, 
-          amount: this.props.voucher.amount,           
-        },
-      });
-    }
+    this.props.navigator.push({
+      screen: 'ConfirmScreen',
+      title: confirmType,
+      backButtonTitle: 'Cancel',
+      passProps: {
+        id: this.props.voucher.id,
+        confirmType: confirmType, 
+        amount: this.props.voucher.amount,           
+      },
+    });    
   }
 
   onSendPress = () => {
@@ -81,17 +54,8 @@ export default class VoucherDetails extends React.Component {
     const murrey = {name: 'Murrey Derek', email: 'Murrey.Derek@hotmail.com'};
     const hans = {name: 'Hans Dickens', email: 'Hans.Dickens@hotmail.com'};   
 
-    let voucherType = Voucher.PURCHASED; // todo      
-    // a) When 'this' created/pushed by react-navigation stack navigation 
-    if(this.props.navigation) {
-      const { params } = this.props.navigation.state;        
-      voucherType = params.voucherType;
-    }
-    // b) When 'this' created/pushed by react-native-navigation    
-    else if (this.props.navigator){
-      voucherType = this.props.voucher.status;        
-    }
-          
+    const voucherType = this.props.voucher.status;        
+              
     let name = brian.name;
     let email = brian.email;
     let voucherLogo = require('../images/redeemed-logo.png');
@@ -139,75 +103,71 @@ export default class VoucherDetails extends React.Component {
         break;
     }      
 
-  return (
-    <View style={{backgroundColor: 'black', flex: 1}}>
-      <LinearGradient colors={[voucherColor, '#0d0d0d']} style={styles.voucherView}>    
-        <View style={styles.voucherRow}>
-          <Text style={[styles.voucherText, {color: 'white', marginTop:6}]}> 
-            Voucher #{this.props.voucher.id}
-          </Text>
-          <Image source={require('../images/visa-logo-voucher-details.png')} />    
-        </View>
-        <View style={styles.voucherLogoView}>
-          <Image source={voucherLogo} />                    
-          <Text 
-            style={[styles.voucherText, {color: textColor, marginLeft: 15, fontSize: 20}]}> 
-            {voucherType} 
-          </Text>            
-        </View>  
-        <View style={[styles.voucherRow, {marginTop: 30}]}>
-          <Text style={[styles.voucherText, {color: 'white'}]}> 
-            {name} 
-          </Text>
-        </View>
-        <View style={styles.voucherRow}>
-          <Text style={[styles.voucherText, {color: 'white'}]}> 
-            {email}
-          </Text>
-        </View>
-        <View style={[styles.voucherRow, {marginTop: 20}]}>
-            <Text style={[styles.voucherText, {color: 'white'}]}>
+    return (
+      <View style={{backgroundColor: Color.BACKGROUND, flex: 1}}>
+        <LinearGradient style={styles.voucherView}
+          colors={[voucherColor, Color.VOUCHER_SECOND_COLOR]}>
+          <View style={styles.voucherRow}>
+            <Text style={[styles.voucherText, {marginTop:6}]}> 
+              Voucher #{this.props.voucher.id}
+            </Text>
+            <Image source={require('../images/visa-logo-voucher-details.png')}/>    
+          </View>
+          <View style={styles.voucherLogoView}>
+            <Image source={voucherLogo}/>                    
+            <Text 
+              style={[styles.voucherText, {color: textColor, marginLeft: 15, fontSize: 20}]}> 
+              {voucherType} 
+            </Text>            
+          </View>  
+          <View style={[styles.voucherRow, {marginTop: 30}]}>
+            <Text style={styles.voucherText}> 
+              {name} 
+            </Text>
+          </View>
+          <View style={styles.voucherRow}>
+            <Text style={styles.voucherText}> 
+              {email}
+            </Text>
+          </View>
+          <View style={[styles.voucherRow, {marginTop: 20}]}>
+            <Text style={styles.voucherText}>
               {`of  `} 
               <Text style={{color: Color.BLUE, fontSize: 28, paddingLeft: 20}}> 
                 $ {this.props.voucher.amount} 
               </Text>
             </Text>
-        </View>
-        {
-          showButtons ? 
-          <View style={[styles.voucherRow, {marginTop: 30}]}>
-              <TouchableOpacity
-                  style={styles.buttonSend}
-                  onPress={ this.onSendPress } >
-              <Image source={require('../images/send-logo.png')} />
-              <Text
-                  style={[styles.buttonText, { color: Color.RED, paddingHorizontal: 10 }]}>
-                  Send
-              </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                  style={styles.buttonRefund}
-                  onPress={ this.onRefundPress } >
-              <Image source={require('../images/refund-logo.png')} />
-              <Text
-                  style={[styles.buttonText, { color: Color.PURPLE, paddingHorizontal: 10 }]}>
-                  Refund
-              </Text>
-              </TouchableOpacity>            
           </View>
-          : 
-          null
-        }
-        <View style={styles.footerText}>
-          <Text style={[styles.voucherText, {color: 'white'}]}> Today, 2:40 PM </Text>
-        </View>
-      </LinearGradient>
-    </View>     
+          {
+            showButtons ? 
+            <View style={[styles.voucherRow, {marginTop: 30}]}>
+              <TouchableOpacity style={styles.button}
+                onPress={this.onSendPress}>
+                <Image source={require('../images/send-logo.png')}/>
+                <Text style={[styles.buttonText, {color: Color.RED, paddingHorizontal: 10}]}>
+                  Send
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.button, {width: 130}]}
+                onPress={this.onRefundPress}>
+                <Image source={require('../images/refund-logo.png')}/>
+                <Text style={[styles.buttonText, {color: Color.PURPLE, paddingHorizontal: 10}]}>
+                  Refund
+                </Text>
+              </TouchableOpacity>            
+            </View>
+            : null
+          }
+          <View style={styles.footerText}>
+            <Text style={styles.voucherText}> 
+              Today, 2:40 PM 
+            </Text>
+          </View>
+        </LinearGradient>
+      </View>     
     );
-
-    }
-
   }
+}
 
 const styles = StyleSheet.create({
     voucherView: {
@@ -232,13 +192,12 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between', 
     },
     voucherText: {
-      color: 'rgba(255,255,255,0.7)', 
+      color: Color.TEXT_DEFAULT, 
       backgroundColor: 'transparent',
       fontSize: 18,
-      //textAlign: 'center',
     },
-    buttonSend: {
-      backgroundColor: '#1a1a1a', 
+    button: {
+      backgroundColor: Color.BACKGROUND_GREY, 
       borderRadius: 20, 
       flexDirection: 'row',
       alignItems: 'center',
@@ -246,15 +205,6 @@ const styles = StyleSheet.create({
       padding: 10,      
       width: 120,
     },
-    buttonRefund: {
-        backgroundColor: '#1a1a1a', 
-        borderRadius: 20, 
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 20,      
-        padding: 10,      
-        width: 130,
-      },
     buttonText: {
       backgroundColor: 'transparent',
       fontSize: 18,
