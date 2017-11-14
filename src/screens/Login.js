@@ -92,6 +92,20 @@ class Login extends Component<{}> {
     });
   }
 
+  textInput = (keyboardType, defaultValue, isPassword=false) => {
+    return(
+      <TextInput
+        style={styles.inputInput}
+        color={Color.INPUT_TEXT}
+        selectionColor={Color.BLUE}                     
+        autoCorrect={false}
+        keyboardType={keyboardType}
+        defaultValue={defaultValue}  
+        secureTextEntry={isPassword}>
+      </TextInput>
+    );
+  }
+
   render() {
 
     const signInButtonText = this.state.createAccountSelected ? 'Continue' : 'Sign In';
@@ -108,11 +122,12 @@ class Login extends Component<{}> {
     }
 
     return (
-      <Image resizeMode='cover' style={styles.container}  
+      <Image style={styles.container} 
+        resizeMode='cover'          
         source={require('../images/background-more.png')}>
         {
           this.state.createAccountSelected ?  
-            <TouchableOpacity style={styles.backButton}
+            <TouchableOpacity style={styles.backButton}              
               onPress={this.onBackButtonPress}>
               <Image source={require('../images/back-button.png')} />
             </TouchableOpacity>    
@@ -123,74 +138,39 @@ class Login extends Component<{}> {
         <View style={styles.centerView}>
           {
             this.state.loadStartSreen ? 
-              <Text 
-                style={styles.textCenter}> 
+              <Text style={styles.textCenter}> 
                 I'm already a member
               </Text> 
             :           
               <View style={styles.inputsView}>
                 <View style={styles.input}>
-                  <Text
-                    style={styles.inputLabel}>
+                  <Text style={styles.inputLabel}>
                     Email
                   </Text>
-                  <TextInput
-                    color='white'
-                    selectionColor={Color.BLUE}                     
-                    autoCorrect={false}
-                    keyboardType='email-address'
-                    defaultValue='Brain.Mendoza@hotmail.com'                          
-                    placeholder='Brain.Mendoza@hotmail.com'      
-                    placeholderTextColor='white'                    
-                    style={styles.inputInput}>
-                  </TextInput>
+                  {this.textInput('email-address', 'Brain.Mendoza@hotmail.com')}                  
                 </View>
                 {
                   this.state.createAccountSelected ?            
                     <View style={styles.input}>
-                      <Text
-                        style={styles.inputLabel}>
+                      <Text style={styles.inputLabel}>
                         Phone
                       </Text>
-                      <TextInput
-                        color='white'
-                        selectionColor={Color.BLUE}                     
-                        autoCorrect={false}
-                        keyboardType='phone-pad'
-                        defaultValue='605-848-7840'      
-                        placeholder='605-848-7840'      
-                        placeholderTextColor='grey'                    
-                        style={styles.inputInput}>
-                      </TextInput>
+                      {this.textInput('phone-pad', '605-848-7840')}                  
                     </View>
                     : 
                     null
                 }
                 <View style={styles.input}>
-                  <Text
-                    style={styles.inputLabel}>
+                  <Text style={styles.inputLabel}>
                     Password
                   </Text>
-                  <TextInput
-                    color='white'
-                    selectionColor={Color.BLUE}                     
-                    autoCorrect={false}
-                    keyboardType='default'
-                    defaultValue='605-848-7840'  
-                    placeholder=''      
-                    placeholderTextColor='grey'  
-                    secureTextEntry                                
-                    style={styles.inputInput}>
-                  </TextInput>
+                  {this.textInput('default', '605-848', true)}
                 </View>
               </View>            
           }
-          <TouchableOpacity 
-            style={styles.buttonView}
-            onPress={ this.signIn }
-          >
-            <Text 
-              style={styles.buttonText}> 
+          <TouchableOpacity style={styles.buttonView}
+            onPress={this.signIn}>
+            <Text style={[styles.buttonText, {color: Color.BUTTON_FIRST_TEXT}]}> 
               {signInButtonText}
             </Text>
           </TouchableOpacity>
@@ -198,21 +178,18 @@ class Login extends Component<{}> {
             (this.state.createAccountSelected) ? 
             null
             : 
-            <TouchableOpacity
-              style={styles.buttonView2}
-              onPress={ this.createAccount }
-            >
-              <Text
-                style={styles.buttonText2}> 
+            <TouchableOpacity style={styles.buttonView2}
+              onPress={this.createAccount}>
+              <Text style={[styles.buttonText, {color: Color.BUTTON_SECOND_TEXT}]}> 
                 Create an Account
               </Text>
             </TouchableOpacity> 
           }
         </View>
         <View style={styles.footerView} >
-          <Text style={{color: 'white'}} >
+          <Text style={{color: Color.TEXT_DEFAULT}} >
             {footerTextPartOne}
-            <Text style={{color: '#33ccff', fontWeight: "bold"}}> 
+            <Text style={{color: Color.BLUE, fontWeight: "bold"}}> 
               {footerTextPartTwo} 
             </Text>
           </Text>
@@ -243,7 +220,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Login);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     alignItems: 'center',
   },
   backButton: {
@@ -267,13 +244,13 @@ const styles = StyleSheet.create({
   },
   input: {
     flexDirection: 'row',
-    backgroundColor: Color.GREY_BACKGROUND,    
+    backgroundColor: Color.INPUT_BACKGROUND,    
     margin: 1,
     height: 50,
     width: Dimensions.get('window').width,
   },
   inputLabel: {
-    color: 'rgba(255,255,255,0.7)', 
+    color: Color.INPUT_LABEL, 
     width: 100, 
     fontSize: 15,
     lineHeight: 15,        
@@ -293,11 +270,11 @@ const styles = StyleSheet.create({
   },
   textCenter: {
     textAlign: 'center',
-    color: 'white', 
+    color: Color.TEXT_DEFAULT, 
     fontWeight: '700',    
   },
   buttonView: {
-    backgroundColor: '#33ccff',
+    backgroundColor: Color.BUTTON_FIRST_BACKGROUND,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20,
@@ -305,23 +282,17 @@ const styles = StyleSheet.create({
     height: 50,
   }, 
   buttonView2: {
-    borderColor: '#33ccff',
-    borderWidth: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BUTTON_SECOND_BACKGROUND,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20,
     width: 300,
     height: 50,
+    borderColor: Color.BUTTON_BORDER,
+    borderWidth: 1,
   }, 
   buttonText: {
     textAlign: 'center',
-    color: 'black', 
-    fontWeight: '700'
-  },
-  buttonText2: {
-    textAlign: 'center',
-    color: '#33ccff', 
     fontWeight: '700'
   },
   footerView: {
