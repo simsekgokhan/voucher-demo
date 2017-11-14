@@ -4,7 +4,7 @@ const themes = {
     buttonTextColor: 'black',    
     backgroundColor: 'white',
     changeThemeBackgroundColor: 'grey',   
-    buyVoucherButton: require('../images/button-white.png'),  
+    buyVoucherButton: require('../images/button.png'),  
     pickerTextColor: 'black',    
     pickerLabelColor: 'black',    
   },  
