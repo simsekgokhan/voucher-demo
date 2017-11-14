@@ -29,6 +29,7 @@ const Color = {
     GREY_BACKGROUND: '#1a1a1a',
     GREY_TEXT: 'rgba(255,255,255,0.7)',
 
+    // --- New     
     // Common
     BACKGROUND: 'black',
     
@@ -37,6 +38,7 @@ const Color = {
     INPUT_LABEL: 'rgba(255,255,255,0.7)',
     INPUT_BACKGROUND: BACKGROUND_GREY,
     TEXT_DEFAULT: 'white',
+    TEXT_GREY: 'rgba(255,255,255,0.7)',
     BUTTON_FIRST_TEXT: BLACK,
     BUTTON_SECOND_TEXT: BLUE,
     BUTTON_FIRST_BACKGROUND: BLUE,

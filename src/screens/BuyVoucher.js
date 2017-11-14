@@ -23,9 +23,7 @@ class BuyVoucher extends Component<{}> {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
   
-  state = {
-    selectedValue: 10,
-  };
+  state = { selectedValue: 10 };
 
   onNavigatorEvent(event) { 
     if (event.type === 'NavBarButtonPress' && event.id === 'buy')
@@ -104,20 +102,18 @@ class BuyVoucher extends Component<{}> {
 
     return (
       <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>        
-        <View style={styles.buttons}>  
+        <View>  
           <View style={styles.buttonsRowOne}>   
-            <TouchableOpacity 
-              onPress={() => this.onButtonPress(5)}
-              style={styles.button5}>                    
+            <TouchableOpacity style={styles.button5}
+              onPress={() => this.onButtonPress(5)}>                    
               <Image style={styles.imagestyle} source={button5}>
                 <Text style={button5style}> 
                   $5
                 </Text>              
               </Image>          
             </TouchableOpacity>             
-            <TouchableOpacity 
-              onPress={() => this.onButtonPress(20)}
-              style={styles.button20}>        
+            <TouchableOpacity style={styles.button20}
+              onPress={() => this.onButtonPress(20)}>        
               <Image style={styles.imagestyle} source={button20}>
                 <Text style={button20style}> 
                   $20
@@ -126,18 +122,16 @@ class BuyVoucher extends Component<{}> {
             </TouchableOpacity>    
           </View>          
           <View style={styles.buttonsRowTwo}>   
-            <TouchableOpacity 
-              onPress={() => this.onButtonPress(10)}
-              style={styles.button10}>                    
+            <TouchableOpacity style={styles.button10}
+              onPress={() => this.onButtonPress(10)}>                    
               <Image style={styles.imagestyle} source={button10}>
                 <Text style={button10style}> 
                   $10
                 </Text>              
               </Image>          
             </TouchableOpacity>   
-            <TouchableOpacity 
-              onPress={() => this.onButtonPress(50)}
-              style={styles.button50}>                    
+            <TouchableOpacity style={styles.button50}
+              onPress={() => this.onButtonPress(50)}>                    
               <Image style={styles.imagestyle} source={button50}>
                 <Text style={button50style}> 
                   $50
@@ -150,9 +144,8 @@ class BuyVoucher extends Component<{}> {
           <Text style={styles.pickerLabel}> 
             Value, $
           </Text>            
-          <Picker 
-            style={styles.picker} 
-            itemStyle={{color: 'white', fontSize: 26}}
+          <Picker style={styles.picker} 
+            itemStyle={{color: Color.TEXT_DEFAULT, fontSize: 26}}
             selectedValue = {this.state.selectedValue} 
             onValueChange = {this.updateSelectedValue}>
             <Picker.Item label = "5.00" value = {5} />
@@ -180,8 +173,6 @@ export default connect(mapStateToProps)(BuyVoucher);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  buttons:{
   },
   buttonsRowOne: {
     alignItems: 'center',
@@ -265,7 +256,7 @@ const styles = StyleSheet.create({
     marginRight: 100,
   },
   pickerLabel: {
-    color: Color.GREY_TEXT, 
+    color: Color.TEXT_GREY, 
     fontSize: 16, 
     paddingLeft: 60,
   },
