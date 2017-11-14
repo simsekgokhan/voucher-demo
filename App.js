@@ -20,6 +20,7 @@ import Settings from './src/screens/Settings';
 import ShareOnEmail from './src/screens/ShareOnEmail';
 import ShareOnEmailSend from './src/screens/ShareOnEmailSend';
 import ScanQrCode from './src/screens/ScanQrCode';
+import ChangeTheme from './src/screens/ChangeTheme';
 
 import Color from './src/common/colors';
 
@@ -42,6 +43,7 @@ Navigation.registerComponent('Settings', () => Settings);
 Navigation.registerComponent('ShareOnEmail', () => ShareOnEmail);
 Navigation.registerComponent('ShareOnEmailSend', () => ShareOnEmailSend);
 Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
+Navigation.registerComponent('ChangeTheme', () => ChangeTheme, store, Provider);
 
 // Main app entrance here
 startSingleScreenApp();

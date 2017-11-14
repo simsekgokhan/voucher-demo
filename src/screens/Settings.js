@@ -6,6 +6,14 @@ import Color from '../common/colors';
 
 export default class Settings extends Component<{}> {
 
+  changeTheme = () => {
+    this.props.navigator.push({
+      screen: 'ChangeTheme',
+      title: 'Change Theme',
+      backButtonTitle: 'Back',
+    });
+  }
+
   render() {      
     return (
       <View style={styles.container}>
@@ -39,7 +47,17 @@ export default class Settings extends Component<{}> {
           <Text style={[styles.largeText, {color: Color.BLUE}]}> 
             Change Password
           </Text>                              
-        </TouchableOpacity>               
+        </TouchableOpacity>     
+        <View style={styles.blockBlack}>
+          <Text style={styles.smallText}> 
+            THEME
+          </Text>                 
+        </View>         
+        <TouchableOpacity onPress={this.changeTheme} style={styles.block}>
+          <Text style={[styles.largeText, {color: Color.BLUE}]}> 
+            Change Theme
+          </Text>                              
+        </TouchableOpacity>                     
       </View>
     );
   }
