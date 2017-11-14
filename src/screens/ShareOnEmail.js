@@ -27,7 +27,11 @@ export default class ShareOnEmail extends Component<{}> {
             title: 'Send',    
           }]
         },
-        passProps: {id: this.props.id, confirmType: Voucher.SEND, amount: this.props.amount},        
+        passProps: { 
+          id: this.props.id, 
+          confirmType: Voucher.SEND,
+          amount: this.props.amount
+        }        
       });
     }
   }
@@ -38,8 +42,8 @@ export default class ShareOnEmail extends Component<{}> {
 
   Button = (email, buttonId) => {
     return(
-    <TouchableOpacity onPress={ () => { this.onButtonPress(buttonId)}} 
-      style={styles.button}>
+    <TouchableOpacity style={styles.button}
+      onPress={() => { this.onButtonPress(buttonId) }}>
       <Text style={styles.largeText}> 
         {email}
       </Text>                         
@@ -71,15 +75,15 @@ export default class ShareOnEmail extends Component<{}> {
             RECENT SUBMITTERS
           </Text>                 
         </View>                          
-        { this.Button('Norman.Garber@hotmail.com', 1)}                 
+        { this.Button('Norman.Garber@hotmail.com', 1) }                 
         { this.HorLine() }
-        { this.Button('Emanuel.Barbieri@gmail.com', 2)}                         
+        { this.Button('Emanuel.Barbieri@gmail.com', 2) }                         
         { this.HorLine() }
-        { this.Button('Roxanne.Buckalow@hotmail.com', 3)}                         
+        { this.Button('Roxanne.Buckalow@hotmail.com', 3) }                         
         { this.HorLine() }
-        { this.Button('Darlene.Buckalew@hotmail.com', 4)}                                  
+        { this.Button('Darlene.Buckalew@hotmail.com', 4) }                                  
         { this.HorLine() }
-        { this.Button('Murray.Derek@hotmail.com', 5)}                   
+        { this.Button('Murray.Derek@hotmail.com', 5) }                   
         <View style={styles.blockBlack}>
           <Text style={styles.smallText}> 
             NEW SUBMITTER
@@ -89,7 +93,7 @@ export default class ShareOnEmail extends Component<{}> {
           <Text style={styles.smallText}> 
             To:
           </Text>        
-          <Image source={require('../images/add-icon.png')} />                           
+          <Image source={require('../images/add-icon.png')}/>                           
         </TouchableOpacity>               
       </View>
     );
@@ -100,24 +104,24 @@ export default class ShareOnEmail extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   blockBlack: {
     marginHorizontal: 4, 
     marginTop: 10,
     paddingVertical: 10,    
     paddingHorizontal: 20,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   horLineView: {
     marginHorizontal: 4, 
     height: 1,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   horLine: {
     marginLeft: 20, 
     height: 1,
-    backgroundColor: '#404040',
+    backgroundColor: Color.H_LINE_GREY,
   },
   button: {
     marginHorizontal: 4, 
@@ -126,14 +130,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',     
     height: 56,
     padding: 20,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   smallText: {
-    color: 'grey', 
+    color: Color.TEXT_GREY, 
     fontSize: 13, 
   },
   largeText: {
-    color: 'white', 
+    color: Color.TEXT_DEFAULT, 
     fontSize: 15, 
   }
 });

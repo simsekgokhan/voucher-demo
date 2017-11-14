@@ -61,6 +61,10 @@ const Color = {
     // More
     TEXT_MORE_BALANCE: BLUE,
     MORE_BUTTON_BACKGROUND: '#171721',
+
+    // Share On Email
+    H_LINE_GREY: '#404040',
+
 }
 
 export default Color;
