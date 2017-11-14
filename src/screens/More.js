@@ -72,19 +72,16 @@ class More extends Component<{}> {
 
   render() {
     return (
-      <Image resizeMode='cover' style={styles.container}
+      <Image style={styles.container}
+        resizeMode='cover' 
         source={require('../images/background-more.png')}>                   
-        <Image 
-          style={{marginTop: 24}} 
-          source={require('../images/app-logo.png')}>           
-        </Image>     
-        <Image 
-          style={styles.row0} 
+        <Image style={{marginTop: 24}} 
+          source={require('../images/app-logo.png')}/>                
+        <Image style={styles.row0} 
           source={require('../images/more-row-0.png')}>          
           <View style={styles.row0View}>
-            <Image 
-            style={{marginTop: 6}} 
-            source={require('../images/balance-icon.png')}/>
+            <Image style={{marginTop: 6}} 
+              source={require('../images/balance-icon.png')}/>
             <View style={styles.textView}>
               <Text style={styles.text}>
                 Current Balance
@@ -96,43 +93,43 @@ class More extends Component<{}> {
           </View>
         </Image>
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(1) } >
-          <Image source={require('../images/wallet-icon.png')} />
+          onPress={() => this.onButtonPress(1)}>
+          <Image source={require('../images/wallet-icon.png')}/>
           <Text style={styles.textButton}>
               My Wallet
           </Text>
         </TouchableOpacity>   
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(2) } >
+          onPress={ () => this.onButtonPress(2)}>
           <Image source={require('../images/pay-card-regis-icon.png')} />
           <Text style={styles.textButton}>
               Payment Card Registration
           </Text>
         </TouchableOpacity>          
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(3) } >
-          <Image source={require('../images/send-voucher-icon.png')} />
+          onPress={ () => this.onButtonPress(3)}>
+          <Image source={require('../images/send-voucher-icon.png')}/>
           <Text style={styles.textButton}>
               Send Voucher
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(4) } >
-          <Image source={require('../images/settings-icon.png')} />
+          onPress={() => this.onButtonPress(4)}>
+          <Image source={require('../images/settings-icon.png')}/>
           <Text style={styles.textButton}>
               Settings
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(5) } >
-          <Image source={require('../images/invite-icon.png')} />
+          onPress={() => this.onButtonPress(5)}>
+          <Image source={require('../images/invite-icon.png')}/>
           <Text style={styles.textButton}>
               Invite Contacts
           </Text>
         </TouchableOpacity>       
         <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(6) } >
-          <Image source={require('../images/logout-icon-3.png')} />
+          onPress={() => this.onButtonPress(6)}>
+          <Image source={require('../images/logout-icon-3.png')}/>
           <Text style={[styles.textButton, {color: Color.BLUE}]}>
               Logout
           </Text>
@@ -159,7 +156,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(More);
 const styles = StyleSheet.create({
   container: {
       alignItems: 'center',
-      backgroundColor: 'black',  
+      backgroundColor: Color.BACKGROUND,  
     },
   logo: {
     alignItems: 'center',
@@ -179,15 +176,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     backgroundColor: 'transparent',
-    color: 'white'
+    color: Color.TEXT_DEFAULT
   },
   textBalance: {
-    color: Color.BLUE,
+    color: Color.TEXT_MORE_BALANCE,
     fontSize: 26,
     backgroundColor: 'transparent',
   },
   rowButton: {
-    backgroundColor: '#171721',
+    backgroundColor: Color.MORE_BUTTON_BACKGROUND,
     alignItems: 'center',
     flexDirection: 'row',
     height: 56,
@@ -199,7 +196,7 @@ const styles = StyleSheet.create({
     marginLeft: 22,
     fontSize: 18,
     backgroundColor: 'transparent',
-    color: 'white'
+    color: Color.TEXT_DEFAULT
   }
 });
 

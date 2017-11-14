@@ -7,6 +7,7 @@ const PURPLE = '#6462E7';
 
 // Common
 const BLACK = 'black';
+const WHITE = 'white';
 const BACKGROUND_GREY = '#1a1a1a';
 
 // Voucher Item Background
@@ -55,6 +56,10 @@ const Color = {
     VOUCHER_SECOND_COLOR: '#0d0d0d',
     VOUCHER_TEXT_1: 'white',
     VOUCHER_TEXT_2: 'rgba(255,255,255,0.7)',    
+
+    // More
+    TEXT_MORE_BALANCE: BLUE,
+    MORE_BUTTON_BACKGROUND: '#171721',
 }
 
 export default Color;
