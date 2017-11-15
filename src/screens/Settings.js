@@ -4,6 +4,9 @@ import {
 } from 'react-native';
 import Color from '../common/colors';
 
+// Enable/disable "Change Theme" menu action
+const SHOW_CHANGE_THEME_ITEM = false;
+
 export default class Settings extends Component<{}> {
 
   changeTheme = () => {
@@ -48,17 +51,23 @@ export default class Settings extends Component<{}> {
             Change Password
           </Text>                              
         </TouchableOpacity>     
-        <View style={styles.blockBlack}>
-          <Text style={styles.smallText}> 
-            THEME
-          </Text>                 
-        </View>         
-        <TouchableOpacity onPress={this.changeTheme} style={styles.block}>
-          <Text style={[styles.largeText, {color: Color.BLUE}]}> 
-            Change Theme
-          </Text>                              
-        </TouchableOpacity>                     
-      </View>
+        {
+          SHOW_CHANGE_THEME_ITEM ?
+          <View>
+            <View style={styles.blockBlack}>
+              <Text style={styles.smallText}> 
+                THEME
+              </Text>                 
+            </View>         
+            <TouchableOpacity onPress={this.changeTheme} style={styles.block}>
+              <Text style={[styles.largeText, {color: Color.BLUE}]}> 
+                Change Theme
+              </Text>                              
+            </TouchableOpacity>   
+          </View>  
+          : null                
+        }
+      </View>        
     );
   }
   
