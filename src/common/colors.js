@@ -53,7 +53,7 @@ const Color = {
   PURCHASED: DARK_GREEN,
   REFUNDED: DARK_PURPLE,
   
-  VOUCHER_SECOND_COLOR: '#0d0d0d',    // for lineargradient
+  VOUCHER_SECOND_COLOR: WHITE,    // for lineargradient
   VOUCHER_TEXT_1: BLACK,
   VOUCHER_TEXT_2: 'grey',    
   

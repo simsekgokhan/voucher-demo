@@ -106,6 +106,7 @@ export default class VoucherDetails extends React.Component {
     return (
       <View style={{backgroundColor: Color.BACKGROUND, flex: 1}}>
         <LinearGradient style={styles.voucherView}
+          start={[0, 0]} end={[1, 0]}
           colors={[voucherColor, Color.VOUCHER_SECOND_COLOR]}>
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {marginTop:6}]}> 
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
     },
     button: {
-      backgroundColor: Color.BACKGROUND_GREY, 
+      backgroundColor: '#eaf2f5', 
       borderRadius: 20, 
       flexDirection: 'row',
       alignItems: 'center',
