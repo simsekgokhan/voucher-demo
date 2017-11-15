@@ -48,7 +48,7 @@ export default class ShareOnEmailSend extends Component<{}> {
           </Text>        
           {this.Input('murray.derek@hotmail.com')}                                       
           <TouchableOpacity style={styles.addButton}>
-            <Image source={require('../images/add-icon.png')} />                                     
+            <Image source={require('../images/add-icon.png')}/>                                     
           </TouchableOpacity>  
         </View>               
         <View style={styles.row}>
@@ -75,7 +75,7 @@ export default class ShareOnEmailSend extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     paddingVertical: 16,
   },
   row: {
@@ -85,23 +85,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',        
     height: 56,
     paddingLeft: 20,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   noteView: {
     marginHorizontal: 4, 
     paddingHorizontal: 12,
     paddingBottom: 18,
     flexDirection: 'row',
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   text: {
-    color: 'grey', 
+    color: Color.TEXT_GREY, 
     fontSize: 15, 
   },
   input: {
     paddingLeft: 10,
     fontSize: 15,
-    color: 'white',
+    color: Color.TEXT_DEFAULT,
   },
   addButton: {
     flexDirection: 'row',
