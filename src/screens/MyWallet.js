@@ -20,7 +20,7 @@ export default class MyWallet extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.topView}>
-          <Text style={[styles.validThru, {fontSize: 17, color:Color.GREY_TEXT}]}> 
+          <Text style={[styles.validThru, {fontSize: 17, color: Color.TEXT_GREY}]}> 
               Current Balance 
           </Text>        
           <Text style={{color: Color.TEXT_DEFAULT, fontSize: 26, marginTop: 5}}> 

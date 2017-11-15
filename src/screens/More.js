@@ -87,7 +87,7 @@ class More extends Component<{}> {
                 Current Balance
               </Text>
               <Text style={styles.textBalance}>
-                $ 500,689.00
+                $ 500,689.08
               </Text>
             </View>
           </View>
@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
     color: Color.TEXT_MORE_BALANCE,
     fontSize: 26,
     backgroundColor: 'transparent',
+    marginTop: 4,
   },
   rowButton: {
     backgroundColor: Color.MORE_BUTTON_BACKGROUND,

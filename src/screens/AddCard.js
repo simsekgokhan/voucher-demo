@@ -22,13 +22,14 @@ export default class AddCard extends Component<{}> {
     }
   }
 
-  Input = (placeholder, maxLength = 4, keyboardType='number-pad') => {
+  Input = (placeholder, maxLength = 4, keyboardType='number-pad', autoFocus=false) => {
     return(
       <TextInput
         defaultValue={this.props.showEmptyForm ? null : placeholder}
         style={styles.input}
         selectionColor={Color.BLUE} 
         autoCorrect={false}
+        autoFocus={autoFocus}
         keyboardType={keyboardType}
         maxLength={maxLength}
         placeholder={placeholder}
@@ -77,7 +78,7 @@ export default class AddCard extends Component<{}> {
               </Text>
             </View>    
             <View style={styles.inputRow}>
-              {this.Input(card.inputOne)}             
+              {this.Input(card.inputOne, 4, 'number-pad', showEmptyForm)}             
               {this.Input(card.inputTwo)} 
               {this.Input(card.inputThree)} 
               {this.Input(card.inputFour)} 
@@ -93,7 +94,7 @@ export default class AddCard extends Component<{}> {
                 placeholder={card.inputName}      
                 placeholderTextColor={Color.TEXT_GREY}/> 
               {this.Input(card.inputDate, 5, 'numbers-and-punctuation')} 
-              {this.Input(card.inputCvv)}                         
+              {this.Input(card.inputCvv, 4, 'number-pad', !showEmptyForm)}                         
             </View>     
           </View>
         </View>        
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: Color.TEXT_GREY, 
     fontSize: 15,
-    marginTop: 80,
+    marginTop: 70,
   },
   card: {
     marginHorizontal: 20, 
