@@ -81,7 +81,7 @@ class Receive extends Component<{}> {
           <TouchableOpacity 
             onPress={this.onButtonPress}
             style={styles.footerView}>       
-            <Text style={{color: 'white', fontSize: 12, backgroundColor:'transparent'}}> 
+            <Text style={{color: 'white', fontSize: 14, backgroundColor:'transparent'}}> 
               Scan my payment QR-code
             </Text>             
             <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           

@@ -133,8 +133,8 @@ export default class VoucherDetails extends React.Component {
           <View style={[styles.voucherRow, {marginTop: 20}]}>
             <Text style={styles.voucherText}>
               {`of  `} 
-              <Text style={{color: Color.BLUE, fontSize: 28, paddingLeft: 20}}> 
-                $ {this.props.voucher.amount} 
+              <Text style={{color: Color.BLUE, fontSize: 32, paddingLeft: 20}}> 
+                $ {this.props.voucher.amount}.00 
               </Text>
             </Text>
           </View>

@@ -76,8 +76,8 @@ class ConfirmScreen extends Component<{}> {
           <Text style={{color: Color.TEXT_DEFAULT, fontSize: 18, marginTop: 50}}> 
             {confirmType} 
           </Text>
-          <Text style={{color: textColor, fontSize: 24, marginTop: 4}}> 
-            ${amount} 
+          <Text style={{color: textColor, fontSize: 24, marginTop: 6}}> 
+            ${amount}.00
           </Text>          
           <TouchableOpacity 
             onPress={this.onTouchIdPressed}>

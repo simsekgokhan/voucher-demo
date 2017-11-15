@@ -53,7 +53,7 @@ export default class MyWallet extends React.Component {
             </View>
           </View>
           <View style={[styles.row0, {justifyContent: 'center'}]}>
-            <View style={{marginLeft: 34}}>
+            <View style={{marginLeft: 44}}>
               <Text style={styles.validThru}>
                 VALID 
               </Text>
@@ -65,7 +65,7 @@ export default class MyWallet extends React.Component {
               01/20
             </Text>
           </View>
-          <View style={styles.row0}>
+          <View style={[styles.row0, {marginTop: 6}]}>
             <Text style={[styles.text, {fontSize: 17, marginTop: 8}]}>
               BRIAN MENDOZA
             </Text>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   text: {
     backgroundColor: 'transparent',
     color: Color.TEXT_DEFAULT,
-    fontFamily: 'Roboto-Regular'
+    fontFamily: 'Roboto-Regular',
   },
   cardNoText: {
     fontSize: 26,

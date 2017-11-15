@@ -43,7 +43,7 @@ export default class AddCard extends Component<{}> {
       inputTwo: showEmptyForm ? '0000' : '1234',
       inputThree: showEmptyForm ? '0000' : '5678',
       inputFour: showEmptyForm ? '0000' : '9000',
-      inputName: showEmptyForm ? 'Name Cardholder' : 'Brian Mendoza',
+      inputName: showEmptyForm ? 'Full Name on Card ' : 'Brian Mendoza',
       inputDate: showEmptyForm ? 'MM/YY' : '01/20',
       inputCvv: showEmptyForm ? '0000' : '',
     }   
@@ -106,8 +106,8 @@ export default class AddCard extends Component<{}> {
           showEmptyForm ? null :
           <Text style={styles.bottomText}>
           {`
-            Fill in the CVV field to
-            register the Credit Card
+            Fill in the CVV field
+            to register the Credit Card
           `}
           </Text>
         }
@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
     fontSize: 11, 
     color: Color.TEXT_DEFAULT, 
     marginTop: 40,
-    marginLeft: 4  
+    marginLeft: 4,  
+    marginBottom: 4,  
   },
   inputRow: {
     flexDirection: 'row',
@@ -175,10 +176,10 @@ const styles = StyleSheet.create({
     marginRight: 14,
     position: 'absolute',     
     top: 350, 
-    left: 144, 
+    left: 132, 
     right: 0, 
     bottom: 0,     
     backgroundColor: 'transparent',    
-    width: 220,
+    width: 228,
   },
 });

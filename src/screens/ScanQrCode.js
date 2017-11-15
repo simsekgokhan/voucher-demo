@@ -39,7 +39,7 @@ class ScanQrCode extends Component<{}> {
         <TouchableOpacity 
           onPress={this.onButtonPress}
           style={styles.footerView}>       
-          <Text style={{color: 'white', backgroundColor:'transparent', fontSize: 12}}> 
+          <Text style={{color: 'white', backgroundColor:'transparent', fontSize: 14}}> 
             Scan my payment QR-code
           </Text>             
           <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
