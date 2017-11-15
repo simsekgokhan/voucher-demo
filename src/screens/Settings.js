@@ -67,28 +67,28 @@ export default class Settings extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   blockBlack: {
     marginHorizontal: 4, 
     marginTop: 10,
     paddingVertical: 10,    
     paddingHorizontal: 20,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   block: {
     marginHorizontal: 4, 
     marginVertical: 2,
     height: 68,
     padding: 20,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   smallText: {
-    color: 'grey', 
+    color: Color.TEXT_GREY, 
     fontSize: 13, 
   },
   largeText: {
-    color: 'white', 
+    color: Color.TEXT_DEFAULT, 
     fontSize: 17, 
   }
 });

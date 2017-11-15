@@ -15,6 +15,7 @@ class ChangeTheme extends Component<{}> {
   onButtonPress(buttonId){
     this.setState({selectedButtonId: buttonId});
     
+    // todo
     // if(buttonId === 1)
     //   this.props.setLiteTheme();    
     // else if(buttonId === 2)
@@ -57,11 +58,11 @@ class ChangeTheme extends Component<{}> {
             THEMES
           </Text>                 
         </View>                          
-        { this.Button('Lite', 1)}                 
+        { this.Button('Lite', 1) }                 
         { this.HorLine() }
-        { this.Button('Dark', 2)}                         
+        { this.Button('Dark', 2) }                         
         { this.HorLine() }
-        { this.Button('Blue', 3)}                                        
+        { this.Button('Blue', 3) }                                        
       </View>
     );
   }
@@ -90,24 +91,23 @@ export default connect(mapStateToProps, mapDispatchToProps)(ChangeTheme);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: 'black',
   },
   blockBlack: {
     marginHorizontal: 4, 
     marginTop: 10,
     paddingVertical: 10,    
     paddingHorizontal: 20,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   horLineView: {
     marginHorizontal: 4, 
     height: 1,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   horLine: {
     marginLeft: 20, 
     height: 1,
-    backgroundColor: '#404040',
+    backgroundColor: Color.H_LINE_GREY,
   },
   button: {
     marginHorizontal: 4, 
@@ -116,14 +116,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',     
     height: 56,
     padding: 20,
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
   },
   smallText: {
-    color: 'grey', 
+    color: Color.TEXT_GREY, 
     fontSize: 13, 
   },
   largeText: {
-    color: 'white', 
+    color: Color.TEXT_DEFAULT, 
     fontSize: 15, 
   }
 });
