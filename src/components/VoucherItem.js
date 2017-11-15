@@ -77,7 +77,8 @@ export default class VoucherItem extends Component<{}> {
 
     return(
       <LinearGradient style={styles.voucherView}
-        colors={[voucherColor, Color.VOUCHER_SECOND_COLOR]} >    
+        start={[0, 0]} end={[1, 0]}
+        colors={[voucherColor, 'white']}>    
         <TouchableOpacity style={styles.voucher}
           onPress={this.toggleExpand}>
           <View style={styles.voucherRow}>
@@ -191,7 +192,8 @@ const styles = StyleSheet.create({
   },
   voucherText: {
     color: Color.VOUCHER_TEXT_2, 
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',    
+    fontSize: 15,
   },
   voucherHorLine: {
     padding: 2,

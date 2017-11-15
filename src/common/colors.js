@@ -7,27 +7,27 @@ const BACKGROUND_GREY = '#1a1a1a';
 // Text 
 const BLUE = '#33ccff';
 const RED = '#FF2D55';
-const GREEN = '#00e600';
+const GREEN = '#00cc00';
 const PURPLE = '#6462E7';
 
 // Voucher Item Background
-const DARK_BLUE = '#006699';
-const DARK_RED = '#4d0000';
-const DARK_GREEN = '#003300';
-const DARK_PURPLE = '#1f004d';
+const DARK_BLUE = '#cceeff';
+const DARK_RED = '#ffe6ff';
+const DARK_GREEN = '#ccffea';
+const DARK_PURPLE = '#d6d6f5';
 
 const Color = {  
   WHITE: 'white',
 
   BLUE: '#33ccff',
   RED: '#FF2D55',
-  GREEN: '#00e600',
+  GREEN: '#00cc00',
   PURPLE: '#6462E7',
   
-  DARK_BLUE: '#006699',
-  DARK_RED: '#4d0000',
-  DARK_GREEN: '#003300',
-  DARK_PURPLE: '#1f004d',
+  DARK_BLUE: DARK_BLUE,
+  DARK_RED: DARK_RED,
+  DARK_GREEN: DARK_GREEN,
+  DARK_PURPLE: DARK_PURPLE,
   
   // --- New     
   // Common
@@ -54,8 +54,8 @@ const Color = {
   REFUNDED: DARK_PURPLE,
   
   VOUCHER_SECOND_COLOR: '#0d0d0d',    // for lineargradient
-  VOUCHER_TEXT_1: 'white',
-  VOUCHER_TEXT_2: 'rgba(255,255,255,0.7)',    
+  VOUCHER_TEXT_1: BLACK,
+  VOUCHER_TEXT_2: 'grey',    
   
   // More
   TEXT_MORE_BALANCE: BLUE,
