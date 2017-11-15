@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     backgroundColor: 'transparent',  
-    color: 'white', 
+    color: Color.TEXT_GREY_DARK, 
     fontWeight: '700',
     fontFamily: 'Roboto-Regular',
     fontSize: 24,
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     marginRight: 100,
   },
   pickerLabel: {
-    color: Color.TEXT_GREY, 
+    color: Color.TEXT_GREY_DARK, 
     fontSize: 18, 
     paddingLeft: 60,
   },
