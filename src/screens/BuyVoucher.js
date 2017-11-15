@@ -153,6 +153,9 @@ class BuyVoucher extends Component<{}> {
             <Picker.Item label = "20.00" value = {20} />
             <Picker.Item label = "50.00" value = {50} />
             <Picker.Item label = "100.00" value = {100} />
+            <Picker.Item label = "200.00" value = {200} />
+            <Picker.Item label = "500.00" value = {500} />
+            <Picker.Item label = "1000.00" value = {1000} />
           </Picker>              
         </View>
 
