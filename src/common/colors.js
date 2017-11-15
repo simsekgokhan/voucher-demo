@@ -16,7 +16,9 @@ const DARK_RED = '#4d0000';
 const DARK_GREEN = '#003300';
 const DARK_PURPLE = '#1f004d';
 
-const Color = {
+const Color = {  
+  WHITE: 'white',
+
   BLUE: '#33ccff',
   RED: '#FF2D55',
   GREEN: '#00e600',
@@ -29,14 +31,14 @@ const Color = {
   
   // --- New     
   // Common
-  BACKGROUND: BLACK,
+  BACKGROUND: WHITE,
   BACKGROUND_GREY: BACKGROUND_GREY,
   
   // Login 
   INPUT_TEXT: 'white',
   INPUT_LABEL: 'rgba(255,255,255,0.7)',
   INPUT_BACKGROUND: BACKGROUND_GREY,
-  TEXT_DEFAULT: 'white',
+  TEXT_DEFAULT: BLACK,
   TEXT_GREY: 'rgba(255,255,255,0.7)',
   BUTTON_FIRST_TEXT: BLACK,
   BUTTON_SECOND_TEXT: BLUE,

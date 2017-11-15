@@ -62,9 +62,9 @@ export function startSingleScreenApp(){
     },
     appStyle: {
       forceTitlesDisplay: false,
-      navBarBackgroundColor: 'black',
-      tabBarBackgroundColor: 'black',
-      screenBackgroundColor: 'black',                              
+      navBarBackgroundColor: Color.BACKGROUND,
+      tabBarBackgroundColor: Color.BACKGROUND,
+      screenBackgroundColor: Color.BACKGROUND,                              
     }
   });
 }
@@ -80,7 +80,6 @@ export function startTabBasedApp(initialTabIdx=0) {
         title: 'Vouchers',
         navigatorStyle: {
           navBarHidden: true, 
-          navBarTextColor: 'white',
           navBarButtonColor: Color.BLUE,
         },
       },
@@ -91,7 +90,6 @@ export function startTabBasedApp(initialTabIdx=0) {
         selectedIcon: require('./src/images/buy-voucher-active.png'),
         title: 'Buy Voucher',
         navigatorStyle: {
-          navBarTextColor: 'white',
           navBarButtonColor: Color.BLUE,
         },
         navigatorButtons: {
@@ -110,10 +108,8 @@ export function startTabBasedApp(initialTabIdx=0) {
         drawUnderTabBar: true,
         navigatorStyle: {
           tabBarHidden: true,          
-          navBarTextColor: 'white',
           navBarButtonColor: Color.BLUE,
-          drawUnderTabBar: true,
-          tabBarBackgroundColor: 'black',  
+          drawUnderTabBar: true,          
         },
       },
       {
@@ -124,19 +120,19 @@ export function startTabBasedApp(initialTabIdx=0) {
         title: 'More',
         navigatorStyle: {
           navBarHidden: true,
-          navBarTextColor: 'white',
           navBarButtonColor: Color.BLUE,
         },
       },
     ],
     appStyle: {
       forceTitlesDisplay: false, 
-      navBarBackgroundColor: 'black',
-      screenBackgroundColor: 'black',                        
+      navBarBackgroundColor: Color.BACKGROUND,
+      screenBackgroundColor: Color.BACKGROUND,   
     }, 
     tabsStyle: {
-      tabBarBackgroundColor: 'black',   
+      tabBarBackgroundColor: Color.BACKGROUND,   
       initialTabIndex: initialTabIdx,     
+      navBarTextColor: Color.TEXT_DEFAULT,            
     }     
   });
 }

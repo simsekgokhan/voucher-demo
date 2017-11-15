@@ -106,10 +106,8 @@ class BuyVoucher extends Component<{}> {
         break;
     }
 
-    const theme = this.props.app.theme;    
-
     return (
-      <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>        
+      <View style={styles.container}>        
         <View>  
           <View style={styles.buttonsRowOne}>   
             <TouchableOpacity style={styles.button5}
@@ -183,6 +181,7 @@ export default connect(mapStateToProps)(BuyVoucher);
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Color.BACKGROUND,
     flex: 1,
   },
   buttonsRowOne: {
