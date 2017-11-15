@@ -81,7 +81,7 @@ class Receive extends Component<{}> {
           aspect={Camera.constants.Aspect.fill}
           onBarCodeRead={(data) => this.onBarCodeRead(data)} >          
           <Image 
-            style={{marginTop: 120}} 
+            style={{marginTop: 200}} 
             source={require('../images/white-rectangle-border.png')}>           
           </Image>     
           <TouchableOpacity 
@@ -116,11 +116,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(Receive);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     justifyContent: 'center',
   },
   footerView: {
     marginTop: 80,
+    marginBottom: 40,
     justifyContent: 'center',
     alignItems: 'center',    
   },

@@ -97,7 +97,7 @@ class More extends Component<{}> {
       <Image style={styles.container}
         resizeMode='cover' 
         source={require('../images/background-more.png')}>                   
-        <Image style={{marginTop: 24}} 
+        <Image style={{marginTop: 54}} 
           source={require('../images/app-logo.png')}/>                
         <Image style={styles.row0} 
           source={require('../images/more-row-0.png')}>          
@@ -149,13 +149,15 @@ class More extends Component<{}> {
               Invite Contacts
           </Text>
         </TouchableOpacity>       
-        <TouchableOpacity style={styles.rowButton}
+        <TouchableOpacity style={[styles.rowButton, {marginBottom: 0}]}
           onPress={() => this.onButtonPress(6)}>
           <Image source={require('../images/logout-icon-3.png')}/>
           <Text style={[styles.textButton, {color: Color.BLUE}]}>
-              Logout
+              Log out
           </Text>
         </TouchableOpacity>                                        
+        <View style={{backgroundColor: '#b8e9fa', flex:1, width:Dimensions.get('window').width}}>
+        </View>
       </Image>
     );
   }
@@ -177,15 +179,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(More);
 
 const styles = StyleSheet.create({
   container: {
-      alignItems: 'center',
-      backgroundColor: Color.BACKGROUND,  
-    },
+    alignItems: 'center',
+    backgroundColor: Color.BACKGROUND,  
+  },
   logo: {
     alignItems: 'center',
     justifyContent:'center',
   },
   row0: {
-    marginTop: 20,
+    marginBottom: 2,
+    height: 112,
     justifyContent:'center',
   },
   row0View: {
@@ -207,7 +210,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   rowButton: {
-    backgroundColor: Color.MORE_BUTTON_BACKGROUND,
+    backgroundColor: Color.BACKGROUND,
     alignItems: 'center',
     flexDirection: 'row',
     height: 56,
