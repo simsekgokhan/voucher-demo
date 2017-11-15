@@ -53,7 +53,7 @@ class Vouchers extends React.Component {
       <Image resizeMode='cover' style={styles.container}  
         source={require('../images/background-more.png')}>
         <View style={styles.topView}>
-          <Text style={{color: Color.TEXT_DEFAULT}}> 
+          <Text style={{color: Color.TEXT_GREY, fontSize: 17}}> 
             Total Balance 
           </Text>        
           <Text style={{color: Color.TEXT_DEFAULT, fontSize: 26, marginTop: 5}}> 
@@ -68,7 +68,7 @@ class Vouchers extends React.Component {
             :            
             <View style={styles.logoView}>
               <Image source={require('../images/voucher-logo.png')}/>
-              <Text style={{color: Color.TEXT_DEFAULT, marginTop: 10}}> 
+              <Text style={{color: Color.TEXT_DEFAULT, fontSize: 20, marginTop: 18}}> 
                 Buy Your First Voucher 
               </Text>
             </View>

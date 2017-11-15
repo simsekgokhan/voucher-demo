@@ -231,13 +231,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'transparent',  
     color: 'white', 
-    fontWeight: '700' 
+    fontWeight: '700',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 24,
   },
   buttonTextSelected: {
     textAlign: 'center',
     backgroundColor: 'transparent',  
     color: Color.BLUE, 
-    fontWeight: '700' 
+    fontWeight: '700',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 24,
   },
   imagestyle: {
     alignItems: 'center',
@@ -257,7 +261,7 @@ const styles = StyleSheet.create({
   },
   pickerLabel: {
     color: Color.TEXT_GREY, 
-    fontSize: 16, 
+    fontSize: 18, 
     paddingLeft: 60,
   },
   buyButtonStyle: {
