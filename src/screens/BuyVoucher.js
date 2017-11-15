@@ -27,8 +27,16 @@ class BuyVoucher extends Component<{}> {
 
   onNavigatorEvent(event) { 
     if (event.type === 'NavBarButtonPress' && event.id === 'buy')
-      this.navigateToConfirm();      
-    else if (event.type === 'DeepLink' && event.link === 'BuyVoucher.popToRoot') 
+      this.navigateToConfirm();    
+    else if (event.type === 'DeepLink' && event.link === 'BuyVoucher.popToRoot')
+      this.props.navigator.popToRoot({ animationType: 'fade' });        
+    else if (event.id === 'bottomTabSelected')      
+      this.props.navigator.handleDeepLink({
+        link: 'AllTabs.popToRoot', 
+        payload: { sender: 'BuyVoucher' }
+      });           
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
+             event.payload.sender !== 'BuyVoucher')
       this.props.navigator.popToRoot({ animationType: 'fade' });     
   }
 

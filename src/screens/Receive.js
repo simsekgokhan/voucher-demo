@@ -32,12 +32,18 @@ class Receive extends Component<{}> {
   onNavigatorEvent(event) { 
     if(event.unselectedTabIndex >= 0)
       lastActiveTabIndex = event.unselectedTabIndex;
-
-    if (event.type === 'NavBarButtonPress' && event.id ==='back')     
+    else if (event.type === 'NavBarButtonPress' && event.id ==='back')     
         this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });  
-
-    if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')         
+    else if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')         
         barcodeScanned = false;
+    else if (event.id === 'bottomTabSelected')
+      this.props.navigator.handleDeepLink({
+        link: 'AllTabs.popToRoot', 
+        payload: { sender: 'Receive' }
+      });           
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' && 
+             event.payload.sender !== 'Receive') 
+      this.props.navigator.popToRoot({ animationType: 'fade' });     
   }
 
   onButtonPress = () => {

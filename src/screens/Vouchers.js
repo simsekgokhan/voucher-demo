@@ -13,7 +13,28 @@ import VoucherDetails from '../screens/VoucherDetails';
 import Voucher from '../common/voucher.constants';
 
 class Vouchers extends React.Component {
-  
+
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) { 
+    if (event.id === 'bottomTabSelected')
+      this.props.navigator.handleDeepLink({
+        link: 'AllTabs.popToRoot', 
+        payload: { sender: 'Vouchers' }
+      });          
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
+             event.payload.sender !== 'Vouchers') {
+      this.props.navigator.resetTo({ 
+        screen: 'Vouchers', 
+        navigatorStyle: { navBarHidden: true } 
+      });     
+    }    
+  }
+
   navigateToDetails = (voucher) => { 
     this.props.navigator.push({
       screen: 'VoucherDetails',

@@ -19,6 +19,28 @@ const rightButtons = {
 
 class More extends Component<{}> {
 
+  constructor(props) {
+    super(props);
+    // if you want to listen on navigator events, set this up
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    console.log('aaaa: More: ctor ');      
+  }
+
+  onNavigatorEvent(event) { 
+    if (event.id === 'bottomTabSelected')      
+      this.props.navigator.handleDeepLink({
+        link: 'AllTabs.popToRoot', 
+        payload: { sender: 'More' }
+      });                
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' && 
+             event.payload.sender !== 'More') {
+      this.props.navigator.resetTo({ 
+        screen: 'More', 
+        navigatorStyle: { navBarHidden: true } 
+      });     
+    }
+  }
+
   navigateTo(screen, title, backButtonTitle, rightButtonEnabled, 
              passProps=null, navBarHidden=false){
     this.props.navigator.push({
