@@ -9,7 +9,7 @@ import Color from '../common/colors';
 export default class MyWallet extends React.Component {
 
   static navigatorStyle = {
-    navBarTextColor: 'white',
+    navBarTextColor: Color.TEXT_DEFAULT,
     navBarButtonColor: Color.BLUE,
   }
 
@@ -23,7 +23,7 @@ export default class MyWallet extends React.Component {
           <Text style={[styles.validThru, {fontSize: 17, color:Color.GREY_TEXT}]}> 
               Current Balance 
           </Text>        
-          <Text style={{color: 'white', fontSize: 26, marginTop: 5}}> 
+          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 26, marginTop: 5}}> 
             {balance} 
           </Text>        
         </View>
@@ -33,9 +33,8 @@ export default class MyWallet extends React.Component {
             <Text style={styles.text}>
               Virtual Card 
             </Text>
-            <Image 
-            style={{marginTop: 6}} 
-            source={require('../images/app-logo-small.png')}/>
+            <Image style={{marginTop: 6}} 
+              source={require('../images/app-logo-small.png')}/>
           </View>          
           <View style={styles.row0}>
             <View style={{flexDirection: 'row'}}>
@@ -52,7 +51,6 @@ export default class MyWallet extends React.Component {
                 9000
               </Text>                                 
             </View>
-
           </View>
           <View style={[styles.row0, {justifyContent: 'center'}]}>
             <View style={{marginLeft: 34}}>
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
   },
   topView: {
     position: 'absolute', 
@@ -111,21 +109,21 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'transparent',
-    color: 'white',
+    color: Color.TEXT_DEFAULT,
     fontFamily: 'Roboto-Regular'
   },
   cardNoText: {
     fontSize: 26,
     marginTop: 10,
     backgroundColor: 'transparent',            
-    color: '#5AC8FA',
+    color: Color.BLUE,
     fontFamily: 'Jura-Regular'
   },
   validThru: {
     fontSize: 10,
     marginLeft: 6,
     backgroundColor: 'transparent',            
-    color: 'white',
+    color: Color.TEXT_DEFAULT,
     fontFamily: 'Roboto-Regular'
   },
 });

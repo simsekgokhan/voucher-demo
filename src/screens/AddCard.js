@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
-import VoucherDetails from '../screens/VoucherDetails';
 
 export default class AddCard extends Component<{}> {
 
@@ -33,7 +32,7 @@ export default class AddCard extends Component<{}> {
         keyboardType={keyboardType}
         maxLength={maxLength}
         placeholder={placeholder}
-        placeholderTextColor='grey'/> 
+        placeholderTextColor={Color.TEXT_GREY}/> 
     );
   }
 
@@ -92,7 +91,7 @@ export default class AddCard extends Component<{}> {
                 selectionColor={Color.BLUE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      
-                placeholderTextColor='grey'/> 
+                placeholderTextColor={Color.TEXT_GREY}/> 
               {this.Input(card.inputDate, 5, 'numbers-and-punctuation')} 
               {this.Input(card.inputCvv)}                         
             </View>     
@@ -120,13 +119,13 @@ export default class AddCard extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   topText: {
     alignSelf: 'center',
-    color: 'grey', 
+    color: Color.TEXT_GREY, 
     fontSize: 15,
     marginTop: 80,
   },
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20, 
     marginVertical: 20, 
     alignItems: 'center',
-    backgroundColor: Color.GREY_BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY,
     width: 344,
     height: 228,
   },
@@ -143,7 +142,7 @@ const styles = StyleSheet.create({
   },
   rowOne: {
     fontSize: 11, 
-    color: 'white', 
+    color: Color.TEXT_DEFAULT, 
     marginTop: 40,
     marginLeft: 4  
   },
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     margin: 4,
     fontSize: 15,
     color: 'white',
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     borderColor: Color.BLUE,
     borderWidth: 1,
     borderRadius: 5,    
