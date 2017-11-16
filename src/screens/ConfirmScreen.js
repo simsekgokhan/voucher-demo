@@ -3,6 +3,7 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import {connect} from "react-redux";
+import LinearGradient from 'react-native-linear-gradient';
 
 import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
@@ -47,36 +48,45 @@ class ConfirmScreen extends Component<{}> {
     confirmType = this.props.confirmType;
     amount = this.props.amount;  
   
+    let voucherColor = Color.DARK_BLUE;
     let textColor = Color.BLUE;
     switch(confirmType) {
       case Voucher.BUY:
         voucherType = Voucher.PURCHASED;
+        voucherColor = Color.DARK_GREEN;
         textColor = Color.BLUE;                
         break;      
       case Voucher.REDEEM:
         voucherType = Voucher.REDEEMED;
+        voucherColor = Color.DARK_BLUE;
         textColor = Color.BLUE;
         break;
       case Voucher.SEND:
         voucherType = Voucher.SENT;
+        voucherColor = Color.DARK_RED;
         textColor = Color.RED;
         break;
       case Voucher.REFUND:
         voucherType = Voucher.REFUNDED;
+        voucherColor = Color.DARK_PURPLE;
         textColor = Color.PURPLE;
         break;
       default:
+        voucherType = Voucher.REDEEMED;
+        voucherColor = Color.DARK_BLUE;
         textColor = Color.BLUE;
         break;
     }      
         
     return (
       <View style={styles.container}>
-        <View style={styles.block}>
-          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 18, marginTop: 50}}> 
+        <LinearGradient style={styles.block}
+          start={[0, 0]} end={[1, 0]}
+          colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>        
+          <Text style={{color: Color.TEXT_DEFAULT, backgroundColor: 'transparent', fontSize: 18, marginTop: 50}}> 
             {confirmType} 
           </Text>
-          <Text style={{color: textColor, fontSize: 24, marginTop: 6}}> 
+          <Text style={{color: textColor, backgroundColor: 'transparent', fontSize: 24, marginTop: 6}}> 
             ${amount}.00
           </Text>          
           <TouchableOpacity 
@@ -84,16 +94,13 @@ class ConfirmScreen extends Component<{}> {
             <Image style={{marginTop: 70}}
               source={require('../images/touchId-button.png')}/>
           </TouchableOpacity>
-          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 18, marginTop: 30}}> 
-            Touch ID for 
-          </Text>          
-          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 18, marginTop: 4}}> 
-            {leftQuoMark}Blockchain Vouchers{rightQuoMark}
+          <Text style={{color: Color.TEXT_DEFAULT, backgroundColor: 'transparent', fontSize: 18, marginTop: 30}}> 
+            Touch ID for {leftQuoMark}PlipMe{rightQuoMark}
           </Text>
-          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 14, marginTop: 14}}> 
+          <Text style={{color: Color.TEXT_GREY_DARK, backgroundColor: 'transparent', sfontSize: 14, marginTop: 14}}> 
             Please, confirm your fingerprint
           </Text>                    
-        </View>        
+        </LinearGradient>        
       </View>
     );
   }
@@ -126,6 +133,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20, 
     marginVertical: 30, 
     alignItems: 'center',
-    backgroundColor: Color.BACKGROUND_GREY,
+    //backgroundColor: Color.TEXT_GREY,
   }
 });

@@ -19,12 +19,7 @@ export default class Settings extends Component<{}> {
 
   render() {      
     return (
-      <View style={styles.container}>
-        <View style={[styles.blockBlack, {marginTop: 20}]}>
-          <Text style={styles.smallText}> 
-            PERSONAL INFORMATION
-          </Text>                 
-        </View>        
+      <View style={styles.container}>   
         <View style={styles.block}>
           <Text style={styles.largeText}> 
             Brian.Mendoza@hotmail.com
@@ -40,13 +35,8 @@ export default class Settings extends Component<{}> {
           <Text style={styles.smallText}> 
             Phone
           </Text>              
-        </View>     
-        <View style={styles.blockBlack}>
-          <Text style={styles.smallText}> 
-            PASSWORD
-          </Text>                 
-        </View>         
-        <TouchableOpacity style={styles.block}>
+        </View>       
+        <TouchableOpacity style={[ styles.block, {marginTop: 48} ]}>
           <Text style={[styles.largeText, {color: Color.BLUE}]}> 
             Change Password
           </Text>                              
@@ -76,7 +66,8 @@ export default class Settings extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.BACKGROUND,
+    paddingTop: 48,
+    backgroundColor: '#F7FAFB',
   },
   blockBlack: {
     marginHorizontal: 4, 
@@ -90,10 +81,10 @@ const styles = StyleSheet.create({
     marginVertical: 2,
     height: 68,
     padding: 20,
-    backgroundColor: Color.BACKGROUND_GREY,
+    backgroundColor: Color.WHITE,
   },
   smallText: {
-    color: Color.TEXT_GREY, 
+    color: Color.TEXT_GREY_DARK, 
     fontSize: 13, 
   },
   largeText: {

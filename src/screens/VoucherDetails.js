@@ -107,7 +107,7 @@ export default class VoucherDetails extends React.Component {
       <View style={{backgroundColor: Color.BACKGROUND, flex: 1}}>
         <LinearGradient style={styles.voucherView}
           start={[0, 0]} end={[1, 0]}
-          colors={[voucherColor, Color.VOUCHER_SECOND_COLOR]}>
+          colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {marginTop:6}]}> 
               Voucher #{this.props.voucher.id}
