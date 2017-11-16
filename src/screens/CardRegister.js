@@ -79,7 +79,7 @@ export default class CardRegister extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BACKGROUND,
     justifyContent: 'center',
   },
 });

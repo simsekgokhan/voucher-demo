@@ -20,10 +20,10 @@ export default class MyWallet extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.topView}>
-          <Text style={[styles.validThru, {fontSize: 17, color: Color.TEXT_GREY}]}> 
+          <Text style={[styles.validThru, {fontSize: 17, color: Color.TEXT_GREY_DARK}]}> 
               Current Balance 
           </Text>        
-          <Text style={{color: Color.TEXT_DEFAULT, fontSize: 26, marginTop: 5}}> 
+          <Text style={{color: Color.BLUE, fontSize: 26, marginTop: 5}}> 
             {balance} 
           </Text>        
         </View>
@@ -69,6 +69,8 @@ export default class MyWallet extends React.Component {
             <Text style={[styles.text, {fontSize: 17, marginTop: 8}]}>
               BRIAN MENDOZA
             </Text>
+            <Image style={{marginTop: 6}} 
+              source={require('../images/visa-logo-my-wallet.png')}/>
           </View>
         </Image>
       </View>
@@ -109,21 +111,21 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'transparent',
-    color: Color.TEXT_DEFAULT,
+    color: Color.WHITE,
     fontFamily: 'Roboto-Regular',
   },
   cardNoText: {
     fontSize: 26,
     marginTop: 10,
     backgroundColor: 'transparent',            
-    color: Color.BLUE,
-    fontFamily: 'Jura-Regular'
+    color: Color.WHITE,
+    //fontFamily: 'Jura-Regular'
   },
   validThru: {
     fontSize: 10,
     marginLeft: 6,
     backgroundColor: 'transparent',            
-    color: Color.TEXT_DEFAULT,
+    color: Color.WHITE,
     fontFamily: 'Roboto-Regular'
   },
 });
