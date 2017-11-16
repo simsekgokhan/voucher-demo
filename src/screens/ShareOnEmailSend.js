@@ -75,27 +75,27 @@ export default class ShareOnEmailSend extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.BACKGROUND,
-    paddingVertical: 16,
+    backgroundColor: Color.BACKGROUND_GREY_LITE,
+    paddingTop: 24,
   },
   row: {
     marginHorizontal: 4, 
-    marginVertical: 2, 
+    marginVertical: 1, 
     flexDirection: 'row',
     alignItems: 'center',        
     height: 56,
     paddingLeft: 20,
-    backgroundColor: Color.BACKGROUND_GREY,
+    backgroundColor: Color.WHITE,
   },
   noteView: {
     marginHorizontal: 4, 
     paddingHorizontal: 12,
     paddingBottom: 18,
     flexDirection: 'row',
-    backgroundColor: Color.BACKGROUND_GREY,
+    backgroundColor: Color.WHITE,
   },
   text: {
-    color: Color.TEXT_GREY, 
+    color: Color.TEXT_GREY_DARK, 
     fontSize: 15, 
   },
   input: {

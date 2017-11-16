@@ -33,7 +33,8 @@ const Color = {
   // Common
   BACKGROUND: WHITE,
   BACKGROUND_GREY: BACKGROUND_GREY,
-  
+  BACKGROUND_GREY_LITE: '#F7FAFB',  
+
   // Login 
   INPUT_TEXT: 'white',
   INPUT_LABEL: 'rgba(255,255,255,0.7)',

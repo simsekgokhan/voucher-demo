@@ -69,12 +69,7 @@ export default class ShareOnEmail extends Component<{}> {
     const selectedButtonId = this.state.selectedButtonId;
 
     return (
-      <View style={styles.container}>
-        <View style={[styles.blockBlack, {marginTop: 20}]}>
-          <Text style={styles.smallText}> 
-            RECENT SUBMITTERS
-          </Text>                 
-        </View>                          
+      <View style={styles.container}>                        
         { this.Button('Norman.Garber@hotmail.com', 1) }                 
         { this.HorLine() }
         { this.Button('Emanuel.Barbieri@gmail.com', 2) }                         
@@ -83,13 +78,8 @@ export default class ShareOnEmail extends Component<{}> {
         { this.HorLine() }
         { this.Button('Darlene.Buckalew@hotmail.com', 4) }                                  
         { this.HorLine() }
-        { this.Button('Murray.Derek@hotmail.com', 5) }                   
-        <View style={styles.blockBlack}>
-          <Text style={styles.smallText}> 
-            NEW SUBMITTER
-          </Text>                 
-        </View>         
-        <TouchableOpacity style={styles.button}>
+        { this.Button('Murray.Derek@hotmail.com', 5) }                          
+        <TouchableOpacity style={[styles.button, {marginTop: 40}]}>
           <Text style={styles.smallText}> 
             To:
           </Text>        
@@ -104,24 +94,25 @@ export default class ShareOnEmail extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY_LITE,
+    paddingTop: 60,
   },
   blockBlack: {
     marginHorizontal: 4, 
     marginTop: 10,
     paddingVertical: 10,    
     paddingHorizontal: 20,
-    backgroundColor: Color.BACKGROUND,
+    backgroundColor: Color.BACKGROUND_GREY_LITE,
   },
   horLineView: {
     marginHorizontal: 4, 
     height: 1,
-    backgroundColor: Color.BACKGROUND_GREY,
+    backgroundColor: Color.WHITE,
   },
   horLine: {
     marginLeft: 20, 
     height: 1,
-    backgroundColor: Color.H_LINE_GREY,
+    backgroundColor: '#e6e6e6',
   },
   button: {
     marginHorizontal: 4, 
@@ -130,11 +121,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',     
     height: 56,
     padding: 20,
-    backgroundColor: Color.BACKGROUND_GREY,
+    backgroundColor: Color.WHITE,
   },
   smallText: {
-    color: Color.TEXT_GREY, 
-    fontSize: 13, 
+    color: Color.TEXT_GREY_DARK, 
+    fontSize: 15, 
   },
   largeText: {
     color: Color.TEXT_DEFAULT, 
