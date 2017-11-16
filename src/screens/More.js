@@ -96,9 +96,9 @@ class More extends Component<{}> {
     return (
       <Image style={styles.container}
         resizeMode='cover' 
-        source={require('../images/background-more.png')}>                   
-        <Image style={{marginTop: 54}} 
-          source={require('../images/app-logo.png')}/>                
+        source={require('../images/background.png')}>                   
+        <Image style={{margin: 40}} 
+          source={require('../images/app-logo-medium.png')}/>                
         <Image style={styles.row0} 
           source={require('../images/more-row-0.png')}>          
           <View style={styles.row0View}>

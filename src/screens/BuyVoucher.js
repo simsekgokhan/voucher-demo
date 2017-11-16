@@ -107,7 +107,9 @@ class BuyVoucher extends Component<{}> {
     }
 
     return (
-      <View style={styles.container}>        
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>                
         <View>  
           <View style={styles.buttonsRowOne}>   
             <TouchableOpacity style={styles.button5}
@@ -164,8 +166,7 @@ class BuyVoucher extends Component<{}> {
             <Picker.Item label = "1000.00" value = {1000} />
           </Picker>              
         </View>
-
-      </View>
+      </Image>
     );
 
   }
@@ -181,7 +182,6 @@ export default connect(mapStateToProps)(BuyVoucher);
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Color.BACKGROUND,
     flex: 1,
   },
   buttonsRowOne: {
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
     bottom: 0, 
   },
   button5: {
+    backgroundColor: Color.WHITE,          
     alignItems: 'center',
     justifyContent:'center',
     width: 82,
@@ -209,6 +210,7 @@ const styles = StyleSheet.create({
 		]    
   },
   button10: {
+    backgroundColor: Color.WHITE,          
     alignItems: 'center',
     justifyContent:'center',
     width: 82,
@@ -218,6 +220,7 @@ const styles = StyleSheet.create({
 		]    
   },
   button20: {
+    backgroundColor: Color.WHITE,          
     margin: 40,
     alignItems: 'center',
     justifyContent:'center',
@@ -228,6 +231,7 @@ const styles = StyleSheet.create({
 		]    
   },
   button50: {
+    backgroundColor: Color.WHITE,          
     margin: 40,
     alignItems: 'center',
     justifyContent:'center',
@@ -241,16 +245,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'transparent',  
     color: Color.TEXT_GREY_DARK, 
-    fontWeight: '700',
-    fontFamily: 'Roboto-Regular',
     fontSize: 24,
   },
   buttonTextSelected: {
     textAlign: 'center',
     backgroundColor: 'transparent',  
     color: Color.BLUE, 
-    fontWeight: '700',
-    fontFamily: 'Roboto-Regular',
     fontSize: 24,
   },
   imagestyle: {
@@ -263,7 +263,9 @@ const styles = StyleSheet.create({
   pickerView: {
     flexDirection: 'row', 
     marginTop: 100, 
-    alignItems: 'center'
+    height: 260,
+    alignItems: 'center',
+    backgroundColor: Color.WHITE,          
   },
   picker: {
     flex: 1,
