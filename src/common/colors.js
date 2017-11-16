@@ -35,6 +35,7 @@ const Color = {
   BACKGROUND_LOGIN: '#57CCF2',
   BACKGROUND_GREY: BACKGROUND_GREY,
   BACKGROUND_GREY_LITE: '#F7FAFB',    
+  BACKGROUND_BLUE: '#56CCF2',       
 
   // Login 
   INPUT_TEXT: 'white',

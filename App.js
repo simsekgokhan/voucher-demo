@@ -80,7 +80,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         title: 'Vouchers',
         navigatorStyle: {
           navBarHidden: true, 
-          navBarButtonColor: Color.BLUE,
+          navBarButtonColor: Color.WHITE,
         },
       },
       {
@@ -90,7 +90,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         selectedIcon: require('./src/images/buy-voucher-active.png'),
         title: 'Buy Voucher',
         navigatorStyle: {
-          navBarButtonColor: Color.BLUE,
+          navBarButtonColor: Color.WHITE,
         },
         navigatorButtons: {
           rightButtons: [{
@@ -108,7 +108,7 @@ export function startTabBasedApp(initialTabIdx=0) {
         drawUnderTabBar: true,
         navigatorStyle: {
           tabBarHidden: true,          
-          navBarButtonColor: Color.BLUE,
+          navBarButtonColor: Color.WHITE,
           drawUnderTabBar: true,          
         },
       },
@@ -120,19 +120,19 @@ export function startTabBasedApp(initialTabIdx=0) {
         title: 'More',
         navigatorStyle: {
           navBarHidden: true,
-          navBarButtonColor: Color.BLUE,
+          navBarButtonColor: Color.WHITE,
         },
       },
     ],
     appStyle: {
       forceTitlesDisplay: false, 
-      navBarBackgroundColor: Color.BACKGROUND,
+      navBarBackgroundColor: Color.BACKGROUND_BLUE,
       screenBackgroundColor: Color.BACKGROUND,   
+      navBarTextColor: Color.WHITE,                  
     }, 
     tabsStyle: {
       tabBarBackgroundColor: Color.BACKGROUND,   
       initialTabIndex: initialTabIdx,     
-      navBarTextColor: Color.TEXT_DEFAULT,            
     }     
   });
 }

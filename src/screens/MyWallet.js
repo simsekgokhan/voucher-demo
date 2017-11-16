@@ -8,11 +8,6 @@ import Color from '../common/colors';
 
 export default class MyWallet extends React.Component {
 
-  static navigatorStyle = {
-    navBarTextColor: Color.TEXT_DEFAULT,
-    navBarButtonColor: Color.BLUE,
-  }
-
   render() {
     const hasMoney = true;     
     const balance = hasMoney ? '$ 5,689.08' : '$ 0';

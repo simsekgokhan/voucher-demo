@@ -107,9 +107,7 @@ class BuyVoucher extends Component<{}> {
     }
 
     return (
-      <Image style={styles.container}
-        resizeMode='cover' 
-        source={require('../images/background.png')}>                
+      <View style={styles.container}>                
         <View>  
           <View style={styles.buttonsRowOne}>   
             <TouchableOpacity style={styles.button5}
@@ -166,7 +164,7 @@ class BuyVoucher extends Component<{}> {
             <Picker.Item label = "1000.00" value = {1000} />
           </Picker>              
         </View>
-      </Image>
+      </View>
     );
 
   }
@@ -183,6 +181,7 @@ export default connect(mapStateToProps)(BuyVoucher);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Color.BACKGROUND_BLUE
   },
   buttonsRowOne: {
     alignItems: 'center',
