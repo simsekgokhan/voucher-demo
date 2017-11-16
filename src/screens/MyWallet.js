@@ -28,7 +28,7 @@ export default class MyWallet extends React.Component {
           </Text>        
         </View>
         <Image style={styles.card} 
-          source={require('../images/card-background.png')}>          
+          source={require('../images/card.png')}>          
           <View style={styles.row0}>
             <Text style={styles.text}>
               Virtual Card 

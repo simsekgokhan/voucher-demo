@@ -33,7 +33,6 @@ export default class CardRegister extends React.Component {
   }
 
   static navigatorStyle = {
-    navBarTextColor: 'white',
     navBarButtonColor: Color.BLUE,
     tabBarHidden: true,          
   }

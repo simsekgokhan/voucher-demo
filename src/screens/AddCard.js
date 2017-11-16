@@ -27,7 +27,7 @@ export default class AddCard extends Component<{}> {
       <TextInput
         defaultValue={this.props.showEmptyForm ? null : placeholder}
         style={styles.input}
-        selectionColor={Color.BLUE} 
+        selectionColor={Color.WHITE} 
         autoCorrect={false}
         autoFocus={autoFocus}
         keyboardType={keyboardType}
@@ -70,7 +70,8 @@ export default class AddCard extends Component<{}> {
         <Text style={styles.topText}>
           Add New Credit Card
         </Text>
-        <View style={styles.card}>
+        <Image style={styles.card} 
+          source={require('../images/card.png')}>      
           <View style={styles.cardBlock}>        
             <View style={styles.inputRow}>
               <Text style={styles.rowOne}>
@@ -89,7 +90,7 @@ export default class AddCard extends Component<{}> {
             <View style={styles.inputRow}>
               <TextInput style={[styles.input, {width: 136}]}
                 defaultValue={this.props.showEmptyForm ? null : card.inputName}
-                selectionColor={Color.BLUE} 
+                selectionColor={Color.WHITE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      
                 placeholderTextColor={Color.TEXT_GREY}/> 
@@ -97,7 +98,7 @@ export default class AddCard extends Component<{}> {
               {this.Input(card.inputCvv, 4, 'number-pad', !showEmptyForm)}                         
             </View>     
           </View>
-        </View>        
+        </Image>        
         {
           showEmptyForm ? null :
           <Image style={styles.verLine} 
@@ -121,12 +122,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.BACKGROUND,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   topText: {
     alignSelf: 'center',
-    color: Color.TEXT_GREY, 
+    color: Color.TEXT_GREY_DARK, 
     fontSize: 15,
     marginTop: 70,
   },
@@ -134,17 +134,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 20, 
     marginVertical: 20, 
     alignItems: 'center',
-    backgroundColor: Color.BACKGROUND_GREY,
-    width: 344,
-    height: 228,
   },
   cardBlock: {
-
+    paddingTop: 20,
   },
   rowOne: {
     fontSize: 11, 
-    color: Color.TEXT_DEFAULT, 
-    marginTop: 40,
+    color: Color.WHITE, 
+    backgroundColor: 'transparent',
+    marginTop: 20,
     marginLeft: 4,  
     marginBottom: 4,  
   },
@@ -155,8 +153,8 @@ const styles = StyleSheet.create({
     margin: 4,
     fontSize: 15,
     color: 'white',
-    backgroundColor: Color.BACKGROUND,
-    borderColor: Color.BLUE,
+    backgroundColor: '#41c5f1',
+    borderColor: Color.WHITE,
     borderWidth: 1,
     borderRadius: 5,    
     width: 64,
@@ -165,8 +163,8 @@ const styles = StyleSheet.create({
   },
   verLine: {
     position: 'absolute',     
-    top: 314, 
-    left: 300, 
+    top: 288, 
+    left: 294, 
     right: 0, 
     bottom: 0,     
   },
@@ -176,7 +174,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginRight: 14,
     position: 'absolute',     
-    top: 350, 
+    top: 328, 
     left: 132, 
     right: 0, 
     bottom: 0,     
