@@ -122,9 +122,7 @@ class Login extends Component<{}> {
     }
 
     return (
-      <Image style={styles.container} 
-        resizeMode='cover'          
-        source={require('../images/background-more.png')}>
+      <View style={styles.container}>
         {
           this.state.createAccountSelected ?  
             <TouchableOpacity style={styles.backButton}              
@@ -187,14 +185,14 @@ class Login extends Component<{}> {
           }
         </View>
         <View style={styles.footerView} >
-          <Text style={{color: Color.TEXT_DEFAULT}} >
+          <Text style={{color: Color.WHITE}} >
             {footerTextPartOne}
-            <Text style={{color: Color.BLUE, fontWeight: "bold"}}> 
+            <Text style={{color: Color.WHITE, textDecorationLine: "underline"}}> 
               {footerTextPartTwo} 
             </Text>
           </Text>
         </View>
-      </Image>
+      </View>
       );
   }
 
@@ -220,7 +218,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Login);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.BACKGROUND,
+    backgroundColor: Color.BACKGROUND_LOGIN,
     alignItems: 'center',
   },
   backButton: {
@@ -270,7 +268,8 @@ const styles = StyleSheet.create({
   },
   textCenter: {
     textAlign: 'center',
-    color: Color.TEXT_DEFAULT, 
+    color: Color.WHITE, 
+    backgroundColor : 'transparent', 
     fontWeight: '700',    
   },
   buttonView: {
@@ -280,6 +279,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 300,
     height: 50,
+    borderRadius: 5,    
   }, 
   buttonView2: {
     backgroundColor: Color.BUTTON_SECOND_BACKGROUND,
@@ -288,8 +288,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 300,
     height: 50,
-    borderColor: Color.BUTTON_BORDER,
-    borderWidth: 1,
   }, 
   buttonText: {
     textAlign: 'center',
