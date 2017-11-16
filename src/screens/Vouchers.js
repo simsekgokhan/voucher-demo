@@ -73,6 +73,8 @@ class Vouchers extends React.Component {
     return (
       <Image resizeMode='cover' style={styles.container}  
         source={require('../images/background.png')}>
+        <Image style={styles.appLogo}  
+          source={require('../images/app-logo-small.png')}/>
         <View style={styles.topView}>
           <Text style={{color: Color.TEXT_GREY, fontSize: 17, backgroundColor: 'transparent'}}> 
             Total Balance 
@@ -89,7 +91,7 @@ class Vouchers extends React.Component {
             :            
             <View style={styles.logoView}>
               <Image source={require('../images/voucher-logo.png')}/>
-              <Text style={{color: Color.BLUE, fontSize: 20, backgroundColor: 'transparent',marginTop: 18}}> 
+              <Text style={{color: Color.WHITE, fontSize: 20, backgroundColor: 'transparent',marginTop: 18}}> 
                 Buy Your First Voucher 
               </Text>
             </View>
@@ -113,27 +115,28 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexGrow: 1,
-    justifyContent: 'center',
     backgroundColor: Color.BACKGROUND,
   },
-  topView: {
+  appLogo: {
     position: 'absolute', 
-    top: 0, 
-    left: 0, 
+    top: 40, 
+    left: 16, 
     right: 0, 
-    bottom: 380, 
+    bottom: 0, 
+  },
+  topView: {
+    marginTop: 100,
     justifyContent: 'center', 
     alignItems: 'center',
     paddingVertical: 10,
   },
   logoView: {
-    marginTop: 52,
+    marginTop: 32,
     justifyContent: 'center', 
     alignItems: 'center',
-    margin: 20,
   },
   scrollView: {
-    marginTop: 210, 
+    marginTop: 36, 
     marginBottom: 56,
   }
 });
