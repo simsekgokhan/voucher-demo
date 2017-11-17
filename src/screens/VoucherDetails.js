@@ -104,7 +104,9 @@ export default class VoucherDetails extends React.Component {
     }      
 
     return (
-      <View style={{backgroundColor: Color.BACKGROUND, flex: 1}}>
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>  
         <LinearGradient style={styles.voucherView}
           start={[0, 0]} end={[1, 0]}
           colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>
@@ -165,60 +167,66 @@ export default class VoucherDetails extends React.Component {
             </Text>
           </View>
         </LinearGradient>
-      </View>     
+      </Image>     
     );
   }
 }
 
 const styles = StyleSheet.create({
-    voucherView: {
-      marginHorizontal: 15,
-      marginTop: 20,
-      marginBottom: 50,
-      padding: 24,
-      borderRadius: 5,    
-      flex: 1,
-    },
-    voucherLogoView: {
-      flexDirection: 'row',    
-      marginTop: 30,
-      alignItems: 'center',
-    },
-    voucher: {
-      margin: 15,
-    },
-    voucherRow: {
-      flexDirection: 'row',    
-      padding: 3,
-      justifyContent: 'space-between', 
-    },
-    voucherText: {
-      color: Color.TEXT_DEFAULT, 
-      backgroundColor: 'transparent',
-      fontSize: 18,
-    },
-    button: {
-      backgroundColor: '#eaf2f5', 
-      borderRadius: 20, 
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: 20,      
-      padding: 10,      
-      width: 120,
-    },
-    buttonText: {
-      backgroundColor: 'transparent',
-      fontSize: 18,
-    },
-    footerText: {
-      position: 'absolute', 
-      top: 430, 
-      bottom: 0,         
-      left: 24, 
-      right: 0, 
-    },    
-  });
-  
+  container: {
+  },
+  voucherView: {
+    marginHorizontal: 15,
+    marginTop: 20,
+    marginBottom: 164,
+    padding: 24,
+    borderRadius: 5,    
+    flex: 1,
+    shadowOpacity: 0.75,
+    shadowRadius: 5,
+    shadowColor: 'grey',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  voucherLogoView: {
+    flexDirection: 'row',    
+    marginTop: 30,
+    alignItems: 'center',
+  },
+  voucher: {
+    margin: 15,
+  },
+  voucherRow: {
+    flexDirection: 'row',    
+    padding: 3,
+    justifyContent: 'space-between', 
+  },
+  voucherText: {
+    color: Color.TEXT_DEFAULT, 
+    backgroundColor: 'transparent',
+    fontSize: 18,
+  },
+  button: {
+    backgroundColor: '#eaf2f5', 
+    borderRadius: 20, 
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,      
+    padding: 10,      
+    width: 120,
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+    fontSize: 18,
+  },
+  footerText: {
+    position: 'absolute', 
+    top: 430, 
+    bottom: 0,         
+    left: 24, 
+    right: 0, 
+  },    
+});
+
   
   
   

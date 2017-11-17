@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker, Button
+  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker, Button,
+  Dimensions
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Navigation } from 'react-native-navigation';
@@ -162,8 +163,11 @@ class BuyVoucher extends Component<{}> {
             <Picker.Item label = "200.00" value = {200} />
             <Picker.Item label = "500.00" value = {500} />
             <Picker.Item label = "1000.00" value = {1000} />
-          </Picker>              
+          </Picker>           
         </View>
+        <View style={{backgroundColor: Color.WHITE, flex:1, 
+          width:Dimensions.get('window').width}}>
+        </View>   
       </View>
     );
 
@@ -202,8 +206,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.WHITE,          
     alignItems: 'center',
     justifyContent:'center',
-    width: 82,
-    height: 82,
+    width: 76,
+    height: 76,
     transform: [
 		  {rotate: '45deg'}
 		]    
@@ -212,8 +216,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.WHITE,          
     alignItems: 'center',
     justifyContent:'center',
-    width: 82,
-    height: 82,
+    width: 76,
+    height: 76,
     transform: [
 		  {rotate: '45deg'}
 		]    
@@ -223,8 +227,8 @@ const styles = StyleSheet.create({
     margin: 40,
     alignItems: 'center',
     justifyContent:'center',
-    width: 82,
-    height: 82,
+    width: 76,
+    height: 76,
     transform: [
 		  {rotate: '45deg'}
 		]    
@@ -234,8 +238,8 @@ const styles = StyleSheet.create({
     margin: 40,
     alignItems: 'center',
     justifyContent:'center',
-    width: 82,
-    height: 82,
+    width: 76,
+    height: 76,
     transform: [
 		  {rotate: '45deg'}
 		]    
