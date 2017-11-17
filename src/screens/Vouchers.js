@@ -76,7 +76,7 @@ class Vouchers extends React.Component {
         <Image style={styles.appLogo}  
           source={require('../images/app-logo-small.png')}/>
         <View style={styles.topView}>
-          <Text style={{color: Color.TEXT_GREY, fontSize: 17, backgroundColor: 'transparent'}}> 
+          <Text style={{color: Color.WHITE, fontSize: 17, backgroundColor: 'transparent'}}> 
             Total Balance 
           </Text>        
           <Text style={{color: Color.WHITE, fontSize: 26, backgroundColor: 'transparent', marginTop: 5}}> 

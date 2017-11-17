@@ -47,6 +47,7 @@ class More extends Component<{}> {
       title: title,
       navigatorStyle: {
         navBarHidden: navBarHidden, 
+        navBarButtonColor: Color.WHITE,                
       },
       backButtonTitle: backButtonTitle,
       navigatorButtons: rightButtonEnabled ? rightButtons : null,
