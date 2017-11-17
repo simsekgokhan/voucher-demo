@@ -24,7 +24,7 @@ class BuyVoucher extends Component<{}> {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
   
-  state = { selectedValue: 10 };
+  state = { selectedValue: 20 };
 
   onNavigatorEvent(event) { 
     if (event.type === 'NavBarButtonPress' && event.id === 'buy')
@@ -272,12 +272,13 @@ const styles = StyleSheet.create({
   },
   picker: {
     flex: 1,
+    padding: 30,
     marginRight: 100,
   },
   pickerLabel: {
     color: Color.TEXT_GREY_DARK, 
     fontSize: 18, 
-    paddingLeft: 60,
+    paddingLeft: 30,
   },
   buyButtonStyle: {
     marginRight: 20,
