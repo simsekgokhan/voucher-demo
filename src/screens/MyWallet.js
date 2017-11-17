@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   card:{
-    marginTop: 40,
+    marginTop: 32,
   },
   row0: {
     flexDirection: 'row',

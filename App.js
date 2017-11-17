@@ -86,8 +86,8 @@ export function startTabBasedApp(initialTabIdx=0) {
       {
         label: 'Buy Voucher',
         screen: 'BuyVoucher',
-        icon: require('./src/images/buy-voucher.png'),
-        selectedIcon: require('./src/images/buy-voucher-active.png'),
+        icon: require('./src/images/buy.png'),
+        selectedIcon: require('./src/images/buy-active.png'),
         title: 'Buy Voucher',
         navigatorStyle: {
           navBarButtonColor: Color.WHITE,

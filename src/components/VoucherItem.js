@@ -75,18 +75,20 @@ export default class VoucherItem extends Component<{}> {
         break;
     }
 
+    const voucherBottomMargin = this.state.expanded ? 2 : 15;
+
     return(
       <LinearGradient style={styles.voucherView}
         start={[0, 0]} end={[1, 0]}
         colors={[voucherColor, 'white']}>    
-        <TouchableOpacity style={styles.voucher}
+        <TouchableOpacity style={[styles.voucher, {marginBottom: voucherBottomMargin}]}
           onPress={this.toggleExpand}>
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}> 
               Voucher #{id} 
             </Text>
             <Text style={[styles.voucherText, {color: textColor}]}>
-              {amountSign}
+              {amountSign + ' '}
               <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}> 
                 ${amount}.00
               </Text>
@@ -183,6 +185,7 @@ const styles = StyleSheet.create({
   },
   voucher: {
     margin: 15,
+    marginBottom: 15,
   },
   voucherRow: {
     flexDirection: 'row',    
@@ -205,6 +208,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     width: 80,        
     height: 48,     
+    //backgroundColor: 'red',        
   }
 });
 
