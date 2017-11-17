@@ -17,6 +17,7 @@ const DARK_GREEN = '#ccffea';
 const DARK_PURPLE = '#c1c1f0';
 
 const Color = {  
+  BLACK: 'black',
   WHITE: 'white',
 
   BLUE: '#33ccff',
@@ -28,7 +29,6 @@ const Color = {
   DARK_RED: DARK_RED,
   DARK_GREEN: DARK_GREEN,
   DARK_PURPLE: DARK_PURPLE,
-
   
   // --- New     
   // Common
@@ -38,7 +38,7 @@ const Color = {
   BACKGROUND_GREY_LITE: '#F7FAFB',    
   BACKGROUND_BLUE: '#56CCF2',       
   
-  BACKGROUND_TRANSPARENT: 'transparent',       
+  TRANSPARENT: 'transparent',       
 
   BLUE_DARK: '#009FE3',
   

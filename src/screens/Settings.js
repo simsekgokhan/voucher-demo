@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
   },
   labels: {
     color: Color.WHITE, 
-    backgroundColor: Color.BACKGROUND_TRANSPARENT,    
+    backgroundColor: Color.TRANSPARENT,    
     fontSize: 13, 
   },
   smallText: {
     color: Color.TEXT_GREY_DARK, 
-    backgroundColor: Color.BACKGROUND_TRANSPARENT,    
+    backgroundColor: Color.TRANSPARENT,    
     fontSize: 13, 
   },
   largeText: {

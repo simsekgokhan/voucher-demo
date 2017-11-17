@@ -27,13 +27,13 @@ export default class AddCard extends Component<{}> {
       <TextInput
         defaultValue={this.props.showEmptyForm ? null : placeholder}
         style={styles.input}
-        selectionColor={Color.WHITE} 
+        selectionColor={Color.BLUE} 
         autoCorrect={false}
         autoFocus={autoFocus}
         keyboardType={keyboardType}
         maxLength={maxLength}
         placeholder={placeholder}
-        placeholderTextColor={Color.TEXT_GREY}/> 
+        placeholderTextColor={'b3b3b3'}/> 
     );
   }
 
@@ -66,7 +66,9 @@ export default class AddCard extends Component<{}> {
     }            
 
     return (
-      <View style={styles.container}>
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>  
         <Text style={styles.topText}>
           Add New Credit Card
         </Text>
@@ -90,13 +92,18 @@ export default class AddCard extends Component<{}> {
             <View style={styles.inputRow}>
               <TextInput style={[styles.input, {width: 136}]}
                 defaultValue={this.props.showEmptyForm ? null : card.inputName}
-                selectionColor={Color.WHITE} 
+                selectionColor={Color.BLUE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      
-                placeholderTextColor={Color.TEXT_GREY}/> 
+                placeholderTextColor={'b3b3b3'}/> 
               {this.Input(card.inputDate, 5, 'numbers-and-punctuation')} 
               {this.Input(card.inputCvv, 4, 'number-pad', !showEmptyForm)}                         
             </View>     
+            <View style={[styles.inputRow, {justifyContent: 'space-between'}]}>
+              <Text> </Text>
+              <Image style={{marginTop: 10, marginRight: 4}} 
+                source={require('../images/visa-logo-my-wallet.png')}/> 
+            </View>            
           </View>
         </Image>        
         {
@@ -113,7 +120,7 @@ export default class AddCard extends Component<{}> {
           `}
           </Text>
         }
-      </View>
+      </Image>
     );
   }
 }
@@ -126,9 +133,10 @@ const styles = StyleSheet.create({
   },
   topText: {
     alignSelf: 'center',
-    color: Color.TEXT_GREY_DARK, 
+    color: Color.WHITE, 
+    backgroundColor: Color.TRANSPARENT,    
     fontSize: 15,
-    marginTop: 70,
+    marginTop: 62,
   },
   card: {
     marginHorizontal: 20, 
@@ -140,7 +148,7 @@ const styles = StyleSheet.create({
   },
   rowOne: {
     fontSize: 11, 
-    color: Color.WHITE, 
+    color: Color.TEXT_GREY_DARK, 
     backgroundColor: 'transparent',
     marginTop: 20,
     marginLeft: 4,  
@@ -152,9 +160,9 @@ const styles = StyleSheet.create({
   input: {
     margin: 4,
     fontSize: 15,
-    color: 'white',
-    backgroundColor: '#41c5f1',
-    borderColor: Color.WHITE,
+    color: Color.BLACK,
+    backgroundColor: '#e7f6fd',
+    borderColor: Color.BLUE,
     borderWidth: 1,
     borderRadius: 5,    
     width: 64,
@@ -163,14 +171,14 @@ const styles = StyleSheet.create({
   },
   verLine: {
     position: 'absolute',     
-    top: 288, 
-    left: 294, 
+    top: 280, 
+    left: 268, 
     right: 0, 
     bottom: 0,     
   },
   bottomText: {
     textAlign: 'right',
-    color: Color.BLUE, 
+    color: Color.TEXT_GREY_DARK, 
     fontSize: 15,
     marginRight: 14,
     position: 'absolute',     
