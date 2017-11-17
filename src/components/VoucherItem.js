@@ -88,7 +88,7 @@ export default class VoucherItem extends Component<{}> {
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign}
               <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}> 
-                $ {amount}
+                ${amount}.00
               </Text>
             </Text>
           </View>

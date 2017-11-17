@@ -41,7 +41,9 @@ export default class ShareOnEmailSend extends Component<{}> {
 
   render() {      
     return (
-      <View style={styles.container}>
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>   
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <Text style={styles.text}> 
             To:
@@ -64,9 +66,8 @@ export default class ShareOnEmailSend extends Component<{}> {
         </View>       
         <View style={styles.noteView}>        
           {this.Input('', 340, 'default', true, true)}       
-        </View>
-                
-      </View>
+        </View>               
+      </Image>
     );
   }
   
@@ -85,14 +86,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',        
     height: 56,
     paddingLeft: 20,
-    backgroundColor: Color.WHITE,
+    backgroundColor: '#e7f6fd',    
   },
   noteView: {
     marginHorizontal: 4, 
     paddingHorizontal: 12,
     paddingBottom: 18,
     flexDirection: 'row',
-    backgroundColor: Color.WHITE,
+    backgroundColor: '#e7f6fd',    
   },
   text: {
     color: Color.TEXT_GREY_DARK, 

@@ -69,7 +69,14 @@ export default class ShareOnEmail extends Component<{}> {
     const selectedButtonId = this.state.selectedButtonId;
 
     return (
-      <View style={styles.container}>                        
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>   
+        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+          <Text style={styles.smallText}> 
+            RECENT SUBMITTERS
+          </Text>                              
+        </View>
         { this.Button('Norman.Garber@hotmail.com', 1) }                 
         { this.HorLine() }
         { this.Button('Emanuel.Barbieri@gmail.com', 2) }                         
@@ -78,14 +85,19 @@ export default class ShareOnEmail extends Component<{}> {
         { this.HorLine() }
         { this.Button('Darlene.Buckalew@hotmail.com', 4) }                                  
         { this.HorLine() }
-        { this.Button('Murray.Derek@hotmail.com', 5) }                          
-        <TouchableOpacity style={[styles.button, {marginTop: 40}]}>
-          <Text style={styles.smallText}> 
+        { this.Button('Murray.Derek@hotmail.com', 5) }         
+        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+          <Text style={[styles.smallText, {color: Color.TEXT_GREY_DARK}]}> 
+            NEW SUBMITTER
+          </Text>                              
+        </View>                 
+        <TouchableOpacity style={[styles.button, {backgroundColor: Color.WHITE}]}>
+          <Text style={[styles.smallText, {color: Color.TEXT_GREY_DARK}]}> 
             To:
           </Text>        
           <Image source={require('../images/add-icon.png')}/>                           
         </TouchableOpacity>               
-      </View>
+      </Image>
     );
   }
   
@@ -94,8 +106,6 @@ export default class ShareOnEmail extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.BACKGROUND_GREY_LITE,
-    paddingTop: 60,
   },
   blockBlack: {
     marginHorizontal: 4, 
@@ -121,10 +131,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',     
     height: 56,
     padding: 20,
-    backgroundColor: Color.WHITE,
+    backgroundColor: '#e7f6fd',    
   },
   smallText: {
-    color: Color.TEXT_GREY_DARK, 
+    color: Color.WHITE, 
+    backgroundColor: Color.TRANSPARENT,
     fontSize: 15, 
   },
   largeText: {

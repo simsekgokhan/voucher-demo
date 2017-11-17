@@ -11,7 +11,7 @@ const GREEN = '#00cc00';
 const PURPLE = '#6462E7';
 
 // Voucher Item Background
-const DARK_BLUE = '#b3e6ff';
+const DARK_BLUE = '#ccf2ff';
 const DARK_RED = '#ffcccc';
 const DARK_GREEN = '#ccffea';
 const DARK_PURPLE = '#c1c1f0';

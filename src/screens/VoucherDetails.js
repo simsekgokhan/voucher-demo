@@ -147,14 +147,14 @@ export default class VoucherDetails extends React.Component {
             <View style={[styles.voucherRow, {marginTop: 30}]}>
               <TouchableOpacity style={styles.button}
                 onPress={this.onSendPress}>
-                <Image source={require('../images/send-logo.png')}/>
+                <Image source={require('../images/send.png')}/>
                 <Text style={[styles.buttonText, {color: Color.RED, paddingHorizontal: 10}]}>
                   Send
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.button, {width: 130}]}
                 onPress={this.onRefundPress}>
-                <Image source={require('../images/refund-logo.png')}/>
+                <Image source={require('../images/refund.png')}/>
                 <Text style={[styles.buttonText, {color: Color.PURPLE, paddingHorizontal: 10}]}>
                   Refund
                 </Text>
