@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
   },
   voucherView: {
     marginHorizontal: 15,
-    marginTop: 20,
-    marginBottom: 164,
+    marginTop: 30,
+    marginBottom: 154,
     padding: 24,
     borderRadius: 5,    
     flex: 1,

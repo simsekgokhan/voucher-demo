@@ -25,7 +25,7 @@ export default class CardRegister extends React.Component {
         navigatorButtons: {
           rightButtons: [{
             id: 'done',
-            icon: require('../images/done-button.png'),      
+            title: 'Done',            
           }]
         }     
       });
@@ -33,7 +33,6 @@ export default class CardRegister extends React.Component {
   }
 
   static navigatorStyle = {
-    navBarButtonColor: Color.BLUE,
     tabBarHidden: true,          
   }
 
@@ -46,7 +45,7 @@ export default class CardRegister extends React.Component {
       navigatorButtons: {
         rightButtons: [{
           id: 'done',
-          icon: require('../images/done-button.png'),      
+          title: 'Done',
         }]
       }     
     });

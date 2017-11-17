@@ -12,8 +12,7 @@ import { deleteAllVouchers } from "../actions/vouchersAction";
 const rightButtons = {  
   rightButtons: [{
     id: 'skip',
-    buttonColor: 'blue',
-    icon: require('../images/skip-button.png'),      
+    title: 'Skip',
   }]
 }
 

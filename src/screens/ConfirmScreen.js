@@ -79,7 +79,9 @@ class ConfirmScreen extends Component<{}> {
     }      
         
     return (
-      <View style={styles.container}>
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>  
         <LinearGradient style={styles.block}
           start={[0, 0]} end={[1, 0]}
           colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>        
@@ -101,7 +103,7 @@ class ConfirmScreen extends Component<{}> {
             Please, confirm your fingerprint
           </Text>                    
         </LinearGradient>        
-      </View>
+      </Image>
     );
   }
 }
@@ -131,8 +133,12 @@ const styles = StyleSheet.create({
   block: {
     flex: 1,
     marginHorizontal: 20, 
-    marginVertical: 30, 
+    marginTop: 30, 
+    marginBottom: 40, 
     alignItems: 'center',
-    //backgroundColor: Color.TEXT_GREY,
+    shadowOpacity: 0.75,
+    shadowRadius: 5,
+    shadowColor: 'grey',
+    shadowOffset: { height: 0, width: 0 },
   }
 });

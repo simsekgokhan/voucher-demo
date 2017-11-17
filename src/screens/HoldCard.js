@@ -21,7 +21,6 @@ export default class HoldCard extends React.Component {
 
   static navigatorStyle = {
     navBarTextColor: 'white',
-    navBarButtonColor: Color.BLUE,
     tabBarHidden: true,     
   }
 
@@ -34,7 +33,7 @@ export default class HoldCard extends React.Component {
       navigatorButtons: {
         rightButtons: [{
           id: 'done',
-          icon: require('../images/done-button.png'),      
+          title: 'Done',
         }]
       }     
     });
