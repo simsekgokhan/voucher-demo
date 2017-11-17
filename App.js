@@ -75,8 +75,8 @@ export function startTabBasedApp(initialTabIdx=0) {
       {
         label: 'Vouchers',
         screen: 'Vouchers',
-        icon: require('./src/images/voucher.png'),
-        selectedIcon: require('./src/images/voucher-active.png'),
+        icon: require('./src/images/vouchers.png'),
+        selectedIcon: require('./src/images/vouchers-active.png'),
         title: 'Vouchers',
         navigatorStyle: {
           navBarHidden: true, 
