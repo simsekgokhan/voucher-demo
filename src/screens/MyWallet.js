@@ -105,20 +105,20 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'transparent',
-    color: Color.WHITE,
+    color: Color.BLUE_DARK,
     fontFamily: 'Roboto-Regular',
   },
   cardNoText: {
     fontSize: 26,
     marginTop: 10,
     backgroundColor: 'transparent',            
-    color: Color.WHITE,
+    color: Color.BLUE_DARK,
   },
   validThru: {
     fontSize: 10,
     marginLeft: 6,
     backgroundColor: 'transparent',            
-    color: Color.WHITE,
+    color: Color.BLUE_DARK,
     fontFamily: 'Roboto-Regular'
   },
 });

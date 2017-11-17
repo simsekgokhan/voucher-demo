@@ -19,7 +19,14 @@ export default class Settings extends Component<{}> {
 
   render() {      
     return (
-      <View style={styles.container}>   
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>  
+        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+          <Text style={styles.labels}> 
+            PERSONAL INFORMATION
+          </Text>                 
+        </View>        
         <View style={styles.block}>
           <Text style={styles.largeText}> 
             Brian.Mendoza@hotmail.com
@@ -36,7 +43,12 @@ export default class Settings extends Component<{}> {
             Phone
           </Text>              
         </View>       
-        <TouchableOpacity style={[ styles.block, {marginTop: 48} ]}>
+        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+          <Text style={styles.labels}> 
+            PASSWORD
+          </Text>                 
+        </View>                
+        <TouchableOpacity style={[ styles.block, {marginTop: 0} ]}>
           <Text style={[styles.largeText, {color: Color.BLUE}]}> 
             Change Password
           </Text>                              
@@ -57,7 +69,7 @@ export default class Settings extends Component<{}> {
           </View>  
           : null                
         }
-      </View>        
+      </Image>        
     );
   }
   
@@ -66,25 +78,28 @@ export default class Settings extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 48,
-    backgroundColor: Color.BACKGROUND_GREY_LITE,
   },
   blockBlack: {
     marginHorizontal: 4, 
     marginTop: 10,
     paddingVertical: 10,    
     paddingHorizontal: 20,
-    backgroundColor: Color.BACKGROUND,
   },
   block: {
     marginHorizontal: 4, 
-    marginVertical: 2,
+    marginVertical: 1,
     height: 68,
     padding: 20,
-    backgroundColor: Color.WHITE,
+    backgroundColor: '#e7f6fd',
+  },
+  labels: {
+    color: Color.WHITE, 
+    backgroundColor: Color.BACKGROUND_TRANSPARENT,    
+    fontSize: 13, 
   },
   smallText: {
     color: Color.TEXT_GREY_DARK, 
+    backgroundColor: Color.BACKGROUND_TRANSPARENT,    
     fontSize: 13, 
   },
   largeText: {

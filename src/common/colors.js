@@ -28,6 +28,7 @@ const Color = {
   DARK_RED: DARK_RED,
   DARK_GREEN: DARK_GREEN,
   DARK_PURPLE: DARK_PURPLE,
+
   
   // --- New     
   // Common
@@ -36,7 +37,11 @@ const Color = {
   BACKGROUND_GREY: BACKGROUND_GREY,
   BACKGROUND_GREY_LITE: '#F7FAFB',    
   BACKGROUND_BLUE: '#56CCF2',       
+  
+  BACKGROUND_TRANSPARENT: 'transparent',       
 
+  BLUE_DARK: '#009FE3',
+  
   // Login 
   INPUT_TEXT: 'white',
   INPUT_LABEL: 'rgba(255,255,255,0.7)',
