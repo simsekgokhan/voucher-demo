@@ -20,8 +20,9 @@ export default class HoldCard extends React.Component {
   }
 
   static navigatorStyle = {
-    navBarTextColor: 'white',
     tabBarHidden: true,     
+    navBarTextColor: Color.WHITE,
+    navBarButtonColor: Color.WHITE,        
   }
 
   onButtonPress = (showEmptyForm) => {

@@ -11,6 +11,7 @@ export default class VoucherDetails extends React.Component {
   // For react-native-navigation  
   static navigatorStyle= {
     tabBarHidden: false,  // todo: get more common settings here 
+    navBarButtonColor: Color.WHITE,    
   }  
 
   navigateToConfirm = (confirmType) => { 
