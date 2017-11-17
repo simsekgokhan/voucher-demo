@@ -13,12 +13,14 @@ export default class MyWallet extends React.Component {
     const balance = hasMoney ? '$ 5,689.08' : '$ 0';
 
     return (
-      <View style={styles.container}>
+      <Image style={styles.container}
+        resizeMode='cover' 
+        source={require('../images/background.png')}>  
         <View style={styles.topView}>
-          <Text style={[styles.validThru, {fontSize: 17, color: Color.TEXT_GREY_DARK}]}> 
+          <Text style={[styles.validThru, {fontSize: 17, color: Color.WHITE}]}> 
               Current Balance 
           </Text>        
-          <Text style={{color: Color.BLUE, fontSize: 26, marginTop: 5}}> 
+          <Text style={{color: Color.WHITE, backgroundColor: 'transparent', fontSize: 26, marginTop: 5}}> 
             {balance} 
           </Text>        
         </View>
@@ -68,7 +70,7 @@ export default class MyWallet extends React.Component {
               source={require('../images/visa-logo-my-wallet.png')}/>
           </View>
         </Image>
-      </View>
+      </Image>
     );
   }
 }
@@ -76,19 +78,16 @@ export default class MyWallet extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flexGrow: 1,
-    justifyContent: 'center',
-    backgroundColor: Color.BACKGROUND,
   },
   topView: {
-    position: 'absolute', 
-    top: 0, 
-    left: 0, 
-    right: 0, 
-    bottom: 400, 
+    marginTop: 40,
+
     justifyContent: 'center', 
     alignItems: 'center',
     paddingVertical: 10,
+  },
+  card:{
+    marginTop: 40,
   },
   row0: {
     flexDirection: 'row',
@@ -114,7 +113,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: 'transparent',            
     color: Color.WHITE,
-    //fontFamily: 'Jura-Regular'
   },
   validThru: {
     fontSize: 10,
