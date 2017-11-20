@@ -94,7 +94,7 @@ class ConfirmScreen extends Component<{}> {
           <TouchableOpacity 
             onPress={this.onTouchIdPressed}>
             <Image style={{marginTop: 70}}
-              source={require('../images/touchId-button.png')}/>
+              source={require('../images/touchid-button.png')}/>
           </TouchableOpacity>
           <Text style={{color: Color.TEXT_DEFAULT, backgroundColor: 'transparent', fontSize: 18, marginTop: 30}}> 
             Touch ID for {leftQuoMark}PlipMe{rightQuoMark}

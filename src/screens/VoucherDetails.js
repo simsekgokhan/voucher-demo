@@ -115,7 +115,7 @@ export default class VoucherDetails extends React.Component {
             <Text style={[styles.voucherText, {marginTop:6}]}> 
               Voucher #{this.props.voucher.id}
             </Text>
-            <Image source={require('../images/visa-logo-voucher-details.png')}/>    
+            <Image source={require('../images/visa-logo-my-wallet.png')}/>    
           </View>
           <View style={styles.voucherLogoView}>
             <Image source={voucherLogo}/>                    
