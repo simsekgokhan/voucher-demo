@@ -95,7 +95,7 @@ export default class ShareOnEmail extends Component<{}> {
           <Text style={[styles.smallText, {color: Color.TEXT_GREY_DARK}]}> 
             To:
           </Text>        
-          <Image source={require('../images/add-icon.png')}/>                           
+          <Image source={require('../images/plus-icon.png')}/>                           
         </TouchableOpacity>               
       </Image>
     );

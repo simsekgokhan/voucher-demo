@@ -50,7 +50,7 @@ export default class ShareOnEmailSend extends Component<{}> {
           </Text>        
           {this.Input('murray.derek@hotmail.com')}                                       
           <TouchableOpacity style={styles.addButton}>
-            <Image source={require('../images/add-icon.png')}/>                                     
+            <Image source={require('../images/plus-icon.png')}/>                                     
           </TouchableOpacity>  
         </View>               
         <View style={styles.row}>

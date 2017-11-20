@@ -123,7 +123,7 @@ class More extends Component<{}> {
         </TouchableOpacity>   
         <TouchableOpacity style={styles.rowButton}
           onPress={ () => this.onButtonPress(2)}>
-          <Image source={require('../images/pay-card-regis-icon.png')} />
+          <Image source={require('../images/card-reg-icon.png')} />
           <Text style={styles.textButton}>
               Payment Card Registration
           </Text>
@@ -151,8 +151,8 @@ class More extends Component<{}> {
         </TouchableOpacity>       
         <TouchableOpacity style={[styles.rowButton, {marginBottom: 0}]}
           onPress={() => this.onButtonPress(6)}>
-          <Image source={require('../images/logout-icon-3.png')}/>
-          <Text style={[styles.textButton, {color: Color.BLUE}]}>
+          <Image source={require('../images/logout-icon.png')}/>
+          <Text style={[styles.textButton, {color: Color.BLUE, marginLeft: 16}]}>
               Log out
           </Text>
         </TouchableOpacity>                                        
