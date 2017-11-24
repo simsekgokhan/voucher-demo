@@ -6,7 +6,7 @@ import {
 import {connect} from "react-redux";
 
 import Color from '../common/colors';
-import { startSingleScreenApp } from '../../App';
+import { startSingleScreenApp } from '../navigator';
 import { deleteAllVouchers } from "../actions/vouchersAction";
 
 const rightButtons = {  

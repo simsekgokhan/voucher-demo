@@ -6,7 +6,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import {connect} from "react-redux";
 
-import { startTabBasedApp } from '../../App';
+import { startTabBasedApp } from '../navigator';
 import Color from '../common/colors';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
 import Voucher from '../common/voucher.constants';
