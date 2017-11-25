@@ -54,9 +54,8 @@ class Login extends Component<{}> {
   }
   
   signIn = () => {
-    if(!this.state.loadStartSreen) {
-      return this.login();      
-    }
+    if(!this.state.loadStartSreen) 
+      return this.login();         
 
     this.setState({
       loadStartSreen: false,
@@ -71,7 +70,7 @@ class Login extends Component<{}> {
     });
   }
 
-  textInput = (keyboardType, defaultValue, isPassword=false) => {
+  TextInput = (keyboardType, defaultValue, isPassword=false) => {
     return(
       <TextInput
         style={styles.inputInput}
@@ -89,9 +88,13 @@ class Login extends Component<{}> {
 
     const signInButtonText = this.state.createAccountSelected ? 'Continue' : 'Sign In';
     
-    let footerTextPartOne = 'By siging up, I agree to the ';
-    let footerTextPartTwo = 'Terms of Use';
-    if(this.state.createAccountSelected) {
+    let footerTextPartOne;
+    let footerTextPartTwo;
+    if(this.state.loadStartSreen) {
+      footerTextPartOne = 'By signing up, I agree to the ';
+      footerTextPartTwo = 'Terms of Use';
+    }
+    else if(this.state.createAccountSelected) {
       footerTextPartOne = 'Already have an account? ';
       footerTextPartTwo = 'Sign In';
     }
@@ -108,7 +111,8 @@ class Login extends Component<{}> {
               onPress={this.onBackButtonPress}>
               <Image source={require('../images/back-button.png')} />
             </TouchableOpacity>    
-            : null
+            : 
+            null
         }
         <Image style={styles.logoView} 
           source={require('../images/app-logo.png')}/>   
@@ -124,7 +128,7 @@ class Login extends Component<{}> {
                   <Text style={styles.inputLabel}>
                     Email
                   </Text>
-                  {this.textInput('email-address', 'Brain.Mendoza@hotmail.com')}                  
+                  {this.TextInput('email-address', 'Brain.Mendoza@hotmail.com')}                  
                 </View>
                 {
                   this.state.createAccountSelected ?            
@@ -132,7 +136,7 @@ class Login extends Component<{}> {
                       <Text style={styles.inputLabel}>
                         Phone
                       </Text>
-                      {this.textInput('phone-pad', '605-848-7840')}                  
+                      {this.TextInput('phone-pad', '605-848-7840')}                  
                     </View>
                     : 
                     null
@@ -141,26 +145,27 @@ class Login extends Component<{}> {
                   <Text style={styles.inputLabel}>
                     Password
                   </Text>
-                  {this.textInput('default', '605-848', true)}
+                  {this.TextInput('default', '605-848', true)}
                 </View>
               </View>            
           }
           <TouchableOpacity style={styles.buttonView}
             onPress={this.signIn}>
-            <Text style={[styles.buttonText, {color: Color.BUTTON_FIRST_TEXT}]}> 
+            <Text style={[styles.buttonText, {color: Color.FIRST_BUTTON_TEXT}]}> 
               {signInButtonText}
             </Text>
           </TouchableOpacity>
           {
             (this.state.createAccountSelected) ? 
-            null
-            : 
-            <TouchableOpacity style={styles.buttonView2}
-              onPress={this.createAccount}>
-              <Text style={[styles.buttonText, {color: Color.BUTTON_SECOND_TEXT}]}> 
-                Create an Account
-              </Text>
-            </TouchableOpacity> 
+              null 
+              : 
+              <TouchableOpacity 
+                style={[styles.buttonView, {backgroundColor: Color.SECOND_BUTTON_BACKGROUND}]}
+                onPress={this.createAccount}>
+                <Text style={[styles.buttonText, {color: Color.SECOND_BUTTON_TEXT}]}> 
+                  Create an Account
+                </Text>
+              </TouchableOpacity> 
           }
         </View>
         <View style={styles.footerView} >
@@ -252,21 +257,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',    
   },
   buttonView: {
-    backgroundColor: Color.BUTTON_FIRST_BACKGROUND,
+    backgroundColor: Color.FIRST_BUTTON_BACKGROUND,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20,
     width: 300,
     height: 50,
     borderRadius: 5,    
-  }, 
-  buttonView2: {
-    backgroundColor: Color.BUTTON_SECOND_BACKGROUND,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-    width: 300,
-    height: 50,
   }, 
   buttonText: {
     textAlign: 'center',
