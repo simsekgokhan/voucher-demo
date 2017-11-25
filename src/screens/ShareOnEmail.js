@@ -9,7 +9,7 @@ export default class ShareOnEmail extends Component<{}> {
 
   constructor(props) {
     super(props);
-    // if you want to listen on navigator events, set this up
+    // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 

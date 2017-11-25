@@ -16,16 +16,17 @@ class Vouchers extends React.Component {
 
   constructor(props) {
     super(props);
-    // if you want to listen on navigator events, set this up
+    // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   onNavigatorEvent(event) { 
-    if (event.id === 'bottomTabSelected')
+    if (event.id === 'bottomTabSelected') {
       this.props.navigator.handleDeepLink({
         link: 'AllTabs.popToRoot', 
         payload: { sender: 'Vouchers' }
       });          
+    }
     else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
              event.payload.sender !== 'Vouchers') {
       this.props.navigator.resetTo({ 
@@ -44,10 +45,10 @@ class Vouchers extends React.Component {
     })
   }
 
-  createVouherItem = (voucher) => {
+  VoucherItem = (voucher) => {
     return(
       <VoucherItem 
-        onDetailsPress={() => this.navigateToDetails(voucher)} 
+        onDetailsPress={ () => this.navigateToDetails(voucher) } 
         voucher={voucher}/>
     );
   }
@@ -63,10 +64,10 @@ class Vouchers extends React.Component {
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
         if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED)
-          voucherItems.unshift(this.createVouherItem(voucher));                
+          voucherItems.unshift(this.VoucherItem(voucher));                
       }
       else {
-        voucherItems.unshift(this.createVouherItem(voucher));
+        voucherItems.unshift(this.VoucherItem(voucher));
       }
     }
 
@@ -76,37 +77,33 @@ class Vouchers extends React.Component {
         <Image style={styles.appLogo}  
           source={require('../images/app-logo-small.png')}/>
         <View style={styles.topView}>
-          <Text style={{color: Color.WHITE, fontSize: 17, backgroundColor: 'transparent'}}> 
+          <Text style={styles.totalBalance}> 
             Total Balance 
           </Text>        
-          <Text style={{color: Color.WHITE, fontSize: 26, backgroundColor: 'transparent', marginTop: 5}}> 
+          <Text style={styles.balance}> 
             $ {balance}.00
           </Text>        
         </View>
-          {
-            hasVoucher ? 
-            <ScrollView vertical style={styles.scrollView}>
-              {voucherItems}                             
-            </ScrollView>
-            :            
-            <View style={styles.logoView}>
-              <Image source={require('../images/voucher-logo.png')}/>
-              <Text style={{color: Color.WHITE, fontSize: 20, backgroundColor: 'transparent',marginTop: 18}}> 
-                Buy Your First Voucher 
-              </Text>
-            </View>
-          }
+        {
+          hasVoucher ? 
+          <ScrollView vertical style={styles.scrollView}>
+            {voucherItems}                             
+          </ScrollView>
+          :            
+          <View style={styles.logoView}>
+            <Image source={require('../images/voucher-logo.png')}/>
+            <Text style={styles.buyYourText}> 
+              Buy Your First Voucher 
+            </Text>
+          </View>
+        }
       </Image>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    vouchers: state.vouchers,
-    balance: state.balance,
-    allVouchers: state.allVouchers,    
-  }
+  return { vouchers: state.vouchers }
 }
 
 export default connect(mapStateToProps)(Vouchers);
@@ -130,10 +127,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
   },
+  totalBalance: {
+    color: Color.WHITE, 
+    fontSize: 17, 
+    backgroundColor: 'transparent',
+  },
+  balance: {
+    color: Color.WHITE, 
+    fontSize: 26, 
+    backgroundColor: 'transparent', 
+    marginTop: 5,
+  },
   logoView: {
     marginTop: 32,
     justifyContent: 'center', 
     alignItems: 'center',
+  },
+  buyYourText: {
+    color: Color.WHITE, 
+    fontSize: 20, 
+    backgroundColor: 'transparent', 
+    marginTop: 18,
   },
   scrollView: {
     marginTop: 36, 
