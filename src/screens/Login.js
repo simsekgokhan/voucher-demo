@@ -18,37 +18,16 @@ class Login extends Component<{}> {
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200));  
 
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50));  
-    this.props.updateVoucher({
-      id: 1201, 
-      newStatus: Voucher.SENT, 
-      newTimeStamp: getTime(),
-      amount: 50
-    });
+    this.props.updateVoucher({ id: 1201, newStatus: Voucher.SENT });
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25));      
-    this.props.updateVoucher({
-      id: 1202, 
-      newStatus: Voucher.REFUNDED, 
-      newTimeStamp: getTime(),
-      amount: 25
-    });
+    this.props.updateVoucher({ id: 1202, newStatus: Voucher.REFUNDED });
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100));  
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 40));  
-    this.props.updateVoucher({
-      id: 1204, 
-      newStatus: Voucher.SENT, 
-      newTimeStamp: getTime(),
-      amount: 40
-    });
-    this.props.updateVoucher({
-      id: 1204, 
-      newStatus: Voucher.REDEEMED, 
-      newTimeStamp: getTime(),
-      amount: 0
-    });
-    
+    this.props.updateVoucher({ id: 1204, newStatus: Voucher.SENT });
+    this.props.updateVoucher({ id: 1204, newStatus: Voucher.REDEEMED });    
   }
 
   componentDidMount() {

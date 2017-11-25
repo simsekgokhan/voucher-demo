@@ -28,12 +28,7 @@ class ConfirmScreen extends Component<{}> {
     } 
     else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND){
       voucher = createVoucherWithId(this.props.id, voucherType, amount);       
-      this.props.updateVoucher({
-        id: this.props.id, 
-        newStatus: voucherType, 
-        newTimeStamp: getTime(),
-        amount: amount
-      });
+      this.props.updateVoucher({ id: this.props.id, newStatus: voucherType });
     }
     
     this.props.navigator.push({

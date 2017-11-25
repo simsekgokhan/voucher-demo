@@ -2,7 +2,8 @@ import { Navigation } from 'react-native-navigation';
 import { Provider } from "react-redux";
 import store from "./store";
 import { deleteAllVouchers } from "./actions/vouchersAction";
-import { resetVoucherIds, resetTime } from './model/voucher.model';
+import { resetVoucherIds } from './model/voucher.model';
+import { resetTime } from './common/time';
 
 import Vouchers from './screens/Vouchers';
 import BuyVoucher from './screens/BuyVoucher';

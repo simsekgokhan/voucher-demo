@@ -4,7 +4,7 @@ import logger from "redux-logger";
 import appReducer from "./reducers/appReducer";
 import vouchersReducer from "./reducers/vouchersReducer";
 
-// 1. Create store
+// Create store
 const store = createStore(
     combineReducers({ app: appReducer, vouchers: vouchersReducer }),
     {}, // {}: initialState is optional 

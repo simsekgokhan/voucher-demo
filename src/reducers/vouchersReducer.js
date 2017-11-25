@@ -14,18 +14,25 @@ const vouchersReducer = (state = {
             };
             break;      
         case "UPDATE_VOUCHER":
+            let amount = 0;
             state = {
                 ...state,
-                allVouchers: state.allVouchers.map(voucher => 
-                    (voucher.id === action.id) ?                    
-                    { 
-                      ...voucher, 
-                      oldStatus: voucher.status, 
-                      status: action.newStatus,
-                      timeStamp: action.newTimeStamp
-                    } 
-                    : voucher),
-                balance: state.balance - action.amount
+                allVouchers: state.allVouchers.map(voucher => {
+                    if(voucher.id === action.id) {
+                      // Do not change the balance when Redeemed action occurs  
+                      amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
+                      return { 
+                        ...voucher, 
+                        oldStatus: voucher.status, 
+                        status: action.newStatus,
+                        timeStamp: action.newTimeStamp
+                      }; 
+                    }
+                    else {
+                      return voucher;
+                    }
+                }),
+                balance: state.balance - amount
             };
             break;               
         case "DELETE_ALL_VOUCHERS":
