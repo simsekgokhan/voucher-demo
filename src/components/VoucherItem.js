@@ -35,41 +35,41 @@ export default class VoucherItem extends Component<{}> {
       secondLine = emailOne;
     else if(oldStatus === Voucher.RECEIVED)
       secondLine = 'from ' + emailTwo;
-    else if(oldStatus === Voucher.SENT) // temp added to simulate REDEEMED case
+    else if(oldStatus === Voucher.SENT) // temp. added to simulate REDEEMED case
       secondLine = 'to ' + emailTwo;    
 
-    let voucherColor = Color.DARK_BLUE;
+    let voucherColor = Color.REDEEMED;
     let textColor = Color.BLUE;
     let amountSign = '+';
   
     switch(status) {
       case Voucher.REDEEMED:
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         amountSign = '';
         break;
       case Voucher.SENT:
-        voucherColor = Color.DARK_RED;
+        voucherColor = Color.SENT;
         textColor = Color.RED;
         amountSign = '-';
         break;
        case Voucher.PURCHASED:
-        voucherColor = Color.DARK_GREEN;
+        voucherColor = Color.PURCHASED;
         textColor = Color.GREEN;
         amountSign = '+';
         break;
       case Voucher.RECEIVED:
-        voucherColor = Color.DARK_GREEN;
+        voucherColor = Color.RECEIVED;
         textColor = Color.GREEN;
         amountSign = '+';
         break;
       case Voucher.REFUNDED:
-        voucherColor = Color.DARK_PURPLE;
+        voucherColor = Color.REFUNDED;
         textColor = Color.PURPLE;
         amountSign = '-';
         break;        
       default:
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         amountSign = '';
         break;

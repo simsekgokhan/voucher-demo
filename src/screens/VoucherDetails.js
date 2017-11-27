@@ -60,33 +60,33 @@ export default class VoucherDetails extends React.Component {
     let name = brian.name;
     let email = brian.email;
     let voucherLogo = require('../images/redeemed.png');
-    let voucherColor = Color.DARK_BLUE;
+    let voucherColor = Color.REDEEMED;
     let textColor = Color.BLUE;
     let showButtons = false;
 
     switch(voucherType) {
       case Voucher.REDEEMED:
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         voucherLogo = require('../images/redeemed.png');
         textColor = Color.BLUE;
         name = murrey.name;
         email = murrey.email;
         break;
       case Voucher.SENT:
-        voucherColor = Color.DARK_RED;
+        voucherColor = Color.SENT;
         voucherLogo = require('../images/sent.png');
         textColor = Color.RED;
         name = hans.name;
         email = hans.email;
         break;
         case Voucher.PURCHASED:
-        voucherColor = Color.DARK_GREEN;
+        voucherColor = Color.PURCHASED;
         voucherLogo = require('../images/purchased.png');
         textColor = Color.GREEN;
         showButtons = true;
         break;
       case Voucher.RECEIVED:
-        voucherColor = Color.DARK_GREEN;
+        voucherColor = Color.RECEIVED;
         voucherLogo = require('../images/received.png');
         textColor = Color.GREEN;
         showButtons = true;
@@ -94,12 +94,12 @@ export default class VoucherDetails extends React.Component {
         email = murrey.email;
         break;
       case Voucher.REFUNDED:
-        voucherColor = Color.DARK_PURPLE;
+        voucherColor = Color.REFUNDED;
         voucherLogo = require('../images/refunded.png');
         textColor = Color.PURPLE;
         break;          
       default:
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         break;
     }      

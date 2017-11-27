@@ -43,32 +43,32 @@ class ConfirmScreen extends Component<{}> {
     confirmType = this.props.confirmType;
     amount = this.props.amount;  
   
-    let voucherColor = Color.DARK_BLUE;
+    let voucherColor = Color.REDEEMED;
     let textColor = Color.BLUE;
     switch(confirmType) {
       case Voucher.BUY:
         voucherType = Voucher.PURCHASED;
-        voucherColor = Color.DARK_GREEN;
+        voucherColor = Color.PURCHASED;
         textColor = Color.BLUE;                
         break;      
       case Voucher.REDEEM:
         voucherType = Voucher.REDEEMED;
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         break;
       case Voucher.SEND:
         voucherType = Voucher.SENT;
-        voucherColor = Color.DARK_RED;
+        voucherColor = Color.SENT;
         textColor = Color.RED;
         break;
       case Voucher.REFUND:
         voucherType = Voucher.REFUNDED;
-        voucherColor = Color.DARK_PURPLE;
+        voucherColor = Color.REFUNDED;
         textColor = Color.PURPLE;
         break;
       default:
         voucherType = Voucher.REDEEMED;
-        voucherColor = Color.DARK_BLUE;
+        voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         break;
     }      
