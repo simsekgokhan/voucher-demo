@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import Voucher from '../common/voucher.constants';
 import Color from '../common/colors';
+import Vouchers from '../model/voucher.model';
 
 export default class VoucherItem extends Component<{}> {
   
@@ -38,42 +39,9 @@ export default class VoucherItem extends Component<{}> {
     else if(oldStatus === Voucher.SENT) // temp. added to simulate REDEEMED case
       secondLine = 'to ' + emailTwo;    
 
-    let voucherColor = Color.REDEEMED;
-    let textColor = Color.BLUE;
-    let amountSign = '+';
-  
-    switch(status) {
-      case Voucher.REDEEMED:
-        voucherColor = Color.REDEEMED;
-        textColor = Color.BLUE;
-        amountSign = '';
-        break;
-      case Voucher.SENT:
-        voucherColor = Color.SENT;
-        textColor = Color.RED;
-        amountSign = '-';
-        break;
-       case Voucher.PURCHASED:
-        voucherColor = Color.PURCHASED;
-        textColor = Color.GREEN;
-        amountSign = '+';
-        break;
-      case Voucher.RECEIVED:
-        voucherColor = Color.RECEIVED;
-        textColor = Color.GREEN;
-        amountSign = '+';
-        break;
-      case Voucher.REFUNDED:
-        voucherColor = Color.REFUNDED;
-        textColor = Color.PURPLE;
-        amountSign = '-';
-        break;        
-      default:
-        voucherColor = Color.REDEEMED;
-        textColor = Color.BLUE;
-        amountSign = '';
-        break;
-    }
+    const voucherColor = Vouchers[status].voucherColor;
+    const textColor = Vouchers[status].textColor;
+    const amountSign = Vouchers[status].amountSign;
 
     const voucherBottomMargin = this.state.expanded ? 2 : 15;
 
@@ -99,7 +67,7 @@ export default class VoucherItem extends Component<{}> {
               Today, {timeStamp} PM 
             </Text>
             <Text style={[styles.voucherText, {color: textColor}]}> 
-              {status} 
+              {Vouchers[status].toString} 
             </Text>            
           </View>  
           {
@@ -125,7 +93,7 @@ export default class VoucherItem extends Component<{}> {
                       10-16-2017, 11:00 AM 
                     </Text>
                     <Text style={styles.voucherText}> 
-                      {oldStatus} 
+                      {Vouchers[oldStatus].toString} 
                     </Text>
                   </View>  
                   <View style={styles.voucherRow}>
@@ -145,7 +113,7 @@ export default class VoucherItem extends Component<{}> {
                       9-14-2017, 8:00 AM 
                     </Text>
                     <Text style={styles.voucherText}> 
-                      {Voucher.PURCHASED} 
+                      {Vouchers[Voucher.PURCHASED].toString} 
                     </Text>
                   </View>  
                   <View style={styles.voucherRow}>
