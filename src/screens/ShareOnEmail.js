@@ -72,7 +72,7 @@ export default class ShareOnEmail extends Component<{}> {
       <Image style={styles.container}
         resizeMode='cover' 
         source={require('../images/background.png')}>   
-        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+        <View style={styles.submitter}>
           <Text style={styles.smallText}> 
             RECENT SUBMITTERS
           </Text>                              
@@ -86,7 +86,7 @@ export default class ShareOnEmail extends Component<{}> {
         { this.Button('Darlene.Buckalew@hotmail.com', 4) }                                  
         { this.HorLine() }
         { this.Button('Murray.Derek@hotmail.com', 5) }         
-        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+        <View style={styles.submitter}>
           <Text style={[styles.smallText, {color: Color.TEXT_GREY_DARK}]}> 
             NEW SUBMITTER
           </Text>                              
@@ -106,6 +106,11 @@ export default class ShareOnEmail extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  submitter: {
+    paddingLeft: 24, 
+    marginTop: 24, 
+    marginBottom: 12
   },
   blockBlack: {
     marginHorizontal: 4, 

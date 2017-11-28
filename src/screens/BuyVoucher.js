@@ -236,13 +236,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    backgroundColor: 'transparent',  
+    backgroundColor: Color.TRANSPARENT,  
     color: Color.TEXT_GREY_DARK, 
     fontSize: 24,
   },
   buttonTextSelected: {
     textAlign: 'center',
-    backgroundColor: 'transparent',  
+    backgroundColor: Color.TRANSPARENT,  
     color: Color.BLUE, 
     fontSize: 24,
   },
