@@ -75,19 +75,16 @@ class Receive extends Component<{}> {
   render() {
      return (      
       <View style={styles.container}>
-        <Camera
-          ref={(cam) => {this.camera = cam;}}
-          style={styles.camera}
+        <Camera style={styles.camera}
+          ref={(cam) => {this.camera = cam;}}          
           aspect={Camera.constants.Aspect.fill}
-          onBarCodeRead={(data) => this.onBarCodeRead(data)} >          
-          <Image 
-            style={{marginTop: 200}} 
+          onBarCodeRead={ (data) => this.onBarCodeRead(data) }>          
+          <Image style={{marginTop: 200}} 
             source={require('../images/white-rectangle-border.png')}>           
           </Image>     
-          <TouchableOpacity 
-            onPress={this.onButtonPress}
-            style={styles.footerView}>       
-            <Text style={{color: 'white', fontSize: 14, backgroundColor:'transparent'}}> 
+          <TouchableOpacity style={styles.footerView}
+            onPress={this.onButtonPress}>       
+            <Text style={styles.scanMyText}> 
               Scan my payment QR-code
             </Text>             
             <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
@@ -124,6 +121,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     justifyContent: 'center',
     alignItems: 'center',    
+  },
+  scanMyText: {
+    color: 'white', 
+    fontSize: 14, 
+    backgroundColor: Color.TRANSPARENT,
   },
   camera: {
     alignItems: 'center'

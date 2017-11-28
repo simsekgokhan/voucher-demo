@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 
 import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
-import { setHasVoucher, addVoucher } from "../actions/vouchersAction";
+import { addVoucher } from "../actions/vouchersAction";
 import { createVoucher } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
@@ -30,16 +30,14 @@ class ScanQrCode extends Component<{}> {
 
   render() {
      return (
-      <Image resizeMode='cover' style={styles.container}
+      <Image style={styles.container}
+        resizeMode='cover' 
         source={require('../images/background-receive.png')}>   
-        <Image 
-          style={{marginTop: 140}} 
-          source={require('../images/white-rectangle-border.png')}>           
-        </Image>     
-        <TouchableOpacity 
-          onPress={this.onButtonPress}
-          style={styles.footerView}>       
-          <Text style={{color: 'white', backgroundColor:'transparent', fontSize: 14}}> 
+        <Image style={{marginTop: 140}} 
+          source={require('../images/white-rectangle-border.png')}/>             
+        <TouchableOpacity style={styles.footerView}
+          onPress={this.onButtonPress}>       
+          <Text style={styles.scanMyText}> 
             Scan my payment QR-code
           </Text>             
           <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
@@ -51,16 +49,11 @@ class ScanQrCode extends Component<{}> {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    hasVoucher: state.hasVoucher,    
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setHasVoucher: (state) => {
-      dispatch(setHasVoucher(state));      
-    },
     addVoucher: (state) => {
       dispatch(addVoucher(state));      
     },
@@ -80,6 +73,11 @@ const styles = StyleSheet.create({
     marginTop: 80,
     justifyContent: 'center',
     alignItems: 'center',    
+  },
+  scanMyText: {
+    color: 'white', 
+    fontSize: 14, 
+    backgroundColor: Color.TRANSPARENT,
   },
   capture: {
     flex: 0,
