@@ -65,7 +65,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ScanQrCode);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BLACK,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',    
   },
   scanMyText: {
-    color: 'white', 
+    color: Color.WHITE, 
     fontSize: 14, 
     backgroundColor: Color.TRANSPARENT,
   },

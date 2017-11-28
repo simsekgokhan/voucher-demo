@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
-  Button
+  StyleSheet, Text,  View, Image,   
 } from 'react-native';
 import Color from '../common/colors';
 
@@ -17,10 +16,10 @@ export default class MyWallet extends React.Component {
         resizeMode='cover' 
         source={require('../images/background.png')}>  
         <View style={styles.topView}>
-          <Text style={[styles.validThru, {fontSize: 17, color: Color.WHITE}]}> 
+          <Text style={styles.currentBalance}> 
               Current Balance 
           </Text>        
-          <Text style={{color: Color.WHITE, backgroundColor: 'transparent', fontSize: 26, marginTop: 5}}> 
+          <Text style={styles.balance}> 
             {balance} 
           </Text>        
         </View>
@@ -81,12 +80,24 @@ const styles = StyleSheet.create({
   },
   topView: {
     marginTop: 40,
-
     justifyContent: 'center', 
     alignItems: 'center',
     paddingVertical: 10,
   },
-  card:{
+  currentBalance: {
+    fontSize: 17,
+    marginLeft: 6,
+    backgroundColor: Color.TRANSPARENT,            
+    color: Color.WHITE,
+    fontFamily: 'Roboto-Regular'
+  },
+  balance: {
+    color: Color.WHITE, 
+    backgroundColor: Color.TRANSPARENT, 
+    fontSize: 26, 
+    marginTop: 5
+  },
+  card: {    
     marginTop: 32,
   },
   row0: {
@@ -104,20 +115,20 @@ const styles = StyleSheet.create({
     marginLeft: 18,
   },
   text: {
-    backgroundColor: 'transparent',
+    backgroundColor: Color.TRANSPARENT,
     color: Color.BLUE_DARK,
     fontFamily: 'Roboto-Regular',
   },
   cardNoText: {
     fontSize: 26,
     marginTop: 10,
-    backgroundColor: 'transparent',            
+    backgroundColor: Color.TRANSPARENT,            
     color: Color.BLUE_DARK,
   },
   validThru: {
     fontSize: 10,
     marginLeft: 6,
-    backgroundColor: 'transparent',            
+    backgroundColor: Color.TRANSPARENT,            
     color: Color.BLUE_DARK,
     fontFamily: 'Roboto-Regular'
   },

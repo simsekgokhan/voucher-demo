@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image , Dimensions,
-  Share
+  StyleSheet, Text, TouchableOpacity, View, Image, Dimensions, Share
 } from 'react-native';
 import {connect} from "react-redux";
 
@@ -40,7 +39,7 @@ class More extends Component<{}> {
   }
 
   navigateTo(screen, title, backButtonTitle, rightButtonEnabled, 
-             passProps=null, navBarHidden=false){
+             passProps=null, navBarHidden=false) {
     this.props.navigator.push({
       screen: screen,
       title: title,
@@ -155,7 +154,8 @@ class More extends Component<{}> {
               Log out
           </Text>
         </TouchableOpacity>                                        
-        <View style={{backgroundColor: '#b8e9fa', flex:1, width:Dimensions.get('window').width}}>
+        <View style={{backgroundColor: '#b8e9fa', flex:1, 
+                      width:Dimensions.get('window').width}}>
         </View>
       </Image>
     );
@@ -199,13 +199,13 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    backgroundColor: 'transparent',
+    backgroundColor: Color.TRANSPARENT,
     color: Color.TEXT_DEFAULT
   },
   textBalance: {
     color: Color.TEXT_MORE_BALANCE,
     fontSize: 26,
-    backgroundColor: 'transparent',
+    backgroundColor: Color.TRANSPARENT,
     marginTop: 4,
   },
   rowButton: {
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   textButton: {
     marginLeft: 22,
     fontSize: 18,
-    backgroundColor: 'transparent',
+    backgroundColor: Color.TRANSPARENT,
     color: Color.TEXT_DEFAULT
   }
 });
