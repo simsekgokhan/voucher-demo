@@ -1,5 +1,5 @@
-let minute = 10;
 let hour = 2;
+let minute = 10;
 
 export function getTime(){
   minute += 4;
@@ -16,6 +16,6 @@ export function getTime(){
 }
 
 export function resetTime() {
-  minute = 10;
   hour = 2;
+  minute = 10;
 }

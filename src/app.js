@@ -1,4 +1,4 @@
 import { startApp } from './navigator';
 
-// Main app entrance here
+// Main app entrance
 startApp();

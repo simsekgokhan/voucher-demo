@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image
+  StyleSheet, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import Color from '../common/colors';
 
@@ -22,7 +22,7 @@ export default class Settings extends Component<{}> {
       <Image style={styles.container}
         resizeMode='cover' 
         source={require('../images/background.png')}>  
-        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+        <View style={styles.persInfo}>
           <Text style={styles.labels}> 
             PERSONAL INFORMATION
           </Text>                 
@@ -43,12 +43,12 @@ export default class Settings extends Component<{}> {
             Phone
           </Text>              
         </View>       
-        <View style={{paddingLeft: 24, marginTop: 24, marginBottom: 12}}>
+        <View style={styles.persInfo}>
           <Text style={styles.labels}> 
             PASSWORD
           </Text>                 
         </View>                
-        <TouchableOpacity style={[ styles.block, {marginTop: 0} ]}>
+        <TouchableOpacity style={[styles.block, {marginTop: 0}]}>
           <Text style={[styles.largeText, {color: Color.BLUE}]}> 
             Change Password
           </Text>                              
@@ -61,13 +61,15 @@ export default class Settings extends Component<{}> {
                 THEME
               </Text>                 
             </View>         
-            <TouchableOpacity onPress={this.changeTheme} style={styles.block}>
+            <TouchableOpacity style={styles.block}
+              onPress={this.changeTheme}>
               <Text style={[styles.largeText, {color: Color.BLUE}]}> 
                 Change Theme
               </Text>                              
             </TouchableOpacity>   
           </View>  
-          : null                
+          : 
+          null                
         }
       </Image>        
     );
@@ -78,6 +80,11 @@ export default class Settings extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  persInfo: {
+    paddingLeft: 24, 
+    marginTop: 24, 
+    marginBottom: 12
   },
   blockBlack: {
     marginHorizontal: 4, 

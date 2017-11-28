@@ -19,7 +19,7 @@ const vouchersReducer = (state = {
                 ...state,
                 allVouchers: state.allVouchers.map(voucher => {
                     if(voucher.id === action.id) {
-                      // Do not change the balance when Redeemed action occurs  
+                      // Do not change the balance when Redeem occurs  
                       amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
                       return { 
                         ...voucher, 
