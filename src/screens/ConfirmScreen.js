@@ -80,10 +80,10 @@ class ConfirmScreen extends Component<{}> {
         <LinearGradient style={styles.block}
           start={[0, 0]} end={[1, 0]}
           colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>        
-          <Text style={{color: Color.TEXT_DEFAULT, backgroundColor: 'transparent', fontSize: 18, marginTop: 50}}> 
+          <Text style={styles.confirmTypeText}> 
             {confirmType} 
           </Text>
-          <Text style={{color: textColor, backgroundColor: 'transparent', fontSize: 24, marginTop: 6}}> 
+          <Text style={[styles.amount, {color: textColor}]}> 
             ${amount}.00
           </Text>          
           <TouchableOpacity 
@@ -91,10 +91,10 @@ class ConfirmScreen extends Component<{}> {
             <Image style={{marginTop: 70}}
               source={require('../images/touchid-button.png')}/>
           </TouchableOpacity>
-          <Text style={{color: Color.TEXT_DEFAULT, backgroundColor: 'transparent', fontSize: 18, marginTop: 30}}> 
+          <Text style={styles.touchIdText}> 
             Touch ID for {leftQuoMark}PlipMe{rightQuoMark}
           </Text>
-          <Text style={{color: Color.TEXT_GREY_DARK, backgroundColor: 'transparent', sfontSize: 14, marginTop: 14}}> 
+          <Text style={styles.pleaseConfirmText}> 
             Please, confirm your fingerprint
           </Text>                    
         </LinearGradient>        
@@ -135,5 +135,28 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: 'grey',
     shadowOffset: { height: 0, width: 0 },
+  },
+  confirmTypeText: {
+    color: Color.TEXT_DEFAULT, 
+    backgroundColor: Color.TRANSPARENT, 
+    fontSize: 18, 
+    marginTop: 50
+  },
+  amount: {     
+    backgroundColor: Color.TRANSPARENT, 
+    fontSize: 24, 
+    marginTop: 6
+  },
+  touchIdText: {
+    color: Color.TEXT_DEFAULT, 
+    backgroundColor: Color.TRANSPARENT, 
+    fontSize: 18, 
+    marginTop: 30
+  },
+  pleaseConfirmText: {
+    color: Color.TEXT_GREY_DARK, 
+    backgroundColor: Color.TRANSPARENT, 
+    fontSize: 14, 
+    marginTop: 14
   }
 });

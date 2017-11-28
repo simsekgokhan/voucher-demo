@@ -3,10 +3,8 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Picker, Button,
   Dimensions
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import { Navigation } from 'react-native-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-import {connect} from "react-redux";
 
 import ConfirmScreen from './ConfirmScreen';
 import Color from '../common/colors';
@@ -16,7 +14,7 @@ import VoucherDetails from '../screens/VoucherDetails';
 const ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE = true;
 const DOUBLE_PRESS_DELAY = 300;
 
-class BuyVoucher extends Component<{}> {
+export default class BuyVoucher extends Component<{}> {
 
   constructor(props) {
     super(props);
@@ -57,7 +55,7 @@ class BuyVoucher extends Component<{}> {
   onButtonPress = (amount) => {
     this.setState({ selectedValue: amount });
 
-    // Button Double Press Feature  
+    // Button double press feature  
     if(!ACTIVATE_BUTTON_DOUBLE_PRESS_FEATURE)
       return;
 
@@ -166,21 +164,13 @@ class BuyVoucher extends Component<{}> {
           </Picker>           
         </View>
         <View style={{backgroundColor: Color.WHITE, flex:1, 
-          width:Dimensions.get('window').width}}>
+                      width:Dimensions.get('window').width}}>
         </View>   
       </View>
     );
 
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    app: state.app,   
-  }
-}
-
-export default connect(mapStateToProps)(BuyVoucher);
 
 const styles = StyleSheet.create({
   container: {
