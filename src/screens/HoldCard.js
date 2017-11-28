@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
 import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
-  Button
+  StyleSheet, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import Color from '../common/colors';
 
@@ -15,8 +14,8 @@ export default class HoldCard extends React.Component {
   }
 
   onNavigatorEvent(event) { 
-    if (event.type === 'NavBarButtonPress' && event.id === 'skip')
-      this.onButtonPress(true);
+    if (event.type === 'NavBarButtonPress' && event.id === 'done')
+      this.onButtonPress(false);
   }
 
   static navigatorStyle = {
@@ -42,15 +41,15 @@ export default class HoldCard extends React.Component {
 
   render() {
     return (
-      <Image resizeMode='cover' style={styles.container}  
+      <Image style={styles.container}
+        resizeMode='cover'   
         source={require('../images/hold-card.png')}>                         
-        <TouchableOpacity 
-          onPress={ () => this.onButtonPress(false) }
-          style={styles.button}>                    
+        <TouchableOpacity style={styles.button}
+          onPress={ () => this.onButtonPress(false) }>                    
           <Image style={styles.leftRect} 
             source={require('../images/rect-left.png')}/>
           <Image style={styles.rightRect} 
-          source={require('../images/rect-right.png')}/>   
+            source={require('../images/rect-right.png')}/>   
           <Text style={styles.buttonText}> 
             Hold your credit card here
           </Text>      
@@ -63,7 +62,7 @@ export default class HoldCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: Color.BLACK,
     justifyContent: 'center',
   },
   button: {
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     left: 0, 
     right: 0, 
     bottom: 0,     
-    backgroundColor: 'transparent',  
+    backgroundColor: Color.TRANSPARENT,  
     color: 'white', 
     fontWeight: '700' 
   },

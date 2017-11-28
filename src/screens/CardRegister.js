@@ -12,6 +12,10 @@ export default class CardRegister extends React.Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
+  componentWillMount() {
+    CardIOUtilities.preload();
+  }
+
   static navigatorStyle = {
     tabBarHidden: true,   
     navBarButtonColor: Color.WHITE,        
@@ -34,9 +38,9 @@ export default class CardRegister extends React.Component {
     }
   }
 
-  navigateToAddCard = (card) => {
+  navigateToHoldCard = (card) => {
     this.props.navigator.push({
-      screen: 'AddCard',
+      screen: 'HoldCard',
       title: 'Card Registration',
       backButtonTitle: 'Back',
       passProps: {showEmptyForm: (card === null), card: card},
@@ -49,10 +53,6 @@ export default class CardRegister extends React.Component {
     });
   }
 
-  componentWillMount() {
-    CardIOUtilities.preload();
-  }
-
   didScanCard = (card) => { // the scanned card  
     this.navigateToAddCard(card);
   }
@@ -60,7 +60,7 @@ export default class CardRegister extends React.Component {
   render() {
     return (
       <TouchableOpacity style={styles.container}
-        onPress={() => this.navigateToAddCard()}>        
+        onPress={() => this.navigateToHoldCard()}>        
         <CardIOView style={{flex: 1}}
           hideCardIOLogo={true}
           didScanCard={this.didScanCard}          
