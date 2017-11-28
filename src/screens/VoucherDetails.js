@@ -5,12 +5,13 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../common/colors';
 import Voucher from '../common/voucher.constants';
+import Vouchers from '../model/voucher.model';
 
 export default class VoucherDetails extends React.Component {
  
   // For react-native-navigation  
   static navigatorStyle= {
-    tabBarHidden: false,  // todo: get more common settings here 
+    tabBarHidden: false,
     navBarButtonColor: Color.WHITE,    
   }  
 
@@ -57,12 +58,13 @@ export default class VoucherDetails extends React.Component {
 
     const voucherType = this.props.voucher.status;        
               
-    let name = brian.name;
-    let email = brian.email;
-    let voucherLogo = require('../images/redeemed.png');
+
     let voucherColor = Color.REDEEMED;
+    let voucherLogo = require('../images/redeemed.png');
     let textColor = Color.BLUE;
     let showButtons = false;
+    let name = brian.name;
+    let email = brian.email;
 
     switch(voucherType) {
       case Voucher.REDEEMED:
@@ -79,7 +81,7 @@ export default class VoucherDetails extends React.Component {
         name = hans.name;
         email = hans.email;
         break;
-        case Voucher.PURCHASED:
+      case Voucher.PURCHASED:
         voucherColor = Color.PURCHASED;
         voucherLogo = require('../images/purchased.png');
         textColor = Color.GREEN;
@@ -112,16 +114,15 @@ export default class VoucherDetails extends React.Component {
           start={[0, 0]} end={[1, 0]}
           colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>
           <View style={styles.voucherRow}>
-            <Text style={[styles.voucherText, {marginTop:6}]}> 
+            <Text style={[styles.voucherText, {marginTop: 6}]}> 
               Voucher #{this.props.voucher.id}
             </Text>
             <Image source={require('../images/visa-logo-my-wallet.png')}/>    
           </View>
           <View style={styles.voucherLogoView}>
             <Image source={voucherLogo}/>                    
-            <Text 
-              style={[styles.voucherText, {color: textColor, marginLeft: 15, fontSize: 20}]}> 
-              {voucherType} 
+            <Text style={[styles.voucherStatusText, {color: textColor}]}> 
+              {Vouchers[voucherType].toString} 
             </Text>            
           </View>  
           <View style={[styles.voucherRow, {marginTop: 30}]}>
@@ -137,7 +138,7 @@ export default class VoucherDetails extends React.Component {
           <View style={[styles.voucherRow, {marginTop: 20}]}>
             <Text style={styles.voucherText}>
               {`of  `} 
-              <Text style={{color: Color.BLUE, fontSize: 32, paddingLeft: 20}}> 
+              <Text style={styles.amountText}> 
                 $ {this.props.voucher.amount}.00 
               </Text>
             </Text>
@@ -148,19 +149,20 @@ export default class VoucherDetails extends React.Component {
               <TouchableOpacity style={styles.button}
                 onPress={this.onSendPress}>
                 <Image source={require('../images/send.png')}/>
-                <Text style={[styles.buttonText, {color: Color.RED, paddingHorizontal: 10}]}>
+                <Text style={[styles.buttonText, {color: Color.RED}]}>
                   Send
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.button, {width: 130}]}
                 onPress={this.onRefundPress}>
                 <Image source={require('../images/refund.png')}/>
-                <Text style={[styles.buttonText, {color: Color.PURPLE, paddingHorizontal: 10}]}>
+                <Text style={[styles.buttonText, {color: Color.PURPLE}]}>
                   Refund
                 </Text>
               </TouchableOpacity>            
             </View>
-            : null
+            : 
+            null
           }
           <View style={styles.footerText}>
             <Text style={styles.voucherText}> 
@@ -206,6 +208,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontSize: 18,
   },
+  voucherStatusText: {     
+    backgroundColor: 'transparent',
+    marginLeft: 15, 
+    fontSize: 20
+  },
+  amountText: {
+    color: Color.BLUE, 
+    fontSize: 32, 
+    paddingLeft: 20
+  },
   button: {
     backgroundColor: '#eaf2f5', 
     borderRadius: 20, 
@@ -218,6 +230,7 @@ const styles = StyleSheet.create({
   buttonText: {
     backgroundColor: 'transparent',
     fontSize: 18,
+    paddingHorizontal: 10
   },
   footerText: {
     position: 'absolute', 

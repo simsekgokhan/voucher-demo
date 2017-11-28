@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { 
   StyleSheet, Text, TouchableOpacity, View, Image, Dimensions
 } from 'react-native';
-import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
 import Voucher from '../common/voucher.constants';
 import Color from '../common/colors';
@@ -123,24 +122,25 @@ export default class VoucherItem extends Component<{}> {
                     </Text>
                   </View>  
                 </View>                
-                : null
+                : 
+                null
               }
-                <View style={[styles.voucherRow, {marginVertical: 0}]}>
-                  <Image source={require('../images/visa-logo.png')}/>                  
-                  <TouchableOpacity style={styles.detailsButton}
-                    onPress={() => { this.props.onDetailsPress() }}>
-                    <Text style={[styles.voucherText, {color: Color.BLUE}]}> 
-                      Details > 
-                    </Text>           
-                  </TouchableOpacity>                    
-                </View>    
-              </View>
+              <View style={[styles.voucherRow, {marginVertical: 0}]}>
+                <Image source={require('../images/visa-logo.png')}/>                  
+                <TouchableOpacity style={styles.detailsButton}
+                  onPress={() => { this.props.onDetailsPress() }}>
+                  <Text style={[styles.voucherText, {color: Color.BLUE}]}> 
+                    Details > 
+                  </Text>           
+                </TouchableOpacity>                    
+              </View>    
+            </View>
             :
-              null
+            null
           }
         </TouchableOpacity>         
       </LinearGradient>
-        );           
+      );           
   }
 }
 
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   voucherText: {
     color: Color.VOUCHER_TEXT_2, 
-    backgroundColor: 'transparent',    
+    backgroundColor: Color.TRANSPARENT,    
     fontSize: 15,
   },
   voucherHorLine: {
@@ -176,7 +176,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     width: 80,        
     height: 48,     
-    //backgroundColor: 'red',        
   }
 });
 
