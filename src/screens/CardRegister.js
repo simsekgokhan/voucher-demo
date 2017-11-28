@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react';
-import { 
-  StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
-  Button
-} from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { CardIOView, CardIOUtilities } from 'react-native-awesome-card-io';
 import Color from '../common/colors';
 
@@ -13,6 +10,11 @@ export default class CardRegister extends React.Component {
     super(props);
     // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  static navigatorStyle = {
+    tabBarHidden: true,   
+    navBarButtonColor: Color.WHITE,        
   }
 
   onNavigatorEvent(event) { 
@@ -30,11 +32,6 @@ export default class CardRegister extends React.Component {
         }     
       });
     }
-  }
-
-  static navigatorStyle = {
-    tabBarHidden: true,   
-    navBarButtonColor: Color.WHITE,        
   }
 
   navigateToAddCard = (card) => {
@@ -62,13 +59,11 @@ export default class CardRegister extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity 
-        onPress={() => this.navigateToAddCard()}
-        style={styles.container}>        
-        <CardIOView 
+      <TouchableOpacity style={styles.container}
+        onPress={() => this.navigateToAddCard()}>        
+        <CardIOView style={{flex: 1}}
           hideCardIOLogo={true}
-          didScanCard={this.didScanCard}
-          style={{ flex: 1 }}
+          didScanCard={this.didScanCard}          
         />
       </TouchableOpacity>
     );

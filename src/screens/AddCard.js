@@ -33,7 +33,8 @@ export default class AddCard extends Component<{}> {
         keyboardType={keyboardType}
         maxLength={maxLength}
         placeholder={placeholder}
-        placeholderTextColor={'b3b3b3'}/> 
+        placeholderTextColor={'b3b3b3'}
+      /> 
     );
   }
 
@@ -50,7 +51,7 @@ export default class AddCard extends Component<{}> {
     }   
 
     const scannedCard = this.props.card;
-    if(scannedCard !== undefined && scannedCard.scanned){
+    if(scannedCard !== undefined && scannedCard.scanned) {
       if(scannedCard.cardNumber !== null){
         card.inputOne = scannedCard.cardNumber.substring(0,4);
         card.inputTwo = scannedCard.cardNumber.substring(4,8);
@@ -107,17 +108,19 @@ export default class AddCard extends Component<{}> {
           </View>
         </Image>        
         {
-          showEmptyForm ? null :
+          showEmptyForm ? 
+          null :
           <Image style={styles.verLine} 
             source={require('../images/dashed-ver-line.png')}/>   
-          }
+        }
         {
-          showEmptyForm ? null :
+          showEmptyForm ? 
+          null :
           <Text style={styles.bottomText}>
-          {`
-            Fill in the CVV field
-            to register the Credit Card
-          `}
+            {`
+              Fill in the CVV field
+              to register the Credit Card
+            `}
           </Text>
         }
       </Image>
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
   rowOne: {
     fontSize: 11, 
     color: Color.TEXT_GREY_DARK, 
-    backgroundColor: 'transparent',
+    backgroundColor: Color.TRANSPARENT,
     marginTop: 20,
     marginLeft: 4,  
     marginBottom: 4,  
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
     left: 132, 
     right: 0, 
     bottom: 0,     
-    backgroundColor: 'transparent',    
+    backgroundColor: Color.TRANSPARENT,    
     width: 228,
   },
 });
