@@ -24,12 +24,12 @@ export default class HoldCard extends React.Component {
     navBarButtonColor: Color.WHITE,        
   }
 
-  onButtonPress = (showEmptyForm) => {
+  onButtonPress = () => {
     this.props.navigator.push({
       screen: 'AddCard',
       title: 'Card Registration',
       backButtonTitle: 'Back',
-      passProps: {showEmptyForm: showEmptyForm},
+      passProps: {showEmptyForm: false},
       navigatorButtons: {
         rightButtons: [{
           id: 'done',
@@ -45,7 +45,7 @@ export default class HoldCard extends React.Component {
         resizeMode='cover'   
         source={require('../images/hold-card.png')}>                         
         <TouchableOpacity style={styles.button}
-          onPress={ () => this.onButtonPress(false) }>                    
+          onPress={ () => this.onButtonPress() }>                    
           <Image style={styles.leftRect} 
             source={require('../images/rect-left.png')}/>
           <Image style={styles.rightRect} 

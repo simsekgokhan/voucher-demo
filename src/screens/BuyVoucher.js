@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   buttonsRowOne: {
     alignItems: 'center',
     flexDirection:'row',
-    marginLeft: 56,
+    marginLeft: 58,
     marginTop: 18,
   },
   buttonsRowTwo: {
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     position: 'absolute', 
     top: 160, 
-    left: 117, 
+    left: 116, 
     right: 0, 
     bottom: 0, 
   },

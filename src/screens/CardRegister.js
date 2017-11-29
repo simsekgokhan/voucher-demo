@@ -38,12 +38,26 @@ export default class CardRegister extends React.Component {
     }
   }
 
-  navigateToHoldCard = (card) => {
+  navigateToAddCard = (card) => {
+    this.props.navigator.push({
+      screen: 'AddCard',
+      title: 'Card Registration',
+      backButtonTitle: 'Back',
+      passProps: {showEmptyForm: (card === null), card: card},
+      navigatorButtons: {
+        rightButtons: [{
+          id: 'done',
+          title: 'Done',
+        }]
+      }     
+    });
+  }
+
+  navigateToHoldCard = () => {
     this.props.navigator.push({
       screen: 'HoldCard',
       title: 'Card Registration',
       backButtonTitle: 'Back',
-      passProps: {showEmptyForm: (card === null), card: card},
       navigatorButtons: {
         rightButtons: [{
           id: 'done',

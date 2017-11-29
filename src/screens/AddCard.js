@@ -186,10 +186,10 @@ const styles = StyleSheet.create({
     marginRight: 14,
     position: 'absolute',     
     top: 328, 
-    left: 132, 
+    left: 118, 
     right: 0, 
     bottom: 0,     
     backgroundColor: Color.TRANSPARENT,    
-    width: 228,
+    width: 240,
   },
 });
