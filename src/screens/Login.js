@@ -99,7 +99,7 @@ class Login extends Component<{}> {
       footerTextPartTwo = 'Sign In';
     }
     else if(this.state.signInSelected) {
-      footerTextPartOne = 'Forgot Password?';
+      footerTextPartOne = '';
       footerTextPartTwo = '';
     }
 
@@ -147,6 +147,14 @@ class Login extends Component<{}> {
                   </Text>
                   {this.TextInput('default', '605-848', true)}
                 </View>
+                {
+                  (this.state.signInSelected && !this.state.createAccountSelected) ?
+                  <Text style={styles.forgotPasswordText}>
+                    Forgot Password?
+                  </Text>
+                  :
+                  null
+                }
               </View>            
           }
           <TouchableOpacity style={styles.buttonView}
@@ -156,7 +164,7 @@ class Login extends Component<{}> {
             </Text>
           </TouchableOpacity>
           {
-            (this.state.createAccountSelected) ? 
+            (this.state.createAccountSelected || this.state.signInSelected) ?
               null 
               : 
               <TouchableOpacity 
@@ -165,7 +173,23 @@ class Login extends Component<{}> {
                 <Text style={[styles.buttonText, {color: Color.SECOND_BUTTON_TEXT}]}> 
                   Create an Account
                 </Text>
-              </TouchableOpacity> 
+              </TouchableOpacity>
+          }
+          {
+            (this.state.signInSelected && !this.state.createAccountSelected) ?
+              <View style={styles.signUpLinkView}>
+                <Text style={[styles.textCenter, {fontSize: 16, paddingRight: 5}]}>
+                  Dont't have an account?
+                </Text>
+                <TouchableOpacity
+                  onPress={this.createAccount}>
+                  <Text style={{color: Color.WHITE, fontSize: 18, fontWeight: '700'}}>
+                    Sign Up.
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              :
+              null
           }
         </View>
         <View style={styles.footerView} >
@@ -175,6 +199,21 @@ class Login extends Component<{}> {
               {footerTextPartTwo} 
             </Text>
           </Text>
+          {
+            (this.state.signInSelected && !this.state.createAccountSelected) ?
+            <TouchableOpacity
+              onPress={this.signIn}>
+              <View style={styles.touchIDView}>
+                <Text style={[styles.textCenter,{ fontSize: 18, paddingBottom: 10, fontWeight: '700'}]}>
+                  Touch ID
+                </Text>
+                <Image source={require('../images/touchid-login.png')}>
+                </Image>
+              </View>
+            </TouchableOpacity>
+            :
+            null
+          }
         </View>
       </View>
       );
@@ -278,4 +317,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center',
   },
+  forgotPasswordText: {
+    color: Color.WHITE,
+    paddingTop: 8,
+    paddingRight: 18,
+    fontSize: 15,
+    alignSelf: 'flex-end',
+  },
+  signUpLinkView: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    paddingTop: 15
+  },
+  touchIDView: {
+    marginBottom: 90,
+    alignItems: 'center',
+  }
 });
