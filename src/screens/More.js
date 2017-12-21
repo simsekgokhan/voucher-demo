@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, Text, TouchableOpacity, View, Image, Dimensions, Share
+  StyleSheet, Text, TouchableOpacity, View, Image, Dimensions, Share, Linking, ScrollView
 } from 'react-native';
 import {connect} from "react-redux";
 
@@ -64,6 +64,10 @@ class More extends Component<{}> {
     })
   }
 
+  goHome() {
+    Linking.openURL('https://blockchainvoucher.com');
+  }
+
   onButtonPress = (button) => {
     switch(button) {
       case 1:
@@ -80,8 +84,14 @@ class More extends Component<{}> {
         break;               
       case 5:
         this.share();
-        break;    
+        break;
       case 6:
+        this.navigateTo('IBANVerification', 'IBAN Verification', 'Back', false);
+        break;
+      case 7:
+        this.goHome();
+        break;
+      case 8:
         this.props.deleteAllVouchers();
         startSingleScreenApp();      
         break;                       
@@ -112,48 +122,64 @@ class More extends Component<{}> {
             </View>
           </View>
         </Image>
-        <TouchableOpacity style={styles.rowButton}
-          onPress={() => this.onButtonPress(1)}>
-          <Image source={require('../images/wallet-icon.png')}/>
-          <Text style={styles.textButton}>
-              My Wallet
-          </Text>
-        </TouchableOpacity>   
-        <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(2)}>
-          <Image source={require('../images/card-reg-icon.png')} />
-          <Text style={styles.textButton}>
-              Payment Card Registration
-          </Text>
-        </TouchableOpacity>          
-        <TouchableOpacity style={styles.rowButton}
-          onPress={ () => this.onButtonPress(3)}>
-          <Image source={require('../images/send-voucher-icon.png')}/>
-          <Text style={styles.textButton}>
-              Send Voucher
-          </Text>
-        </TouchableOpacity>       
-        <TouchableOpacity style={styles.rowButton}
-          onPress={() => this.onButtonPress(4)}>
-          <Image source={require('../images/settings-icon.png')}/>
-          <Text style={styles.textButton}>
-              Settings
-          </Text>
-        </TouchableOpacity>       
-        <TouchableOpacity style={styles.rowButton}
-          onPress={() => this.onButtonPress(5)}>
-          <Image source={require('../images/invite-icon.png')}/>
-          <Text style={styles.textButton}>
-              Invite Contacts
-          </Text>
-        </TouchableOpacity>       
-        <TouchableOpacity style={[styles.rowButton, {marginBottom: 0}]}
-          onPress={() => this.onButtonPress(6)}>
-          <Image source={require('../images/logout-icon.png')}/>
-          <Text style={[styles.textButton, {color: Color.BLUE, marginLeft: 16}]}>
-              Log out
-          </Text>
-        </TouchableOpacity>                                        
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+          <TouchableOpacity style={styles.rowButton}
+            onPress={() => this.onButtonPress(1)}>
+            <Image source={require('../images/wallet-icon.png')}/>
+            <Text style={styles.textButton}>
+                My Wallet
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.rowButton}
+            onPress={ () => this.onButtonPress(2)}>
+            <Image source={require('../images/card-reg-icon.png')} />
+            <Text style={styles.textButton}>
+                Payment Card Registration
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.rowButton}
+            onPress={ () => this.onButtonPress(3)}>
+            <Image source={require('../images/send-voucher-icon.png')}/>
+            <Text style={styles.textButton}>
+                Send Voucher
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.rowButton}
+            onPress={() => this.onButtonPress(4)}>
+            <Image source={require('../images/settings-icon.png')}/>
+            <Text style={styles.textButton}>
+                Settings
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.rowButton}
+            onPress={() => this.onButtonPress(5)}>
+            <Image source={require('../images/invite-icon.png')}/>
+            <Text style={styles.textButton}>
+                Invite Contacts
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.rowButton,{paddingLeft: 14}]}
+            onPress={() => this.onButtonPress(6)}>
+            <Image source={require('../images/iban-icon.png')}/>
+            <Text style={styles.textButton}>
+                IBAN Verification
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.rowButton,{paddingLeft: 14}]}
+            onPress={() => this.onButtonPress(7)}>
+            <Image source={require('../images/about-icon.png')}/>
+            <Text style={[styles.textButton,{ marginLeft: 19}]}>
+                About
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.rowButton, {marginBottom: 0}]}
+            onPress={() => this.onButtonPress(8)}>
+            <Image source={require('../images/logout-icon.png')}/>
+            <Text style={[styles.textButton, {color: Color.BLUE, marginLeft: 16}]}>
+                Log out
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
         <View style={{backgroundColor: '#b8e9fa', flex:1, 
                       width:Dimensions.get('window').width}}>
         </View>
@@ -222,6 +248,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: Color.TRANSPARENT,
     color: Color.TEXT_DEFAULT
+  },
+  scrollView: {
+    marginBottom: 56,
   }
 });
 

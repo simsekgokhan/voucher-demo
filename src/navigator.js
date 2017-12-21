@@ -20,6 +20,7 @@ import Settings from './screens/Settings';
 import ShareOnEmail from './screens/ShareOnEmail';
 import ShareOnEmailSend from './screens/ShareOnEmailSend';
 import ScanQrCode from './screens/ScanQrCode';
+import IBANVerification from './screens/IBANVerification';
 import ChangeTheme from './screens/ChangeTheme';
 
 import Color from './common/colors';
@@ -56,6 +57,7 @@ function registerScreens() {
   Navigation.registerComponent('ShareOnEmailSend', () => ShareOnEmailSend);
   Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
   Navigation.registerComponent('ChangeTheme', () => ChangeTheme, store, Provider);
+  Navigation.registerComponent('IBANVerification', () => IBANVerification);
 }
 
 export function startSingleScreenApp() {
