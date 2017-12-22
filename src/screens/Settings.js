@@ -44,7 +44,7 @@ export default class Settings extends Component<{}> {
           </Text>              
         </View>       
         <View style={styles.persInfo}>
-          <Text style={styles.labels}> 
+          <Text style={styles.labels}>
             PASSWORD
           </Text>                 
         </View>                
@@ -71,6 +71,17 @@ export default class Settings extends Component<{}> {
           : 
           null                
         }
+        <View style={styles.persInfo}>
+          <Text style={[styles.labels, {color: '#828282'}]}>
+            TIME REPRESENTATION
+          </Text>
+        </View>
+        <View style={styles.timeBlock}>
+          <Text style={styles.largeText}>
+            24-hour format
+          </Text>
+          <Image source={require('../images/switch-off.png')}/>
+  </View>
       </Image>        
     );
   }
@@ -93,11 +104,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   block: {
-    marginHorizontal: 4, 
+    marginHorizontal: 4,
     marginVertical: 1,
     height: 68,
     padding: 20,
     backgroundColor: '#e7f6fd',
+  },
+  timeBlock: {
+    backgroundColor: '#FFFFFF95',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal: 4,
+    marginVertical: 1,
+    height: 68,
+    padding: 20,
   },
   labels: {
     color: Color.WHITE, 
