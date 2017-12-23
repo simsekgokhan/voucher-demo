@@ -30,8 +30,8 @@ export default class CardRegister extends React.Component {
         passProps: {showEmptyForm: true},
         navigatorButtons: {
           rightButtons: [{
-            id: 'done',
-            title: 'Done',            
+            id: 'next',
+            title: 'Next',
           }]
         }     
       });
@@ -46,8 +46,8 @@ export default class CardRegister extends React.Component {
       passProps: {showEmptyForm: (card === null), card: card},
       navigatorButtons: {
         rightButtons: [{
-          id: 'done',
-          title: 'Done',
+          id: 'next',
+          title: 'Next',
         }]
       }     
     });

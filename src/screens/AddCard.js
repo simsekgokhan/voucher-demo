@@ -14,11 +14,19 @@ export default class AddCard extends Component<{}> {
   }
 
   onNavigatorEvent(event) { 
-    if (event.type === 'NavBarButtonPress' && event.id === 'done'){          
-      this.props.navigator.popToRoot({ animationType: 'fade' });
-      // Reset BuyVoucher tab to it's root before switching to it
-      this.props.navigator.handleDeepLink({link: 'BuyVoucher.popToRoot'});      
-      this.props.navigator.switchToTab({ tabIndex: 1 });      
+    if (event.type === 'NavBarButtonPress' && event.id === 'next'){
+      this.props.navigator.push({
+        screen: 'IDVerification',
+        title: 'ID Verification',
+        backButtonTitle: 'Back',
+        passProps: {showEmptyForm: true},
+        navigatorButtons: {
+          rightButtons: [{
+            id: 'skip',
+            title: 'Skip',
+          }]
+        }
+      });
     }
   }
 
@@ -33,7 +41,7 @@ export default class AddCard extends Component<{}> {
         keyboardType={keyboardType}
         maxLength={maxLength}
         placeholder={placeholder}
-        placeholderTextColor={'b3b3b3'}
+        placeholderTextColor={'#b3b3b3'}
       /> 
     );
   }
@@ -96,8 +104,8 @@ export default class AddCard extends Component<{}> {
                 selectionColor={Color.BLUE} 
                 autoCorrect={false}
                 placeholder={card.inputName}      
-                placeholderTextColor={'b3b3b3'}/> 
-              {this.Input(card.inputDate, 5, 'numbers-and-punctuation')} 
+                placeholderTextColor={'#b3b3b3'}/>
+              {this.Input(card.inputDate, 5, 'numbers-and-punctuation')}
               {this.Input(card.inputCvv, 4, 'number-pad', !showEmptyForm)}                         
             </View>     
             <View style={[styles.inputRow, {justifyContent: 'space-between'}]}>

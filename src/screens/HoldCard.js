@@ -32,8 +32,8 @@ export default class HoldCard extends React.Component {
       passProps: {showEmptyForm: false},
       navigatorButtons: {
         rightButtons: [{
-          id: 'done',
-          title: 'Done',
+          id: 'next',
+          title: 'Next',
         }]
       }     
     });
@@ -43,7 +43,7 @@ export default class HoldCard extends React.Component {
     return (
       <Image style={styles.container}
         resizeMode='cover'   
-        source={require('../images/hold-card.png')}>                         
+        source={require('../images/hold-card.png')}>
         <TouchableOpacity style={styles.button}
           onPress={ () => this.onButtonPress() }>                    
           <Image style={styles.leftRect} 

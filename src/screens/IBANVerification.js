@@ -4,9 +4,6 @@ import {
 } from 'react-native';
 import Color from '../common/colors';
 
-// Enable/disable "Change Theme" menu action
-const SHOW_CHANGE_THEME_ITEM = false;
-
 export default class IBANVerifivation extends Component<{}> {
 
   changeTheme = () => {

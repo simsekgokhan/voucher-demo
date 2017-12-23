@@ -22,6 +22,8 @@ import ShareOnEmailSend from './screens/ShareOnEmailSend';
 import ScanQrCode from './screens/ScanQrCode';
 import IBANVerification from './screens/IBANVerification';
 import ChangeTheme from './screens/ChangeTheme';
+import IDVerification from './screens/IDVerification';
+import AddressVerification from './screens/AddressVerification';
 
 import Color from './common/colors';
 
@@ -58,6 +60,8 @@ function registerScreens() {
   Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
   Navigation.registerComponent('ChangeTheme', () => ChangeTheme, store, Provider);
   Navigation.registerComponent('IBANVerification', () => IBANVerification);
+  Navigation.registerComponent('IDVerification', () => IDVerification);
+  Navigation.registerComponent('AddressVerification', () => AddressVerification);
 }
 
 export function startSingleScreenApp() {
