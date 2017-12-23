@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import LinearGradient from 'react-native-linear-gradient';
 
 import Color from '../common/colors';
+import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
@@ -20,7 +21,7 @@ let amount = 0;
 
 class ConfirmScreen extends Component<{}> {
 
-  onTouchIdPressed = () => {                  
+  onTouchIdPressed = () => {
     let voucher;      
     if(confirmType === Voucher.BUY){
       voucher = createVoucher(voucherType, amount);
@@ -36,7 +37,8 @@ class ConfirmScreen extends Component<{}> {
       backButtonHidden: true,
       title: 'Voucher',
       passProps: {voucher}
-    });    
+    });
+    playSound();
   }
 
   render() {

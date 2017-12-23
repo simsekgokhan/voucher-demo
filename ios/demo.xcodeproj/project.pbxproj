@@ -33,9 +33,11 @@
 		2DCD954D1E0B4F2C00145EB5 /* demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* demoTests.m */; };
 		41320F183B304A6B9DC7C9A9 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA34E840FBD4E518E8C627D /* libBVLinearGradient.a */; };
 		41D052EF0F724311AEA5B9C0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 340B7669F337413DBCE156EF /* Roboto-Regular.ttf */; };
+		4AD70B2DCC664197A5A2D64E /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF450129CC2410297E9D146 /* libRNSound.a */; };
 		58F336209A6F47D790FF5543 /* libRNCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EABDDA1F3C4530BB3E0E78 /* libRNCardIO.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9087A69C1FED5CFF0042A7FC /* beep-beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9087A69B1FED5CFF0042A7FC /* beep-beep.mp3 */; };
 		93B5CBB345D94C91BB6B5280 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1DE101A9814CFFA01EFDD8 /* libRCTCamera.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B5838E67AD154D71B4EA2E11 /* Jura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 432D998A2A8B4AA7AEC92F79 /* Jura-Regular.ttf */; };
@@ -226,6 +228,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		9087A6931FED39600042A7FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12CD782198EF45BEA1842228 /* RNSound.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19825A1E1BD4A89800EE0337;
+			remoteInfo = RNSound;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -329,6 +338,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demoTests.m; sourceTree = "<group>"; };
 		0F1DE101A9814CFFA01EFDD8 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
+		12CD782198EF45BEA1842228 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,6 +348,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = demo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = demo/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		2CF450129CC2410297E9D146 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* demo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "demo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* demo-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "demo-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA34E840FBD4E518E8C627D /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
@@ -348,6 +359,7 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9087A69B1FED5CFF0042A7FC /* beep-beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "beep-beep.mp3"; path = "../src/sounds/beep-beep.mp3"; sourceTree = "<group>"; };
 		9D8DDFE955F64841B4E5FF02 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B47B7ABC8E144474A54BC202 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
@@ -377,6 +389,7 @@
 				41320F183B304A6B9DC7C9A9 /* libBVLinearGradient.a in Frameworks */,
 				93B5CBB345D94C91BB6B5280 /* libRCTCamera.a in Frameworks */,
 				58F336209A6F47D790FF5543 /* libRNCardIO.a in Frameworks */,
+				4AD70B2DCC664197A5A2D64E /* libRNSound.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +541,7 @@
 		7461465E86C140A690AD7A3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9087A69B1FED5CFF0042A7FC /* beep-beep.mp3 */,
 				432D998A2A8B4AA7AEC92F79 /* Jura-Regular.ttf */,
 				340B7669F337413DBCE156EF /* Roboto-Regular.ttf */,
 			);
@@ -562,6 +576,7 @@
 				9D8DDFE955F64841B4E5FF02 /* BVLinearGradient.xcodeproj */,
 				B47B7ABC8E144474A54BC202 /* RCTCamera.xcodeproj */,
 				36BA5EA6A22F4BCCADDA4A5E /* RNCardIO.xcodeproj */,
+				12CD782198EF45BEA1842228 /* RNSound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -597,6 +612,14 @@
 				13B07F961A680F5B00A75B9A /* demo.app */,
 				2D02E47B1E0B4A5D006451C7 /* demo-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* demo-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9087A6901FED39600042A7FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9087A6941FED39600042A7FC /* libRNSound.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -641,6 +664,7 @@
 				2FA34E840FBD4E518E8C627D /* libBVLinearGradient.a */,
 				0F1DE101A9814CFFA01EFDD8 /* libRCTCamera.a */,
 				57EABDDA1F3C4530BB3E0E78 /* libRNCardIO.a */,
+				2CF450129CC2410297E9D146 /* libRNSound.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -811,6 +835,10 @@
 				{
 					ProductGroup = C92415CA1FB43FD500C7B005 /* Products */;
 					ProjectRef = 36BA5EA6A22F4BCCADDA4A5E /* RNCardIO.xcodeproj */;
+				},
+				{
+					ProductGroup = 9087A6901FED39600042A7FC /* Products */;
+					ProjectRef = 12CD782198EF45BEA1842228 /* RNSound.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -998,6 +1026,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9087A6941FED39600042A7FC /* libRNSound.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSound.a;
+			remoteRef = 9087A6931FED39600042A7FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1098,6 +1133,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B5838E67AD154D71B4EA2E11 /* Jura-Regular.ttf in Resources */,
+				9087A69C1FED5CFF0042A7FC /* beep-beep.mp3 in Resources */,
 				C9EA97851FBA00F1006C91B2 /* Default-568h@2x.png in Resources */,
 				41D052EF0F724311AEA5B9C0 /* Roboto-Regular.ttf in Resources */,
 			);
@@ -1206,11 +1242,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/demo\"",
 					"\"$(SRCROOT)/demo\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1241,11 +1279,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/demo\"",
 					"\"$(SRCROOT)/demo\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1277,6 +1317,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1314,6 +1355,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "demo-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

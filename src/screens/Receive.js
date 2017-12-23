@@ -7,6 +7,7 @@ import Camera from 'react-native-camera';
 import {connect} from "react-redux";
 
 import Color from '../common/colors';
+import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import { addVoucher } from "../actions/vouchersAction";
 import { createVoucher } from '../model/voucher.model';
@@ -69,7 +70,8 @@ class Receive extends Component<{}> {
       title: 'Voucher',
       backButtonTitle: 'Back',
       passProps: { voucher }
-    });    
+    });
+    playSound();
   }
 
   render() {
