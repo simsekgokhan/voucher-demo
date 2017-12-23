@@ -117,7 +117,7 @@ class More extends Component<{}> {
                 Current Balance
               </Text>
               <Text style={styles.textBalance}>
-                $ 500,689.08
+                $ {this.props.balance}.00
               </Text>
             </View>
           </View>
@@ -189,7 +189,9 @@ class More extends Component<{}> {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    balance: state.vouchers.balance,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

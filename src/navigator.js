@@ -50,7 +50,7 @@ function registerScreens() {
   // Stackable screens
   Navigation.registerComponent('VoucherDetails', () => VoucherDetails);
   Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen, store, Provider);
-  Navigation.registerComponent('MyWallet', () => MyWallet);
+  Navigation.registerComponent('MyWallet', () => MyWallet, store, Provider);
   Navigation.registerComponent('CardRegister', () => CardRegister);
   Navigation.registerComponent('HoldCard', () => HoldCard);
   Navigation.registerComponent('AddCard', () => AddCard);

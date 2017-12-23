@@ -9,7 +9,6 @@ const voucherEvent = new Sound('beep-beep.mp3', Sound.MAIN_BUNDLE, (err) => {
 
 export function playSound() {
   voucherEvent.setVolume(1).play((success) => {
-    console.log(success);
     if(!success) {
       voucherEvent.reset;
     }

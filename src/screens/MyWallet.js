@@ -1,15 +1,15 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import { 
   StyleSheet, Text,  View, Image,   
 } from 'react-native';
 import Color from '../common/colors';
+import {connect} from "react-redux";
 
-export default class MyWallet extends React.Component {
+class MyWallet extends React.Component {
 
   render() {
-    const hasMoney = true;     
-    const balance = hasMoney ? '$ 5,689.08' : '$ 0';
+    const balance = this.props.balance;
 
     return (
       <Image style={styles.container}
@@ -17,10 +17,10 @@ export default class MyWallet extends React.Component {
         source={require('../images/background.png')}>  
         <View style={styles.topView}>
           <Text style={styles.currentBalance}> 
-              Current Balance 
+              Wallet Balance
           </Text>        
           <Text style={styles.balance}> 
-            {balance} 
+            ${balance}.00
           </Text>        
         </View>
         <Image style={styles.card} 
@@ -73,6 +73,12 @@ export default class MyWallet extends React.Component {
     );
   }
 }
+
+export default connect((state) => {
+  return {
+    balance: state.vouchers.walletBalance,
+  }
+})(MyWallet);
 
 const styles = StyleSheet.create({
   container: {
