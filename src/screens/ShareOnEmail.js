@@ -11,11 +11,18 @@ export default class ShareOnEmail extends Component<{}> {
     super(props);
     // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.emails = [
+      'Norman.Garber@hotmail.com',
+      'Emanuel.Barbieri@gmail.com',
+      'Roxanne.Buckalow@hotmail.com',
+      'Darlene.Buckalew@hotmail.com',
+      'Murray.Derek@hotmail.com',
+    ]
   }
 
-  state = { selectedButtonId: 5 }
+  state = { selectedButtonId: 5 };
 
-  onNavigatorEvent(event) { 
+  onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress' && event.id === 'send'){
       this.props.navigator.push({
         screen: 'ShareOnEmailSend',
@@ -30,7 +37,8 @@ export default class ShareOnEmail extends Component<{}> {
         passProps: { 
           id: this.props.id, 
           confirmType: Voucher.SEND,
-          amount: this.props.amount
+          amount: this.props.amount,
+          email: this.emails[this.state.selectedButtonId - 1],
         }        
       });
     }
@@ -77,15 +85,15 @@ export default class ShareOnEmail extends Component<{}> {
             RECENT SUBMITTERS
           </Text>                              
         </View>
-        { this.Button('Norman.Garber@hotmail.com', 1) }                 
+        { this.Button('Norman.Garber@hotmail.com', 1) }
         { this.HorLine() }
-        { this.Button('Emanuel.Barbieri@gmail.com', 2) }                         
+        { this.Button('Emanuel.Barbieri@gmail.com', 2) }
         { this.HorLine() }
-        { this.Button('Roxanne.Buckalow@hotmail.com', 3) }                         
+        { this.Button('Roxanne.Buckalow@hotmail.com', 3) }
         { this.HorLine() }
-        { this.Button('Darlene.Buckalew@hotmail.com', 4) }                                  
+        { this.Button('Darlene.Buckalew@hotmail.com', 4) }
         { this.HorLine() }
-        { this.Button('Murray.Derek@hotmail.com', 5) }         
+        { this.Button('Murray.Derek@hotmail.com', 5) }
         <View style={styles.submitter}>
           <Text style={[styles.smallText, {color: Color.TEXT_GREY_DARK}]}> 
             NEW SUBMITTER

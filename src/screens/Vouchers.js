@@ -47,7 +47,7 @@ class Vouchers extends React.Component {
 
   VoucherItem = (voucher) => {
     return(
-      <VoucherItem 
+      <VoucherItem key={voucher.id}
         onDetailsPress={ () => this.navigateToDetails(voucher) } 
         voucher={voucher}/>
     );

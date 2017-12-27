@@ -1,21 +1,23 @@
-let hour = 2;
-let minute = 10;
+import moment from "moment/moment";
 
-export function getTime(){
-  minute += 4;
+const TIME_FORMAT_24 = '24';
+const TIME_FORMAT_12 = '12';
+export const getTime = (timeStamp, format) => {
+  return moment(timeStamp).calendar(null, getFormats(format))
+};
 
-  if(minute > 59) {
-    hour += 1;  
-    minute = 10;
+const getFormats = (format) =>  {
+  let time = 'h:mm A';
+  if(format === TIME_FORMAT_24) {
+    time = 'H:mm';
   }
-  
-  if(hour > 12)
-    hour = 1;
-
-  return hour + ':' + minute;  
-}
-
-export function resetTime() {
-  hour = 2;
-  minute = 10;
+  return {
+    sameDay: `[Today], ${time}`,
+    lastDay: `[Yesterday], ${time}`,
+    sameElse: `DD-MM-YYYY, ${time}`,
+  }
+};
+export default {
+  TIME_FORMAT_24,
+  TIME_FORMAT_12,
 }

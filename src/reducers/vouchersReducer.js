@@ -3,17 +3,22 @@ import Voucher from '../common/voucher.constants';
 
 const vouchersReducer = (state = {
     balance: 0,
-    walletBalance: 1000,
+    walletBalance: 100000,
     allVouchers: []
 }, action) => {
-    let walletBalance = state.walletBalance;
-    switch (action.type) {
-        case "ADD_VOUCHER":
-            if(state.walletBalance - action.payload.amount > 0) {
+    let walletBalance = state.walletBalance, email;
+  switch (action.type) {
+      case "ADD_VOUCHER":
+            email = Voucher.RECEIVED_EMAIL;
+            if(action.payload.status === Voucher.PURCHASED) {
+              email = Voucher.MY_EMAIL;
+              if(state.walletBalance - action.payload.amount > 0) {
                 walletBalance = walletBalance - action.payload.amount;
-            } else {
+              } else {
                 walletBalance = 0;
+              }
             }
+            action.payload.email = email;
             state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload],
@@ -27,12 +32,20 @@ const vouchersReducer = (state = {
                 ...state,
                 allVouchers: state.allVouchers.map(voucher => {
                     if(voucher.id === action.id) {
-                      // Do not change the balance when Redeem occurs  
+                      let newVoucher = {...voucher};
+                      // Do not change the balance when Redeem occurs
                       amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
                       walletBalance = (action.newStatus === Voucher.REFUNDED) ? walletBalance + voucher.amount : walletBalance;
+                      email = (action.newStatus === Voucher.REFUNDED) ? Voucher.MY_EMAIL: action.email;
+                      let historyItem = {
+                        email: voucher.email,
+                        status: voucher.status,
+                        timeStamp: voucher.timeStamp
+                      };
+                      newVoucher.history = [...voucher.history, historyItem];
+                      newVoucher.email = email;
                       return {
-                        ...voucher, 
-                        oldStatus: voucher.status, 
+                        ...newVoucher,
                         status: action.newStatus,
                         timeStamp: action.newTimeStamp
                       }; 

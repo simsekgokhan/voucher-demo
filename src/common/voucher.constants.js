@@ -17,7 +17,10 @@ const Voucher = {
     SENT_TEXT: 'Sent',
     RECEIVED_TEXT: 'Received',
     PURCHASED_TEXT: 'Purchased',
-    REFUNDED_TEXT: 'Refunded',    
+    REFUNDED_TEXT: 'Refunded',
+
+    MY_EMAIL: 'Murray.Derek@hotmail.com',
+    RECEIVED_EMAIL: 'Darlene.Buckalew@hotmail.com'
 }
 
 export default Voucher;

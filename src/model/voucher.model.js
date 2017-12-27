@@ -1,5 +1,4 @@
-
-import { getTime } from '../common/time'
+import moment from 'moment';
 import Voucher from '../common/voucher.constants';
 import Color from '../common/colors';
 
@@ -9,13 +8,14 @@ export function resetVoucherIds() {
   voucherId = 1200;
 }
 
-export function createVoucher(status, amount) {
+export function createVoucher(status, amount, timeStamp) {
+
   return { 
       id: voucherId++, 
       status: status,
-      timeStamp: getTime(),
+      timeStamp: timeStamp || moment().valueOf(),
       amount: amount,
-      oldStatus: null
+      history: [],
     };    
 }
 

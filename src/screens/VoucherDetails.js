@@ -3,11 +3,13 @@ import {
   StyleSheet, Text, TouchableOpacity, View, Image, Dimensions
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {connect} from "react-redux";
 import Color from '../common/colors';
+import { getTime } from '../common/time';
 import Voucher from '../common/voucher.constants';
 import Vouchers from '../model/voucher.model';
 
-export default class VoucherDetails extends React.Component {
+class VoucherDetails extends React.Component {
  
   // For react-native-navigation  
   static navigatorStyle= {
@@ -51,11 +53,7 @@ export default class VoucherDetails extends React.Component {
     this.navigateToConfirm(Voucher.REFUND);
   }
 
-  render() {  
-    const brian = {name: 'Brian Mendoza', email: 'Brian.Mendoza@hotmail.com'};
-    const murrey = {name: 'Murrey Derek', email: 'Murrey.Derek@hotmail.com'};
-    const hans = {name: 'Hans Dickens', email: 'Hans.Dickens@hotmail.com'};   
-
+  render() {
     const voucherType = this.props.voucher.status;        
               
 
@@ -63,23 +61,19 @@ export default class VoucherDetails extends React.Component {
     let voucherLogo = require('../images/redeemed.png');
     let textColor = Color.BLUE;
     let showButtons = false;
-    let name = brian.name;
-    let email = brian.email;
+    let email = this.props.voucher.email;
+    let name = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');
 
     switch(voucherType) {
       case Voucher.REDEEMED:
         voucherColor = Color.REDEEMED;
         voucherLogo = require('../images/redeemed.png');
         textColor = Color.BLUE;
-        name = murrey.name;
-        email = murrey.email;
         break;
       case Voucher.SENT:
         voucherColor = Color.SENT;
         voucherLogo = require('../images/sent.png');
         textColor = Color.RED;
-        name = hans.name;
-        email = hans.email;
         break;
       case Voucher.PURCHASED:
         voucherColor = Color.PURCHASED;
@@ -92,8 +86,6 @@ export default class VoucherDetails extends React.Component {
         voucherLogo = require('../images/received.png');
         textColor = Color.GREEN;
         showButtons = true;
-        name = murrey.name;
-        email = murrey.email;
         break;
       case Voucher.REFUNDED:
         voucherColor = Color.REFUNDED;
@@ -165,8 +157,8 @@ export default class VoucherDetails extends React.Component {
             null
           }
           <View style={styles.footerText}>
-            <Text style={styles.voucherText}> 
-              Today, 2:40 PM 
+            <Text style={styles.voucherText}>
+              { getTime(this.props.voucher.timeStamp, this.props.timeFormat) }
             </Text>
           </View>
         </LinearGradient>
@@ -174,6 +166,12 @@ export default class VoucherDetails extends React.Component {
     );
   }
 }
+
+export default connect((state) => {
+  return {
+    timeFormat: state.app.timeFormat,
+  }
+})(VoucherDetails);
 
 const styles = StyleSheet.create({
   container: {

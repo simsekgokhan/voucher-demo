@@ -3,31 +3,31 @@ import {
   StyleSheet, TextInput, Text, TouchableOpacity, View , StatusBar, 
   KeyboardAvoidingView, Image, Dimensions
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import moment from 'moment'
 import {connect} from "react-redux";
 
 import { startTabBasedApp } from '../navigator';
 import Color from '../common/colors';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
 import Voucher from '../common/voucher.constants';
-import { createVoucher, createVoucherWithId, getTime } from '../model/voucher.model';
+import { createVoucher } from '../model/voucher.model';
 
 class Login extends Component<{}> {
 
   addFakeVouchers() {   
-    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200));  
+    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200, moment().valueOf() - 1000*60*65));
 
-    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50));  
-    this.props.updateVoucher({ id: 1201, newStatus: Voucher.SENT });
+    this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50, moment().valueOf() - 1000*60*73));
+    this.props.updateVoucher({ id: 1201, newStatus: Voucher.SENT, email: 'Emanuel.Barbieri@gmail.com', timeStamp: moment().valueOf() - 1000*60*33});
 
-    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25));      
-    this.props.updateVoucher({ id: 1202, newStatus: Voucher.REFUNDED });
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25, moment().valueOf() - 1000*60*90));
+    this.props.updateVoucher({ id: 1202, newStatus: Voucher.REFUNDED, email: 'Norman.Garber@hotmail.com', timeStamp: moment().valueOf() - 1000*60*45 });
 
-    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100));  
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100, moment().valueOf() - 1000*60*57));
 
-    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 40));  
-    this.props.updateVoucher({ id: 1204, newStatus: Voucher.SENT });
-    this.props.updateVoucher({ id: 1204, newStatus: Voucher.REDEEMED });    
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 40, moment().valueOf() - 1000*60*49));
+    this.props.updateVoucher({ id: 1204, newStatus: Voucher.SENT, email: 'Darlene.Buckalew@hotmail.com', timeStamp: moment().valueOf() - 1000*60*27 });
+    this.props.updateVoucher({ id: 1204, newStatus: Voucher.REDEEMED, email: 'Roxanne.Buckalow@hotmail.com', timeStamp: moment().valueOf() - 1000*60*20 });
   }
 
   componentDidMount() {

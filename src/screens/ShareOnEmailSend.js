@@ -22,7 +22,8 @@ export default class ShareOnEmailSend extends Component<{}> {
         passProps: { 
           id: this.props.id, 
           confirmType: Voucher.SEND, 
-          amount: this.props.amount
+          amount: this.props.amount,
+          email: this.props.email,
         }
       });
     }
@@ -52,7 +53,7 @@ export default class ShareOnEmailSend extends Component<{}> {
           <Text style={styles.text}> 
             To:
           </Text>        
-          {this.Input('murray.derek@hotmail.com')}                                       
+          {this.Input(this.props.email)}
           <TouchableOpacity style={styles.addButton}>
             <Image source={require('../images/plus-icon.png')}/>                                     
           </TouchableOpacity>  

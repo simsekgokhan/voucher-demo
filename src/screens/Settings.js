@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, Text, TouchableOpacity, View, Image
+  StyleSheet, Text, TouchableOpacity, View, Image, Switch
 } from 'react-native';
+import { connect } from 'react-redux';
 import Color from '../common/colors';
+import { setHourFormat } from "../actions/appAction";
+import Time from '../common/time';
 
 // Enable/disable "Change Theme" menu action
 const SHOW_CHANGE_THEME_ITEM = false;
 
-export default class Settings extends Component<{}> {
+ class Settings extends Component<{}> {
 
   changeTheme = () => {
     this.props.navigator.push({
@@ -15,9 +18,16 @@ export default class Settings extends Component<{}> {
       title: 'Change Theme',
       backButtonTitle: 'Back',
     });
-  }
+  };
+  changeHourFormat = (value) => {
+    if(value) {
+      this.props.setHourFormat(Time.TIME_FORMAT_24);
+      return;
+    }
+    this.props.setHourFormat(Time.TIME_FORMAT_12);
+  };
 
-  render() {      
+  render() {
     return (
       <Image style={styles.container}
         resizeMode='cover' 
@@ -80,13 +90,27 @@ export default class Settings extends Component<{}> {
           <Text style={styles.largeText}>
             24-hour format
           </Text>
-          <Image source={require('../images/switch-off.png')}/>
+          <Switch
+            value={this.props.format === Time.TIME_FORMAT_24}
+            onValueChange={this.changeHourFormat}
+            style={styles.switch}
+          />
   </View>
       </Image>        
     );
   }
   
 }
+
+export default connect((state) => {
+  return {
+    format: state.app.timeFormat
+  }
+}, (dispatch) => {
+  return {
+    setHourFormat: (format) => dispatch(setHourFormat(format))
+  }
+})(Settings);
 
 const styles = StyleSheet.create({
   container: {
@@ -133,5 +157,9 @@ const styles = StyleSheet.create({
   largeText: {
     color: Color.TEXT_DEFAULT, 
     fontSize: 17, 
+  },
+  switch: {
+    backgroundColor: '#e5e5ea',
+    borderRadius: 18,
   }
 });

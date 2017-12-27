@@ -8,6 +8,13 @@ export function setLiteTheme() {
     };
 }
 
+export function setHourFormat(timeFormat) {
+    return {
+        type: 'CHANGE_TIME_FORMAT',
+        payload: timeFormat,
+    }
+}
+
 export function setDarkTheme() {
     return {
         type: "CHANGE_THEME",

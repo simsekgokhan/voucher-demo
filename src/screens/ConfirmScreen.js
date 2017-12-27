@@ -10,7 +10,7 @@ import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
-import { createVoucher, createVoucherWithId, getTime } from '../model/voucher.model';
+import { createVoucher, createVoucherWithId } from '../model/voucher.model';
 
 const leftQuoMark = '\u00AB';
 const rightQuoMark = '\u00BB';
@@ -28,10 +28,10 @@ class ConfirmScreen extends Component<{}> {
       this.props.addVoucher(voucher); 
     } 
     else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND){
-      voucher = createVoucherWithId(this.props.id, voucherType, amount);       
-      this.props.updateVoucher({ id: this.props.id, newStatus: voucherType });
+      voucher = createVoucherWithId(this.props.id, voucherType, amount);
+      voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
+      this.props.updateVoucher({ id: this.props.id, newStatus: voucherType, email: this.props.email });
     }
-    
     this.props.navigator.push({
       screen: 'VoucherDetails',
       backButtonHidden: true,

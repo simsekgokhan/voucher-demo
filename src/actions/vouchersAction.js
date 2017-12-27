@@ -1,5 +1,4 @@
-
-import { getTime } from '../common/time';
+import moment from 'moment';
 
 export function addVoucher(voucher) {
     return {
@@ -13,7 +12,8 @@ export function updateVoucher(voucher) {
         type: "UPDATE_VOUCHER",
         id: voucher.id,
         newStatus: voucher.newStatus,
-        newTimeStamp: getTime(),
+        newTimeStamp: voucher.timeStamp || moment().valueOf(),
+        email: voucher.email,
     };
 }
 

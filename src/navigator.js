@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { deleteAllVouchers } from "./actions/vouchersAction";
 import { resetVoucherIds } from './model/voucher.model';
-import { resetTime } from './common/time';
 
 import Vouchers from './screens/Vouchers';
 import BuyVoucher from './screens/BuyVoucher';
@@ -48,13 +47,13 @@ function registerScreens() {
   Navigation.registerComponent('Login', () => Login, store, Provider);
 
   // Stackable screens
-  Navigation.registerComponent('VoucherDetails', () => VoucherDetails);
+  Navigation.registerComponent('VoucherDetails', () => VoucherDetails, store, Provider);
   Navigation.registerComponent('ConfirmScreen', () => ConfirmScreen, store, Provider);
   Navigation.registerComponent('MyWallet', () => MyWallet, store, Provider);
   Navigation.registerComponent('CardRegister', () => CardRegister);
   Navigation.registerComponent('HoldCard', () => HoldCard);
   Navigation.registerComponent('AddCard', () => AddCard);
-  Navigation.registerComponent('Settings', () => Settings);
+  Navigation.registerComponent('Settings', () => Settings, store, Provider);
   Navigation.registerComponent('ShareOnEmail', () => ShareOnEmail);
   Navigation.registerComponent('ShareOnEmailSend', () => ShareOnEmailSend);
   Navigation.registerComponent('ScanQrCode', () => ScanQrCode, store, Provider);
@@ -66,7 +65,6 @@ function registerScreens() {
 
 export function startSingleScreenApp() {
   resetVoucherIds();
-  resetTime();
 
   Navigation.startSingleScreenApp({
     screen: {
