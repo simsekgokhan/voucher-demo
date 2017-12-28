@@ -65,7 +65,7 @@ class More extends Component<{}> {
   }
 
   goHome() {
-    Linking.openURL('https://blockchainvoucher.com');
+    Linking.openURL('http://blockchainvoucher.com');
   }
 
   onButtonPress = (button) => {

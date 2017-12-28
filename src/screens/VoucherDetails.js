@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { 
-  StyleSheet, Text, TouchableOpacity, View, Image, Dimensions
+  StyleSheet, Text, TouchableOpacity, View, Image
 } from 'react-native';
+import Modal from 'react-native-modal';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from "react-redux";
 import Color from '../common/colors';
@@ -10,7 +11,9 @@ import Voucher from '../common/voucher.constants';
 import Vouchers from '../model/voucher.model';
 
 class VoucherDetails extends React.Component {
- 
+ state = {
+  sendModal: false,
+ }
   // For react-native-navigation  
   static navigatorStyle= {
     tabBarHidden: false,
@@ -30,28 +33,43 @@ class VoucherDetails extends React.Component {
     });    
   }
 
-  onSendPress = () => {
+  onQrSendPress = () => {
+    this.setState({
+      sendModal: false
+    });
     this.props.navigator.push({
       screen: 'ShareOnEmail',
       title: 'Share On Email',
-      backButtonTitle: 'Back',      
+      backButtonTitle: 'Back',
       navigatorButtons: {
         rightButtons: [{
           id: 'send',
-          title: 'Send',    
+          title: 'Send',
         }]
       },
-      passProps: { 
-        id: this.props.voucher.id, 
-        confirmType: Voucher.SENT, 
+      passProps: {
+        id: this.props.voucher.id,
+        confirmType: Voucher.SENT,
         amount: this.props.voucher.amount
-      },      
+      },
     });
-  }
+  };
+
+  onCancelPress = () => {
+    this.setState({
+      sendModal: false
+    })
+  };
+
+  onSendPress = () => {
+    this.setState({
+      sendModal: true
+    })
+  };
   
   onRefundPress = () => {
     this.navigateToConfirm(Voucher.REFUND);
-  }
+  };
 
   render() {
     const voucherType = this.props.voucher.status;        
@@ -162,6 +180,38 @@ class VoucherDetails extends React.Component {
             </Text>
           </View>
         </LinearGradient>
+        <Modal isVisible={this.state.sendModal}>
+          <View style={styles.modalMainContainer}>
+            <LinearGradient
+              start={[0, 0]} end={[1, 0]}
+              colors={['#ffffff', '#ccf2ff']}
+              style={styles.modalContainer}>
+              <View style={styles.modalQr}>
+                <Text style={styles.modalQrText}>
+                  Send QR Code
+                </Text>
+                <Image
+                  style={styles.modalQrImage}
+                  source={require('../images/qr-code.png')}/>
+              </View>
+              <TouchableOpacity
+                onPress={this.onQrSendPress}
+                style={styles.modalSend}>
+                <Image source={require('../images/send.png')}/>
+                <Text style={[styles.buttonText, {color: Color.RED}]}>
+                  Send
+                </Text>
+              </TouchableOpacity>
+            </LinearGradient>
+            <TouchableOpacity
+              onPress={this.onCancelPress}
+              style={styles.modalCancel}>
+              <Text style={styles.textCancel}>
+                Cancel
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </Image>     
     );
   }
@@ -176,6 +226,50 @@ export default connect((state) => {
 const styles = StyleSheet.create({
   container: {
   },
+  textCancel: {
+    fontSize: 20,
+    color: '#007aff',
+  },
+  modalMainContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  modalContainer: {
+    height: 474,
+    borderRadius: 14,
+    backgroundColor: '#000000',
+    marginBottom: 15,
+  },
+  modalCancel: {
+    height: 56,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 14,
+    backgroundColor: '#FFFFFF',
+  },
+  modalSend: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 56,
+  },
+  modalQr: {
+    height: 418,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomColor: '#3f3f3f',
+    borderBottomWidth: 0.5,
+  },
+  modalQrImage: {
+    marginTop: 31,
+  },
+  modalQrText: {
+    backgroundColor: 'transparent',
+    fontSize: 13,
+    color: '#828282',
+  },
+
   voucherView: {
     marginHorizontal: 15,
     marginTop: 30,
@@ -199,6 +293,7 @@ const styles = StyleSheet.create({
   voucherRow: {
     flexDirection: 'row',    
     padding: 3,
+    alignItems: 'center',
     justifyContent: 'space-between', 
   },
   voucherText: {
