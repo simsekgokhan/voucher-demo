@@ -14,20 +14,21 @@ import { createVoucher } from '../model/voucher.model';
 
 class Login extends Component<{}> {
 
-  addFakeVouchers() {   
+  addFakeVouchers() {
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 300, moment().valueOf() - 1000*60*49));
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 200, moment().valueOf() - 1000*60*65));
 
     this.props.addVoucher(createVoucher(Voucher.RECEIVED, 50, moment().valueOf() - 1000*60*73));
-    this.props.updateVoucher({ id: 1201, newStatus: Voucher.SENT, email: 'Emanuel.Barbieri@gmail.com', timeStamp: moment().valueOf() - 1000*60*33});
+    this.props.updateVoucher({ id: 1202, newStatus: Voucher.SENT, email: 'Emanuel.Barbieri@gmail.com', timeStamp: moment().valueOf() - 1000*60*33});
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 25, moment().valueOf() - 1000*60*90));
-    this.props.updateVoucher({ id: 1202, newStatus: Voucher.REFUNDED, email: 'Norman.Garber@hotmail.com', timeStamp: moment().valueOf() - 1000*60*45 });
+    this.props.updateVoucher({ id: 1203, newStatus: Voucher.REFUNDED, email: 'Norman.Garber@hotmail.com', timeStamp: moment().valueOf() - 1000*60*45 });
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100, moment().valueOf() - 1000*60*57));
 
     this.props.addVoucher(createVoucher(Voucher.PURCHASED, 40, moment().valueOf() - 1000*60*49));
-    this.props.updateVoucher({ id: 1204, newStatus: Voucher.SENT, email: 'Darlene.Buckalew@hotmail.com', timeStamp: moment().valueOf() - 1000*60*27 });
-    this.props.updateVoucher({ id: 1204, newStatus: Voucher.REDEEMED, email: 'Roxanne.Buckalow@hotmail.com', timeStamp: moment().valueOf() - 1000*60*20 });
+    this.props.updateVoucher({ id: 1205, newStatus: Voucher.SENT, email: 'Darlene.Buckalew@hotmail.com', timeStamp: moment().valueOf() - 1000*60*27 });
+    this.props.updateVoucher({ id: 1205, newStatus: Voucher.REDEEMED, email: 'Roxanne.Buckalow@hotmail.com', timeStamp: moment().valueOf() - 1000*60*20 });
   }
 
   componentDidMount() {
