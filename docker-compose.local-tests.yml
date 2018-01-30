@@ -1,0 +1,17 @@
+version: '2'
+services:
+  api:
+    image: pa_api
+    command: npm run test
+    volumes:
+      - "./api/src:/app/src"
+  web:
+    image: pa_admin
+    command: npm run test:server
+    volumes:
+      - "./admin-web/src/server:/app/src/server"
+  client:
+    image: pa_admin
+    command: npm run test:client
+    volumes:
+      - "./admin-web/src/client/src:/app/src/client/src"

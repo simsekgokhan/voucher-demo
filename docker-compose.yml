@@ -1,0 +1,31 @@
+version: '2'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "./api/src:/app/src"
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+  admin:
+    build:
+      context: ./admin-web
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "./admin-web/src/server:/app/src/server"
+      - "./admin-web/src/client/src:/app/src/client/src"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - api
+  mongo:
+    command: mongod
+    image: mongo:3.2.0
+    ports:
+      - "27018:27017"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

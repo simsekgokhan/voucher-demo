@@ -91,7 +91,7 @@ class Vouchers extends React.Component {
           </ScrollView>
           :            
           <View style={styles.logoView}>
-            <Image source={require('../images/voucher-logo.png')}/>
+            <Image source={require('../images/transaction-logo.png')}/>
             <Text style={styles.buyYourText}> 
               Buy Your First Voucher 
             </Text>

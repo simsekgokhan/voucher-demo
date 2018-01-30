@@ -1,0 +1,12 @@
+version: '2'
+services:
+  admin-web-tests:
+    build:
+      context: ./admin-web
+      dockerfile: Dockerfile
+    command: npm test
+  api-tests:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    command: npm test

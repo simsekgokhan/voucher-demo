@@ -139,7 +139,7 @@ class More extends Component<{}> {
           </TouchableOpacity>
           <TouchableOpacity style={styles.rowButton}
             onPress={ () => this.onButtonPress(3)}>
-            <Image source={require('../images/send-voucher-icon.png')}/>
+            <Image source={require('../images/send-transaction-icon.png')}/>
             <Text style={styles.textButton}>
                 Send Voucher
             </Text>
