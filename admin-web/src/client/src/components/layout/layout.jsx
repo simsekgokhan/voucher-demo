@@ -11,12 +11,14 @@ class Layout extends React.Component {
   };
   componentWillMount() {
     const self = this;
-    socket.on('eventClient', ({ amount, person, createdOn}) => {
+    socket.on('eventClient', ({ id, amount, person, email, createdOn}) => {
       self.setState({
         isVoucher: true,
         amount,
         person,
-        date: new Date(createdOn)
+        email,
+        id,
+        date: createdOn,
       });
     });
   }
@@ -28,9 +30,10 @@ class Layout extends React.Component {
           <main className="main">
             {
               this.state.isVoucher
-                ? <Voucher person={this.state.person} amount={this.state.amount} date={this.state.date}/>
-                : <img className="main__logo" src="../../static/images/app-logo.png"/>
+                ? <Voucher person={this.state.person} amount={this.state.amount} date={this.state.date} id={this.state.id} email={this.state.email}/>
+                : null
             }
+            <img className={this.state.isVoucher ? 'main__little-logo' : 'main__logo'} src="../../static/images/app-logo.png"/>
           </main>
         </div>
       </div>
