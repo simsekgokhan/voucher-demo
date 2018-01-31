@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { 
+import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import Camera from 'react-native-camera';
@@ -17,10 +17,11 @@ let lastActiveTabIndex = 0;
 class ScanQrCode extends Component<{}> {
 
   onButtonPress = () => {
-    const fakeAmount = 500;
-    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);    
-    this.props.addVoucher(voucher);  
-    
+    const fakeAmount = Math.floor(Math.random() * 100);
+    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);
+    voucher.qrScanned = true;
+    this.props.addVoucher(voucher);
+
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
@@ -33,18 +34,18 @@ class ScanQrCode extends Component<{}> {
   render() {
      return (
       <Image style={styles.container}
-        resizeMode='cover' 
-        source={require('../images/background-receive.png')}>   
-        <Image style={{marginTop: 140}} 
-          source={require('../images/white-rectangle-border.png')}/>             
+        resizeMode='cover'
+        source={require('../images/background-receive.png')}>
+        <Image style={{marginTop: 140}}
+          source={require('../images/white-rectangle-border.png')}/>
         <TouchableOpacity style={styles.footerView}
-          onPress={this.onButtonPress}>       
-          <Text style={styles.scanMyText}> 
+          onPress={this.onButtonPress}>
+          <Text style={styles.scanMyText}>
             Scan my payment QR-code
-          </Text>             
-          <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
-          </Image>          
-        </TouchableOpacity>    
+          </Text>
+          <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>
+          </Image>
+        </TouchableOpacity>
       </Image>
      )
   }
@@ -57,7 +58,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addVoucher: (state) => {
-      dispatch(addVoucher(state));      
+      dispatch(addVoucher(state));
     },
   }
 }
@@ -74,11 +75,11 @@ const styles = StyleSheet.create({
   footerView: {
     marginTop: 80,
     justifyContent: 'center',
-    alignItems: 'center',    
+    alignItems: 'center',
   },
   scanMyText: {
-    color: Color.WHITE, 
-    fontSize: 14, 
+    color: Color.WHITE,
+    fontSize: 14,
     backgroundColor: Color.TRANSPARENT,
   },
   capture: {
@@ -90,9 +91,3 @@ const styles = StyleSheet.create({
     margin: 40
   }
 });
-
-
-
-
-
-

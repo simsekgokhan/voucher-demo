@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { 
+import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image
 } from 'react-native';
 import Camera from 'react-native-camera';
@@ -19,32 +19,32 @@ class Receive extends Component<{}> {
 
   constructor(props) {
     super(props);
-    // Subscribe to navigator events    
+    // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   static navigatorButtons = {
     leftButtons: [{
       id: 'back',
-      icon: require('../images/back-button.png'),      
+      icon: require('../images/back-button.png'),
     }]
   }
 
-  onNavigatorEvent(event) { 
+  onNavigatorEvent(event) {
     if(event.unselectedTabIndex >= 0)
       lastActiveTabIndex = event.unselectedTabIndex;
-    else if (event.type === 'NavBarButtonPress' && event.id ==='back')     
-        this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });  
-    else if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')         
+    else if (event.type === 'NavBarButtonPress' && event.id ==='back')
+        this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });
+    else if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')
         barcodeScanned = false;
     else if (event.id === 'bottomTabSelected')
       this.props.navigator.handleDeepLink({
-        link: 'AllTabs.popToRoot', 
+        link: 'AllTabs.popToRoot',
         payload: { sender: 'Receive' }
-      });           
-    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' && 
-             event.payload.sender !== 'Receive') 
-      this.props.navigator.popToRoot({ animationType: 'fade' });     
+      });
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
+             event.payload.sender !== 'Receive')
+      this.props.navigator.popToRoot({ animationType: 'fade' });
   }
 
   onButtonPress = () => {
@@ -60,10 +60,11 @@ class Receive extends Component<{}> {
       return;
 
     barcodeScanned = true;
-    
-    const fakeAmount = 200;
-    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);    
-    this.props.addVoucher(voucher);  
+
+    const fakeAmount = Math.floor(Math.random() * 100);
+    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);
+    voucher.qrScanned = true;
+    this.props.addVoucher(voucher);
 
     this.props.navigator.push({
       screen: 'VoucherDetails',
@@ -75,23 +76,23 @@ class Receive extends Component<{}> {
   }
 
   render() {
-     return (      
+     return (
       <View style={styles.container}>
         <Camera style={styles.camera}
-          ref={(cam) => {this.camera = cam;}}          
+          ref={(cam) => {this.camera = cam;}}
           aspect={Camera.constants.Aspect.fill}
-          onBarCodeRead={ (data) => this.onBarCodeRead(data) }>          
-          <Image style={{marginTop: 200}} 
-            source={require('../images/white-rectangle-border.png')}>           
-          </Image>     
+          onBarCodeRead={ (data) => this.onBarCodeRead(data) }>
+          <Image style={{marginTop: 200}}
+            source={require('../images/white-rectangle-border.png')}>
+          </Image>
           <TouchableOpacity style={styles.footerView}
-            onPress={this.onButtonPress}>       
-            <Text style={styles.scanMyText}> 
+            onPress={this.onButtonPress}>
+            <Text style={styles.scanMyText}>
               Scan my payment QR-code
-            </Text>             
-            <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>           
-            </Image>          
-          </TouchableOpacity>    
+            </Text>
+            <Image style={{marginTop: 8}} source={require('../images/scan-icon.png')}>
+            </Image>
+          </TouchableOpacity>
         </Camera>
       </View>
      )
@@ -105,7 +106,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addVoucher: (state) => {
-      dispatch(addVoucher(state));      
+      dispatch(addVoucher(state));
     },
   }
 }
@@ -122,11 +123,11 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginBottom: 40,
     justifyContent: 'center',
-    alignItems: 'center',    
+    alignItems: 'center',
   },
   scanMyText: {
-    color: 'white', 
-    fontSize: 14, 
+    color: 'white',
+    fontSize: 14,
     backgroundColor: Color.TRANSPARENT,
   },
   camera: {
@@ -141,9 +142,3 @@ const styles = StyleSheet.create({
     margin: 40
   }
 });
-
-
-
-
-
-

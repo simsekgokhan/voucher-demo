@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import React from 'react';
 import './layout.styles';
 
-const socket = io('http://localhost:3001');
+const socket = io('http://192.168.1.250:3001');
 
 class Layout extends React.Component {
   componentWillMount() {

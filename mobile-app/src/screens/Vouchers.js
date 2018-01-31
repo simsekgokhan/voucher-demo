@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { 
+import {
   StyleSheet, TextInput, Text, TouchableOpacity, View, Image, Dimensions,
   ScrollView, Button
 } from 'react-native';
@@ -20,23 +20,23 @@ class Vouchers extends React.Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  onNavigatorEvent(event) { 
+  onNavigatorEvent(event) {
     if (event.id === 'bottomTabSelected') {
       this.props.navigator.handleDeepLink({
-        link: 'AllTabs.popToRoot', 
+        link: 'AllTabs.popToRoot',
         payload: { sender: 'Vouchers' }
-      });          
+      });
     }
     else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
              event.payload.sender !== 'Vouchers') {
-      this.props.navigator.resetTo({ 
-        screen: 'Vouchers', 
-        navigatorStyle: { navBarHidden: true } 
-      });     
-    }    
+      this.props.navigator.resetTo({
+        screen: 'Vouchers',
+        navigatorStyle: { navBarHidden: true }
+      });
+    }
   }
 
-  navigateToDetails = (voucher) => { 
+  navigateToDetails = (voucher) => {
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
@@ -48,23 +48,23 @@ class Vouchers extends React.Component {
   VoucherItem = (voucher) => {
     return(
       <VoucherItem key={voucher.id}
-        onDetailsPress={ () => this.navigateToDetails(voucher) } 
+        onDetailsPress={ () => this.navigateToDetails(voucher) }
         voucher={voucher}/>
     );
   }
 
   render() {
-    const hasVoucher = (this.props.vouchers.allVouchers.length > 0);     
+    const hasVoucher = (this.props.vouchers.allVouchers.length > 0);
     const balance = this.props.vouchers.balance;
-    
+
     let voucherItems = [];
-    const allVouchers = this.props.vouchers.allVouchers;    
+    const allVouchers = this.props.vouchers.allVouchers;
     for(const voucher of allVouchers){
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
         if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED)
-          voucherItems.unshift(this.VoucherItem(voucher));                
+          voucherItems.unshift(this.VoucherItem(voucher));
       }
       else {
         voucherItems.unshift(this.VoucherItem(voucher));
@@ -72,28 +72,28 @@ class Vouchers extends React.Component {
     }
 
     return (
-      <Image resizeMode='cover' style={styles.container}  
+      <Image resizeMode='cover' style={styles.container}
         source={require('../images/background.png')}>
-        <Image style={styles.appLogo}  
+        <Image style={styles.appLogo}
           source={require('../images/app-logo-small.png')}/>
         <View style={styles.topView}>
-          <Text style={styles.totalBalance}> 
-            Total Balance 
-          </Text>        
-          <Text style={styles.balance}> 
+          <Text style={styles.totalBalance}>
+            Total Balance
+          </Text>
+          <Text style={styles.balance}>
             $ {balance}.00
-          </Text>        
+          </Text>
         </View>
         {
-          hasVoucher ? 
+          hasVoucher ?
           <ScrollView vertical style={styles.scrollView}>
-            {voucherItems}                             
+            {voucherItems}
           </ScrollView>
-          :            
+          :
           <View style={styles.logoView}>
-            <Image source={require('../images/transaction-logo.png')}/>
-            <Text style={styles.buyYourText}> 
-              Buy Your First Voucher 
+            <Image source={require('../images/voucher-logo.png')}/>
+            <Text style={styles.buyYourText}>
+              Buy Your First Voucher
             </Text>
           </View>
         }
@@ -115,42 +115,42 @@ const styles = StyleSheet.create({
     backgroundColor: Color.BACKGROUND,
   },
   appLogo: {
-    position: 'absolute', 
-    top: 40, 
-    left: 16, 
-    right: 0, 
-    bottom: 0, 
+    position: 'absolute',
+    top: 40,
+    left: 16,
+    right: 0,
+    bottom: 0,
   },
   topView: {
     marginTop: 100,
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
   },
   totalBalance: {
-    color: Color.WHITE, 
-    fontSize: 17, 
+    color: Color.WHITE,
+    fontSize: 17,
     backgroundColor: 'transparent',
   },
   balance: {
-    color: Color.WHITE, 
-    fontSize: 26, 
-    backgroundColor: 'transparent', 
+    color: Color.WHITE,
+    fontSize: 26,
+    backgroundColor: 'transparent',
     marginTop: 5,
   },
   logoView: {
     marginTop: 32,
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignItems: 'center',
   },
   buyYourText: {
-    color: Color.WHITE, 
-    fontSize: 20, 
-    backgroundColor: 'transparent', 
+    color: Color.WHITE,
+    fontSize: 20,
+    backgroundColor: 'transparent',
     marginTop: 18,
   },
   scrollView: {
-    marginTop: 36, 
+    marginTop: 36,
     marginBottom: 56,
   }
 });

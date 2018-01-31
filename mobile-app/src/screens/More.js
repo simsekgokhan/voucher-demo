@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
   StyleSheet, Text, TouchableOpacity, View, Image, Dimensions, Share, Linking, ScrollView
 } from 'react-native';
 import {connect} from "react-redux";
@@ -8,7 +8,7 @@ import Color from '../common/colors';
 import { startSingleScreenApp } from '../navigator';
 import { deleteAllVouchers } from "../actions/vouchersAction";
 
-const rightButtons = {  
+const rightButtons = {
   rightButtons: [{
     id: 'skip',
     title: 'Skip',
@@ -23,29 +23,29 @@ class More extends Component<{}> {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  onNavigatorEvent(event) { 
-    if (event.id === 'bottomTabSelected')      
+  onNavigatorEvent(event) {
+    if (event.id === 'bottomTabSelected')
       this.props.navigator.handleDeepLink({
-        link: 'AllTabs.popToRoot', 
+        link: 'AllTabs.popToRoot',
         payload: { sender: 'More' }
-      });                
-    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' && 
+      });
+    else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
              event.payload.sender !== 'More') {
-      this.props.navigator.resetTo({ 
-        screen: 'More', 
-        navigatorStyle: { navBarHidden: true } 
-      });     
+      this.props.navigator.resetTo({
+        screen: 'More',
+        navigatorStyle: { navBarHidden: true }
+      });
     }
   }
 
-  navigateTo(screen, title, backButtonTitle, rightButtonEnabled, 
+  navigateTo(screen, title, backButtonTitle, rightButtonEnabled,
              passProps=null, navBarHidden=false) {
     this.props.navigator.push({
       screen: screen,
       title: title,
       navigatorStyle: {
-        navBarHidden: navBarHidden, 
-        navBarButtonColor: Color.WHITE,                
+        navBarHidden: navBarHidden,
+        navBarButtonColor: Color.WHITE,
       },
       backButtonTitle: backButtonTitle,
       navigatorButtons: rightButtonEnabled ? rightButtons : null,
@@ -78,10 +78,10 @@ class More extends Component<{}> {
         break;
       case 3:
         this.navigateTo('Vouchers', '', '', false, {sendVoucherScreen: true}, true);
-        break;           
+        break;
       case 4:
         this.navigateTo('Settings', 'Settings', 'Back', false);
-        break;               
+        break;
       case 5:
         this.share();
         break;
@@ -93,24 +93,24 @@ class More extends Component<{}> {
         break;
       case 8:
         this.props.deleteAllVouchers();
-        startSingleScreenApp();      
-        break;                       
+        startSingleScreenApp();
+        break;
       default:
         break;
-    }    
+    }
   }
 
   render() {
     return (
       <Image style={styles.container}
-        resizeMode='cover' 
-        source={require('../images/background.png')}>                   
-        <Image style={{margin: 40}} 
-          source={require('../images/app-logo-medium.png')}/>                
-        <Image style={styles.row0} 
-          source={require('../images/more-row-0.png')}>          
+        resizeMode='cover'
+        source={require('../images/background.png')}>
+        <Image style={{margin: 40}}
+          source={require('../images/app-logo-medium.png')}/>
+        <Image style={styles.row0}
+          source={require('../images/more-row-0.png')}>
           <View style={styles.row0View}>
-            <Image style={{marginTop: 6}} 
+            <Image style={{marginTop: 6}}
               source={require('../images/balance-icon.png')}/>
             <View style={styles.textView}>
               <Text style={styles.text}>
@@ -139,7 +139,7 @@ class More extends Component<{}> {
           </TouchableOpacity>
           <TouchableOpacity style={styles.rowButton}
             onPress={ () => this.onButtonPress(3)}>
-            <Image source={require('../images/send-transaction-icon.png')}/>
+            <Image source={require('../images/send-voucher-icon.png')}/>
             <Text style={styles.textButton}>
                 Send Voucher
             </Text>
@@ -180,7 +180,7 @@ class More extends Component<{}> {
             </Text>
           </TouchableOpacity>
         </ScrollView>
-        <View style={{backgroundColor: '#b8e9fa', flex:1, 
+        <View style={{backgroundColor: '#b8e9fa', flex:1,
                       width:Dimensions.get('window').width}}>
         </View>
       </Image>
@@ -197,7 +197,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteAllVouchers: () => {
-      dispatch(deleteAllVouchers());      
+      dispatch(deleteAllVouchers());
     },
   }
 }
@@ -207,7 +207,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(More);
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: Color.BACKGROUND,  
+    backgroundColor: Color.BACKGROUND,
   },
   logo: {
     alignItems: 'center',
@@ -242,8 +242,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 56,
     paddingLeft: 16,
-    width: Dimensions.get('window').width - 6,  
-    marginBottom: 2,      
+    width: Dimensions.get('window').width - 6,
+    marginBottom: 2,
   },
   textButton: {
     marginLeft: 22,
@@ -255,9 +255,3 @@ const styles = StyleSheet.create({
     marginBottom: 56,
   }
 });
-
-
-
-
-
-
