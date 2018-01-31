@@ -1,0 +1,1 @@
+app ansible_ssh_host=159.89.23.3 ansible_user=root

@@ -1,0 +1,7 @@
+app_name: "pm"
+pa_home: "/home/plipme/{{app_name}}"
+pa_uploads: "{{pa_home}}/uploads"
+mongo_data_dir: "{{pa_home}}/mongo"
+
+pa_api_nginx_server_name: 159.89.23.3
+pa_web_nginx_server_name: 159.89.23.3

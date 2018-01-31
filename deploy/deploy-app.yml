@@ -1,0 +1,56 @@
+---
+-   name: Deploy application using docker
+    hosts: app
+    remote_user: root
+    become: true
+    vars_files:
+      - ["vars/credentials.yml"]
+      - ["vars/{{env}}.yml"]
+    tasks:
+      - name: login into docker registry
+        docker_login:
+          username: "{{ docker_registry_username }}"
+          email: "{{ docker_registry_email }}"
+          password: "{{ docker_registry_password }}"
+        tags:
+          - login
+
+      - name: pull admin-web docker image
+        docker_image:
+          state: present
+          force: True
+          name: "plipme/web:latest"
+
+      - name: run admin web application
+        docker_container:
+           name: "plipme-admin"
+           image: "plipme/web:latest"
+           state: started
+           restart_policy: always
+           links:
+             - mongo
+           published_ports:
+             - "127.0.0.1:8080:3000"
+           env:
+             NODE_ENV: "{{env}}"
+
+      - name: pull api docker image
+        docker_image:
+          state: present
+          force: True
+          name: "plipme/api:latest"
+
+      - name: run api
+        docker_container:
+           name: "plipme-api"
+           image: "plipme/api:latest"
+           state: started
+           restart_policy: always
+           links:
+             - mongo
+           published_ports:
+             - "127.0.0.1:8081:3001"
+           volumes:
+             - "{{ pa_uploads }}:/uploads"
+           env:
+             NODE_ENV: "{{env}}"

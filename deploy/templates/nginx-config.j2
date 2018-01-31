@@ -1,0 +1,27 @@
+server {
+    listen 80;
+    server_name {{pa_web_nginx_server_name}};
+
+    location / {
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host $http_host;
+
+        proxy_pass http://localhost:8080;
+    }
+}
+
+server {
+    listen 3001;
+    server_name {{pa_api_nginx_server_name}};
+
+    location / {
+        send_timeout 1200s;
+        proxy_read_timeout 1200s;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host $http_host;
+
+        proxy_pass http://localhost:8081;
+    }
+}

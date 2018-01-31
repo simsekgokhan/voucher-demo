@@ -1,0 +1,7 @@
+app_name: "pa"
+pa_home: "/home/podcaz/{{app_name}}"
+pa_uploads: "{{pa_home}}/uploads"
+mongo_data_dir: "{{pa_home}}/mongo"
+
+pa_api_nginx_server_name: staging-api.podcaz.com
+pa_web_nginx_server_name: staging-admin.podcaz.com
