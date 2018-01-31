@@ -3,7 +3,7 @@ module.exports = (server) => {
   const io = require('socket.io')(server);
   io.on('connection', (socket) => {
     transactionService.on('created', (data) => {
-      socket.emit('eventClient', data.doc.value);
+      socket.emit('eventClient', data.doc);
     })
   });
 };

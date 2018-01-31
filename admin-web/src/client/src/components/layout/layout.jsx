@@ -1,14 +1,23 @@
-
 import io from 'socket.io-client';
 import React from 'react';
 import './layout.styles';
+import Voucher from './components/voucher'
 
 const socket = io('http://192.168.1.250:3001');
 
 class Layout extends React.Component {
+  state = {
+    isVoucher: false,
+  };
   componentWillMount() {
-    socket.on('eventClient', (data) => {
-      alert(`Transaction was created. Value = ${data}`);
+    const self = this;
+    socket.on('eventClient', ({ amount, person, createdOn}) => {
+      self.setState({
+        isVoucher: true,
+        amount,
+        person,
+        date: new Date(createdOn)
+      });
     });
   }
 
@@ -17,7 +26,11 @@ class Layout extends React.Component {
       <div>
         <div className="container">
           <main className="main">
-            Я ОДИНОКАЯ СТРАНИЧКА :(
+            {
+              this.state.isVoucher
+                ? <Voucher person={this.state.person} amount={this.state.amount} date={this.state.date}/>
+                : <img className="main__logo" src="../../static/images/app-logo.png"/>
+            }
           </main>
         </div>
       </div>

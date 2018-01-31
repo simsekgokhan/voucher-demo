@@ -7,11 +7,11 @@ const userSchema = {
   type: 'object',
   properties: {
     _id: { type: 'string' },
-    type: { type: 'string' },
-    value: { type: 'string' },
+    person: { type: 'string' },
+    amount: { type: 'string' },
     createdOn: { type: 'Date' },
   },
-  required: ['value'],
+  required: ['amount'],
 };
 
 module.exports = obj => validator.validate(obj, userSchema);
