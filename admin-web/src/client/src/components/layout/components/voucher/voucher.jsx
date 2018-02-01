@@ -11,7 +11,14 @@ class Voucher extends React.Component {
     });
     return (
       <div className="voucher">
-        <span className="voucher__id">Voucher #{this.props.id}</span>
+        <div className="voucher__header">
+          <span className="voucher__id">Voucher #{this.props.id}</span>
+          <img className="voucher__visa" src="../../../static/images/visa-logo.png"/>
+        </div>
+        <div className="voucher__label">
+          <img className="voucher__label-img" src="../../../static/images/received.png"/>
+          <span className="voucher__label-text">Payment Confirmed</span>
+        </div>
         <div className="voucher__person-info">
           <span className="voucher__receiver">{this.props.person}</span>
           <span className="voucher__email">{this.props.email}</span>

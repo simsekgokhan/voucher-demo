@@ -3,7 +3,7 @@ import React from 'react';
 import './layout.styles';
 import Voucher from './components/voucher'
 
-const socket = io('http://159.89.23.3:3001');
+const socket = io('http://localhost:3001');
 
 class Layout extends React.Component {
   state = {
