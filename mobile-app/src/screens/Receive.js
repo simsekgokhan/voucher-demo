@@ -55,14 +55,19 @@ class Receive extends Component<{}> {
     })
   }
 
-  onBarCodeRead = (data) => {
-    if(barcodeScanned)
+  onBarCodeRead = (qrCodeData) => {
+    if(barcodeScanned) {
       return;
+    }
 
     barcodeScanned = true;
-
-    const fakeAmount = Math.floor(Math.random() * 100);
-    const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);
+    let amount;
+    if(!Number.isNaN(parseInt(qrCodeData.data))) {
+      amount = parseInt(qrCodeData.data);
+    } else {
+      amount = Math.floor(Math.random()*10 + 1)*50;
+    }
+    const voucher = createVoucher(Voucher.RECEIVED, amount);
     voucher.qrScanned = true;
     this.props.addVoucher(voucher);
 

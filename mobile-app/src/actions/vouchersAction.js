@@ -7,6 +7,7 @@ export function addVoucher(voucher) {
         const email = voucherConstants.RECEIVED_EMAIL;
         const person = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');
         addTransaction({
+            id: voucher.id,
             amount: `${voucher.amount}`,
             email,
             person,
