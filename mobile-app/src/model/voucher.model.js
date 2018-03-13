@@ -59,4 +59,10 @@ export default Vouchers = [
     textColor: Color.PURPLE,
     amountSign: '',
   },  
+  {
+    toString: Voucher.PAID_TEXT,     
+    voucherColor: Color.PAID,
+    textColor: Color.BLUE,
+    amountSign: '',
+  },  
 ];

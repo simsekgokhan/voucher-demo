@@ -7,6 +7,7 @@ import { resetVoucherIds } from './model/voucher.model';
 import Vouchers from './screens/Vouchers';
 import BuyVoucher from './screens/BuyVoucher';
 import Receive from './screens/Receive';
+import Scan from './screens/Scan';
 import More from './screens/More';
 import Login from './screens/Login';
 import VoucherDetails from './screens/VoucherDetails';
@@ -61,6 +62,7 @@ function registerScreens() {
   Navigation.registerComponent('IBANVerification', () => IBANVerification);
   Navigation.registerComponent('IDVerification', () => IDVerification);
   Navigation.registerComponent('AddressVerification', () => AddressVerification);
+  Navigation.registerComponent('Scan', () => Scan, store, Provider);  
 }
 
 export function startSingleScreenApp() {

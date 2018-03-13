@@ -46,6 +46,7 @@ const Color = {
   RECEIVED: '#ccffea',
   PURCHASED: '#ccffea',
   REFUNDED: '#c1c1f0',
+  PAID: '#ccf2ff',  
   
   VOUCHER_SECOND_COLOR: WHITE,    // for lineargradient
   VOUCHER_TEXT_1: BLACK,

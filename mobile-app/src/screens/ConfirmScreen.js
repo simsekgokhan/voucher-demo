@@ -27,17 +27,22 @@ class ConfirmScreen extends Component<{}> {
       voucher = createVoucher(voucherType, amount);
       this.props.addVoucher(voucher); 
     } 
-    else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND){
+    else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND 
+            || confirmType === Voucher.PAY)
+    {
       voucher = createVoucherWithId(this.props.id, voucherType, amount);
       voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
-      this.props.updateVoucher({ id: this.props.id, newStatus: voucherType, email: this.props.email });
+      this.props.updateVoucher({ 
+        id: this.props.id, newStatus: voucherType, email: this.props.email });
     }
+
     this.props.navigator.push({
       screen: 'VoucherDetails',
       backButtonHidden: true,
       title: 'Voucher',
       passProps: {voucher}
     });
+
     playSound();
   }
 
@@ -51,6 +56,11 @@ class ConfirmScreen extends Component<{}> {
       case Voucher.BUY:
         voucherType = Voucher.PURCHASED;
         voucherColor = Color.PURCHASED;
+        textColor = Color.BLUE;                
+        break;      
+      case Voucher.PAY:
+        voucherType = Voucher.PAID;
+        voucherColor = Color.PAID;
         textColor = Color.BLUE;                
         break;      
       case Voucher.REDEEM:

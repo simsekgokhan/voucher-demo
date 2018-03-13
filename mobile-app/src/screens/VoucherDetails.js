@@ -61,6 +61,23 @@ class VoucherDetails extends React.Component {
     })
   };
 
+  onPayPress = () => {
+    this.props.navigator.push({
+      screen: 'Scan',
+      title: 'Scan QR-Code' ,
+      backButtonTitle: 'Back',
+      navigatorStyle: {
+        tabBarHidden: true,          
+        navBarButtonColor: Color.WHITE,
+        drawUnderTabBar: true,          
+      },
+      passProps: {
+        id: this.props.voucher.id,
+        amount: this.props.voucher.amount
+      },
+    });    
+  };
+
   onSendPress = () => {
     this.setState({
       sendModal: true
@@ -72,8 +89,7 @@ class VoucherDetails extends React.Component {
   };
 
   render() {
-    const voucherType = this.props.voucher.status;        
-              
+    const voucherType = this.props.voucher.status;                     
 
     let voucherColor = Color.REDEEMED;
     let voucherLogo = require('../images/redeemed.png');
@@ -88,6 +104,11 @@ class VoucherDetails extends React.Component {
         voucherLogo = require('../images/redeemed.png');
         textColor = Color.BLUE;
         break;
+      case Voucher.PAID:
+        voucherColor = Color.PAID;
+        voucherLogo = require('../images/paid.png');
+        textColor = Color.BLUE;
+        break;        
       case Voucher.SENT:
         voucherColor = Color.SENT;
         voucherLogo = require('../images/sent.png');
@@ -156,14 +177,20 @@ class VoucherDetails extends React.Component {
           {
             showButtons ? 
             <View style={[styles.voucherRow, {marginTop: 30}]}>
-              <TouchableOpacity style={styles.button}
+              <TouchableOpacity style={[styles.button, {width: 90}]}
+                onPress={this.onPayPress}>
+                <Text style={[styles.buttonText, {color: Color.BLUE}]}>
+                  Pay
+                </Text>
+              </TouchableOpacity>               
+              <TouchableOpacity style={[styles.button, {width: 104}]}
                 onPress={this.onSendPress}>
                 <Image source={require('../images/send.png')}/>
                 <Text style={[styles.buttonText, {color: Color.RED}]}>
                   Send
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.button, {width: 130}]}
+              <TouchableOpacity style={[styles.button, {width: 120}]}
                 onPress={this.onRefundPress}>
                 <Image source={require('../images/refund.png')}/>
                 <Text style={[styles.buttonText, {color: Color.PURPLE}]}>

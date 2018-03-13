@@ -17,6 +17,22 @@ let lastActiveTabIndex = 0;
 class ScanQrCode extends Component<{}> {
 
   onButtonPress = () => {
+
+    if(this.props.payWithVoucher){
+      this.props.navigator.push({
+        screen: 'ConfirmScreen',
+        title: 'Pay with Voucher',
+        backButtonTitle: 'Cancel',
+        passProps: {
+          id: this.props.id,
+          confirmType: 'Pay', 
+          amount: this.props.amount           
+        },
+      });   
+      
+      return;
+    }
+
     const fakeAmount = Math.floor(Math.random() * 100);
     const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);
     voucher.qrScanned = true;
