@@ -19,6 +19,7 @@ class Receive extends Component<{}> {
 
   constructor(props) {
     super(props);
+    this.state = { openCamera: false };
     // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -37,6 +38,10 @@ class Receive extends Component<{}> {
       this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });
     else if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')
       barcodeScanned = false;
+    else if (event.type === 'ScreenChangedEvent' && event.id ==='didAppear')
+      this.setState({ openCamera: true });
+    else if (event.type === 'ScreenChangedEvent' && event.id ==='didDisappear')
+      this.setState({ openCamera: false });
     else if (event.id === 'bottomTabSelected')
       this.props.navigator.handleDeepLink({
         link: 'AllTabs.popToRoot',
@@ -56,10 +61,9 @@ class Receive extends Component<{}> {
   }
 
   onBarCodeRead = (qrCodeData) => {
-    if(barcodeScanned) {
+    if(barcodeScanned) 
       return;
-    }
-
+    
     barcodeScanned = true;
     let amount;
     if(!Number.isNaN(parseInt(qrCodeData.data))) {
@@ -81,6 +85,9 @@ class Receive extends Component<{}> {
   }
 
   render() {
+    if(!this.state.openCamera)
+      return null;
+    
      return (
       <View style={styles.container}>
         <Camera style={styles.camera}

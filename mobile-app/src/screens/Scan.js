@@ -19,35 +19,14 @@ class Receive extends Component<{}> {
 
   constructor(props) {
     super(props);
-    console.log('aaa: Scan ctor: ');
-    
+    barcodeScanned = false;
     // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  static navigatorButtons = {
-    // leftButtons: [{
-    //   id: 'back',
-    //   icon: require('../images/back-button.png'),
-    // }]
-  }
-
   onNavigatorEvent(event) {
-    //console.log('aaa: event', event);
-    // if(event.unselectedTabIndex >= 0)
-    //   lastActiveTabIndex = event.unselectedTabIndex;
-    // else if (event.type === 'NavBarButtonPress' && event.id ==='back')
-    //   this.props.navigator.switchToTab({ tabIndex: lastActiveTabIndex });
-    // else if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')
-    //   barcodeScanned = false;
-    // else if (event.id === 'bottomTabSelected')
-    //   this.props.navigator.handleDeepLink({
-    //     link: 'AllTabs.popToRoot',
-    //     payload: { sender: 'Receive' }
-    //   });
-    // else if (event.type === 'DeepLink' && event.link === 'AllTabs.popToRoot' &&
-    //          event.payload.sender !== 'Receive')
-    //   this.props.navigator.popToRoot({ animationType: 'fade' });
+    if (event.type === 'ScreenChangedEvent' && event.id ==='willAppear')
+      barcodeScanned = false;
   }
 
   onButtonPress = () => {
@@ -64,27 +43,22 @@ class Receive extends Component<{}> {
   }
 
   onBarCodeRead = (qrCodeData) => {
-    if(barcodeScanned) {
+    if(barcodeScanned) 
       return;
-    }
-
+    
     barcodeScanned = true;
-    let amount;
-    if(!Number.isNaN(parseInt(qrCodeData.data))) {
-      amount = parseInt(qrCodeData.data);
-    } else {
-      amount = Math.floor(Math.random()*10 + 1)*50;
-    }
-    const voucher = createVoucher(Voucher.RECEIVED, amount);
-    voucher.qrScanned = true;
-    this.props.addVoucher(voucher);
 
     this.props.navigator.push({
-      screen: 'VoucherDetails',
-      title: 'Voucher',
-      backButtonTitle: 'Back',
-      passProps: { voucher }
-    });
+      screen: 'ConfirmScreen',
+      title: 'Pay with Voucher',
+      backButtonTitle: 'Cancel',
+      passProps: {
+        id: this.props.id,
+        confirmType: 'Pay', 
+        amount: this.props.amount           
+      },
+    });   
+    
     playSound();
   }
 
@@ -95,7 +69,9 @@ class Receive extends Component<{}> {
           ref={(cam) => {this.camera = cam;}}
           aspect={Camera.constants.Aspect.fill}
           onBarCodeRead={ (data) => this.onBarCodeRead(data) }>
-
+          <Image style={{marginTop: 200}}
+            source={require('../images/white-rectangle-border.png')}>
+          </Image>
           <TouchableOpacity style={styles.footerView}
             onPress={this.onButtonPress}>
             <Text style={styles.scanMyText}>

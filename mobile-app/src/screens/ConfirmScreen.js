@@ -11,6 +11,8 @@ import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
 import { createVoucher, createVoucherWithId } from '../model/voucher.model';
+import { addTransaction } from '../resources/transaction/transaction.api';
+import voucherConstants from '../common/voucher.constants'
 
 const leftQuoMark = '\u00AB';
 const rightQuoMark = '\u00BB';
@@ -27,15 +29,31 @@ class ConfirmScreen extends Component<{}> {
       voucher = createVoucher(voucherType, amount);
       this.props.addVoucher(voucher); 
     } 
-    else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND 
-            || confirmType === Voucher.PAY)
-    {
+    else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND) {
       voucher = createVoucherWithId(this.props.id, voucherType, amount);
       voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
       this.props.updateVoucher({ 
-        id: this.props.id, newStatus: voucherType, email: this.props.email });
+        id: this.props.id, newStatus: voucherType, email: this.props.email 
+      });
     }
+    else if(confirmType === Voucher.PAY) {
+      const email = voucherConstants.MY_EMAIL;
+      const person = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');
+      voucher = createVoucherWithId(this.props.id, voucherType, amount);
+      voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
+      this.props.updateVoucher({ 
+        id: this.props.id, newStatus: voucherType, email: this.props.email 
+      });
 
+      addTransaction({
+        id: voucher.id,
+        amount: `${voucher.amount}`,
+        email,
+        person,
+        date: voucher.timeStamp,
+      });
+    }
+    
     this.props.navigator.push({
       screen: 'VoucherDetails',
       backButtonHidden: true,
