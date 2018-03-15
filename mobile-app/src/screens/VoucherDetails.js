@@ -177,20 +177,21 @@ class VoucherDetails extends React.Component {
           {
             showButtons ? 
             <View style={[styles.voucherRow, {marginTop: 30}]}>
-              <TouchableOpacity style={[styles.button, {width: 90}]}
+              <TouchableOpacity style={[styles.button, {width: 86}]}
                 onPress={this.onPayPress}>
+                <Image style={{height: 24}} source={require('../images/receive-active.png')}/>                
                 <Text style={[styles.buttonText, {color: Color.BLUE}]}>
                   Pay
                 </Text>
               </TouchableOpacity>               
-              <TouchableOpacity style={[styles.button, {width: 104}]}
+              <TouchableOpacity style={[styles.button, {width: 96, marginHorizontal: 4}]}
                 onPress={this.onSendPress}>
                 <Image source={require('../images/send.png')}/>
                 <Text style={[styles.buttonText, {color: Color.RED}]}>
                   Send
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.button, {width: 120}]}
+              <TouchableOpacity style={[styles.button, {width: 108}]}
                 onPress={this.onRefundPress}>
                 <Image source={require('../images/refund.png')}/>
                 <Text style={[styles.buttonText, {color: Color.PURPLE}]}>
@@ -301,7 +302,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginTop: 30,
     marginBottom: 154,
-    padding: 24,
+    padding: 18,
     borderRadius: 5,    
     flex: 1,
     shadowOpacity: 0.75,
@@ -343,14 +344,14 @@ const styles = StyleSheet.create({
     borderRadius: 20, 
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 20,      
-    padding: 10,      
-    width: 120,
+    justifyContent: 'center',     
+    paddingHorizontal: 4,      
+    padding: 8,          
   },
   buttonText: {
     backgroundColor: 'transparent',
     fontSize: 18,
-    paddingHorizontal: 10
+    paddingHorizontal: 4
   },
   footerText: {
     position: 'absolute', 
