@@ -58,11 +58,19 @@ class Layout extends React.Component {
                     <img style={{height: '200px'}} src="../../static/images/qr-code.png" />
                     <p style={{margin: '40px'}}>
                       Please scan QR-code to pay the amount {amount} USD
-                    </p>
+                    </p>                 
                   </div>                       
             }
             <img className="main__little-logo" src="../../static/images/app-logo.png"/>
+            {
+              this.state.isVoucher ?
+                <button style={styles.refreshButton} onClick={() => this.setState({isVoucher: false})}> 
+                  Refresh
+                </button>  
+              : null
+            }
           </main>
+ 
         </div>
       </div>
     );
@@ -72,7 +80,7 @@ export default Layout;
 
 const styles = {
   qrPage: {
-    marginTop: '100px',
+    marginTop: '80px',
     textAlign: 'center',
   },
   qrHeader: {
@@ -96,6 +104,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
+  refreshButton: {
+    marginTop:'20px', 
+    borderRadius: '25px', 
+    height: '40px', 
+    width: '100px', 
+    color: '#33ccff',
+    outline: 0
+  }
 };
 
 
