@@ -58,7 +58,7 @@ class ConfirmScreen extends Component<{}> {
       screen: 'VoucherDetails',
       backButtonHidden: true,
       title: 'Voucher',
-      passProps: {voucher}
+      passProps: {voucher, fromConfirm: true}
     });
 
     playSound();

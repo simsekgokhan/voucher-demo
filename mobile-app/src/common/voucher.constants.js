@@ -20,7 +20,8 @@ const Voucher = {
     RECEIVED_TEXT: 'Received',
     PURCHASED_TEXT: 'Purchased',
     REFUNDED_TEXT: 'Refunded',
-    PAID_TEXT: 'Payment Confirmed',
+    //PAID_TEXT: 'Payment Confirmed',   
+    PAID_TEXT: 'Redeemed',  // todo: remove, revert to original
 
     MY_EMAIL: 'Murray.Derek@hotmail.com',
     RECEIVED_EMAIL: 'Darlene.Buckalew@hotmail.com'

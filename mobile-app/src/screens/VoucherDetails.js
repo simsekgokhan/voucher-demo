@@ -11,9 +11,11 @@ import Voucher from '../common/voucher.constants';
 import Vouchers from '../model/voucher.model';
 
 class VoucherDetails extends React.Component {
- state = {
-  sendModal: false,
- }
+
+  state = {
+    sendModal: false,
+  }
+
   // For react-native-navigation  
   static navigatorStyle= {
     tabBarHidden: false,
@@ -153,7 +155,10 @@ class VoucherDetails extends React.Component {
           <View style={styles.voucherLogoView}>
             <Image source={voucherLogo}/>                    
             <Text style={[styles.voucherStatusText, {color: textColor}]}> 
-              {Vouchers[voucherType].toString} 
+              {
+                this.props.fromConfirm ? 'Payment Confirmed' : 
+                Vouchers[voucherType].toString
+              }
             </Text>            
           </View>  
           <View style={[styles.voucherRow, {marginTop: 30}]}>
