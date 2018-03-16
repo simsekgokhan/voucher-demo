@@ -39,8 +39,11 @@ class Layout extends React.Component {
           <main className="main">
             {
               this.state.isVoucher
-                ? <Voucher person={this.state.person} amount={this.state.amount} 
-                           date={this.state.date} id={this.state.id} email={this.state.email}/>
+                ? 
+                  <div style={styles.voucher}>
+                    <Voucher person={this.state.person} amount={this.state.amount} 
+                            date={this.state.date} id={this.state.id} email={this.state.email}/>
+                  </div>         
                 : 
                   <div style={styles.qrPage}>
                     <header style={styles.qrHeader}>
@@ -79,6 +82,11 @@ class Layout extends React.Component {
 export default Layout;
 
 const styles = {
+  voucher: { 
+    width: '325px', 
+    height: '475px', 
+    marginTop: '12'
+  },
   qrPage: {
     marginTop: '80px',
     textAlign: 'center',
@@ -107,9 +115,11 @@ const styles = {
   refreshButton: {
     marginTop:'20px', 
     borderRadius: '25px', 
+    border: 'none',
     height: '40px', 
     width: '100px', 
     color: '#33ccff',
+    backgroundColor: "white",
     outline: 0
   }
 };
