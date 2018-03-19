@@ -45,7 +45,7 @@ class Layout extends React.Component {
                             date={this.state.date} id={this.state.id} email={this.state.email}/>
                   </div>         
                 : 
-                  <div style={styles.qrPage}>
+                  <div className="qr" style={styles.qrPage}>
                     <header style={styles.qrHeader}>
                       <div style={styles.qrHeaderLeft}>
                         <img style={{height: '40px'}} src="../../static/images/pay.png" />
@@ -60,7 +60,7 @@ class Layout extends React.Component {
                     </header>
                     <img style={{height: '200px'}} src="../../static/images/qr-code.png" />
                     <p style={{margin: '40px'}}>
-                      Please scan QR-code to pay the amount {amount} USD
+                      Please scan QR-code to pay the amount of {amount} USD
                     </p>                 
                   </div>                       
             }
@@ -85,11 +85,11 @@ const styles = {
   voucher: { 
     width: '325px', 
     height: '475px', 
-    marginTop: '12'
+    marginTop: '60'
   },
   qrPage: {
-    marginTop: '80px',
     textAlign: 'center',
+    height: '430px',     
   },
   qrHeader: {
     padding: '20px',
