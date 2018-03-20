@@ -55,23 +55,19 @@ class VoucherItem extends Component<{}> {
           {
             this.state.expanded ?
               <View>
+                <View style={styles.voucherRow}>
+                  <Text style={styles.voucherText}> </Text>
+                  <Text style={styles.voucherText}>
+                    {
+                      status === Voucher.RECEIVED ? 'from ' :
+                        status === Voucher.SENT ? 'to ' : ''
+                    }{
+                      email
+                    }
+                  </Text>
+                </View>                
                 {
-                  (status === Voucher.REDEEMED) ?
-                    null :
-                    <View style={styles.voucherRow}>
-                      <Text style={styles.voucherText}> </Text>
-                      <Text style={styles.voucherText}>
-                        {
-                          status === Voucher.RECEIVED ? 'from ' :
-                          status === Voucher.SENT ? 'to ' : ''
-                        }{
-                        email
-                      }
-                      </Text>
-                    </View>
-                }
-                {
-                  history.reverse().map((historyItem) => (
+                  history.slice(0,history.length-1).reverse().map((historyItem) => (
                     <View>
                       <View style={styles.voucherHorLine} />
                       <View style={styles.voucherRow}>

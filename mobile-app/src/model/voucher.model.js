@@ -13,6 +13,7 @@ export function createVoucher(status, amount, timeStamp) {
   return { 
       id: voucherId++, 
       status: status,
+      statusStr: Vouchers[status].toString,
       timeStamp: timeStamp || moment().valueOf(),
       amount: amount,
       history: [],

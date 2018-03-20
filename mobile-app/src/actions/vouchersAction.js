@@ -12,6 +12,7 @@ export function updateVoucher(voucher) {
         type: "UPDATE_VOUCHER",
         id: voucher.id,
         newStatus: voucher.newStatus,
+        amount: voucher.amount,
         newTimeStamp: voucher.timeStamp || moment().valueOf(),
         email: voucher.email,
     };

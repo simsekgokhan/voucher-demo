@@ -1,8 +1,9 @@
 
 import Voucher from '../common/voucher.constants';
+import Vouchers from '../model/voucher.model';
 
 const vouchersReducer = (state = {
-    balance: 0,
+    balance: 0,     // todo: rename to allVouchersBalance
     walletBalance: 100000,
     allVouchers: []
 }, action) => {
@@ -19,6 +20,14 @@ const vouchersReducer = (state = {
               }
             }
             action.payload.email = email;
+            let historyItem = action.payload.history = {
+                amount: action.payload.amount,
+                email: email,
+                status: action.payload.status,
+                statusStr: Vouchers[action.payload.status].toString,
+                timeStamp: action.payload.timeStamp
+            };
+            action.payload.history = [...action.payload.history, historyItem];            
             state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload],
@@ -34,19 +43,31 @@ const vouchersReducer = (state = {
                     if(voucher.id === action.id) {
                       let newVoucher = {...voucher};
                       // Do not change the balance when Redeem occurs
-                      amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
-                      walletBalance = (action.newStatus === Voucher.REFUNDED) ? walletBalance + voucher.amount : walletBalance;
+                      // todo.x: rename voucher.amount as voucher.balance 
+                      if(action.newStatus === Voucher.PAID) 
+                        amount = action.amount;
+                      else
+                        amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
+
+                      walletBalance = (action.newStatus === Voucher.REFUNDED) ? walletBalance + voucher.amount 
+                                                                              : walletBalance;
                       email = (action.newStatus === Voucher.REFUNDED) ? Voucher.MY_EMAIL: action.email;
                       let historyItem = {
-                        email: voucher.email,
-                        status: voucher.status,
-                        timeStamp: voucher.timeStamp
+                        amount: action.amount,
+                        email: action.email,
+                        status: action.newStatus,
+                        statusStr: Vouchers[action.newStatus].toString,
+                        timeStamp: action.newTimeStamp
                       };
+                      if(action.newStatus === Voucher.PAID) 
+                          newVoucher.amount -= action.amount;   // todo.x: rename to newVoucher.balance                           
+                      
                       newVoucher.history = [...voucher.history, historyItem];
                       newVoucher.email = email;
                       return {
                         ...newVoucher,
                         status: action.newStatus,
+                        statusStr: Vouchers[action.newStatus].toString,                        
                         timeStamp: action.newTimeStamp
                       }; 
                     }

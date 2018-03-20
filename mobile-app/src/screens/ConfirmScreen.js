@@ -42,7 +42,7 @@ class ConfirmScreen extends Component<{}> {
       voucher = createVoucherWithId(this.props.id, voucherType, amount);
       voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
       this.props.updateVoucher({ 
-        id: this.props.id, newStatus: voucherType, email: email 
+        id: this.props.id, amount: amount, newStatus: voucherType, email: email 
       });
 
       addTransaction({
@@ -58,7 +58,7 @@ class ConfirmScreen extends Component<{}> {
       screen: 'VoucherDetails',
       backButtonHidden: true,
       title: 'Voucher',
-      passProps: {voucher, fromConfirm: true}
+      passProps: {voucher}
     });
 
     playSound();
