@@ -16,6 +16,7 @@ const Color = {
   BLUE: BLUE,
   RED: RED,
   GREEN: GREEN,
+  DARK_GREEN: '#009900',
   PURPLE: PURPLE,
   
   // Common

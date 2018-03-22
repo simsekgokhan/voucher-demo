@@ -194,21 +194,21 @@ class VoucherDetails extends React.Component {
           {
             showButtons ? 
             <View style={[styles.voucherRow, {marginTop: 30}]}>
-              <TouchableOpacity style={[styles.button, {width: 88, height: 38}]}
+              <TouchableOpacity style={[styles.button, {width: 104, height: 38}]}
                 onPress={this.onPayPress}>
                 <Image source={require('../images/pay.png')}/>                
                 <Text style={[styles.buttonText, {color: Color.BLUE}]}>
                   Pay
                 </Text>
               </TouchableOpacity>               
-              <TouchableOpacity style={[styles.button, {width: 96, marginHorizontal: 4}]}
+              <TouchableOpacity style={[styles.button, {width: 104, height: 38, marginHorizontal: 4}]}
                 onPress={this.onSendPress}>
                 <Image source={require('../images/send.png')}/>
                 <Text style={[styles.buttonText, {color: Color.RED}]}>
                   Send
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.button, {width: 108}]}
+              <TouchableOpacity style={[styles.button, {width: 104, height: 38}]}
                 onPress={this.onRefundPress}>
                 <Image source={require('../images/refund.png')}/>
                 <Text style={[styles.buttonText, {color: Color.PURPLE}]}>
@@ -314,12 +314,11 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#828282',
   },
-
   voucherView: {
-    marginHorizontal: 15,
-    marginTop: 30,
-    marginBottom: 154,
-    padding: 18,
+    marginHorizontal: 8,
+    marginTop: 24,
+    marginBottom: 134,
+    padding: 14,
     borderRadius: 5,    
     flex: 1,
     shadowOpacity: 0.75,
@@ -357,7 +356,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   button: {
-    backgroundColor: '#eaf2f5', 
+    backgroundColor: '#ccdfe5', 
     borderRadius: 20, 
     flexDirection: 'row',
     alignItems: 'center',

@@ -25,7 +25,9 @@ class VoucherItem extends Component<{}> {
     const voucherColor = Vouchers[status].voucherColor;
     const textColor = Vouchers[status].textColor;
     const amountSign = Vouchers[status].amountSign;
-
+    const lastHistoryItem = history[history.length-1];
+    const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[lastHistoryItem.status].toString;
+    
     const voucherBottomMargin = this.state.expanded ? 2 : 15;
     return(
       <LinearGradient style={styles.voucherView}
@@ -34,9 +36,9 @@ class VoucherItem extends Component<{}> {
         <TouchableOpacity style={[styles.voucher, {marginBottom: voucherBottomMargin}]}
           onPress={this.toggleExpand}>
           <View style={styles.voucherRow}>
-            <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
-              Voucher #{id}
-            </Text>
+            <Text style={[styles.voucherText, {color: Vouchers[lastHistoryItem.status].textColor}]}>
+              {stateStr}
+            </Text>          
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign + ' '}
               <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
@@ -45,18 +47,13 @@ class VoucherItem extends Component<{}> {
             </Text>
           </View>
           <View style={styles.voucherRow}>
-            <Text style={styles.voucherText}>
-              {('Last Action: ' + getTime(timeStamp, this.props.timeFormat))}
-            </Text>
-            <Text style={[styles.voucherText, {color: textColor}]}>
-              {          
-                Vouchers[status].toString
-              }
+            <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
+              Voucher #{id} 
             </Text>
           </View>
           {
             this.state.expanded ?
-              <View>        
+              <View>                 
                 {
                   history.slice(0).reverse().map((historyItem) => (
                     <View>

@@ -29,15 +29,16 @@ const vouchersReducer = (state = {
                 timeStamp: action.payload.timeStamp
             };
             action.payload.history = [...action.payload.history, historyItem];         
-                        
+
             if(action.payload.status === Voucher.PURCHASED || 
-                action.payload.status === Voucher.RECEIVED || 
-                action.payload.status === Voucher.PAID) 
+               action.payload.status === Voucher.RECEIVED || 
+               action.payload.status === Voucher.PAID) 
              {
                  action.payload.status = Voucher.ACTIVE;
+                 action.payload.statusStr = Vouchers[Voucher.ACTIVE].toString;
              }
                
-            state = {
+             state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload],
                 balance: state.balance + action.payload.amount,
@@ -75,8 +76,8 @@ const vouchersReducer = (state = {
                       newVoucher.email = email;
 
                       if(action.newStatus === Voucher.PURCHASED || 
-                        action.newStatus === Voucher.RECEIVED || 
-                        action.newStatus === Voucher.PAID) 
+                         action.newStatus === Voucher.RECEIVED || 
+                         action.newStatus === Voucher.PAID) 
                       {
                          action.newStatus = Voucher.ACTIVE;
                       }
