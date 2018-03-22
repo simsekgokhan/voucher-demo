@@ -69,7 +69,8 @@ class ConfirmScreen extends Component<{}> {
   render() {
     confirmType = this.props.confirmType;
     amount = this.props.amount;  
-  
+    const notEnoughFunds = this.props.voucherBalance < amount;
+
     let voucherColor = Color.REDEEMED;
     let textColor = Color.BLUE;
     switch(confirmType) {
@@ -118,17 +119,31 @@ class ConfirmScreen extends Component<{}> {
           <Text style={[styles.amount, {color: textColor}]}> 
             ${amount}.00
           </Text>          
-          <TouchableOpacity 
-            onPress={this.onTouchIdPressed}>
-            <Image style={{marginTop: 70}}
-              source={require('../images/touchid-button.png')}/>
-          </TouchableOpacity>
+          {
+            notEnoughFunds ?               
+              <Image style={{marginTop: 70}}
+                source={require('../images/warning.png')}/>
+              :
+              <TouchableOpacity
+                onPress={this.onTouchIdPressed}>
+                <Image style={{ marginTop: 70 }}
+                  source={require('../images/touchid-button.png')} />
+              </TouchableOpacity>
+          }
           <Text style={styles.touchIdText}> 
-            Touch ID for {leftQuoMark}PlipMe{rightQuoMark}
+            { 
+              notEnoughFunds 
+                ? 'Not enough funds'
+                : 'Touch ID for' + leftQuoMark + 'PlipMe' + rightQuoMark               
+            }
           </Text>
           <Text style={styles.pleaseConfirmText}> 
-            Please, confirm your fingerprint
-          </Text>                    
+          {
+            notEnoughFunds               
+              ? 'Voucher\'s balance is $' + this.props.voucherBalance              
+              : 'Please, confirm your fingerprint'
+          }
+          </Text>                              
         </LinearGradient>        
       </Image>
     );

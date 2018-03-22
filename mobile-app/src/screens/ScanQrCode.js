@@ -25,8 +25,9 @@ class ScanQrCode extends Component<{}> {
         backButtonTitle: 'Cancel',
         passProps: {
           id: this.props.id,
+          voucherBalance: this.props.amount, // todo: rename amount to balance
           confirmType: 'Pay', 
-          amount: this.props.amount           
+          amount: 10           
         },
       });   
       

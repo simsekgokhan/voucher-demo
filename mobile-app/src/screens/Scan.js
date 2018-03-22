@@ -37,7 +37,7 @@ class Receive extends Component<{}> {
       passProps: { 
         payWithVoucher: true,
         id: this.props.id,
-        amount: 5
+        amount: this.props.amount
       }
     })
   }
@@ -61,6 +61,7 @@ class Receive extends Component<{}> {
       backButtonTitle: 'Cancel',
       passProps: {
         id: this.props.id,
+        voucherBalance: this.props.amount,
         confirmType: 'Pay', 
         amount: amount          
       },
