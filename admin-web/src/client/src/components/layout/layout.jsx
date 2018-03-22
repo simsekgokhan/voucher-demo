@@ -2,6 +2,7 @@ import io from 'socket.io-client';
 import React from 'react';
 import './layout.styles';
 import Voucher from './components/voucher'
+import QRCode from 'qrcode.react';
 
 const socket = io('http://159.89.23.3:3001');
 
@@ -58,7 +59,7 @@ class Layout extends React.Component {
                             src="../../static/images/visa-logo.png" />
                       </div>
                     </header>
-                    <img style={{height: '200px'}} src="../../static/images/qr-code.png" />
+                    <QRCode style={{width: '180px', height: '180px'}} value={amount.toString()}/>
                     <p style={{margin: '40px'}}>
                       Please scan QR-code to pay the amount of {amount} USD
                     </p>                 
