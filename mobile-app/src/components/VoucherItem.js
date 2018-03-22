@@ -46,28 +46,19 @@ class VoucherItem extends Component<{}> {
           </View>
           <View style={styles.voucherRow}>
             <Text style={styles.voucherText}>
-              { getTime(timeStamp, this.props.timeFormat) }
+              {('Last Action: ' + getTime(timeStamp, this.props.timeFormat))}
             </Text>
             <Text style={[styles.voucherText, {color: textColor}]}>
-              {Vouchers[status].toString}
+              {          
+                Vouchers[status].toString
+              }
             </Text>
           </View>
           {
             this.state.expanded ?
-              <View>
-                <View style={styles.voucherRow}>
-                  <Text style={styles.voucherText}> </Text>
-                  <Text style={styles.voucherText}>
-                    {
-                      status === Voucher.RECEIVED ? 'from ' :
-                        status === Voucher.SENT ? 'to ' : ''
-                    }{
-                      email
-                    }
-                  </Text>
-                </View>                
+              <View>        
                 {
-                  history.slice(0,history.length-1).reverse().map((historyItem) => (
+                  history.slice(0).reverse().map((historyItem) => (
                     <View>
                       <View style={styles.voucherHorLine} />
                       <View style={styles.voucherRow}>
@@ -78,8 +69,20 @@ class VoucherItem extends Component<{}> {
                           {Vouchers[historyItem.status].toString}
                         </Text>
                       </View>
-                      <View style={styles.voucherRow}>
-                        <Text style={styles.voucherText}> </Text>
+                      <View style={styles.voucherRow}>                    
+                        <Text style={styles.voucherText}>
+                          {
+                            (historyItem.status === Voucher.PURCHASED || 
+                              historyItem.status === Voucher.RECEIVED) ? 
+                              ('+$' + historyItem.amount) 
+                              : null
+                          }
+                          {
+                            historyItem.status === Voucher.PAID ? 
+                              ('-$' + historyItem.amount) 
+                              : null
+                          }
+                        </Text>
                         <Text style={styles.voucherText}>
                           {
                             historyItem.status === Voucher.RECEIVED ? 'from ' :

@@ -10,7 +10,7 @@ const vouchersReducer = (state = {
     let walletBalance = state.walletBalance, email;
   switch (action.type) {
       case "ADD_VOUCHER":
-            email = Voucher.RECEIVED_EMAIL;
+            email = Voucher.RECEIVED_EMAIL;            
             if(action.payload.status === Voucher.PURCHASED) {
               email = Voucher.MY_EMAIL;
               if(state.walletBalance - action.payload.amount > 0) {
@@ -19,6 +19,7 @@ const vouchersReducer = (state = {
                 walletBalance = 0;
               }
             }
+
             action.payload.email = email;
             let historyItem = action.payload.history = {
                 amount: action.payload.amount,
@@ -27,7 +28,15 @@ const vouchersReducer = (state = {
                 statusStr: Vouchers[action.payload.status].toString,
                 timeStamp: action.payload.timeStamp
             };
-            action.payload.history = [...action.payload.history, historyItem];            
+            action.payload.history = [...action.payload.history, historyItem];         
+                        
+            if(action.payload.status === Voucher.PURCHASED || 
+                action.payload.status === Voucher.RECEIVED || 
+                action.payload.status === Voucher.PAID) 
+             {
+                 action.payload.status = Voucher.ACTIVE;
+             }
+               
             state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload],
@@ -64,6 +73,14 @@ const vouchersReducer = (state = {
                       
                       newVoucher.history = [...voucher.history, historyItem];
                       newVoucher.email = email;
+
+                      if(action.newStatus === Voucher.PURCHASED || 
+                        action.newStatus === Voucher.RECEIVED || 
+                        action.newStatus === Voucher.PAID) 
+                      {
+                         action.newStatus = Voucher.ACTIVE;
+                      }
+
                       return {
                         ...newVoucher,
                         status: action.newStatus,

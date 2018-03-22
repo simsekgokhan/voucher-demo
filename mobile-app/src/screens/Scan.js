@@ -37,7 +37,7 @@ class Receive extends Component<{}> {
       passProps: { 
         payWithVoucher: true,
         id: this.props.id,
-        amount: this.props.amount
+        amount: 5
       }
     })
   }
@@ -48,6 +48,13 @@ class Receive extends Component<{}> {
     
     barcodeScanned = true;
 
+    let amount;
+    if(!Number.isNaN(parseInt(qrCodeData.data))) {
+      amount = parseInt(qrCodeData.data);
+    } else {
+      amount = Math.floor(Math.random()*10 + 1)*50;
+    }
+
     this.props.navigator.push({
       screen: 'ConfirmScreen',
       title: 'Pay with Voucher',
@@ -55,7 +62,7 @@ class Receive extends Component<{}> {
       passProps: {
         id: this.props.id,
         confirmType: 'Pay', 
-        amount: this.props.amount           
+        amount: amount          
       },
     });   
     

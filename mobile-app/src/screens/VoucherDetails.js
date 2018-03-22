@@ -91,7 +91,12 @@ class VoucherDetails extends React.Component {
   };
 
   render() {
-    const voucherType = this.props.voucher.status;                     
+    const voucherStatus = this.props.voucher.status;                     
+    const transactionType = this.props.transactionType;                     
+
+    // todo: Implement a seperate screen for confirmed transaction.
+    //       Currently, this screen is used as both VoucherDetails and TransactionDetails
+    const voucherType = (transactionType === undefined) ? voucherStatus : transactionType;
 
     let voucherColor = Color.REDEEMED;
     let voucherLogo = require('../images/redeemed.png');
@@ -110,6 +115,7 @@ class VoucherDetails extends React.Component {
         voucherColor = Color.PAID;
         voucherLogo = require('../images/paid.png');
         textColor = Color.BLUE;
+        showButtons = true;        
         break;        
       case Voucher.SENT:
         voucherColor = Color.SENT;
@@ -132,13 +138,19 @@ class VoucherDetails extends React.Component {
         voucherColor = Color.REFUNDED;
         voucherLogo = require('../images/refunded.png');
         textColor = Color.PURPLE;
-        break;          
+        break;        
+      case Voucher.ACTIVE:
+        voucherColor = Color.ACTIVE;
+        voucherLogo = require('../images/purchased.png');
+        textColor = Color.GREEN;
+        showButtons = true; 
+        break;
       default:
         voucherColor = Color.REDEEMED;
         textColor = Color.BLUE;
         break;
     }      
-
+    
     return (
       <Image style={styles.container}
         resizeMode='cover' 
@@ -156,7 +168,7 @@ class VoucherDetails extends React.Component {
             <Image source={voucherLogo}/>                    
             <Text style={[styles.voucherStatusText, {color: textColor}]}> 
               {
-                this.props.fromConfirm ? 'Payment Confirmed' : 
+                transactionType === Voucher.PAID ? 'Payment Confirmed' : 
                 Vouchers[voucherType].toString
               }
             </Text>            

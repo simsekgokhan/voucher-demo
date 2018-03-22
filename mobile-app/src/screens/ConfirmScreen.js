@@ -54,11 +54,13 @@ class ConfirmScreen extends Component<{}> {
       });
     }
     
+    const transactionType = voucherType;
+
     this.props.navigator.push({
       screen: 'VoucherDetails',
       backButtonHidden: true,
       title: 'Voucher',
-      passProps: {voucher}
+      passProps: {voucher, transactionType}
     });
 
     playSound();

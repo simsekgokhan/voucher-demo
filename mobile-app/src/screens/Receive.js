@@ -75,11 +75,13 @@ class Receive extends Component<{}> {
     voucher.qrScanned = true;
     this.props.addVoucher(voucher);
 
+    const transactionType = Voucher.RECEIVED;
+    
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: { voucher }
+      passProps: { voucher, transactionType }
     });
     playSound();
   }

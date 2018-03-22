@@ -31,7 +31,7 @@ export function createVoucherWithId(id, status, amount) {
 
 export default Vouchers = [
   {
-    toString: Voucher.REDEEMED_TEXT, 
+    toString: Voucher.REDEEMED_TEXT,     
     voucherColor: Color.REDEEMED,
     textColor: Color.BLUE,
     amountSign: '',
@@ -64,6 +64,12 @@ export default Vouchers = [
     toString: Voucher.PAID_TEXT,     
     voucherColor: Color.PAID,
     textColor: Color.BLUE,
+    amountSign: '',
+  },  
+  {
+    toString: Voucher.ACTIVE_TEXT,     
+    voucherColor: Color.ACTIVE,
+    textColor: Color.GREEN,
     amountSign: '',
   },  
 ];
