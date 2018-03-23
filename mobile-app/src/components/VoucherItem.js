@@ -36,7 +36,7 @@ class VoucherItem extends Component<{}> {
         <TouchableOpacity style={[styles.voucher, {marginBottom: voucherBottomMargin}]}
           onPress={this.toggleExpand}>
           <View style={styles.voucherRow}>
-            <Text style={[styles.voucherText, {color: Vouchers[lastHistoryItem.status].textColor}]}>
+            <Text style={[styles.voucherText, {color: Vouchers[status].textColor}]}>
               {stateStr}
             </Text>          
             <Text style={[styles.voucherText, {color: textColor}]}>
