@@ -26,7 +26,7 @@ class VoucherItem extends Component<{}> {
     const textColor = Vouchers[status].textColor;
     const amountSign = Vouchers[status].amountSign;
     const lastHistoryItem = history[history.length-1];
-    const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[lastHistoryItem.status].toString;
+    const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[status].toString;
     
     const voucherBottomMargin = this.state.expanded ? 2 : 15;
     return(
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   },
   voucherHorLine: {
     padding: 2,
-    borderBottomColor: 'grey',
+    borderBottomColor: '#d9d9d9',
     borderBottomWidth: 1,
   },
   detailsButton: {

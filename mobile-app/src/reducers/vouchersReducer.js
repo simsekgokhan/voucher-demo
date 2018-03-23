@@ -82,6 +82,9 @@ const vouchersReducer = (state = {
                          action.newStatus = Voucher.ACTIVE;
                       }
 
+                      if(action.newStatus === Voucher.ACTIVE && newVoucher.amount === 0)
+                        action.newStatus = Voucher.REDEEMED;                        
+
                       return {
                         ...newVoucher,
                         status: action.newStatus,
