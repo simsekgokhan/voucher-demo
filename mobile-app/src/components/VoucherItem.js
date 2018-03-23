@@ -51,11 +51,45 @@ class VoucherItem extends Component<{}> {
               Voucher #{id} 
             </Text>
           </View>
+          <View>
+          <View style={styles.voucherHorLine} />
+          <View style={styles.voucherRow}>
+            <Text style={styles.voucherText}>
+              {getTime(lastHistoryItem.timeStamp, this.props.timeFormat)}
+              </Text>
+              <Text style={styles.voucherText}>
+                {Vouchers[lastHistoryItem.status].toString}
+              </Text>
+            </View>
+            <View style={styles.voucherRow}>
+              <Text style={styles.voucherText}>
+                {
+                  (lastHistoryItem.status === Voucher.PURCHASED ||
+                    lastHistoryItem.status === Voucher.RECEIVED) ?
+                    ('+$' + lastHistoryItem.amount)
+                    : null
+                }
+                {
+                  lastHistoryItem.status === Voucher.PAID ?
+                    ('-$' + lastHistoryItem.amount)
+                    : null
+                }
+              </Text>
+              <Text style={styles.voucherText}>
+                {
+                  lastHistoryItem.status === Voucher.RECEIVED ? 'from ' :
+                    lastHistoryItem.status === Voucher.SENT ? 'to ' : ''
+                }{
+                  lastHistoryItem.email
+                }
+              </Text>
+            </View>
+          </View>          
           {
             this.state.expanded ?
               <View>                 
                 {
-                  history.slice(0).reverse().map((historyItem) => (
+                  history.slice(0, history.length-1).reverse().map((historyItem) => (
                     <View>
                       <View style={styles.voucherHorLine} />
                       <View style={styles.voucherRow}>
