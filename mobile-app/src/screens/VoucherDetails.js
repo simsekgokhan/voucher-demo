@@ -151,6 +151,9 @@ class VoucherDetails extends React.Component {
         break;
     }      
     
+    if(this.props.voucher.amount === 0)
+      showButtons = false;
+
     return (
       <Image style={styles.container}
         resizeMode='cover' 

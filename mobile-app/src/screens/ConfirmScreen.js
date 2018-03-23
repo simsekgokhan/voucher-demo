@@ -69,8 +69,17 @@ class ConfirmScreen extends Component<{}> {
   render() {
     confirmType = this.props.confirmType;
     amount = this.props.amount;  
-    const notEnoughFunds = this.props.voucherBalance < amount;
+    let notEnoughFunds = false;
+    let voucherBalance = 0;
 
+
+    if(confirmType === Voucher.PAY) {
+      const allVouchers = this.props.vouchers.allVouchers;    
+      // Todo: Currently voucher IDs start from 1200, change this in the future
+      voucherBalance = allVouchers[this.props.id-1200].amount;
+      notEnoughFunds = voucherBalance < amount;
+    }
+        
     let voucherColor = Color.REDEEMED;
     let textColor = Color.BLUE;
     switch(confirmType) {
@@ -140,7 +149,7 @@ class ConfirmScreen extends Component<{}> {
           <Text style={styles.pleaseConfirmText}> 
           {
             notEnoughFunds               
-              ? 'Voucher\'s balance is $' + this.props.voucherBalance              
+              ? 'Voucher\'s balance is $' + voucherBalance              
               : 'Please, confirm your fingerprint'
           }
           </Text>                              
@@ -151,7 +160,7 @@ class ConfirmScreen extends Component<{}> {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return { vouchers: state.vouchers }
 }
 
 const mapDispatchToProps = (dispatch) => {

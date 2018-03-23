@@ -26,7 +26,7 @@ class Login extends Component<{}> {
     this.props.updateVoucher({ id: 1203, newStatus: Voucher.REFUNDED, email: 'Norman.Garber@hotmail.com', 
                                timeStamp: moment().valueOf() - 1000*60*45 });
 
-    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 100, moment().valueOf() - 1000*60*57));
+    this.props.addVoucher(createVoucher(Voucher.PURCHASED, 160, moment().valueOf() - 1000*60*57));
     this.props.updateVoucher({ id: 1204, newStatus: Voucher.PAID, amount: 10, email: Voucher.MY_EMAIL, 
                                timeStamp: moment().valueOf() - 1000*60*27 });
     this.props.updateVoucher({ id: 1204, newStatus: Voucher.PAID, amount: 50, email: Voucher.MY_EMAIL, 
