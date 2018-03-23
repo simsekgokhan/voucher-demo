@@ -115,7 +115,6 @@ class VoucherDetails extends React.Component {
         voucherColor = Color.PAID;
         voucherLogo = require('../images/paid.png');
         textColor = Color.BLUE;
-        showButtons = true;        
         break;        
       case Voucher.SENT:
         voucherColor = Color.SENT;
@@ -126,13 +125,11 @@ class VoucherDetails extends React.Component {
         voucherColor = Color.PURCHASED;
         voucherLogo = require('../images/purchased.png');
         textColor = Color.GREEN;
-        showButtons = true;
         break;
       case Voucher.RECEIVED:
         voucherColor = Color.RECEIVED;
         voucherLogo = require('../images/received.png');
         textColor = Color.GREEN;
-        showButtons = true;
         break;
       case Voucher.REFUNDED:
         voucherColor = Color.REFUNDED;
