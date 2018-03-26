@@ -92,8 +92,14 @@ class VoucherDetails extends React.Component {
 
   render() {
     const voucherStatus = this.props.voucher.status;                     
-    const transactionType = this.props.transactionType;                     
-
+    const transactionType = this.props.transactionType;     
+    
+    const allVouchers = this.props.vouchers.allVouchers;    
+    // Todo: Currently voucher IDs start from 1200, change this in the future
+    const initialBalance = allVouchers[this.props.voucher.id-1200].history[0].amount;
+    const voucherBalance = this.props.voucher.amount; // todo: rename amount to balance
+    const voucherBalanceText =  voucherStatus === Voucher.REDEEMED ? ('$' + initialBalance + '.00')
+                                                                   : ('$' + voucherBalance + '.00');
     // todo: Implement a seperate screen for confirmed transaction.
     //       Currently, this screen is used as both VoucherDetails and TransactionDetails
     const voucherType = (transactionType === undefined) ? voucherStatus : transactionType;
@@ -125,11 +131,13 @@ class VoucherDetails extends React.Component {
         voucherColor = Color.PURCHASED;
         voucherLogo = require('../images/purchased.png');
         textColor = Color.GREEN;
+        showButtons = true;
         break;
       case Voucher.RECEIVED:
         voucherColor = Color.RECEIVED;
         voucherLogo = require('../images/received.png');
         textColor = Color.GREEN;
+        showButtons = true;
         break;
       case Voucher.REFUNDED:
         voucherColor = Color.REFUNDED;
@@ -187,13 +195,13 @@ class VoucherDetails extends React.Component {
             <Text style={styles.voucherText}>
               {`of  `} 
               <Text style={styles.amountText}> 
-                $ {this.props.voucher.amount}.00 
+                {voucherBalanceText}
               </Text>
             </Text>
           </View>
           {
             showButtons ? 
-            <View style={[styles.voucherRow, {marginTop: 30}]}>
+            <View style={[styles.voucherRow, {marginTop: 40}]}>
               <TouchableOpacity style={[styles.button, {width: 104, height: 38}]}
                 onPress={this.onPayPress}>
                 <Image source={require('../images/pay.png')}/>                
@@ -265,6 +273,7 @@ class VoucherDetails extends React.Component {
 export default connect((state) => {
   return {
     timeFormat: state.app.timeFormat,
+    vouchers: state.vouchers
   }
 })(VoucherDetails);
 

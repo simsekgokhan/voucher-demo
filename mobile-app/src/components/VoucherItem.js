@@ -24,6 +24,7 @@ class VoucherItem extends Component<{}> {
 
     const voucherColor = Vouchers[status].voucherColor;
     const textColor = Vouchers[status].textColor;
+    const voucherBalanceText =  status === Voucher.REDEEMED ? null : ('$' + amount + '.00');
     const amountSign = Vouchers[status].amountSign;
     const lastHistoryItem = history[history.length-1];
     const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[status].toString;
@@ -42,7 +43,7 @@ class VoucherItem extends Component<{}> {
             <Text style={[styles.voucherText, {color: textColor}]}>
               {amountSign + ' '}
               <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
-                ${amount}.00
+                {voucherBalanceText}
               </Text>
             </Text>
           </View>
