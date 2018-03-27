@@ -10,7 +10,7 @@ import Color from '../common/colors';
 import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import { addVoucher } from "../actions/vouchersAction";
-import { createVoucher } from '../model/voucher.model';
+import { createVoucher, createTransaction } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
 let barcodeScanned = false;
@@ -74,14 +74,13 @@ class Receive extends Component<{}> {
     const voucher = createVoucher(Voucher.RECEIVED, amount);
     voucher.qrScanned = true;
     this.props.addVoucher(voucher);
+    const transaction = createTransaction(voucher.id, Voucher.RECEIVED, amount, Voucher.RECEIVED_EMAIL);      
 
-    const transactionType = Voucher.RECEIVED;
-    
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: { voucher, transactionType }
+      passProps: { transaction }
     });
     playSound();
   }

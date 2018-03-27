@@ -10,6 +10,12 @@ import { getTime } from '../common/time';
 import Voucher from '../common/voucher.constants';
 import Vouchers from '../model/voucher.model';
 
+let voucherId;    
+let voucherType;  // todo: currently used as voucher status and transaction type
+let email;
+let timeStamp;
+let amount;      // todo: currently used as voucher balance and transaction amount
+
 class VoucherDetails extends React.Component {
 
   state = {
@@ -28,9 +34,9 @@ class VoucherDetails extends React.Component {
       title: confirmType,
       backButtonTitle: 'Cancel',
       passProps: {
-        id: this.props.voucher.id,
+        id: voucherId,
         confirmType: confirmType, 
-        amount: this.props.voucher.amount,           
+        amount: amount,           
       },
     });    
   }
@@ -50,9 +56,9 @@ class VoucherDetails extends React.Component {
         }]
       },
       passProps: {
-        id: this.props.voucher.id,
+        id: voucherId,
         confirmType: Voucher.SENT,
-        amount: this.props.voucher.amount
+        amount: amount
       },
     });
   };
@@ -74,8 +80,8 @@ class VoucherDetails extends React.Component {
         drawUnderTabBar: true,          
       },
       passProps: {
-        id: this.props.voucher.id,
-        amount: this.props.voucher.amount
+        id: voucherId,
+        amount: amount
       },
     });    
   };
@@ -91,25 +97,35 @@ class VoucherDetails extends React.Component {
   };
 
   render() {
-    const voucherStatus = this.props.voucher.status;                     
-    const transactionType = this.props.transactionType;     
-    
-    const allVouchers = this.props.vouchers.allVouchers;    
-    // Todo: Currently voucher IDs start from 1200, change this in the future
-    const initialBalance = allVouchers[this.props.voucher.id-1200].history[0].amount;
-    const voucherBalance = this.props.voucher.amount; // todo: rename amount to balance
-    const voucherBalanceText =  voucherStatus === Voucher.REDEEMED ? ('$' + initialBalance + '.00')
-                                                                   : ('$' + voucherBalance + '.00');
-    // todo: Implement a seperate screen for confirmed transaction.
-    //       Currently, this screen is used as both VoucherDetails and TransactionDetails
-    const voucherType = (transactionType === undefined) ? voucherStatus : transactionType;
+    console.log('zzz: VD: this.props: ', this.props);
 
+    // todo: Implement a seperate screen such as TransactionResult.
+    //       Currently, this screen is used both as VoucherDetails and TransactionResult purposes
+    if(this.props.transaction === undefined) { // VoucherDetails screen
+      voucherId = this.props.voucher.id;
+      voucherType = this.props.voucher.status;
+      email = this.props.voucher.email;      
+      timeStamp = this.props.voucher.timeStamp;      
+      const allVouchers = this.props.vouchers.allVouchers;    
+      // Todo: Currently voucher IDs start from 1200, start from 0 or 1000 in the future
+      const initialBalance = allVouchers[this.props.voucher.id-1200].history[0].amount;
+      const voucherBalance = this.props.voucher.balance;
+      amount = this.props.voucher.status === Voucher.REDEEMED ? initialBalance : voucherBalance;     
+    }
+    else {  // TransactionResult screen
+      voucherId = this.props.transaction.voucherId;
+      voucherType = this.props.transaction.transactionType;      
+      email = this.props.transaction.email;
+      timeStamp = this.props.transaction.timeStamp;      
+      amount = this.props.transaction.amount;
+    }
+
+    const amountText = ('$' + amount + '.00');    
+    let name = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');    
     let voucherColor = Color.REDEEMED;
     let voucherLogo = require('../images/redeemed.png');
     let textColor = Color.BLUE;
     let showButtons = false;
-    let email = this.props.voucher.email;
-    let name = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');
 
     switch(voucherType) {
       case Voucher.REDEEMED:
@@ -155,9 +171,6 @@ class VoucherDetails extends React.Component {
         textColor = Color.BLUE;
         break;
     }      
-    
-    if(this.props.voucher.amount === 0)
-      showButtons = false;
 
     return (
       <Image style={styles.container}
@@ -168,7 +181,7 @@ class VoucherDetails extends React.Component {
           colors={[Color.VOUCHER_SECOND_COLOR, voucherColor]}>
           <View style={styles.voucherRow}>
             <Text style={[styles.voucherText, {marginTop: 6}]}> 
-              Voucher #{this.props.voucher.id}
+              Voucher #{voucherId}
             </Text>
             <Image source={require('../images/visa-logo-my-wallet.png')}/>    
           </View>
@@ -176,7 +189,7 @@ class VoucherDetails extends React.Component {
             <Image source={voucherLogo}/>                    
             <Text style={[styles.voucherStatusText, {color: textColor}]}> 
               {
-                transactionType === Voucher.PAID ? 'Payment Confirmed' : 
+                voucherType === Voucher.PAID ? 'Payment Confirmed' : 
                 Vouchers[voucherType].toString
               }
             </Text>            
@@ -195,7 +208,7 @@ class VoucherDetails extends React.Component {
             <Text style={styles.voucherText}>
               {`of  `} 
               <Text style={styles.amountText}> 
-                {voucherBalanceText}
+                {amountText}
               </Text>
             </Text>
           </View>
@@ -229,7 +242,7 @@ class VoucherDetails extends React.Component {
           }
           <View style={styles.footerText}>
             <Text style={styles.voucherText}>
-              { getTime(this.props.voucher.timeStamp, this.props.timeFormat) }
+              { getTime(timeStamp, this.props.timeFormat) }
             </Text>
           </View>
         </LinearGradient>

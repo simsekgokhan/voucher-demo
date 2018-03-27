@@ -20,12 +20,11 @@ class VoucherItem extends Component<{}> {
   }
 
   render() {
-    const { id, status, timeStamp, amount, history, email } = this.props.voucher;
+    const { id, status, timeStamp, balance, history, email } = this.props.voucher;
 
     const voucherColor = Vouchers[status].voucherColor;
     const textColor = Vouchers[status].textColor;
-    const voucherBalanceText =  status === Voucher.REDEEMED ? null : ('$' + amount + '.00');
-    const amountSign = Vouchers[status].amountSign;
+    const voucherBalanceText =  status === Voucher.REDEEMED ? null : ('$' + balance + '.00');
     const lastHistoryItem = history[history.length-1];
     const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[status].toString;
     
@@ -40,11 +39,8 @@ class VoucherItem extends Component<{}> {
             <Text style={[styles.voucherText, {color: Vouchers[status].textColor}]}>
               {stateStr}
             </Text>          
-            <Text style={[styles.voucherText, {color: textColor}]}>
-              {amountSign + ' '}
-              <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
-                {voucherBalanceText}
-              </Text>
+            <Text style={[styles.voucherText, {color: Color.VOUCHER_TEXT_1}]}>
+              {voucherBalanceText}
             </Text>
           </View>
           <View style={styles.voucherRow}>
@@ -145,11 +141,13 @@ class VoucherItem extends Component<{}> {
       );
   }
 }
+
 export default connect((state) => {
   return {
     timeFormat: state.app.timeFormat,
   }
 })(VoucherItem);
+
 const styles = StyleSheet.create({
   voucherView: {
     margin: 3,

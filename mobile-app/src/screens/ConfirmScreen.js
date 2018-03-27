@@ -10,7 +10,7 @@ import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import VoucherDetails from '../screens/VoucherDetails';
 import { addVoucher, updateVoucher } from "../actions/vouchersAction";
-import { createVoucher, createVoucherWithId } from '../model/voucher.model';
+import { createVoucher, createTransaction } from '../model/voucher.model';
 import { addTransaction } from '../resources/transaction/transaction.api';
 import voucherConstants from '../common/voucher.constants'
 
@@ -24,14 +24,18 @@ let amount = 0;
 class ConfirmScreen extends Component<{}> {
 
   onTouchIdPressed = () => {
-    let voucher;      
+    let transaction;
+    // todo: Refactor/Redesign: 
+    //       Currently, voucherType is used both as voucher state and transaction type
     if(confirmType === Voucher.BUY){
-      voucher = createVoucher(voucherType, amount);
-      this.props.addVoucher(voucher); 
+      const newVoucher = createVoucher(voucherType, amount)
+      this.props.addVoucher(newVoucher);       
+      const email = this.props.email ? this.props.email : Voucher.MY_EMAIL;      
+      transaction = createTransaction(newVoucher.id, voucherType, amount, email);      
     } 
     else if(confirmType === Voucher.SEND || confirmType === Voucher.REFUND) {
-      voucher = createVoucherWithId(this.props.id, voucherType, amount);
-      voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
+      const email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
+      transaction = createTransaction(this.props.id, voucherType, amount, email);      
       this.props.updateVoucher({ 
         id: this.props.id, newStatus: voucherType, email: this.props.email 
       });
@@ -39,28 +43,25 @@ class ConfirmScreen extends Component<{}> {
     else if(confirmType === Voucher.PAY) {
       const email = voucherConstants.MY_EMAIL;
       const person = email.replace(/(\w+)\.(\w+).+$/, '$1 $2');
-      voucher = createVoucherWithId(this.props.id, voucherType, amount);
-      voucher.email = this.props.email ? this.props.email : Voucher.MY_EMAIL;
+      transaction = createTransaction(this.props.id, voucherType, amount, email);
       this.props.updateVoucher({ 
         id: this.props.id, amount: amount, newStatus: voucherType, email: email 
       });
 
       addTransaction({
-        id: voucher.id,
-        amount: `${voucher.amount}`,
+        id: transaction.voucherId,      // todo: id -> voucherId
+        amount: `${transaction.amount}`,
         email,
         person,
-        date: voucher.timeStamp,
+        date: transaction.timeStamp,
       });
     }
-    
-    const transactionType = voucherType;
 
     this.props.navigator.push({
       screen: 'VoucherDetails',
       backButtonHidden: true,
       title: 'Voucher',
-      passProps: {voucher, transactionType}
+      passProps: {transaction}
     });
 
     playSound();
@@ -76,7 +77,7 @@ class ConfirmScreen extends Component<{}> {
     if(confirmType === Voucher.PAY) {
       const allVouchers = this.props.vouchers.allVouchers;    
       // Todo: Currently voucher IDs start from 1200, change this in the future
-      voucherBalance = allVouchers[this.props.id-1200].amount;
+      voucherBalance = allVouchers[this.props.id-1200].balance; // todo: rename id -> voucherID
       notEnoughFunds = voucherBalance < amount;
     }
         

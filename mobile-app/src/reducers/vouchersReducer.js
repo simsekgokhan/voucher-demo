@@ -3,7 +3,7 @@ import Voucher from '../common/voucher.constants';
 import Vouchers from '../model/voucher.model';
 
 const vouchersReducer = (state = {
-    balance: 0,     // todo: rename to allVouchersBalance
+    balance: 0,  // balance(sum) of all vouchers
     walletBalance: 100000,
     allVouchers: []
 }, action) => {
@@ -13,16 +13,15 @@ const vouchersReducer = (state = {
             email = Voucher.RECEIVED_EMAIL;            
             if(action.payload.status === Voucher.PURCHASED) {
               email = Voucher.MY_EMAIL;
-              if(state.walletBalance - action.payload.amount > 0) {
-                walletBalance = walletBalance - action.payload.amount;
-              } else {
-                walletBalance = 0;
-              }
+              if(state.walletBalance - action.payload.balance > 0) 
+                walletBalance = walletBalance - action.payload.balance;              
+              else 
+                walletBalance = 0;              
             }
 
             action.payload.email = email;
             let historyItem = action.payload.history = {
-                amount: action.payload.amount,
+                amount: action.payload.balance,
                 email: email,
                 status: action.payload.status,
                 statusStr: Vouchers[action.payload.status].toString,
@@ -41,7 +40,7 @@ const vouchersReducer = (state = {
              state = {
                 ...state,
                 allVouchers: [...state.allVouchers, action.payload],
-                balance: state.balance + action.payload.amount,
+                balance: state.balance + action.payload.balance,
                 walletBalance,
             };
             break;
@@ -53,24 +52,28 @@ const vouchersReducer = (state = {
                     if(voucher.id === action.id) {
                       let newVoucher = {...voucher};
                       // Do not change the balance when Redeem occurs
-                      // todo.x: rename voucher.amount as voucher.balance 
                       if(action.newStatus === Voucher.PAID) 
                         amount = action.amount;
                       else
-                        amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.amount;
+                        amount = (action.newStatus === Voucher.REDEEMED) ? 0 : voucher.balance;
 
-                      walletBalance = (action.newStatus === Voucher.REFUNDED) ? walletBalance + voucher.amount 
+                      walletBalance = (action.newStatus === Voucher.REFUNDED) ? walletBalance + voucher.balance 
                                                                               : walletBalance;
+
+                      if(action.newStatus === Voucher.REFUNDED || action.newStatus === Voucher.SENT || 
+                         action.newStatus === Voucher.REDEEMED)
+                         action.amount = newVoucher.balance;
+
                       email = (action.newStatus === Voucher.REFUNDED) ? Voucher.MY_EMAIL: action.email;
                       let historyItem = {
                         amount: action.amount,
-                        email: action.email,
+                        email: email,
                         status: action.newStatus,
                         statusStr: Vouchers[action.newStatus].toString,
                         timeStamp: action.newTimeStamp
                       };
                       if(action.newStatus === Voucher.PAID) 
-                          newVoucher.amount -= action.amount;   // todo.x: rename to newVoucher.balance                           
+                          newVoucher.balance -= action.amount;
                       
                       newVoucher.history = [...voucher.history, historyItem];
                       newVoucher.email = email;
@@ -82,7 +85,7 @@ const vouchersReducer = (state = {
                          action.newStatus = Voucher.ACTIVE;
                       }
 
-                      if(action.newStatus === Voucher.ACTIVE && newVoucher.amount === 0)
+                      if(action.newStatus === Voucher.ACTIVE && newVoucher.balance === 0)
                         action.newStatus = Voucher.REDEEMED;                        
 
                       return {

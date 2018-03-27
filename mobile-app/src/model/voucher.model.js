@@ -9,22 +9,23 @@ export function resetVoucherIds() {
 }
 
 export function createVoucher(status, amount, timeStamp) {
-
   return { 
       id: voucherId++, 
       status: status,
       statusStr: Vouchers[status].toString,
       timeStamp: timeStamp || moment().valueOf(),
-      amount: amount,
+      balance: amount,
       history: [],
     };    
 }
 
-export function createVoucherWithId(id, status, amount) {
+// todo: move to transaction.model
+export function createTransaction(voucherId, transactionType, amount, email) {
   return { 
-      id: id, 
-      status: status, 
+      voucherId: voucherId,
+      transactionType: transactionType, 
       amount: amount,
+      email: email,
       oldStatus: null      
     };    
 }
@@ -34,42 +35,35 @@ export default Vouchers = [
     toString: Voucher.REDEEMED_TEXT,     
     voucherColor: Color.REDEEMED,
     textColor: Color.BLUE,
-    amountSign: '',
   },  
   {
     toString: Voucher.SENT_TEXT,     
     voucherColor: Color.SENT,
     textColor: Color.RED,
-    amountSign: '',
   },  
   {
     toString: Voucher.RECEIVED_TEXT,     
     voucherColor: Color.RECEIVED,
     textColor: Color.GREEN,
-    amountSign: '',
   },  
   {
     toString: Voucher.PURCHASED_TEXT,     
     voucherColor: Color.PURCHASED,
     textColor: Color.GREEN,
-    amountSign: '',
   },  
   {
     toString: Voucher.REFUNDED_TEXT,     
     voucherColor: Color.REFUNDED,
     textColor: Color.PURPLE,
-    amountSign: '',
   },  
   {
     toString: Voucher.PAID_TEXT,     
     voucherColor: Color.PAID,
     textColor: Color.BLUE,
-    amountSign: '',
   },  
   {
     toString: Voucher.ACTIVE_TEXT,     
     voucherColor: Color.ACTIVE,
     textColor: Color.GREEN,
-    amountSign: '',
   },  
 ];

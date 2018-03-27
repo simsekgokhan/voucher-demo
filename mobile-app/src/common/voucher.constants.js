@@ -1,6 +1,9 @@
 
+// todo: move all to voucher.model
+
 const Voucher = {
-    // Voucher Actions
+    // Transaction Types
+    // todo: move to transaction.model
     REDEEM: 'Redeem',
     SEND: 'Send',
     RECEIVE: 'Receive',
@@ -9,9 +12,10 @@ const Voucher = {
     REFUND: 'Refund',
     PAY: 'Pay',
     
-    // Voucher States 
-    // todo: Currently, RECEIVED, PURCHASED and PAID are not voucher states.  
-    //       They are transaction types.
+    // Voucher States and Transaction Results (combined)
+    // todo: Seperate voucher states and transaction results.
+    //       Currently, RECEIVED, PURCHASED and PAID are not voucher states.  
+    //       They are transaction results. They are represented by state ACTIVE
     REDEEMED: 0,    
     SENT: 1,
     RECEIVED: 2,    // Todo: transaction type only

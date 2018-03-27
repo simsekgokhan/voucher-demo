@@ -10,10 +10,11 @@ import Color from '../common/colors';
 import { playSound } from '../common/sounds';
 import Voucher from '../common/voucher.constants';
 import { addVoucher } from "../actions/vouchersAction";
-import { createVoucher } from '../model/voucher.model';
+import { createVoucher, createTransaction } from '../model/voucher.model';
 
 let lastActiveTabIndex = 0;
 
+// todo: rename to ScannedQrCodeSimulated
 class ScanQrCode extends Component<{}> {
 
   onButtonPress = () => {
@@ -38,13 +39,13 @@ class ScanQrCode extends Component<{}> {
     const voucher = createVoucher(Voucher.RECEIVED, fakeAmount);
     voucher.qrScanned = true;
     this.props.addVoucher(voucher);
-    const transactionType = Voucher.RECEIVED;
-
+    const transaction = createTransaction(voucher.id, Voucher.RECEIVED, fakeAmount, Voucher.RECEIVED_EMAIL);      
+  
     this.props.navigator.push({
       screen: 'VoucherDetails',
       title: 'Voucher',
       backButtonTitle: 'Back',
-      passProps: {voucher, transactionType}
+      passProps: {voucher}
     });
     playSound();
   }
