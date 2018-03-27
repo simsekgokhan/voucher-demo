@@ -11,12 +11,22 @@ export function resetVoucherIds() {
 export function createVoucher(status, amount, timeStamp) {
   return { 
       id: voucherId++, 
-      status: status,
+      status: status,   // todo: rename to action.transactionType
       statusStr: Vouchers[status].toString,
       timeStamp: timeStamp || moment().valueOf(),
       balance: amount,
       history: [],
     };    
+}
+
+export function createVoucherHistoryItem(amount, email, status, timeStamp) {
+  return { 
+    amount: amount,
+    email: email,
+    status: status, // todo: rename -> transactionType
+    statusStr: Vouchers[status].toString,
+    timeStamp: timeStamp
+  };    
 }
 
 // todo: move to transaction.model

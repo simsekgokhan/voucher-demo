@@ -110,7 +110,7 @@ class VoucherDetails extends React.Component {
       // Todo: Currently voucher IDs start from 1200, start from 0 or 1000 in the future
       const initialBalance = allVouchers[this.props.voucher.id-1200].history[0].amount;
       const voucherBalance = this.props.voucher.balance;
-      amount = this.props.voucher.status === Voucher.REDEEMED ? initialBalance : voucherBalance;     
+      amount = (this.props.voucher.status === Voucher.REDEEMED) ? initialBalance : voucherBalance;     
     }
     else {  // TransactionResult screen
       voucherId = this.props.transaction.voucherId;
@@ -189,8 +189,8 @@ class VoucherDetails extends React.Component {
             <Image source={voucherLogo}/>                    
             <Text style={[styles.voucherStatusText, {color: textColor}]}> 
               {
-                voucherType === Voucher.PAID ? 'Payment Confirmed' : 
-                Vouchers[voucherType].toString
+                voucherType === Voucher.PAID ? 'Payment Confirmed' 
+                                             : Vouchers[voucherType].toString
               }
             </Text>            
           </View>  
