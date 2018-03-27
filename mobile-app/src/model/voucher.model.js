@@ -8,11 +8,11 @@ export function resetVoucherIds() {
   voucherId = 1200;
 }
 
-export function createVoucher(status, amount, timeStamp) {
+export function createVoucher(state, amount, timeStamp) {
   return { 
       id: voucherId++, 
-      status: status,   // todo: rename to action.transactionType
-      statusStr: Vouchers[status].toString,
+      status: state,   // todo: rename to state
+      statusStr: Vouchers[state].toString,
       timeStamp: timeStamp || moment().valueOf(),
       balance: amount,
       history: [],

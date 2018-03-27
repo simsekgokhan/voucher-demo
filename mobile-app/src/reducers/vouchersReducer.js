@@ -18,12 +18,11 @@ const vouchersReducer = (state = {
                     ? (walletBalance - action.payload.balance) 
                     : 0;
             }
-            else {
-                email = Voucher.RECEIVED_EMAIL;
-            }
+            else 
+                email = Voucher.RECEIVED_EMAIL;            
 
-            let historyItem = createVoucherHistoryItem(action.payload.balance, email,
-                                                       action.payload.status, action.payload.timeStamp);
+            const historyItem = createVoucherHistoryItem(action.payload.balance, email,
+                                                         action.payload.status, action.payload.timeStamp);
             action.payload.history = [...action.payload.history, historyItem];
 
             if (action.payload.status === Voucher.PURCHASED ||
@@ -64,8 +63,8 @@ const vouchersReducer = (state = {
 
                         email = (action.newStatus === Voucher.REFUNDED) ? Voucher.MY_EMAIL : action.email;
 
-                        let historyItem = createVoucherHistoryItem(action.amount, email, action.newStatus,
-                                                                   action.newTimeStamp);
+                        const historyItem = createVoucherHistoryItem(action.amount, email, action.newStatus,
+                                                                     action.newTimeStamp);
                         newVoucher.history = [...voucher.history, historyItem];
 
                         if (action.newStatus === Voucher.PAID)
