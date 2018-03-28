@@ -63,7 +63,7 @@ class Vouchers extends React.Component {
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
       if(this.props.sendVoucherScreen) {
-        if(voucher.status === Voucher.PURCHASED || voucher.status === Voucher.RECEIVED)
+        if(voucher.status === Voucher.ACTIVE)
           voucherItems.unshift(this.VoucherItem(voucher));
       }
       else {
