@@ -19,11 +19,12 @@ const vouchersReducer = (state = {
                     : 0;
             }
             else 
-                email = Voucher.RECEIVED_EMAIL;            
+                email = Voucher.RECEIVED_EMAIL;                           
 
             const historyItem = createVoucherHistoryItem(action.payload.balance, email,
                                                          action.payload.status, action.payload.timeStamp);
             action.payload.history = [...action.payload.history, historyItem];
+            action.payload.email = email;
 
             if (action.payload.status === Voucher.PURCHASED ||
                 action.payload.status === Voucher.RECEIVED) 
