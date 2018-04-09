@@ -45,10 +45,46 @@ class Vouchers extends React.Component {
     })
   }
 
+  onPayPress = (voucher) => {
+    this.props.navigator.push({
+      screen: 'Scan',
+      title: 'Scan QR-Code' ,
+      backButtonTitle: 'Back',
+      navigatorStyle: {
+        tabBarHidden: true,          
+        navBarButtonColor: Color.WHITE,
+        drawUnderTabBar: true,          
+      },
+      passProps: {
+        id: voucher.id,
+        amount: voucher.balance
+      },
+    });    
+  };
+
+  onSendPress = (voucher) => {
+    this.props.navigator.push({
+      screen: 'Scan',
+      title: 'Scan QR-Code' ,
+      backButtonTitle: 'Back',
+      navigatorStyle: {
+        tabBarHidden: true,          
+        navBarButtonColor: Color.WHITE,
+        drawUnderTabBar: true,          
+      },
+      passProps: {
+        id: voucher.id,
+        amount: voucher.balance
+      },
+    });    
+  };
+
   VoucherItem = (voucher) => {
     return(
       <VoucherItem key={voucher.id}
         onDetailsPress={ () => this.navigateToDetails(voucher) }
+        onPayPress={ () => this.onPayPress(voucher) }
+        onSendPress={ () => this.onSendPress(voucher) }
         voucher={voucher}/>
     );
   }

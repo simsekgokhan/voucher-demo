@@ -123,6 +123,27 @@ class VoucherItem extends Component<{}> {
                     </View>
                   ))
                 }
+                {
+                  (status === Voucher.ACTIVE) ? 
+                    <View style={[styles.voucherRow, {marginTop: 22, marginBottom: 4, marginHorizontal: 38}]}>
+                      <TouchableOpacity style={[styles.button, {width: 104, height: 38}]}
+                        onPress={ () => this.props.onPayPress() }>
+                        <Image source={require('../images/pay.png')}/>                
+                        <Text style={[styles.buttonText, {color: Color.GREEN}]}>
+                          Pay
+                        </Text>
+                      </TouchableOpacity>  
+                      <TouchableOpacity style={[styles.button, {width: 104, height: 38, marginHorizontal: 4}]}
+                        onPress={ () => this.props.onSendPress() }>
+                        <Image source={require('../images/send.png')}/>
+                        <Text style={[styles.buttonText, {color: Color.RED}]}>
+                          Send
+                        </Text>
+                      </TouchableOpacity>                
+                    </View>
+                  : null
+                }
+
               <View style={[styles.voucherRow, {marginVertical: 0}]}>
                 <Image source={require('../images/visa-logo.png')}/>
                 <TouchableOpacity style={styles.detailsButton}
@@ -131,7 +152,7 @@ class VoucherItem extends Component<{}> {
                     Details >
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </View>              
             </View>
             :
             null
@@ -180,7 +201,21 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     width: 80,        
     height: 48,     
-  }
+  },
+  button: {
+    backgroundColor: '#ccdfe5', 
+    borderRadius: 20, 
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',     
+    paddingHorizontal: 4,      
+    padding: 8,          
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+    fontSize: 16,
+    paddingHorizontal: 4
+  },
 });
 
 

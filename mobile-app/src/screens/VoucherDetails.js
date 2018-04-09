@@ -218,7 +218,7 @@ class VoucherDetails extends React.Component {
               <TouchableOpacity style={[styles.button, {width: 104, height: 38}]}
                 onPress={this.onPayPress}>
                 <Image source={require('../images/pay.png')}/>                
-                <Text style={[styles.buttonText, {color: Color.BLUE}]}>
+                <Text style={[styles.buttonText, {color: Color.GREEN}]}>
                   Pay
                 </Text>
               </TouchableOpacity>               
