@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { 
   StyleSheet, TextInput, Text, TouchableOpacity, View , StatusBar, 
-  KeyboardAvoidingView, Image, Dimensions
+  Keyboard, Image, Dimensions, TouchableWithoutFeedback
 } from 'react-native';
 import moment from 'moment'
 import {connect} from "react-redux";
@@ -113,6 +113,7 @@ class Login extends Component<{}> {
     }
 
     return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         {
           this.state.createAccountSelected ?  
@@ -228,6 +229,7 @@ class Login extends Component<{}> {
           }
         </View>
       </View>
+    </TouchableWithoutFeedback>  
       );
   }
 
