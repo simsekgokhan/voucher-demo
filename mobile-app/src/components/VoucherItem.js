@@ -24,7 +24,9 @@ class VoucherItem extends Component<{}> {
 
     const voucherColor = Vouchers[status].voucherColor;
     const textColor = Vouchers[status].textColor;
-    const voucherBalanceText =  status === Voucher.REDEEMED ? null : ('$' + balance + '.00');
+    const voucherBalanceText = (status === Voucher.REDEEMED
+                                || status === Voucher.SENT
+                                || status === Voucher.REFUNDED) ? null : ('$' + balance + '.00');
     const lastHistoryItem = history[history.length-1];
     const stateStr = (status === Voucher.ACTIVE) ? 'Active' : Vouchers[status].toString;
     
