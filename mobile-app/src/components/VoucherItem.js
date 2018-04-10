@@ -65,12 +65,12 @@ class VoucherItem extends Component<{}> {
                 {
                   (lastHistoryItem.status === Voucher.PURCHASED ||
                     lastHistoryItem.status === Voucher.RECEIVED) ?
-                    ('+$' + lastHistoryItem.amount)
+                    ('+$' + lastHistoryItem.amount + '.00')
                     : null
                 }
                 {
                   lastHistoryItem.status === Voucher.PAID ?
-                    ('-$' + lastHistoryItem.amount)
+                    ('-$' + lastHistoryItem.amount + '.00')
                     : null
                 }
               </Text>
@@ -104,12 +104,12 @@ class VoucherItem extends Component<{}> {
                           {
                             (historyItem.status === Voucher.PURCHASED || 
                               historyItem.status === Voucher.RECEIVED) ? 
-                              ('+$' + historyItem.amount) 
+                              ('+$' + historyItem.amount + '.00') 
                               : null
                           }
                           {
                             historyItem.status === Voucher.PAID ? 
-                              ('-$' + historyItem.amount) 
+                              ('-$' + historyItem.amount + '.00') 
                               : null
                           }
                         </Text>
