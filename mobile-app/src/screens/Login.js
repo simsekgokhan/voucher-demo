@@ -49,7 +49,7 @@ class Login extends Component<{}> {
     createAccountSelected: false,   
   };
 
-  onBackButtonPress = () => {
+  returnToSignInScreen = () => {
     const signInSelected = this.state.signInSelected;
     this.setState({
       loadStartSreen: signInSelected ? false : true,
@@ -117,7 +117,7 @@ class Login extends Component<{}> {
         {
           this.state.createAccountSelected ?  
             <TouchableOpacity style={styles.backButton}              
-              onPress={this.onBackButtonPress}>
+              onPress={this.returnToSignInScreen}>
               <Image source={require('../images/back-button.png')} />
             </TouchableOpacity>    
             : 
@@ -204,10 +204,13 @@ class Login extends Component<{}> {
         <View style={styles.footerView} >
           <Text style={{color: Color.WHITE}} >
             {footerTextPartOne}
+          </Text>
+          <TouchableOpacity
+            onPress={this.returnToSignInScreen}>
             <Text style={{color: Color.WHITE, textDecorationLine: "underline"}}> 
               {footerTextPartTwo} 
             </Text>
-          </Text>
+          </TouchableOpacity>          
           {
             (this.state.signInSelected && !this.state.createAccountSelected) ?
             <TouchableOpacity
@@ -323,6 +326,7 @@ const styles = StyleSheet.create({
     left: 0, 
     right: 0, 
     bottom: 0, 
+    flexDirection: 'row',
     justifyContent: 'center', 
     alignItems: 'center',
   },
