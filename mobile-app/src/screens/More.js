@@ -137,13 +137,13 @@ class More extends Component<{}> {
                 Payment Card Registration
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.rowButton}
+          {/*<TouchableOpacity style={styles.rowButton}
             onPress={ () => this.onButtonPress(3)}>
             <Image source={require('../images/send-voucher-icon.png')}/>
             <Text style={styles.textButton}>
                 Send Voucher
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
           <TouchableOpacity style={styles.rowButton}
             onPress={() => this.onButtonPress(4)}>
             <Image source={require('../images/settings-icon.png')}/>
