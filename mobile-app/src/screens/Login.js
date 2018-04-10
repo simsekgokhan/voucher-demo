@@ -206,7 +206,7 @@ class Login extends Component<{}> {
             {footerTextPartOne}
           </Text>
           <TouchableOpacity
-            onPress={this.returnToSignInScreen}>
+            onPress={this.state.createAccountSelected ? this.returnToSignInScreen : null}>
             <Text style={{color: Color.WHITE, textDecorationLine: "underline"}}> 
               {footerTextPartTwo} 
             </Text>
