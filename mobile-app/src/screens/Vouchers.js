@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from "react-redux";
+import Modal from 'react-native-modal';
 
 import VoucherItem from '../components/VoucherItem';
 import Color from '../common/colors';
@@ -14,10 +15,17 @@ import Voucher from '../common/voucher.constants';
 
 class Vouchers extends React.Component {
 
+  state = {
+    sendModal: false, 
+    showOnlyActiveVouchers: false,
+  }
+
   constructor(props) {
     super(props);
     // Subscribe to navigator events
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.voucherId = 0;
+    this.voucherBalance = 0;
   }
 
   onNavigatorEvent(event) {
@@ -62,22 +70,43 @@ class Vouchers extends React.Component {
     });    
   };
 
-  onSendPress = (voucher) => {
+  onQrSendPress = () => {
+    this.setState({ sendModal: false });    
     this.props.navigator.push({
-      screen: 'Scan',
-      title: 'Scan QR-Code' ,
+      screen: 'ShareOnEmail',
+      title: 'Share On Email',
       backButtonTitle: 'Back',
-      navigatorStyle: {
-        tabBarHidden: true,          
-        navBarButtonColor: Color.WHITE,
-        drawUnderTabBar: true,          
+      navigatorButtons: {
+        rightButtons: [{
+          id: 'send',
+          title: 'Send',
+        }]
       },
       passProps: {
-        id: voucher.id,
-        amount: voucher.balance
+        id: this.voucherId,
+        confirmType: Voucher.SENT,
+        amount: this.voucherBalance
       },
-    });    
+    });
   };
+
+  onSendPress = (voucher) => {    
+    this.setState({ sendModal: true });
+    this.voucherId = voucher.id;
+    this.voucherBalance = voucher.balance;
+  };
+
+  onCancelPress = () => {
+    this.setState({ sendModal: false });
+  };
+
+  onAllVouchers = () => {
+    this.setState({showOnlyActiveVouchers: false});
+  }
+
+  onActiveVouchers = () => {
+    this.setState({showOnlyActiveVouchers: true});
+  }
 
   VoucherItem = (voucher) => {
     return(
@@ -98,14 +127,18 @@ class Vouchers extends React.Component {
     for(const voucher of allVouchers){
       // If this is SendVoucher screen, show only purchased and received vouchers,
       // otherwise show all vouchers
-      if(this.props.sendVoucherScreen) {
+      if(this.props.sendVoucherScreen || this.state.showOnlyActiveVouchers) {
         if(voucher.status === Voucher.ACTIVE)
           voucherItems.unshift(this.VoucherItem(voucher));
       }
-      else {
-        voucherItems.unshift(this.VoucherItem(voucher));
-      }
+      else 
+        voucherItems.unshift(this.VoucherItem(voucher));      
     }
+
+    const selected = { color: Color.BLUE, backgroundColor: Color.WHITE };
+    const unselected = { color: Color.WHITE, backgroundColor: Color.TRANSPARENT };
+    const allVouchersButton = this.state.showOnlyActiveVouchers ? unselected : selected;
+    const activeVouchersButton = this.state.showOnlyActiveVouchers ? selected : unselected;
 
     return (
       <Image resizeMode='cover' style={styles.container}
@@ -121,10 +154,27 @@ class Vouchers extends React.Component {
           </Text>
         </View>
         {
-          hasVoucher ?
-          <ScrollView vertical style={styles.scrollView}>
-            {voucherItems}
-          </ScrollView>
+          hasVoucher ? 
+          <View>
+            { 
+              this.props.sendVoucherScreen ? null :
+              <View style={styles.filterButtons}>
+                <TouchableOpacity style={styles.filterButton} onPress={this.onAllVouchers}>
+                  <Text style={[styles.filterButtonText, allVouchersButton]}>
+                    All Vouchers
+                  </Text>
+                </TouchableOpacity>       
+                <TouchableOpacity style={styles.filterButton} onPress={this.onActiveVouchers}>
+                  <Text style={[styles.filterButtonText, activeVouchersButton]}>
+                    Active Vouchers
+                  </Text>
+                </TouchableOpacity>   
+              </View>  
+            }             
+            <ScrollView vertical style={styles.scrollView}>
+              {voucherItems}
+            </ScrollView>
+          </View>
           :
           <View style={styles.logoView}>
             <Image source={require('../images/voucher-logo.png')}/>
@@ -133,6 +183,38 @@ class Vouchers extends React.Component {
             </Text>
           </View>
         }
+        <Modal isVisible={this.state.sendModal}>
+          <View style={styles.modalMainContainer}>
+            <LinearGradient
+              start={[0, 0]} end={[1, 0]}
+              colors={['#ffffff', '#ccf2ff']}
+              style={styles.modalContainer}>
+              <View style={styles.modalQr}>
+                <Text style={styles.modalQrText}>
+                  Send QR Code
+                </Text>
+                <Image
+                  style={styles.modalQrImage}
+                  source={require('../images/qr-code.png')}/>
+              </View>
+              <TouchableOpacity
+                onPress={this.onQrSendPress}
+                style={styles.modalSend}>
+                <Image source={require('../images/send.png')}/>
+                <Text style={[styles.buttonText, {color: Color.RED}]}>
+                  Send
+                </Text>
+              </TouchableOpacity>
+            </LinearGradient>
+            <TouchableOpacity
+              onPress={this.onCancelPress}
+              style={styles.modalCancel}>
+              <Text style={styles.textCancel}>
+                Cancel
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>        
       </Image>
     );
   }
@@ -158,7 +240,7 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   topView: {
-    marginTop: 100,
+    marginTop: 90,
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
@@ -186,7 +268,77 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
   scrollView: {
-    marginTop: 36,
-    marginBottom: 56,
-  }
+    marginTop: 10,
+    marginBottom: 220,
+  },
+  textCancel: {
+    fontSize: 20,
+    color: '#007aff',
+  },
+  modalMainContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  modalContainer: {
+    height: 474,
+    borderRadius: 14,
+    backgroundColor: '#000000',
+    marginBottom: 15,
+  },
+  modalCancel: {
+    height: 56,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 14,
+    backgroundColor: '#FFFFFF',
+  },
+  modalSend: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 56,
+  },
+  modalQr: {
+    height: 418,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomColor: '#3f3f3f',
+    borderBottomWidth: 0.5,
+  },
+  modalQrImage: {
+    marginTop: 31,
+  },
+  modalQrText: {
+    backgroundColor: 'transparent',
+    fontSize: 13,
+    color: '#828282',
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+    fontSize: 18,
+    paddingHorizontal: 4
+  },  
+  filterButtons: {
+    borderRadius: 5, 
+    marginTop: 20,
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  filterButton: {
+    width: Dimensions.get('window').width/2 - 10,
+    height: 30,        
+    borderWidth: 1,
+    justifyContent: 'center',
+    borderColor: Color.WHITE,
+    textAlign: 'center',    
+  },  
+  filterButtonText: {
+    height: 30,            
+    fontSize: 15,
+    fontWeight: 'bold',    
+    paddingTop: 5,
+    textAlign: 'center',
+  },
 });
